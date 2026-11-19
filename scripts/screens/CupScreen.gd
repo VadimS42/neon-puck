@@ -13,6 +13,7 @@ func _init(m) -> void:
 
 func _ready() -> void:
 	add_child(UI.background())
+	add_child(_trophy())
 	var t := UI.label("Cups", 38, UI.GOLD)
 	t.position = Vector2(40, 18)
 	add_child(t)
@@ -84,6 +85,13 @@ func _cup_card(row: HBoxContainer, c: Dictionary, busy: bool) -> Button:
 	b.disabled = busy or block != ""
 	v.add_child(b)
 	return b
+
+
+func _trophy() -> Control:
+	var r := UI.icon_rect("trophy", 40)
+	r.position = Vector2(150, 24)
+	r.modulate = UI.GOLD
+	return r
 
 
 func _enter(cid: String) -> void:

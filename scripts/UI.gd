@@ -54,9 +54,13 @@ static func panel(color: Color = PANEL, radius: int = 16, border: Color = LINE) 
 	return p
 
 
-static func button(text: String, cb: Callable, size: int = 22, accent: Color = PINK) -> Button:
+static func button(text: String, cb: Callable, size: int = 22, accent: Color = PINK, icon_name: String = "") -> Button:
 	var b := Button.new()
 	b.text = text
+	if icon_name != "":
+		b.icon = ArtAssets.icon(icon_name)
+		b.add_theme_constant_override("icon_max_width", size + 6)
+		b.add_theme_constant_override("h_separation", 10)
 	b.focus_mode = Control.FOCUS_ALL
 	b.add_theme_font_size_override("font_size", size)
 	b.add_theme_color_override("font_color", INK)
@@ -102,6 +106,18 @@ static func background(color_a: Color = BG, color_b: Color = BG_2) -> Control:
 	return fill(tr2)
 
 
+## A small icon next to text, or an empty spacer if the file is missing.
+static func icon_rect(name: String, px: int = 32) -> TextureRect:
+	var r := TextureRect.new()
+	r.texture = ArtAssets.icon(name)
+	r.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	r.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	r.custom_minimum_size = Vector2(px, px)
+	r.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return r
+
+
 static func hcolor(id: String) -> Color:
 	return Color(String(GameState.heroine(id).get("color", "#FF4F8B")))
 
@@ -132,5 +148,13 @@ static func status_bar(pos: Vector2) -> Control:
 	bar.add_theme_stylebox_override("fill", f)
 	h.add_child(bar)
 	h.add_child(label("MAX" if maxed else "%d / %d XP" % [GameState.xp, GameState.xp_to_next()], 15, INK_SOFT))
+	var coin := ArtAssets.icon("Coin")
+	if coin:
+		var ci := TextureRect.new()
+		ci.texture = coin
+		ci.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		ci.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		ci.custom_minimum_size = Vector2(36, 36)
+		h.add_child(ci)
 	h.add_child(label("%d tips" % GameState.tips, 22, GOLD))
 	return p

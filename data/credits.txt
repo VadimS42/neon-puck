@@ -1,0 +1,20 @@
+NEON PUCK (working title)
+
+Game design, writing, programming: (your name / studio)
+Character and scene art: (artists, once commissioned)
+
+MUSIC
+Lounge theme: "Sexy Scene Instrumentals Vol. 4" by Sascha Ende (ende.app), licensed under CC BY 4.0
+Scene theme: "Sexy Scene Vol. 3 [With Ultra Sexy Voice]" by Sascha Ende (ende.app), licensed under CC BY 4.0
+Match theme: "Binary Underwater Village" by Alex McCulloch (Pro Sensory), CC0
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+
+ICONS
+Coin, hearts, potions, backpack, shield, scroll, wand: Ravenmore Icon Pack 2023 by Ravenmore (ravenmore.itch.io), free for commercial use with credit
+Menu icons: Game Icons by Kenney (www.kenney.nl), CC0
+
+ENGINE
+Made with Godot Engine (godotengine.org), MIT license.
+Copyright (c) 2014-present Godot Engine contributors. Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Edit this file (data/credits.txt) to fill in names. It is shown on the Credits screen.

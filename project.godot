@@ -18,6 +18,7 @@ boot_splash/show_image=false
 
 GameState="*res://autoload/GameState.gd"
 SFX="*res://autoload/SFX.gd"
+Music="*res://autoload/Music.gd"
 
 [display]
 

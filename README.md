@@ -131,8 +131,25 @@ After `--` on the command line: `screen=menu|roster|vn|match|result|scene|galler
 plays you), `speed=4` (fast-forward), `shot=out.png delay=2` (screenshot
 and quit).
 
+## Assets from Charm Combo
+
+Brought over with their licences checked (credits on the in-game Credits
+screen, from `data/credits.txt`):
+
+| Path | What | Licence |
+| --- | --- | --- |
+| `art/ui/icons/` white icons (trophy, shoppingBasket, gear, question, information, star, home, exit, right, return, fastForward) | Game Icons by Kenney | CC0 (`LICENSE_kenney.txt`) |
+| `art/ui/icons/` Coin, HeartFull, HeartEmpty, PotionRed, PotionGreen, Backpack, ShieldSmallT2, Scroll, WandT2 | Ravenmore Icon Pack 2023 | Free for commercial use with credit (confirm on ravenmore.itch.io before release) |
+| `audio/music/lounge.ogg`, `scene.ogg` | Sascha Ende, "Sexy Scene Instrumentals Vol. 4" and "Sexy Scene Vol. 3" | CC BY 4.0, credit required |
+| `audio/music/match.ogg` | Alex McCulloch, "Binary Underwater Village" | CC0 |
+
+Left behind on purpose: Charm Combo's menu theme and ending track (no licence
+recorded), the forest and underwater themes (wrong mood), the gems (licence
+unknown), the voice lines and character art (they belong to that game's cast).
+Replace any track by dropping a file with the same name into `audio/music/`.
+
 ## Not in yet
 
-Music, real SFX, a Live2D or frame-animated scene pipeline (Charm Combo's
+Real SFX, original music, a Live2D or frame-animated scene pipeline (Charm Combo's
 `FrameAnimation.gd` / `LiveSprite.gd` could be reused), translations,
 Steam achievements, and an all-ages build switch.

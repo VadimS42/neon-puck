@@ -23,6 +23,12 @@ static func _try(path: String) -> Texture2D:
 	return null
 
 
+## UI icon: res://art/ui/icons/<name>.png (the Kenney and Ravenmore icons
+## brought over from Charm Combo; see data/credits.txt).
+static func icon(name: String) -> Texture2D:
+	return _try("res://art/ui/icons/%s.png" % name)
+
+
 ## Match portrait at strip stage 0..3 (0 = fully dressed).
 ## res://art/heroines/<id>/stage_<n>.png, falling back to lower stages.
 static func stage(id: String, n: int) -> Texture2D:

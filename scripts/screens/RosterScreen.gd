@@ -27,18 +27,18 @@ func _ready() -> void:
 	hub.position = Vector2(860, 62)
 	hub.add_theme_constant_override("separation", 10)
 	add_child(hub)
-	hub.add_child(UI.button("Pro Shop", func(): main.show_shop(), 18, UI.GOLD))
-	var cups := UI.button("Cups" + (" · in progress" if not GameState.cup_run.is_empty() else ""), main.show_cups, 18, UI.CYAN)
+	hub.add_child(UI.button("Pro Shop", func(): main.show_shop(), 18, UI.GOLD, "shoppingBasket"))
+	var cups := UI.button("Cups" + (" · in progress" if not GameState.cup_run.is_empty() else ""), main.show_cups, 18, UI.CYAN, "trophy")
 	hub.add_child(cups)
 	if GameState.finale_open():
 		var fin := GameState.finale()
 		var fl := int(fin.get("level", 1))
-		var ftext := "★ " + String(fin.get("title", "Finale"))
+		var ftext := String(fin.get("title", "Finale"))
 		if GameState.finale_done:
 			ftext += " (won)"
 		elif GameState.level < fl and not GameState.unlock_all:
 			ftext += " · level %d" % fl
-		var fb := UI.button(ftext, main.start_finale, 18, UI.PINK)
+		var fb := UI.button(ftext, main.start_finale, 18, UI.PINK, "trophy")
 		fb.disabled = GameState.level < fl and not GameState.unlock_all
 		hub.add_child(fb)
 		hub.position.x = 560
@@ -52,7 +52,7 @@ func _ready() -> void:
 		if first == null and b:
 			first = b
 	_shot_picker()
-	var back := UI.button("Back", main.show_menu, 20, UI.LINE)
+	var back := UI.button("Back", main.show_menu, 20, UI.LINE, "return")
 	back.position = Vector2(1170, 735)
 	add_child(back)
 	if first:

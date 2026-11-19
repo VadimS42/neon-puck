@@ -43,6 +43,12 @@ func _ready() -> void:
 
 
 func _show(screen: Control) -> void:
+	if screen is MatchScreen:
+		Music.play("match")
+	elif screen is SceneViewer:
+		Music.play("scene")
+	else:
+		Music.play("lounge")
 	if current and is_instance_valid(current):
 		current.queue_free()
 	current = screen
@@ -70,6 +76,10 @@ func show_gallery() -> void:
 
 func show_settings(back: Callable = Callable()) -> void:
 	_show(SettingsScreen.new(self, back if back.is_valid() else show_menu))
+
+
+func show_credits() -> void:
+	_show(CreditsScreen.new(self))
 
 
 func show_how_to_play() -> void:
@@ -252,6 +262,7 @@ func _debug_open(o: Dictionary) -> void:
 		"gallery": show_gallery()
 		"settings": show_settings()
 		"howto": show_how_to_play()
+		"credits": show_credits()
 		"vn": start_story_match(id, int(o.get("m", "0")))
 		"prologue": _show(VNScreen.new(self, "mila", GameState.data.get("prologue", []), show_menu))
 		"match":

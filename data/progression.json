@@ -15,13 +15,13 @@
   },
   "powerup_slots": [ { "level": 1, "slots": 1 }, { "level": 3, "slots": 2 }, { "level": 8, "slots": 3 } ],
   "powerups": [
-    { "id": "energy",   "name": "Energy Drink",  "price": 60,  "level": 1, "desc": "Start the match with a full Heat meter." },
-    { "id": "grip",     "name": "Grip Tape",     "price": 80,  "level": 1, "desc": "+20% paddle size for this match." },
-    { "id": "spotlight","name": "Spotlight",     "price": 120, "level": 2, "desc": "Her Composure is 1 lower per layer: she strips faster." },
-    { "id": "hype",     "name": "Hype Track",    "price": 90,  "level": 3, "desc": "Your Heat fills 40% faster this match." },
-    { "id": "wink",     "name": "Distracting Wink", "price": 110, "level": 4, "desc": "Her signature meter fills half as fast." },
-    { "id": "sugar",    "name": "Sugar Rush",    "price": 100, "level": 5, "desc": "+15% paddle speed and +10% hit power." },
-    { "id": "comeback", "name": "Second Wind",   "price": 140, "level": 6, "desc": "When she reaches match point, your Heat fills to full (once)." }
+    { "id": "energy",   "name": "Energy Drink",  "icon": "PotionRed", "price": 60,  "level": 1, "desc": "Start the match with a full Heat meter." },
+    { "id": "grip",     "name": "Grip Tape",     "icon": "ShieldSmallT2", "price": 80,  "level": 1, "desc": "+20% paddle size for this match." },
+    { "id": "spotlight","name": "Spotlight",     "icon": "star", "price": 120, "level": 2, "desc": "Her Composure is 1 lower per layer: she strips faster." },
+    { "id": "hype",     "name": "Hype Track",    "icon": "Scroll", "price": 90,  "level": 3, "desc": "Your Heat fills 40% faster this match." },
+    { "id": "wink",     "name": "Distracting Wink", "icon": "WandT2", "price": 110, "level": 4, "desc": "Her signature meter fills half as fast." },
+    { "id": "sugar",    "name": "Sugar Rush",    "icon": "PotionGreen", "price": 100, "level": 5, "desc": "+15% paddle speed and +10% hit power." },
+    { "id": "comeback", "name": "Second Wind",   "icon": "HeartFull", "price": 140, "level": 6, "desc": "When she reaches match point, your Heat fills to full (once)." }
   ],
   "gear_slots": [
     { "id": "paddle", "name": "Paddle" },

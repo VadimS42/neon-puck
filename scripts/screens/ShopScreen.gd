@@ -29,7 +29,7 @@ func _ready() -> void:
 	add_child(tabs)
 	for k in [["gear", "Gear"], ["powerups", "Power-ups"]]:
 		var key: String = k[0]
-		var b := UI.button(k[1], func(): _tab(key), 18, UI.CYAN)
+		var b := UI.button(k[1], func(): _tab(key), 18, UI.CYAN, "shoppingBasket" if key == "gear" else "Backpack")
 		b.toggle_mode = true
 		tabs.add_child(b)
 		tab_btns[key] = b
@@ -129,8 +129,9 @@ func _powerups() -> Control:
 		var r := HBoxContainer.new()
 		r.add_theme_constant_override("separation", 16)
 		panel.add_child(r)
+		r.add_child(UI.icon_rect(String(p.get("icon", "")), 54))
 		var info := VBoxContainer.new()
-		info.custom_minimum_size = Vector2(650, 0)
+		info.custom_minimum_size = Vector2(600, 0)
 		info.add_child(UI.label(String(p["name"]), 19, UI.INK if not locked else UI.INK_SOFT))
 		info.add_child(UI.label(String(p.get("desc", "")), 14, UI.INK_SOFT))
 		r.add_child(info)

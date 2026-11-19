@@ -54,6 +54,11 @@ func _ready() -> void:
 		SFX.enabled = not SFX.enabled
 		snd.text = "Sound: on" if SFX.enabled else "Sound: off")
 	v.add_child(snd)
+	var mus := UI.button("Music: on" if Music.enabled else "Music: off", func(): pass, 20, UI.CYAN)
+	mus.pressed.connect(func():
+		Music.set_enabled(not Music.enabled)
+		mus.text = "Music: on" if Music.enabled else "Music: off")
+	v.add_child(mus)
 	v.add_child(UI.button("Reset story progress", func():
 		GameState.reset_progress()
 		main.show_settings(back), 18, UI.BAD))
