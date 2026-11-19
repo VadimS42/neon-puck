@@ -8,7 +8,7 @@ config/quit_on_go_back=false
 
 config/name="Neon Puck Rivals"
 config/description="A free-to-play arcade air hockey game (PG-13, Google Play build). Win over four rivals at a neon lounge: every power smash that scores cracks her cool, and every crack makes her weaker."
-config/version="0.1.0"
+config/version="0.2.0"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.3", "GL Compatibility")

@@ -339,6 +339,11 @@ func _debug_open(o: Dictionary) -> void:
 			GameState.life_next_at = GameState.now() + 754
 			show_roster()
 			out_of_lives(func(): pass)
+		"revive":
+			GameState.no_save = true
+			var ms := MatchScreen.new(self, id, int(o.get("m", "5")), {"mode": "story"})
+			_show(ms)
+			ms.call_deferred("_offer_revive")
 		"daily":
 			GameState.no_save = true
 			show_menu()

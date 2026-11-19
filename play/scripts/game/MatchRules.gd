@@ -54,7 +54,7 @@ func setup(id: String, mi: int, context: Dictionary = {}) -> void:
 	target = int(ctx.get("target", m.get("target", 7)))
 	boost = float(ctx.get("boost", 0.0))
 	layer_count = h.get("layers", []).size()
-	composure_per_layer = int(h.get("composure", 2))
+	composure_per_layer = int(h.get("composure", 2)) + int(gs.curve(id, mi).get("cool", 0))
 	composure = composure_per_layer
 	brain.side = 1
 	brain.setup(hash(id) + mi * 7919)
@@ -141,6 +141,22 @@ func _on_sim_event(e: Dictionary) -> void:
 				over = true
 				player_won = sim.paddle(0).score >= target
 				events.append({"kind": "match_over", "won": player_won})
+
+
+## Revive after a loss (ad or gems): the match goes on with her pulled back
+## to `back` points short of winning and your Heat full.
+var revives := 0
+
+
+func revive(back: int, full_heat: bool) -> void:
+	over = false
+	player_won = false
+	revives += 1
+	var her: PuckSim.Paddle = sim.paddle(1)
+	her.score = maxi(0, target - maxi(1, back))
+	if full_heat:
+		sim.paddle(0).heat = PuckSim.HEAT_MAX
+	sim.paused = maxf(sim.paused, 1.0)
 
 
 func _hit_composure(dmg: int) -> void:

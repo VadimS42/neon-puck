@@ -40,6 +40,10 @@ var _bark_i := 0
 var countdown := 3.2
 var paused := false
 var ending := -1.0
+## The revive card is up (after a loss): the table is frozen.
+var reviving := false
+var ad_revives := 0
+var gem_revives := 0
 var use_keys := false
 ## Touch screens: which finger steers, and whether to ignore emulated clicks
 ## (on a phone every touch is also a click, which would arm the smash).
@@ -275,7 +279,7 @@ func _build_pause() -> void:
 
 
 func _toggle_pause() -> void:
-	if ending >= 0.0:
+	if ending >= 0.0 or reviving:
 		return
 	paused = not paused
 	pause_layer.visible = paused
@@ -478,8 +482,61 @@ func _on_event(e: Dictionary) -> void:
 				_banner("YOU WIN!", UI.GOLD, 2.5)
 				SFX.play("win")
 			else:
-				_banner("%s wins this one" % her_name, UI.BAD, 2.5)
 				SFX.play("lose")
+				if _can_revive():
+					ending = -1.0
+					_offer_revive()
+				else:
+					_banner("%s wins this one" % her_name, UI.BAD, 2.5)
+
+
+func _can_revive() -> bool:
+	if String(ctx.get("mode", "story")) == "replay" or autoplay:
+		return false
+	var cfg := GameState.revive_cfg()
+	var ad_ok := ad_revives < int(cfg.get("ad_revives", 1)) and GameState.rewarded_left() > 0
+	return ad_ok or GameState.revive_gem_cost(gem_revives) >= 0
+
+
+## Lost? Watch an ad or spend gems to keep playing from two points behind.
+func _offer_revive() -> void:
+	reviving = true
+	paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	var cfg := GameState.revive_cfg()
+	var back := int(cfg.get("her_score_back", 2))
+	var cost := GameState.revive_gem_cost(gem_revives)
+	var ad_ok := ad_revives < int(cfg.get("ad_revives", 1)) and GameState.rewarded_left() > 0
+	var btns := []
+	if ad_ok:
+		btns.append(["Watch an ad: revive", func():
+			Ads.show_rewarded("revive", func(ok: bool):
+				if ok:
+					ad_revives += 1
+					_do_revive(back)
+				else:
+					_offer_revive()), UI.GOLD, "ad"])
+	if cost >= 0:
+		btns.append(["Revive · %d gems" % cost, func():
+			if GameState.gems >= cost:
+				GameState.gems -= cost
+				GameState.save()
+				gem_revives += 1
+				_do_revive(back), UI.CYAN, "gem", GameState.gems < cost])
+	btns.append(["Give up", func():
+		reviving = false
+		paused = false
+		_banner("%s wins this one" % UI.first_name(heroine_id), UI.BAD, 2.0)
+		ending = 1.5, UI.LINE])
+	UI.popup(self, "%s wins... unless?" % UI.first_name(heroine_id), "Revive and keep playing: her score drops to %d and your Heat is full." % (rules.target - back), btns, UI.GOLD)
+
+
+func _do_revive(back: int) -> void:
+	rules.revive(back, bool(GameState.revive_cfg().get("full_heat", true)))
+	reviving = false
+	paused = false
+	_banner("REVIVED! Your Heat is full.", UI.GOLD, 2.0)
+	_refresh_side()
 
 
 func _shot_name() -> String:

@@ -49,6 +49,25 @@ All numbers are in `data/monetization.json`.
   3 minutes, never before a story memory, and never for anyone who has paid
   for anything. No banners.
 
+## Difficulty curve and revives
+
+Later matches get much sharper on top of the chosen difficulty
+(`difficulty_curve` in `data/monetization.json`), keyed by the level a
+match needs:
+
+| Tier | Match levels | Her speed | Reactions | Aim | Extra Cool per crack |
+| --- | --- | --- | --- | --- | --- |
+| Warm-up | 1-3 | x1.00 | normal | normal | 0 |
+| League | 4-6 | x1.08 | -0.015 s | x0.90 | 0 |
+| Pro | 7-9 | x1.20 | -0.035 s | x0.75 | +1 |
+| Legend | 10-11 | x1.28 | -0.045 s | x0.65 | +1 |
+| Last Call | 12 (Sable's last match, the championship) | x1.32 | -0.05 s | x0.60 | +1 |
+
+Lose a match and a revive card appears: watch an ad (once per match) or pay
+gems (20, then 40, then 80) to keep playing with her score pulled back to 3
+short of winning and your Heat full. `tools/curve_test.gd` measures win
+rates for a bot with best gear, with and without 3 power-ups and a revive.
+
 ## Test backends (what's real and what's stubbed)
 
 | Piece | Status |

@@ -8,19 +8,41 @@
     "ad_lives_per_day": 5,
     "unlimited_minutes": 120,
     "unlimited_gems": 60,
-    "free_modes": ["replay"]
+    "free_modes": [
+      "replay"
+    ]
   },
   "first_win_gems": 5,
   "story_complete_gems": 30,
-  "cup_win_gems": [10, 20, 40],
+  "cup_win_gems": [
+    10,
+    20,
+    40
+  ],
   "daily": [
-    { "tips": 100 },
-    { "powerup": "energy", "count": 1 },
-    { "tips": 200 },
-    { "gems": 5 },
-    { "powerup": "grip", "count": 2 },
-    { "tips": 400 },
-    { "gems": 20 }
+    {
+      "tips": 100
+    },
+    {
+      "powerup": "energy",
+      "count": 1
+    },
+    {
+      "tips": 200
+    },
+    {
+      "gems": 5
+    },
+    {
+      "powerup": "grip",
+      "count": 2
+    },
+    {
+      "tips": 400
+    },
+    {
+      "gems": 20
+    }
   ],
   "ads": {
     "interstitial_every": 3,
@@ -31,17 +53,140 @@
     "free_powerup_per_day": 1
   },
   "gem_shop": [
-    { "id": "tips_s", "name": "Tip jar", "gems": 20, "tips": 500 },
-    { "id": "tips_m", "name": "Tip bucket", "gems": 75, "tips": 2200 },
-    { "id": "tips_l", "name": "Tip barrel", "gems": 180, "tips": 6000 }
+    {
+      "id": "tips_s",
+      "name": "Tip jar",
+      "gems": 20,
+      "tips": 500
+    },
+    {
+      "id": "tips_m",
+      "name": "Tip bucket",
+      "gems": 75,
+      "tips": 2200
+    },
+    {
+      "id": "tips_l",
+      "name": "Tip barrel",
+      "gems": 180,
+      "tips": 6000
+    }
   ],
   "products": [
-    { "id": "gems_80",    "type": "consumable",     "name": "Pocket of Gems", "gems": 80,   "price": "$0.99" },
-    { "id": "gems_450",   "type": "consumable",     "name": "Bag of Gems",    "gems": 450,  "price": "$4.99", "tag": "+12%" },
-    { "id": "gems_1000",  "type": "consumable",     "name": "Box of Gems",    "gems": 1000, "price": "$9.99", "tag": "Popular" },
-    { "id": "gems_2200",  "type": "consumable",     "name": "Crate of Gems",  "gems": 2200, "price": "$19.99", "tag": "Best value" },
-    { "id": "starter_pack", "type": "one_time",     "name": "Starter Pack",   "gems": 200, "tips": 1500, "powerups": { "energy": 3, "grip": 3 }, "gear": "paddle_2", "price": "$1.99", "desc": "200 gems, 1,500 tips, the Felt-rim paddle and 6 power-ups. Once per player." },
-    { "id": "remove_ads", "type": "non_consumable", "name": "Remove Ads",     "price": "$2.99", "desc": "No more ads between matches. Optional reward ads stay available." },
-    { "id": "lounge_pass", "type": "non_consumable", "name": "VIP Lounge Pass", "price": "$7.99", "desc": "8 max lives, lives refill twice as fast, +20% tips from every match, and no ads between matches." }
-  ]
+    {
+      "id": "gems_80",
+      "type": "consumable",
+      "name": "Pocket of Gems",
+      "gems": 80,
+      "price": "$0.99"
+    },
+    {
+      "id": "gems_450",
+      "type": "consumable",
+      "name": "Bag of Gems",
+      "gems": 450,
+      "price": "$4.99",
+      "tag": "+12%"
+    },
+    {
+      "id": "gems_1000",
+      "type": "consumable",
+      "name": "Box of Gems",
+      "gems": 1000,
+      "price": "$9.99",
+      "tag": "Popular"
+    },
+    {
+      "id": "gems_2200",
+      "type": "consumable",
+      "name": "Crate of Gems",
+      "gems": 2200,
+      "price": "$19.99",
+      "tag": "Best value"
+    },
+    {
+      "id": "starter_pack",
+      "type": "one_time",
+      "name": "Starter Pack",
+      "gems": 200,
+      "tips": 1500,
+      "powerups": {
+        "energy": 3,
+        "grip": 3
+      },
+      "gear": "paddle_2",
+      "price": "$1.99",
+      "desc": "200 gems, 1,500 tips, the Felt-rim paddle and 6 power-ups. Once per player."
+    },
+    {
+      "id": "remove_ads",
+      "type": "non_consumable",
+      "name": "Remove Ads",
+      "price": "$2.99",
+      "desc": "No more ads between matches. Optional reward ads stay available."
+    },
+    {
+      "id": "lounge_pass",
+      "type": "non_consumable",
+      "name": "VIP Lounge Pass",
+      "price": "$7.99",
+      "desc": "8 max lives, lives refill twice as fast, +20% tips from every match, and no ads between matches."
+    }
+  ],
+  "difficulty_curve": {
+    "_readme": "Extra pressure on top of the chosen difficulty, by the level a match needs (heroines.json 'level'). speed multiplies her paddle speed and acceleration, reaction is added to how late she sees the puck (negative = sharper), aim multiplies her aim wander (lower = more accurate), cool adds Cool pips per crack (harder to rattle). Tuned so the last tier is close to unbeatable for a normal player without power-ups; Spotlight (-1 Cool), Grip Tape, Sugar Rush and Second Wind are the counters.",
+    "tiers": [
+      {
+        "from_level": 1,
+        "name": "Warm-up",
+        "speed": 1.0,
+        "reaction": 0.0,
+        "aim": 1.0,
+        "cool": 0
+      },
+      {
+        "from_level": 4,
+        "name": "League",
+        "speed": 1.08,
+        "reaction": -0.015,
+        "aim": 0.9,
+        "cool": 0
+      },
+      {
+        "from_level": 7,
+        "name": "Pro",
+        "speed": 1.2,
+        "reaction": -0.035,
+        "aim": 0.75,
+        "cool": 1
+      },
+      {
+        "from_level": 10,
+        "name": "Legend",
+        "speed": 1.28,
+        "reaction": -0.045,
+        "aim": 0.65,
+        "cool": 1
+      },
+      {
+        "from_level": 12,
+        "name": "Last Call",
+        "speed": 1.32,
+        "reaction": -0.05,
+        "aim": 0.6,
+        "cool": 1
+      }
+    ]
+  },
+  "revive": {
+    "_readme": "When you lose a match, you can revive once by watching a rewarded ad, or with gems (cost rises each time). A revive puts her back to two points short of winning and fills your Heat. Free modes (replays) can't be revived.",
+    "her_score_back": 3,
+    "ad_revives": 1,
+    "gem_costs": [
+      20,
+      40,
+      80
+    ],
+    "full_heat": true
+  }
 }

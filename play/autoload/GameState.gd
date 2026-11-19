@@ -206,12 +206,16 @@ func apply_opponent(id: String, match_index: int, layers_lost: int, brain: AIBra
 				size *= float(L.get("value", 1.0))
 			"reaction":
 				reaction += float(L.get("value", 0.0))
+	# Free-to-play difficulty curve: later matches get much sharper.
+	var cv := curve(id, match_index)
+	speed *= float(cv.get("speed", 1.0))
+	reaction += float(cv.get("reaction", 0.0))
 	pad.max_speed = speed
 	pad.max_accel = float(s.get("accel", 6500)) * float(d.get("speed", 1.0)) * (speed / maxf(1.0, float(s.get("speed", 2200)) * float(d.get("speed", 1.0))))
 	pad.radius = size
 	pad.power_kind = String(h.get("signature", "bullet"))
 	brain.reaction = maxf(0.04, reaction)
-	brain.aim_spread = float(s.get("aim", 50)) * float(d.get("aim", 1.0))
+	brain.aim_spread = float(s.get("aim", 50)) * float(d.get("aim", 1.0)) * float(cv.get("aim", 1.0))
 	brain.bank_pref = float(s.get("bank", 0.25))
 	brain.aggression = float(s.get("aggression", 0.5))
 
@@ -1000,3 +1004,25 @@ func buy_outfit(id: String, oid: String) -> bool:
 	outfit[id] = oid
 	save()
 	return true
+
+
+## The difficulty-curve tier for a match, by the level it needs
+## (monetization.json "difficulty_curve").
+func curve(id: String, mi: int) -> Dictionary:
+	var lv := match_level(id, mi)
+	var out: Dictionary = {}
+	for t in f2p.get("difficulty_curve", {}).get("tiers", []):
+		if lv >= int(t.get("from_level", 1)):
+			out = t
+	return out
+
+
+func revive_cfg() -> Dictionary:
+	return f2p.get("revive", {})
+
+
+## Gem cost of the next revive in this match (after `used_gem` gem revives),
+## or -1 when none are left.
+func revive_gem_cost(used_gem: int) -> int:
+	var costs: Array = revive_cfg().get("gem_costs", [20, 40, 80])
+	return int(costs[used_gem]) if used_gem < costs.size() else -1
