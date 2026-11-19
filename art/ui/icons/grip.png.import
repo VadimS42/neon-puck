@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb0i8vknp0t4"
-path="res://.godot/imported/Backpack.png-192d3c9d55388509593f341337c20c92.ctex"
+uid="uid://df2yv25jqu0ff"
+path="res://.godot/imported/grip.png-15eefee0a96134b04d867533e2e507fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/icons/Backpack.png"
-dest_files=["res://.godot/imported/Backpack.png-192d3c9d55388509593f341337c20c92.ctex"]
+source_file="res://art/ui/icons/grip.png"
+dest_files=["res://.godot/imported/grip.png-15eefee0a96134b04d867533e2e507fb.ctex"]
 
 [params]
 

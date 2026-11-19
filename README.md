@@ -139,13 +139,13 @@ screen, from `data/credits.txt`):
 | Path | What | Licence |
 | --- | --- | --- |
 | `art/ui/icons/` white icons (trophy, shoppingBasket, gear, question, information, star, home, exit, right, return, fastForward) | Game Icons by Kenney | CC0 (`LICENSE_kenney.txt`) |
-| `art/ui/icons/` Coin, HeartFull, HeartEmpty, PotionRed, PotionGreen, Backpack, ShieldSmallT2, Scroll, WandT2 | Ravenmore Icon Pack 2023 | Free for commercial use with credit (confirm on ravenmore.itch.io before release) |
+| `art/ui/icons/` coin, heart_full, heart_empty and the power-up icons | Drawn for Neon Puck by `tools/make_icons.py` (flat neon, no licence to track) | Ours |
 | `audio/music/lounge.ogg`, `scene.ogg` | Sascha Ende, "Sexy Scene Instrumentals Vol. 4" and "Sexy Scene Vol. 3" | CC BY 4.0, credit required |
 | `audio/music/match.ogg` | Alex McCulloch, "Binary Underwater Village" | CC0 |
 
 Left behind on purpose: Charm Combo's menu theme and ending track (no licence
-recorded), the forest and underwater themes (wrong mood), the gems (licence
-unknown), the voice lines and character art (they belong to that game's cast).
+recorded), the forest and underwater themes (wrong mood), the fantasy-style icons
+and gems, the voice lines and character art (they belong to that game's cast).
 Replace any track by dropping a file with the same name into `audio/music/`.
 
 ## Not in yet

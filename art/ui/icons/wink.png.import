@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bya310en6lur5"
-path="res://.godot/imported/ShieldSmallT2.png-5c9648ad2ce45c041b8366640889e3bf.ctex"
+uid="uid://bxc0mf2hy7xuu"
+path="res://.godot/imported/wink.png-133b2c7cf4ac8f50fa613734d3051866.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/icons/ShieldSmallT2.png"
-dest_files=["res://.godot/imported/ShieldSmallT2.png-5c9648ad2ce45c041b8366640889e3bf.ctex"]
+source_file="res://art/ui/icons/wink.png"
+dest_files=["res://.godot/imported/wink.png-133b2c7cf4ac8f50fa613734d3051866.ctex"]
 
 [params]
 

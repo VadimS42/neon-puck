@@ -10,7 +10,7 @@ Match theme: "Binary Underwater Village" by Alex McCulloch (Pro Sensory), CC0
 CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
 
 ICONS
-Coin, hearts, potions, backpack, shield, scroll, wand: Ravenmore Icon Pack 2023 by Ravenmore (ravenmore.itch.io), free for commercial use with credit
+Tips, hearts and power-up icons: drawn for Neon Puck (tools/make_icons.py)
 Menu icons: Game Icons by Kenney (www.kenney.nl), CC0
 
 ENGINE

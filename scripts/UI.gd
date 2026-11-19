@@ -148,7 +148,7 @@ static func status_bar(pos: Vector2) -> Control:
 	bar.add_theme_stylebox_override("fill", f)
 	h.add_child(bar)
 	h.add_child(label("MAX" if maxed else "%d / %d XP" % [GameState.xp, GameState.xp_to_next()], 15, INK_SOFT))
-	var coin := ArtAssets.icon("Coin")
+	var coin := ArtAssets.icon("coin")
 	if coin:
 		var ci := TextureRect.new()
 		ci.texture = coin

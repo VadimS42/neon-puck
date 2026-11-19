@@ -1,5 +1,5 @@
-## CreditsScreen.gd: shows data/credits.txt. The music (CC BY 4.0) and the
-## Ravenmore icons need their credit shown, so keep this screen reachable.
+## CreditsScreen.gd: shows data/credits.txt. The music needs its
+## credit shown (CC BY 4.0), so keep this screen reachable.
 class_name CreditsScreen
 extends Control
 

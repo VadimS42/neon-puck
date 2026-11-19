@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://167araqnuj6b"
-path="res://.godot/imported/PotionRed.png-4bacc211fae82a95163ea49bedcea205.ctex"
+uid="uid://vl64s4fvjq5u"
+path="res://.godot/imported/comeback.png-d01bb7b910cdfb284fffc03bd9c17b76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/icons/PotionRed.png"
-dest_files=["res://.godot/imported/PotionRed.png-4bacc211fae82a95163ea49bedcea205.ctex"]
+source_file="res://art/ui/icons/comeback.png"
+dest_files=["res://.godot/imported/comeback.png-d01bb7b910cdfb284fffc03bd9c17b76.ctex"]
 
 [params]
 

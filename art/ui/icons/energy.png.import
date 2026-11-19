@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lf1yjxyuqo6h"
-path="res://.godot/imported/WandT2.png-761d692334bea3534bcc04181eea5e70.ctex"
+uid="uid://b2dm14w1nqayy"
+path="res://.godot/imported/energy.png-55f57db1474e398ed604fde0c94971f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/icons/WandT2.png"
-dest_files=["res://.godot/imported/WandT2.png-761d692334bea3534bcc04181eea5e70.ctex"]
+source_file="res://art/ui/icons/energy.png"
+dest_files=["res://.godot/imported/energy.png-55f57db1474e398ed604fde0c94971f1.ctex"]
 
 [params]
 

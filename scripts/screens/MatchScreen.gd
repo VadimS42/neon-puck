@@ -479,8 +479,8 @@ func _refresh_side() -> void:
 	else:
 		for i in rules.composure_per_layer:
 			var full := i < rules.composure
-			if ArtAssets.icon("HeartFull"):
-				composure_box.add_child(UI.icon_rect("HeartFull" if full else "HeartEmpty", 34))
+			if ArtAssets.icon("heart_full"):
+				composure_box.add_child(UI.icon_rect("heart_full" if full else "heart_empty", 30))
 			else:
 				composure_box.add_child(UI.label("♥" if full else "♡", 20, col if full else UI.LINE))
 	for i in layer_rows.size():

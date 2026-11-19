@@ -23,8 +23,8 @@ static func _try(path: String) -> Texture2D:
 	return null
 
 
-## UI icon: res://art/ui/icons/<name>.png (the Kenney and Ravenmore icons
-## brought over from Charm Combo; see data/credits.txt).
+## UI icon: res://art/ui/icons/<name>.png (Kenney CC0 icons from Charm Combo
+## plus our own from tools/make_icons.py; see data/credits.txt).
 static func icon(name: String) -> Texture2D:
 	return _try("res://art/ui/icons/%s.png" % name)
 
