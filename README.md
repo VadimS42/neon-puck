@@ -16,7 +16,24 @@ to buy the Afterglow back.
 ## Run it
 
 Open this folder in Godot 4.3 and press F5. Window is 1280x800 and scales.
-Set up `export_presets.cfg` the way Charm Combo's is to ship Windows / Android.
+## Android APK
+
+`export_presets.cfg` has an Android preset (landscape, arm64 + armv7,
+package `com.neonpuck.prototype`). On a phone the paddle follows your
+finger; tap SMASH, or put a second finger on the table, to arm the smash.
+The back button works like Esc.
+
+```
+godot --headless --path . --export-release "Android" build/android/unsigned.apk
+python3 tools/sign_apk.py build/android/unsigned.apk build/android/NeonPuck.apk
+```
+
+`tools/sign_apk.py` signs with APK Signature Scheme v2 (Android 7 and up)
+using only Python, for machines without the Android SDK. Godot still wants
+an SDK path in Editor Settings; any folder with `platform-tools/adb` and
+`build-tools/<ver>/apksigner` files passes the check when the preset is
+unsigned. With the real SDK installed you can set `package/signed=true`
+instead. Keep the same key file between builds or phones refuse the update.
 
 Controls: the paddle follows the mouse or your finger (WASD / arrows / left
 stick also work). Click the table, press Space or A, or tap SMASH to arm a

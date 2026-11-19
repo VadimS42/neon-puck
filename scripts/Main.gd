@@ -42,6 +42,15 @@ func _ready() -> void:
 		_show(AgeGateScreen.new(self))
 
 
+## Android back button: acts like Esc (pause, back a screen).
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		var ev := InputEventAction.new()
+		ev.action = "ui_cancel"
+		ev.pressed = true
+		Input.parse_input_event(ev)
+
+
 func _show(screen: Control) -> void:
 	if screen is MatchScreen:
 		Music.play("match")

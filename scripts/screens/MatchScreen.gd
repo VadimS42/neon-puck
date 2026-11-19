@@ -41,6 +41,10 @@ var countdown := 3.2
 var paused := false
 var ending := -1.0
 var use_keys := false
+## Touch screens: which finger steers, and whether to ignore emulated clicks
+## (on a phone every touch is also a click, which would arm the smash).
+var _drag_idx := -1
+var _touch := DisplayServer.is_touchscreen_available()
 var _h: Dictionary
 
 
@@ -301,11 +305,27 @@ func _input(e: InputEvent) -> void:
 	if e is InputEventMouseMotion:
 		use_keys = false
 		rules.sim.paddle(0).target = to_table(e.position)
-	elif e is InputEventScreenDrag or e is InputEventScreenTouch:
+	elif e is InputEventScreenTouch:
+		# Touch: the first finger on the table steers the paddle; a tap on
+		# SMASH, or a second finger anywhere on the table, arms the smash.
 		use_keys = false
-		if e.position.x < TABLE_POS.x + PuckSim.W * TABLE_SCALE:
+		var on_table: bool = e.position.x < TABLE_POS.x + PuckSim.W * TABLE_SCALE and e.position.y > TABLE_POS.y - 40
+		if e.pressed:
+			if smash_btn.get_global_rect().has_point(e.position):
+				_try_arm()
+			elif on_table and _drag_idx < 0:
+				_drag_idx = e.index
+				rules.sim.paddle(0).target = to_table(e.position)
+			elif on_table:
+				_try_arm()
+		elif e.index == _drag_idx:
+			_drag_idx = -1
+	elif e is InputEventScreenDrag:
+		use_keys = false
+		if e.index == _drag_idx or (_drag_idx < 0 and e.position.x < TABLE_POS.x + PuckSim.W * TABLE_SCALE and e.position.y > TABLE_POS.y - 40):
+			_drag_idx = e.index
 			rules.sim.paddle(0).target = to_table(e.position)
-	elif e is InputEventMouseButton and e.pressed and e.button_index == MOUSE_BUTTON_LEFT:
+	elif e is InputEventMouseButton and e.pressed and e.button_index == MOUSE_BUTTON_LEFT and not _touch:
 		var tr := Rect2(TABLE_POS, Vector2(PuckSim.W, PuckSim.H) * TABLE_SCALE)
 		if tr.has_point(e.position):
 			_try_arm()
