@@ -55,7 +55,7 @@ func _ready() -> void:
 	v.add_child(UI.button("Settings", func(): main.show_settings(), 22, UI.CYAN, "gear"))
 	play.call_deferred("grab_focus")
 	add_child(UI.pin_top_right(UI.status_bar(Vector2.ZERO), 20, 14))
-	var ver := UI.label("v%s · placeholder art · difficulty: %s%s" % [ProjectSettings.get_setting("application/config/version"), String(GameState.diff().get("label", "Normal")), " · test store and ads" if Store.is_test() or Ads.is_test() else ""], 16, UI.INK_SOFT)
+	var ver := UI.label("v%s, placeholder art, difficulty: %s%s" % [ProjectSettings.get_setting("application/config/version"), String(GameState.diff().get("label", "Normal")), ", test store and ads" if Store.is_test() or Ads.is_test() else ""], 16, UI.INK_SOFT)
 	ver.position = Vector2(600, 768)
 	add_child(ver)
 	if GameState.daily_available() and not GameState.no_save:
@@ -68,7 +68,7 @@ func _daily() -> void:
 	var lines := []
 	for i in days.size():
 		lines.append("%s Day %d: %s" % ["▶" if i == int(pv[0]) else ("✓" if i < int(pv[0]) else "  "), i + 1, GameState.describe(days[i])])
-	UI.popup(self, "Daily reward · day %d" % (int(pv[0]) + 1), "Come back every day: miss one and the streak starts over.\n\n" + "\n".join(lines), [
+	UI.popup(self, "Daily reward, day %d" % (int(pv[0]) + 1), "Come back every day: miss one and the streak starts over.\n\n" + "\n".join(lines), [
 		["Claim " + GameState.describe(pv[1]), func():
 			GameState.claim_daily()
 			main.show_menu(), UI.GOLD, "coin"],

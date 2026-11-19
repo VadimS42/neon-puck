@@ -111,7 +111,7 @@ func _draw() -> void:
 	if mode == "stage":
 		ex = ["neutral", "surprised", "angry", "shy"][clampi(stage, 0, 3)]
 	# Face hint: the expression as text.
-	var font := ThemeDB.fallback_font
+	var font := UI.BODY_FONT
 	var face := {"neutral": "-  -", "happy": "^  ^", "shy": "> <", "surprised": "o  o", "teasing": "-  ^", "sad": "T  T", "angry": "\\  /"}
 	draw_string(font, head + Vector2(-head_r * 0.7, 4), String(face.get(ex, "-  -")), HORIZONTAL_ALIGNMENT_CENTER, head_r * 1.4, int(maxf(10.0, head_r * 0.55)), Color("#3A2141"))
 	var tag := "PLACEHOLDER  ·  %s  ·  %s  ·  crack %d/3" % [UI.first_name(heroine_id), String(GameState.outfit_def(heroine_id, oid).get("name", oid)), stage] if mode == "stage" else "PLACEHOLDER  ·  %s  ·  %s" % [UI.first_name(heroine_id), ex]

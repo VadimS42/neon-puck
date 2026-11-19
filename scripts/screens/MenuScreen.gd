@@ -53,7 +53,7 @@ func _ready() -> void:
 	v.add_child(UI.button("Credits", main.show_credits, 22, UI.CYAN, "information"))
 	v.add_child(UI.button("Quit", func(): get_tree().quit(), 22, UI.LINE, "exit"))
 	play.call_deferred("grab_focus")
-	var ver := UI.label("Prototype v%s · placeholder art · difficulty: %s" % [ProjectSettings.get_setting("application/config/version"), String(GameState.diff().get("label", "Normal"))], 16, UI.INK_SOFT)
+	var ver := UI.label("Prototype v%s, placeholder art, difficulty: %s" % [ProjectSettings.get_setting("application/config/version"), String(GameState.diff().get("label", "Normal"))], 16, UI.INK_SOFT)
 	ver.position = Vector2(760, 768)
 	add_child(ver)
 

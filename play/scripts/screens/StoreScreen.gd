@@ -81,14 +81,14 @@ func _refresh() -> void:
 	body.add_child(sr)
 	for o in GameState.f2p.get("gem_shop", []):
 		var oid := String(o["id"])
-		var b := UI.button("%s: %d tips · %d gems" % [String(o["name"]), int(o["tips"]), int(o["gems"])], func():
+		var b := UI.button("%s: %d tips for %d gems" % [String(o["name"]), int(o["tips"]), int(o["gems"])], func():
 			if GameState.buy_gem_offer(oid):
 				SFX.play("win")
 				_refresh(), 16, UI.GOLD, "coin")
 		b.disabled = GameState.gems < int(o["gems"])
 		sr.add_child(b)
 	var lc := GameState.lives_cfg()
-	var rf := UI.button("Refill lives · %d gems" % int(lc.get("refill_gems", 30)), func():
+	var rf := UI.button("Refill lives for %d gems" % int(lc.get("refill_gems", 30)), func():
 		if GameState.buy_life_refill():
 			SFX.play("win")
 		_refresh(), 16, UI.PINK, "life")
@@ -117,7 +117,7 @@ func _gem_card(p: Dictionary) -> Control:
 		top.add_child(UI.icon_rect("gem", 40))
 	top.add_child(UI.label("%d" % int(p.get("gems", 0)), 30, UI.CYAN))
 	v.add_child(top)
-	v.add_child(UI.label(String(p.get("name", pid)) + ("  · " + String(p["tag"]) if p.has("tag") else ""), 16, UI.INK_SOFT))
+	v.add_child(UI.label(String(p.get("name", pid)) + (", " + String(p["tag"]).to_lower() if p.has("tag") else ""), 16, UI.INK_SOFT))
 	v.add_child(UI.button(Store.price(pid), func(): _buy(pid), 20, UI.GOLD))
 	return c
 

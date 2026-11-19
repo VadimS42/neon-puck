@@ -94,7 +94,7 @@ func _card(o: Dictionary) -> Control:
 				v.add_child(UI.wrap_label("Win %s over (all 6 story matches) to unlock." % UI.first_name(sel), 15, UI.INK_SOFT))
 			"gems":
 				var cost := int(o.get("gems", 0))
-				var b := UI.button("Buy · %d gems" % cost, func():
+				var b := UI.button("%d" % cost, func():
 					if GameState.buy_outfit(sel, oid):
 						SFX.play("win")
 						_refresh()

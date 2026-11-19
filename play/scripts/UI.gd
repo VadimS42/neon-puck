@@ -19,8 +19,16 @@ const BAD := Color("#FF6363")
 const LINE := Color("#4A3A75")
 
 
+const DISPLAY_FONT := preload("res://art/fonts/Bungee-Regular.ttf")
+const BODY_FONT := preload("res://art/fonts/Barlow-SemiBold.ttf")
+## Labels this size or bigger use the display face (titles, scores, banners).
+const DISPLAY_MIN := 30
+
+
 static func label(text: String, size: int = 20, color: Color = INK, align: int = HORIZONTAL_ALIGNMENT_LEFT) -> Label:
 	var l := Label.new()
+	if size >= DISPLAY_MIN:
+		l.add_theme_font_override("font", DISPLAY_FONT)
 	l.text = text
 	l.horizontal_alignment = align
 	l.add_theme_font_size_override("font_size", size)
@@ -62,7 +70,14 @@ static func button(text: String, cb: Callable, size: int = 22, accent: Color = P
 		b.add_theme_constant_override("icon_max_width", size + 6)
 		b.add_theme_constant_override("h_separation", 10)
 	b.focus_mode = Control.FOCUS_ALL
+	if size >= DISPLAY_MIN - 2:
+		b.add_theme_font_override("font", DISPLAY_FONT)
 	b.add_theme_font_size_override("font_size", size)
+	b.resized.connect(func(): b.pivot_offset = b.size / 2)
+	b.button_down.connect(func():
+		b.create_tween().tween_property(b, "scale", Vector2(0.94, 0.94), 0.05))
+	b.button_up.connect(func():
+		b.create_tween().tween_property(b, "scale", Vector2.ONE, 0.18).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT))
 	b.add_theme_color_override("font_color", INK)
 	b.add_theme_color_override("font_hover_color", Color.WHITE)
 	b.add_theme_color_override("font_disabled_color", Color(INK_SOFT, 0.5))

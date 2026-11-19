@@ -29,7 +29,7 @@ func _ready() -> void:
 	hub.add_child(UI.button("Store", func(): main.show_store(), 18, UI.GOLD, "gem"))
 	hub.add_child(UI.button("Wardrobe", func(): main.show_wardrobe(), 18, UI.CYAN, "star"))
 	hub.add_child(UI.button("Pro Shop", func(): main.show_shop(), 18, UI.GOLD, "shoppingBasket"))
-	var cups := UI.button("Cups" + (" · in progress" if not GameState.cup_run.is_empty() else ""), main.show_cups, 18, UI.CYAN, "trophy")
+	var cups := UI.button("Cups" + (" (in progress)" if not GameState.cup_run.is_empty() else ""), main.show_cups, 18, UI.CYAN, "trophy")
 	hub.add_child(cups)
 	if GameState.finale_open():
 		var fin := GameState.finale()
@@ -38,7 +38,7 @@ func _ready() -> void:
 		if GameState.finale_done:
 			ftext += " (won)"
 		elif GameState.level < fl and not GameState.unlock_all:
-			ftext += " · level %d" % fl
+			ftext += ", level %d" % fl
 		var fb := UI.button(ftext, main.start_finale, 18, UI.PINK, "trophy")
 		fb.disabled = GameState.level < fl and not GameState.unlock_all
 		hub.add_child(fb)
@@ -83,7 +83,7 @@ func _card(row: HBoxContainer, id: String) -> Button:
 	var tl := UI.wrap_label(String(h.get("tagline", "")), 14, UI.INK)
 	tl.custom_minimum_size = Vector2(258, 0)
 	v.add_child(tl)
-	v.add_child(UI.label("%s style · %s" % [h.get("style", ""), h.get("signature_name", "")], 14, UI.INK_SOFT))
+	v.add_child(UI.label("%s player, shoots the %s" % [h.get("style", ""), h.get("signature_name", "")], 14, UI.INK_SOFT))
 	# What she thinks of you.
 	var att := HBoxContainer.new()
 	att.add_child(UI.label("Thinks: ", 14, UI.INK_SOFT))
@@ -101,7 +101,7 @@ func _card(row: HBoxContainer, id: String) -> Button:
 	fill.content_margin_bottom = 0
 	meter.add_theme_stylebox_override("fill", fill)
 	v.add_child(meter)
-	var pips := UI.label("%d / %d won · %d / %d memories" % [wins, total, wins, total], 14, UI.INK_SOFT)
+	var pips := UI.label("Won %d of %d, memories %d of %d" % [wins, total, wins, total], 14, UI.INK_SOFT)
 	v.add_child(pips)
 	var sp := Control.new()
 	sp.size_flags_vertical = Control.SIZE_EXPAND_FILL

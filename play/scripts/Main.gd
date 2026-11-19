@@ -182,10 +182,10 @@ func out_of_lives(retry: Callable) -> void:
 					retry.call()
 				else:
 					_refresh_current()), UI.GOLD, "ad", ads_left <= 0],
-		["Refill all lives · %d gems" % refill, func():
+		["Refill all lives for %d gems" % refill, func():
 			if GameState.buy_life_refill():
 				retry.call(), UI.CYAN, "gem", GameState.gems < refill],
-		["Unlimited lives for %d hours · %d gems" % [int(lc.get("unlimited_minutes", 120)) / 60, unl], func():
+		["Unlimited lives for %d hours, %d gems" % [int(lc.get("unlimited_minutes", 120)) / 60, unl], func():
 			if GameState.buy_unlimited():
 				retry.call(), UI.CYAN, "gem", GameState.gems < unl],
 		["Get gems", func(): show_store(), UI.PINK, "shoppingBasket"],
@@ -316,7 +316,7 @@ func open_scene(id: String, scene: Dictionary) -> void:
 
 
 func open_stage(id: String, stage: int) -> void:
-	_show(SceneViewer.new(self, id, {"stage": stage, "title": "%s · crack %d" % [UI.first_name(id), stage]}, show_gallery))
+	_show(SceneViewer.new(self, id, {"stage": stage, "title": "%s, crack %d" % [UI.first_name(id), stage]}, show_gallery))
 
 
 func _debug_open(o: Dictionary) -> void:

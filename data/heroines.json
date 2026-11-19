@@ -16,15 +16,15 @@
     "Yours"
   ],
   "prologue": [
-    {"who": "narrator", "text": "The Afterglow: a neon arcade lounge that stays open past three. Last month a bar chain bought it. Tonight they sent their new night manager."},
+    {"who": "narrator", "text": "The Afterglow is an arcade lounge that stays open till three, and since last month it belongs to a bar chain. Tonight the chain's new night manager walks in for the first time."},
     {"who": "narrator", "text": "That's you. Your first memo from head office says to shut down the regulars' after-hours game."},
-    {"who": "mila", "e": "angry", "text": "So YOU'RE the suit. You towed my bike this morning, by the way."},
+    {"who": "mila", "e": "angry", "text": "Oh, you're the suit? Great, cool, you towed my bike this morning, by the way, thanks for that."},
     {"who": "you", "text": "It was in the fire lane."},
-    {"who": "juno", "e": "angry", "text": "And you got the manager job I've been doing for free for two years. Congratulations. Everyone hates you."},
-    {"who": "mila", "e": "teasing", "text": "Here's the deal. The Last Call League has rules, and everyone on the whiteboard signed them. First to five on the table. Score a power smash and the other player loses a layer."},
+    {"who": "juno", "e": "angry", "text": "You also got the job I've been doing unpaid for two years. Everyone hates you, if that helps you settle in."},
+    {"who": "mila", "e": "teasing", "text": "Okay so the Last Call League has rules, everyone on the whiteboard signed them, it's first to five, and if you score a power smash the other player loses a layer."},
     {"who": "juno", "e": "neutral", "text": "Beat us at our own game and maybe the league lets you stay. Lose, and you write head office a letter saying you quit."},
-    {"who": "you", "text": "...Where do I sign?"},
-    {"who": "narrator", "text": "Win them over one match at a time. Each win changes what they think of you and unlocks a scene. Across the street, the owner of the Static has heard about league night. And Sable, who founded the Afterglow, is watching."}
+    {"who": "you", "text": "Where do I sign?"},
+    {"who": "narrator", "text": "Every win changes what they think of you and unlocks a scene. Across the street, the owner of the Static has heard about league night, and Sable, who founded the Afterglow, has started showing up to watch."}
   ],
   "order": ["mila", "juno", "kat", "sable"],
   "heroines": {
@@ -48,17 +48,17 @@
       "barks": {
         "hostile": {
           "her_goal": ["Ha! Go back to your spreadsheet.", "That's for my bike.", "Too slow, suit."],
-          "your_goal": ["That was a fluke.", "Ugh. Lucky.", "Don't smile at me."],
-          "strip1": "You did NOT just... fine. FINE. I'm still faster.",
+          "your_goal": ["That was a fluke.", "Ugh, lucky.", "Don't smile at me."],
+          "strip1": "Oh you did not just do that. Fine, fine, I'm still faster.",
           "strip2": "Stop staring and play, you creep!",
-          "strip3": "This is not happening. This is NOT happening.",
+          "strip3": "Nope, no, this isn't happening, I refuse.",
           "signature": "Eat this, suit!"
         },
         "warm": {
           "her_goal": ["Gotcha! Don't pout.", "Keep up, cutie.", "That one's for breakfast."],
           "your_goal": ["Okay, that was good.", "Show-off.", "Do that again. No, wait, don't."],
-          "strip1": "Heh. You've been waiting for that one, huh?",
-          "strip2": "Eyes on the puck. ...Or don't. Your call.",
+          "strip1": "You've been waiting all night for that one, huh?",
+          "strip2": "Eyes on the puck. Or on me, I guess, your call.",
           "strip3": "Okay, you win this round. Mostly.",
           "signature": "Here comes the fast one!"
         }
@@ -87,14 +87,14 @@
           "level": 2,
           "target": 5,
           "before": [
-            {"who": "mila", "e": "angry", "text": "I watched replays of myself all day. I lean left when I panic. Not tonight."},
+            {"who": "mila", "e": "angry", "text": "I watched my own replays all day and it turns out I lean left when I panic, so tonight I'm leaning right, or straight, or whatever, just not left."},
             {"who": "mila", "e": "teasing", "text": "Also I wore an extra layer. Strategy."},
-            {"who": "you", "text": "That's... actually smart."},
-            {"who": "mila", "e": "shy", "text": "Don't compliment me. It's weird."}
+            {"who": "you", "text": "Huh, that's actually smart."},
+            {"who": "mila", "e": "shy", "text": "Don't compliment me, it's weird."}
           ],
           "after": [
-            {"who": "mila", "e": "sad", "text": "I leaned left. I leaned SO left."},
-            {"who": "mila", "e": "shy", "text": "...You're not totally awful. For a suit. Walk me to my bike? I'm not exactly dressed for the street."}
+            {"who": "mila", "e": "sad", "text": "I leaned left. I leaned so far left."},
+            {"who": "mila", "e": "shy", "text": "You're not totally awful, for a suit. Walk me to my bike? I'm not exactly dressed for the street."}
           ],
           "scene": {
             "id": "mila_2",
@@ -109,12 +109,12 @@
             {"who": "mila", "e": "teasing", "text": "I brought backup. Every courier in the city is watching tonight."},
             {"who": "narrator", "text": "Six couriers in rain gear crowd the bar, chanting her name and booing yours."},
             {"who": "you", "text": "Is that a sign with my face crossed out?"},
-            {"who": "mila", "e": "shy", "text": "Dex made it. He's very proud. Don't embarrass me in front of my people."}
+            {"who": "mila", "e": "shy", "text": "Dex made it, he's really proud of it, so don't embarrass me in front of my people."}
           ],
           "after": [
             {"who": "narrator", "text": "The couriers go quiet. Then Dex starts a slow clap, and the whole crew joins in."},
-            {"who": "mila", "e": "angry", "text": "Traitors. All of them. They're asking if you're single."},
-            {"who": "mila", "e": "shy", "text": "...I told them you're terrible. Hands off."}
+            {"who": "mila", "e": "angry", "text": "Traitors, every one of them. Now they're asking if you're single."},
+            {"who": "mila", "e": "shy", "text": "I told them you're terrible. Hands off."}
           ],
           "scene": {
             "id": "mila_3",
@@ -126,16 +126,16 @@
           "level": 4,
           "target": 6,
           "before": [
-            {"who": "narrator", "text": "It's pouring. Mila walks in soaked, wheeling her bike. The back tyre is flat."},
-            {"who": "mila", "e": "angry", "text": "Don't. Say. Anything."},
+            {"who": "narrator", "text": "Mila comes in out of the pouring rain, soaked through, wheeling her bike on a flat back tyre."},
+            {"who": "mila", "e": "angry", "text": "Not one word about the hair."},
             {"who": "you", "text": "I have a patch kit in the office."},
-            {"who": "mila", "e": "surprised", "text": "...Why do you have a patch kit?"},
-            {"who": "you", "text": "I bought one after the towing thing. In case."},
+            {"who": "mila", "e": "surprised", "text": "Why do you have a patch kit?"},
+            {"who": "you", "text": "I bought one after the towing thing, just in case."},
             {"who": "mila", "e": "shy", "text": "That's either really sweet or really creepy. Play me while I decide."}
           ],
           "after": [
             {"who": "mila", "e": "surprised", "text": "You patched it while I was changing, didn't you? It's fixed."},
-            {"who": "mila", "e": "shy", "text": "Okay. Sweet. I decided sweet."},
+            {"who": "mila", "e": "shy", "text": "Okay, sweet, I'm going with sweet."},
             {"who": "mila", "e": "teasing", "text": "Stay till the rain stops? I'm not riding home like this, and the towel only covers so much."}
           ],
           "scene": {
@@ -149,11 +149,11 @@
           "target": 7,
           "before": [
             {"who": "mila", "e": "teasing", "text": "Dex keeps asking when you're coming to courier trivia night. I keep telling him never."},
-            {"who": "mila", "e": "shy", "text": "...Because I want you to myself. Forget I said that. Rack the puck."}
+            {"who": "mila", "e": "shy", "text": "Mostly because I want you to myself. Forget I said that, rack the puck."}
           ],
           "after": [
             {"who": "mila", "e": "happy", "text": "Okay, I give up pretending I'm still mad at you. It's exhausting."},
-            {"who": "mila", "e": "teasing", "text": "Buy me fries. Big ones. We're... whatever we are now."}
+            {"who": "mila", "e": "teasing", "text": "Buy me fries, the big ones, since we're apparently whatever this is now."}
           ],
           "scene": {
             "id": "mila_5",
@@ -170,8 +170,8 @@
             {"who": "mila", "e": "shy", "text": "Then I stop pretending I keep coming back for the hockey."}
           ],
           "after": [
-            {"who": "mila", "e": "happy", "text": "Fine. You win. I like you. There, I said it."},
-            {"who": "mila", "e": "teasing", "text": "Here, have my Bullet. I'll teach you the wrist thing. Later. The blinds are down and you owe me a different kind of rematch."}
+            {"who": "mila", "e": "happy", "text": "Fine, you win, I like you, there, I said it, can we eat now?"},
+            {"who": "mila", "e": "teasing", "text": "Here, have my Bullet. I'll teach you the wrist thing later, because the blinds are down and you owe me a different kind of rematch."}
           ],
           "scene": {
             "id": "mila_6",
@@ -201,18 +201,18 @@
       "barks": {
         "hostile": {
           "her_goal": ["Geometry. Look it up.", "Corporate can't do angles.", "Write that in your report."],
-          "your_goal": ["Hm. Noted.", "Don't get used to it.", "A broken clock."],
+          "your_goal": ["Noted.", "Don't get used to it.", "A broken clock."],
           "strip1": "It's a vest. I have plenty of dignity left.",
           "strip2": "If you say one word, I'm spitting in your drinks forever.",
-          "strip3": "...Congratulations. You're the worst person I know.",
+          "strip3": "Congratulations. You're the worst person I know.",
           "signature": "Off the wall, manager."
         },
         "warm": {
-          "her_goal": ["Angles, darling.", "Watch the wall, not me.", "That's one for the napkin."],
-          "your_goal": ["Ooh. Nice line.", "You've been studying.", "Okay, I'm impressed."],
+          "her_goal": ["Angles. I did warn you.", "Watch the wall, not me.", "That's one for the napkin."],
+          "your_goal": ["Ooh, nice line.", "You've been studying.", "Okay, I'm impressed."],
           "strip1": "Mm. That one I let you have.",
           "strip2": "You're blushing more than I am. Focus.",
-          "strip3": "Well. Now we're even on staring.",
+          "strip3": "Now we're even on staring.",
           "signature": "Count the bounces."
         }
       },
@@ -221,7 +221,7 @@
           "level": 1,
           "target": 5,
           "before": [
-            {"who": "juno", "e": "angry", "text": "Two years I ran this place. Inventory, payroll, the broken claw machine. Then they send a stranger with a lanyard."},
+            {"who": "juno", "e": "angry", "text": "I ran this place for two years, right down to fixing the claw machine, and then they sent a stranger with a lanyard."},
             {"who": "you", "text": "I didn't ask for the job."},
             {"who": "juno", "e": "teasing", "text": "Then losing it shouldn't hurt. Straight shots are for people who can't do geometry."}
           ],
@@ -241,11 +241,11 @@
           "before": [
             {"who": "juno", "e": "neutral", "text": "I've drawn every angle on this table on a napkin. Forty-one napkins."},
             {"who": "you", "text": "Is that why we're out of napkins?"},
-            {"who": "juno", "e": "angry", "text": "Don't. Be. Charming."}
+            {"who": "juno", "e": "angry", "text": "Don't be charming. It doesn't suit you."}
           ],
           "after": [
             {"who": "juno", "e": "shy", "text": "Forty-two napkins, and none of them had you on it."},
-            {"who": "juno", "e": "neutral", "text": "...I read your memo. You never sent the order to shut us down. Why?"},
+            {"who": "juno", "e": "neutral", "text": "I read your memo. You never sent the order to shut us down. Why not?"},
             {"who": "you", "text": "Because this place is the only thing that chain bought that's worth anything."}
           ],
           "scene": {
@@ -260,12 +260,12 @@
           "before": [
             {"who": "juno", "e": "teasing", "text": "Inventory night. You count bottles, I count your mistakes."},
             {"who": "you", "text": "Why is there a case of maraschino cherries marked 'emergency'?"},
-            {"who": "juno", "e": "neutral", "text": "Because some nights are emergencies. Rack 'em. Loser counts the limes."}
+            {"who": "juno", "e": "neutral", "text": "Because some nights are emergencies. Rack 'em, loser counts the limes."}
           ],
           "after": [
-            {"who": "juno", "e": "surprised", "text": "...You kept my schedule. The one I made. You didn't change a single shift."},
+            {"who": "juno", "e": "surprised", "text": "You kept my schedule. Not one shift moved."},
             {"who": "you", "text": "It was a good schedule."},
-            {"who": "juno", "e": "shy", "text": "Nobody's ever said that to me. I'm going to need a minute. And the emergency cherries."}
+            {"who": "juno", "e": "shy", "text": "Nobody has ever said that to me. I need a minute, and the emergency cherries."}
           ],
           "scene": {
             "id": "juno_3",
@@ -278,14 +278,14 @@
           "target": 6,
           "before": [
             {"who": "narrator", "text": "Head office sent an auditor today. Juno watched you walk him around the lounge."},
-            {"who": "juno", "e": "neutral", "text": "You told him I built the stock system. And the rota. And the cocktail list."},
+            {"who": "juno", "e": "neutral", "text": "You told him I built the stock system, the rota and the cocktail list."},
             {"who": "you", "text": "You did."},
             {"who": "juno", "e": "angry", "text": "You could have taken the credit. That's what lanyards do."},
-            {"who": "juno", "e": "shy", "text": "I'm so mad I could kiss you. Play. Now. Before I do something stupid."}
+            {"who": "juno", "e": "shy", "text": "I'm so mad I could kiss you. Rack the puck before I do something stupid."}
           ],
           "after": [
             {"who": "juno", "e": "teasing", "text": "I stole the good champagne from the auditor's welcome basket."},
-            {"who": "juno", "e": "happy", "text": "Come on. Office. We're celebrating you being a decent human being. It's very rare."}
+            {"who": "juno", "e": "happy", "text": "Office, come on. We're celebrating you being a decent human being, which in this business is rare."}
           ],
           "scene": {
             "id": "juno_4",
@@ -319,7 +319,7 @@
           ],
           "after": [
             {"who": "juno", "e": "happy", "text": "I'm keeping that napkin. Framing it, actually."},
-            {"who": "juno", "e": "teasing", "text": "Here's my Ricochet. The trick is to aim at the wall like you mean it. Now lock the door. I want a long, slow angle on you."}
+            {"who": "juno", "e": "teasing", "text": "Here's my Ricochet. The trick is to aim at the wall like you mean it. Now lock the door, manager."}
           ],
           "scene": {
             "id": "juno_6",
@@ -352,9 +352,9 @@
         "hostile": {
           "her_goal": ["Slow start, big finish. Like me.", "That's for my Thursdays.", "Tape THAT to a door."],
           "your_goal": ["Beginner's luck.", "The Static has better tables.", "Whatever, flyer boy."],
-          "strip1": "It's a jacket. I own nine. Keep dreaming.",
+          "strip1": "That's one jacket, I've got nine of them, so keep dreaming.",
           "strip2": "My band's on this shirt! Show some respect!",
-          "strip3": "...This never happened. Nobody across the street hears about this.",
+          "strip3": "This never happened, and nobody across the street hears about it.",
           "signature": "Here comes the slingshot!"
         },
         "warm": {
@@ -362,7 +362,7 @@
           "your_goal": ["Okay, that was hot.", "Show-off. Do it again.", "Fine, fine, you're good."],
           "strip1": "You'd better be planning to give that jacket back.",
           "strip2": "Like the band? I'll play you the record. Later.",
-          "strip3": "Eyes up here, champ. ...Okay, maybe not.",
+          "strip3": "Eyes up here, champ. Eh, I'll allow it.",
           "signature": "Wait for it... wait for it..."
         }
       },
@@ -372,15 +372,15 @@
           "target": 5,
           "before": [
             {"who": "narrator", "text": "A woman in a leather jacket slams the door open and slaps a crumpled flyer on the bar."},
-            {"who": "kat", "e": "angry", "text": "'LEAGUE NIGHT AT THE AFTERGLOW. THURSDAYS.' This was taped to MY door. Thursday is MY night."},
-            {"who": "you", "text": "Head office did the flyers. I just..."},
-            {"who": "kat", "e": "angry", "text": "Kat Vance. I own the Static. My regulars are drinking HERE now. So I'm joining your stupid league."},
-            {"who": "kat", "e": "teasing", "text": "I win, the flyers stop. You win... you won't."}
+            {"who": "kat", "e": "angry", "text": "'League night at the Afterglow, every Thursday.' Somebody taped this to my door. Thursday's been my night since before you could drink."},
+            {"who": "you", "text": "Head office did the flyers, I just work here."},
+            {"who": "kat", "e": "angry", "text": "Kat Vance, I own the Static, and my regulars are drinking here now, so guess what, I'm joining your stupid league."},
+            {"who": "kat", "e": "teasing", "text": "If I win, the flyers stop. If you win, well, you won't."}
           ],
           "after": [
             {"who": "kat", "e": "surprised", "text": "That table's tilted. That's the only explanation."},
             {"who": "juno", "e": "teasing", "text": "It's not tilted. I level it every Monday."},
-            {"who": "kat", "e": "angry", "text": "Then I'm coming back next Thursday. And the one after. Until it's tilted my way."}
+            {"who": "kat", "e": "angry", "text": "Then I'll be back next Thursday, and every Thursday after that until it tilts my way."}
           ],
           "scene": {
             "id": "kat_1",
@@ -393,14 +393,14 @@
           "target": 5,
           "before": [
             {"who": "kat", "e": "teasing", "text": "I've been practising on the Static's table. It's older than you and it has a dead spot in the corner."},
-            {"who": "kat", "e": "neutral", "text": "If I can beat THAT table, I can beat you."},
+            {"who": "kat", "e": "neutral", "text": "If I can beat that table, you're nothing."},
             {"who": "you", "text": "Why not just get a new table?"},
             {"who": "kat", "e": "angry", "text": "With what money? Somebody stole my Thursdays."}
           ],
           "after": [
-            {"who": "kat", "e": "sad", "text": "...Okay. It's not the table. It's you. You're annoyingly good."},
+            {"who": "kat", "e": "sad", "text": "Fine, it's not the table, you're just annoyingly good."},
             {"who": "you", "text": "What if the Static hosted league night on Mondays? We're closed Mondays."},
-            {"who": "kat", "e": "surprised", "text": "...You'd send people to my bar? Why would you do that?"},
+            {"who": "kat", "e": "surprised", "text": "You'd send people to my bar? Why?"},
             {"who": "you", "text": "Because the league's better with two bars."}
           ],
           "scene": {
@@ -413,13 +413,13 @@
           "level": 6,
           "target": 6,
           "before": [
-            {"who": "narrator", "text": "Monday. The Static is packed for its first league night. Kat looks terrified."},
+            {"who": "narrator", "text": "The Static's first league night is a Monday, and the place is packed. Kat looks terrified."},
             {"who": "kat", "e": "surprised", "text": "There are forty people in my bar. I haven't had forty people in my bar since the Super Bowl."},
-            {"who": "kat", "e": "teasing", "text": "Play me first. Make it look good. If I lose in front of them, I'll still kill you."}
+            {"who": "kat", "e": "teasing", "text": "Play me first and make it look good. If I lose in front of them I'll still kill you."}
           ],
           "after": [
-            {"who": "kat", "e": "happy", "text": "They're buying drinks. They're buying SO many drinks."},
-            {"who": "kat", "e": "shy", "text": "You did this. I hate it. I mean I love it. I mean... shut up and have a beer."}
+            {"who": "kat", "e": "happy", "text": "They're buying drinks. So many drinks."},
+            {"who": "kat", "e": "shy", "text": "You did this and I hate how much I love it. Shut up and have a beer."}
           ],
           "scene": {
             "id": "kat_3",
@@ -437,7 +437,7 @@
             {"who": "kat", "e": "shy", "text": "It's a dare. Beat me first."}
           ],
           "after": [
-            {"who": "kat", "e": "teasing", "text": "You can't drum. That's fine. Nobody can drum."},
+            {"who": "kat", "e": "teasing", "text": "You can't drum, which is fine, nobody can."},
             {"who": "kat", "e": "shy", "text": "Stay for soundcheck anyway. I want someone to watch who isn't Juno judging my bass."}
           ],
           "scene": {
@@ -450,14 +450,14 @@
           "level": 9,
           "target": 7,
           "before": [
-            {"who": "kat", "e": "neutral", "text": "I found something out. The flyer on my door? You didn't tape it there. Head office did."},
+            {"who": "kat", "e": "neutral", "text": "So I found out head office taped that flyer to my door. Not you."},
             {"who": "kat", "e": "sad", "text": "You took the blame for two months and never said a word."},
             {"who": "you", "text": "You needed someone to be mad at."},
-            {"who": "kat", "e": "shy", "text": "That's the most annoying, decent thing anyone's ever done for me. Play me before I cry."}
+            {"who": "kat", "e": "shy", "text": "That's the most annoying nice thing anybody's done for me. Play me before I cry."}
           ],
           "after": [
-            {"who": "kat", "e": "happy", "text": "I tore up the flyer. Kept one piece. The bit with your chain's logo, so I can throw darts at it."},
-            {"who": "kat", "e": "shy", "text": "Walk me home? It's across the street, I know. Walk slow."}
+            {"who": "kat", "e": "happy", "text": "I tore up the flyer but kept the bit with your chain's logo on it, for darts."},
+            {"who": "kat", "e": "shy", "text": "Walk me home? I know it's across the street. Walk slow."}
           ],
           "scene": {
             "id": "kat_5",
@@ -469,14 +469,14 @@
           "level": 10,
           "target": 7,
           "before": [
-            {"who": "kat", "e": "shy", "text": "No trash talk tonight. I keep starting sentences and they come out nice. It's horrible."},
-            {"who": "kat", "e": "teasing", "text": "So here's the bet. I win, you play bass in my band forever. You win..."},
+            {"who": "kat", "e": "shy", "text": "No trash talk tonight. Every sentence I start comes out nice and it's horrible."},
+            {"who": "kat", "e": "teasing", "text": "Okay, bet. I win, you play bass in my band forever. You win, and..."},
             {"who": "you", "text": "I win?"},
             {"who": "kat", "e": "shy", "text": "You win, you find out what the Static's upstairs apartment looks like."}
           ],
           "after": [
-            {"who": "kat", "e": "happy", "text": "Okay. You win. Upstairs. Mind the stairs, they're older than the table."},
-            {"who": "kat", "e": "teasing", "text": "And take my Slingshot. Start slow, finish strong. Like I said. ...Like tonight."}
+            {"who": "kat", "e": "happy", "text": "Okay, you win. Upstairs, and mind the steps, they're older than the table."},
+            {"who": "kat", "e": "teasing", "text": "Take my Slingshot too. Start slow, finish strong, like tonight."}
           ],
           "scene": {
             "id": "kat_6",
@@ -506,19 +506,19 @@
       ],
       "barks": {
         "hostile": {
-          "her_goal": ["My table. My rules.", "Six years, little manager.", "Is that all the company sent?"],
-          "your_goal": ["Interesting.", "Enjoy it while it lasts.", "Hm."],
-          "strip1": "Nobody has seen me without this blazer in six years. Enjoy the view. Once.",
-          "strip2": "You're starting to annoy me.",
-          "strip3": "...Well played. I hate it.",
+          "her_goal": ["My table, my rules.", "Six years, little manager.", "Is that all the company sent?"],
+          "your_goal": ["Interesting.", "Enjoy it while it lasts, darling.", "Hm."],
+          "strip1": "Nobody has seen me without this blazer in six years. Enjoy the view, because it will not happen twice.",
+          "strip2": "You are starting to annoy me.",
+          "strip3": "Well played. I do not enjoy saying that.",
           "signature": "Watch it bend."
         },
         "warm": {
           "her_goal": ["Still mine, darling.", "Again. Properly this time.", "You flinched."],
           "your_goal": ["There he is.", "Better.", "Mm. Do that again."],
-          "strip1": "Go on. You've earned a look.",
-          "strip2": "My hands are shaking. Your fault.",
-          "strip3": "I don't lose. I just... let you have tonight.",
+          "strip1": "Go on, then. You have earned a look.",
+          "strip2": "You have made me nervous. I will be sending you the bill.",
+          "strip3": "I do not lose. I allowed you tonight, which is different.",
           "signature": "Can you read the curve yet?"
         }
       },
@@ -527,12 +527,12 @@
           "level": 7,
           "target": 5,
           "before": [
-            {"who": "sable", "e": "angry", "text": "I built this place with my own hands. Sold it to keep the lights on. And they sent you to tidy up what's left."},
-            {"who": "sable", "e": "teasing", "text": "My regulars like you now. I don't. Show me why I should."}
+            {"who": "sable", "e": "angry", "text": "I built this place with my own hands and sold it to keep the lights on, and now they have sent you to tidy up what is left."},
+            {"who": "sable", "e": "teasing", "text": "My regulars like you now. I do not, so show me why I should."}
           ],
           "after": [
-            {"who": "sable", "e": "surprised", "text": "Six years. Six years nobody has seen what's under this blazer."},
-            {"who": "sable", "e": "angry", "text": "Don't get comfortable. That was a warm-up."}
+            {"who": "sable", "e": "surprised", "text": "Six years, and nobody had seen what is under this blazer."},
+            {"who": "sable", "e": "angry", "text": "Do not get comfortable. That was a warm-up."}
           ],
           "scene": {
             "id": "sable_1",
@@ -544,12 +544,12 @@
           "level": 8,
           "target": 5,
           "before": [
-            {"who": "sable", "e": "neutral", "text": "I closed early tonight. No audience."},
+            {"who": "sable", "e": "neutral", "text": "I closed early tonight, so there is no audience."},
             {"who": "sable", "e": "teasing", "text": "Whatever happens on this table stays between us and the security camera I just unplugged."}
           ],
           "after": [
-            {"who": "sable", "e": "shy", "text": "...My hands are shaking. That hasn't happened since my first tournament."},
-            {"who": "sable", "e": "neutral", "text": "Juno told me about the memo you never sent. Come upstairs. We should talk."}
+            {"who": "sable", "e": "shy", "text": "My hands are shaking. That has not happened since my first tournament."},
+            {"who": "sable", "e": "neutral", "text": "Juno told me about the memo you never sent. Come upstairs, we should talk."}
           ],
           "scene": {
             "id": "sable_2",
@@ -561,12 +561,12 @@
           "level": 9,
           "target": 6,
           "before": [
-            {"who": "sable", "e": "neutral", "text": "I found the box. Opening night, nine years ago. Photos, the first menu, the original sign."},
+            {"who": "sable", "e": "neutral", "text": "I found the box from opening night, nine years ago. The first menu is in there, with the photos and the original sign."},
             {"who": "sable", "e": "teasing", "text": "Win, and I'll show you. Lose, and it goes back in the closet with my feelings."}
           ],
           "after": [
-            {"who": "sable", "e": "happy", "text": "That's me, twenty-two, with a borrowed table and a terrible haircut."},
-            {"who": "sable", "e": "sad", "text": "...I never wanted to sell. I want you to know that. I want someone to know that."},
+            {"who": "sable", "e": "happy", "text": "That is me at twenty-two, with a borrowed table and a terrible haircut."},
+            {"who": "sable", "e": "sad", "text": "I never wanted to sell. I would like someone to know that, and I suppose it is you."},
             {"who": "you", "text": "Then let's get it back."}
           ],
           "scene": {
@@ -579,13 +579,13 @@
           "level": 10,
           "target": 6,
           "before": [
-            {"who": "sable", "e": "angry", "text": "Head office wants to turn the Afterglow into a sports bar. Big screens. Wings. No table."},
+            {"who": "sable", "e": "angry", "text": "Head office wants to turn the Afterglow into a sports bar with big screens, wings and no table."},
             {"who": "you", "text": "Over my dead lanyard."},
-            {"who": "sable", "e": "teasing", "text": "Good answer. Show me you'll fight for it."}
+            {"who": "sable", "e": "teasing", "text": "Good answer. Now show me you will fight for it."}
           ],
           "after": [
             {"who": "sable", "e": "happy", "text": "You fight dirty. I like that in a co-conspirator."},
-            {"who": "sable", "e": "teasing", "text": "Roof. Now. I think better up there, and I'm not putting the corset back on."}
+            {"who": "sable", "e": "teasing", "text": "Come up to the roof. I think better up there, and I am not putting the corset back on."}
           ],
           "scene": {
             "id": "sable_4",
@@ -597,13 +597,13 @@
           "level": 11,
           "target": 7,
           "before": [
-            {"who": "sable", "e": "teasing", "text": "I've decided I'm buying the Afterglow back. With your help, my spy inside head office."},
-            {"who": "sable", "e": "neutral", "text": "But I don't partner with people I can beat. Prove it again."}
+            {"who": "sable", "e": "teasing", "text": "I have decided to buy the Afterglow back, with your help. Every good plan needs a spy inside head office."},
+            {"who": "sable", "e": "neutral", "text": "But I do not partner with people I can beat. Prove it again."}
           ],
           "after": [
-            {"who": "sable", "e": "happy", "text": "Partners, then. Fifty-fifty. I'll even let you keep the lanyard."},
-            {"who": "sable", "e": "neutral", "text": "Head office will sell if we can prove this place makes money. One big night. The Last Call Championship."},
-            {"who": "sable", "e": "teasing", "text": "Partners celebrate. Stay."}
+            {"who": "sable", "e": "happy", "text": "Partners, then, fifty-fifty. You may even keep the lanyard."},
+            {"who": "sable", "e": "neutral", "text": "Head office will sell if we can prove this place makes money, so we give them one enormous night: the Last Call Championship."},
+            {"who": "sable", "e": "teasing", "text": "Partners celebrate. Stay a while."}
           ],
           "scene": {
             "id": "sable_5",
@@ -616,11 +616,11 @@
           "target": 7,
           "before": [
             {"who": "sable", "e": "neutral", "text": "For the title. Winner's name goes at the top of the wall."},
-            {"who": "sable", "e": "shy", "text": "And me. Win or lose, honestly. But don't tell the others I said that."}
+            {"who": "sable", "e": "shy", "text": "And me, win or lose, if I am honest. Do not tell the others I said that."}
           ],
           "after": [
             {"who": "sable", "e": "happy", "text": "New champion. Your name goes on the wall tomorrow."},
-            {"who": "sable", "e": "teasing", "text": "And the Hook is yours. Tonight, though, you're mine. Champion's privilege works both ways."}
+            {"who": "sable", "e": "teasing", "text": "The Hook is yours. Tonight, though, you are mine. Champion's privilege works both ways."}
           ],
           "scene": {
             "id": "sable_6",
@@ -640,47 +640,47 @@
     "boost": [0.0, 0.04, 0.08, 0.12],
     "before": [
       {"who": "narrator", "text": "Championship night. Head office agreed: if the Afterglow sells out tonight, Sable can buy it back."},
-      {"who": "sable", "e": "happy", "text": "Every ticket's gone. The Static's sold out too. Kat's running a screen over there."},
-      {"who": "juno", "e": "teasing", "text": "There's a line round the block. I made a cocktail called The Lanyard. It's mostly regret and gin."},
-      {"who": "mila", "e": "happy", "text": "Couriers on the roof, couriers on the bar. Dex brought a drum."},
-      {"who": "kat", "e": "teasing", "text": "League rules: the champion has to beat all four of us. Back to back. No breaks."},
+      {"who": "sable", "e": "happy", "text": "Every ticket's gone, and the Static's sold out too. Kat's got a screen up over there."},
+      {"who": "juno", "e": "teasing", "text": "There's a line round the block, so I made a cocktail called The Lanyard. Gin and regret, mostly."},
+      {"who": "mila", "e": "happy", "text": "There are couriers on the roof and couriers on the bar, and Dex brought a drum!"},
+      {"who": "kat", "e": "teasing", "text": "League rules say the champion has to beat all four of us back to back, with no breaks."},
       {"who": "you", "text": "In front of everyone?"},
-      {"who": "sable", "e": "neutral", "text": "In front of everyone. Last call, partner. Make it count."}
+      {"who": "sable", "e": "neutral", "text": "In front of everyone. Last call, partner."}
     ],
     "rounds": [
       {
         "id": "mila",
         "before": [
-          {"who": "mila", "e": "teasing", "text": "First up! No mercy, no breakfast bets. Just the Bullet."}
+          {"who": "mila", "e": "teasing", "text": "Me first! No mercy and no breakfast bets this time, just the Bullet."}
         ]
       },
       {
         "id": "juno",
         "before": [
-          {"who": "juno", "e": "teasing", "text": "I drew this match on a napkin. You lose on it. Prove the napkin wrong."}
+          {"who": "juno", "e": "teasing", "text": "I drew this match on a napkin and you lose on it. Prove the napkin wrong."}
         ]
       },
       {
         "id": "kat",
         "before": [
-          {"who": "kat", "e": "shy", "text": "Half the Static's watching on a screen. Don't make me look bad. Or do. Either way."}
+          {"who": "kat", "e": "shy", "text": "Half the Static's watching on the screen, so don't make me look bad. Or do, honestly, I'm past caring."}
         ]
       },
       {
         "id": "sable",
         "before": [
-          {"who": "sable", "e": "neutral", "text": "Six years undefeated, until you. Let's see if it was a fluke."}
+          {"who": "sable", "e": "neutral", "text": "Six years undefeated until you. Let us see whether it was a fluke."}
         ]
       }
     ],
     "after": [
-      {"who": "narrator", "text": "The bar explodes. Someone sprays champagne. Dex's drum breaks."},
-      {"who": "sable", "e": "happy", "text": "We did it. Head office signed the papers ten minutes ago. The Afterglow's ours."},
-      {"who": "juno", "e": "happy", "text": "Ours. As in, I'm a co-owner now? I want that in writing. On a napkin."},
+      {"who": "narrator", "text": "The bar goes up in a roar, someone sprays champagne over the crowd, and Dex puts a stick straight through his drum."},
+      {"who": "sable", "e": "happy", "text": "Head office signed the papers ten minutes ago. The Afterglow is ours."},
+      {"who": "juno", "e": "happy", "text": "Ours, as in I'm a co-owner now? I want that in writing, on a napkin."},
       {"who": "mila", "e": "teasing", "text": "Does this mean I get free fries forever?"},
       {"who": "kat", "e": "happy", "text": "The Static's officially the Afterglow's sister bar. We're making T-shirts."},
-      {"who": "sable", "e": "teasing", "text": "Last call, everyone. Not you four. You five. Stay."},
-      {"who": "narrator", "text": "The lounge empties. The neon hums. Nobody goes home."}
+      {"who": "sable", "e": "teasing", "text": "Last call, everyone. Not you lot, you're staying."},
+      {"who": "narrator", "text": "The lounge empties out under the humming sign, and none of the five of you goes home."}
     ],
     "scene": {
       "id": "finale",

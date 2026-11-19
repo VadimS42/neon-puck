@@ -108,9 +108,9 @@ func _gear_card(item: Dictionary) -> Control:
 	elif owned:
 		v.add_child(UI.button("Equip", _equip.bind(gid), 14, UI.CYAN))
 	elif locked:
-		v.add_child(UI.label("Level %d · %d tips" % [int(item["level"]), int(item["price"])], 15, UI.INK_SOFT))
+		v.add_child(UI.label("Unlocks at level %d" % int(item["level"]), 15, UI.INK_SOFT))
 	else:
-		var b := UI.button("Buy · %d tips" % int(item["price"]), _buy_gear.bind(gid), 14, UI.GOLD)
+		var b := UI.button("%d" % int(item["price"]), _buy_gear.bind(gid), 15, UI.GOLD, "coin")
 		b.disabled = GameState.tips < int(item["price"])
 		v.add_child(b)
 	return p
@@ -142,7 +142,7 @@ func _powerups() -> Control:
 		if locked:
 			r.add_child(UI.label("Level %d" % int(p["level"]), 17, UI.INK_SOFT))
 		else:
-			var b := UI.button("Buy · %d tips" % int(p["price"]), _buy_powerup.bind(pid), 15, UI.GOLD)
+			var b := UI.button("%d" % int(p["price"]), _buy_powerup.bind(pid), 15, UI.GOLD, "coin")
 			b.disabled = GameState.tips < int(p["price"])
 			b.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 			r.add_child(b)

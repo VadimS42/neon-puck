@@ -13,6 +13,10 @@ ICONS
 Tips, hearts and power-up icons: drawn for Neon Puck (tools/make_icons.py)
 Menu icons: Game Icons by Kenney (www.kenney.nl), CC0
 
+FONTS
+Bungee by David Jonathan Ross, SIL Open Font License 1.1
+Barlow by Jeremy Tribby, SIL Open Font License 1.1
+
 ENGINE
 Made with Godot Engine (godotengine.org), MIT license.
 Copyright (c) 2014-present Godot Engine contributors. Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.

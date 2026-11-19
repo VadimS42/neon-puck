@@ -39,7 +39,7 @@
   "prologue": [
     {
       "who": "narrator",
-      "text": "The Afterglow: a neon arcade lounge that stays open past three. Last month a bar chain bought it. Tonight they sent their new night manager."
+      "text": "The Afterglow is an arcade lounge that stays open till three, and since last month it belongs to a bar chain. Tonight the chain's new night manager walks in for the first time."
     },
     {
       "who": "narrator",
@@ -48,7 +48,7 @@
     {
       "who": "mila",
       "e": "angry",
-      "text": "So YOU'RE the suit. You towed my bike this morning, by the way."
+      "text": "Oh, you're the suit? Great, cool, you towed my bike this morning, by the way, thanks for that."
     },
     {
       "who": "you",
@@ -57,12 +57,12 @@
     {
       "who": "juno",
       "e": "angry",
-      "text": "And you got the manager job I've been doing for free for two years. Congratulations. Everyone hates you."
+      "text": "You also got the job I've been doing unpaid for two years. Everyone hates you, if that helps you settle in."
     },
     {
       "who": "mila",
       "e": "teasing",
-      "text": "Here's the deal. The Last Call League has rules, and everyone on the whiteboard signed them. First to five on the table. Score a power smash and the other player loses their cool. There's a meter. It's very scientific."
+      "text": "Okay so the Last Call League has rules, everyone on the whiteboard signed them, it's first to five, and a power smash makes the other player lose their cool. Juno built a meter for it, it's very scientific."
     },
     {
       "who": "juno",
@@ -71,11 +71,11 @@
     },
     {
       "who": "you",
-      "text": "...Where do I sign?"
+      "text": "Where do I sign?"
     },
     {
       "who": "narrator",
-      "text": "Win them over one match at a time. Each win changes what they think of you and unlocks a memory for the album. Across the street, the owner of the Static has heard about league night. And Sable, who founded the Afterglow, is watching."
+      "text": "Every win changes what they think of you and adds a memory to the album. Across the street, the owner of the Static has heard about league night, and Sable, who founded the Afterglow, has started showing up to watch."
     }
   ],
   "order": [
@@ -133,12 +133,12 @@
           ],
           "your_goal": [
             "That was a fluke.",
-            "Ugh. Lucky.",
+            "Ugh, lucky.",
             "Don't smile at me."
           ],
-          "crack1": "You did NOT just... fine. FINE. I'm still faster.",
+          "crack1": "Oh you did not just do that. Fine, fine, I'm still faster.",
           "crack2": "Stop grinning and play, suit!",
-          "crack3": "This is not happening. This is NOT happening.",
+          "crack3": "Nope, no, this isn't happening, I refuse.",
           "signature": "Eat this, suit!"
         },
         "warm": {
@@ -152,8 +152,8 @@
             "Show-off.",
             "Do that again. No, wait, don't."
           ],
-          "crack1": "Heh. You've been waiting for that one, huh?",
-          "crack2": "Eyes on the puck. ...Or don't. Your call.",
+          "crack1": "You've been waiting all night for that one, huh?",
+          "crack2": "Eyes on the puck. Or on me, I guess, your call.",
           "crack3": "Okay, you win this round. Mostly.",
           "signature": "Here comes the fast one!"
         }
@@ -207,7 +207,7 @@
             {
               "who": "mila",
               "e": "angry",
-              "text": "I watched replays of myself all day. I lean left when I panic. Not tonight."
+              "text": "I watched my own replays all day and it turns out I lean left when I panic, so tonight I'm leaning right, or straight, or whatever, just not left."
             },
             {
               "who": "mila",
@@ -216,24 +216,24 @@
             },
             {
               "who": "you",
-              "text": "That's... actually smart."
+              "text": "Huh, that's actually smart."
             },
             {
               "who": "mila",
               "e": "shy",
-              "text": "Don't compliment me. It's weird."
+              "text": "Don't compliment me, it's weird."
             }
           ],
           "after": [
             {
               "who": "mila",
               "e": "sad",
-              "text": "I leaned left. I leaned SO left."
+              "text": "I leaned left. I leaned so far left."
             },
             {
               "who": "mila",
               "e": "shy",
-              "text": "...You're not totally awful. For a suit. Walk me to my bike? I'm not scared of the dark. I just want a witness."
+              "text": "You're not totally awful, for a suit. Walk me to my bike? I'm not scared of the dark, I just want a witness."
             }
           ],
           "scene": {
@@ -262,7 +262,7 @@
             {
               "who": "mila",
               "e": "shy",
-              "text": "Dex made it. He's very proud. Don't embarrass me in front of my people."
+              "text": "Dex made it, he's really proud of it, so don't embarrass me in front of my people."
             }
           ],
           "after": [
@@ -273,12 +273,12 @@
             {
               "who": "mila",
               "e": "angry",
-              "text": "Traitors. All of them. They're asking if you're single."
+              "text": "Traitors, every one of them. Now they're asking if you're single."
             },
             {
               "who": "mila",
               "e": "shy",
-              "text": "...I told them you're terrible. Hands off."
+              "text": "I told them you're terrible. Hands off."
             }
           ],
           "scene": {
@@ -293,12 +293,12 @@
           "before": [
             {
               "who": "narrator",
-              "text": "It's pouring. Mila walks in soaked, wheeling her bike. The back tyre is flat."
+              "text": "Mila comes in out of the pouring rain, soaked through, wheeling her bike on a flat back tyre."
             },
             {
               "who": "mila",
               "e": "angry",
-              "text": "Don't. Say. Anything."
+              "text": "Not one word about the hair."
             },
             {
               "who": "you",
@@ -307,11 +307,11 @@
             {
               "who": "mila",
               "e": "surprised",
-              "text": "...Why do you have a patch kit?"
+              "text": "Why do you have a patch kit?"
             },
             {
               "who": "you",
-              "text": "I bought one after the towing thing. In case."
+              "text": "I bought one after the towing thing, just in case."
             },
             {
               "who": "mila",
@@ -328,7 +328,7 @@
             {
               "who": "mila",
               "e": "shy",
-              "text": "Okay. Sweet. I decided sweet."
+              "text": "Okay, sweet, I'm going with sweet."
             },
             {
               "who": "mila",
@@ -354,7 +354,7 @@
             {
               "who": "mila",
               "e": "shy",
-              "text": "...Because I want you to myself. Forget I said that. Rack the puck."
+              "text": "Mostly because I want you to myself. Forget I said that, rack the puck."
             }
           ],
           "after": [
@@ -366,7 +366,7 @@
             {
               "who": "mila",
               "e": "teasing",
-              "text": "Buy me fries. Big ones. We're... whatever we are now."
+              "text": "Buy me fries, the big ones, since we're apparently whatever this is now."
             }
           ],
           "scene": {
@@ -398,7 +398,7 @@
             {
               "who": "mila",
               "e": "happy",
-              "text": "Fine. You win. I like you. There, I said it."
+              "text": "Fine, you win, I like you, there, I said it, can we eat now?"
             },
             {
               "who": "mila",
@@ -489,29 +489,29 @@
             "Write that in your report."
           ],
           "your_goal": [
-            "Hm. Noted.",
+            "Noted.",
             "Don't get used to it.",
             "A broken clock."
           ],
-          "crack1": "That was a twitch. Not a crack. A twitch.",
+          "crack1": "That was a twitch, not a crack.",
           "crack2": "If you say one word, I'm salting your sodas forever.",
-          "crack3": "...Congratulations. You're the worst person I know.",
+          "crack3": "Congratulations. You're the worst person I know.",
           "signature": "Off the wall, manager."
         },
         "warm": {
           "her_goal": [
-            "Angles, darling.",
+            "Angles. I did warn you.",
             "Watch the wall, not me.",
             "That's one for the napkin."
           ],
           "your_goal": [
-            "Ooh. Nice line.",
+            "Ooh, nice line.",
             "You've been studying.",
             "Okay, I'm impressed."
           ],
           "crack1": "Mm. That one I let you have.",
           "crack2": "You're blushing more than I am. Focus.",
-          "crack3": "Well. Now we're even on blushing.",
+          "crack3": "Now we're even on blushing.",
           "signature": "Count the bounces."
         }
       },
@@ -523,7 +523,7 @@
             {
               "who": "juno",
               "e": "angry",
-              "text": "Two years I ran this place. Inventory, payroll, the broken claw machine. Then they send a stranger with a lanyard."
+              "text": "I ran this place for two years, right down to fixing the claw machine, and then they sent a stranger with a lanyard."
             },
             {
               "who": "you",
@@ -569,7 +569,7 @@
             {
               "who": "juno",
               "e": "angry",
-              "text": "Don't. Be. Charming."
+              "text": "Don't be charming. It doesn't suit you."
             }
           ],
           "after": [
@@ -581,7 +581,7 @@
             {
               "who": "juno",
               "e": "neutral",
-              "text": "...I read your memo. You never sent the order to shut us down. Why?"
+              "text": "I read your memo. You never sent the order to shut us down. Why not?"
             },
             {
               "who": "you",
@@ -610,14 +610,14 @@
             {
               "who": "juno",
               "e": "neutral",
-              "text": "Because some nights are emergencies. Rack 'em. Loser counts the limes."
+              "text": "Because some nights are emergencies. Rack 'em, loser counts the limes."
             }
           ],
           "after": [
             {
               "who": "juno",
               "e": "surprised",
-              "text": "...You kept my schedule. The one I made. You didn't change a single shift."
+              "text": "You kept my schedule. Not one shift moved."
             },
             {
               "who": "you",
@@ -626,7 +626,7 @@
             {
               "who": "juno",
               "e": "shy",
-              "text": "Nobody's ever said that to me. I'm going to need a minute. And the emergency cherries."
+              "text": "Nobody has ever said that to me. I need a minute, and the emergency cherries."
             }
           ],
           "scene": {
@@ -646,7 +646,7 @@
             {
               "who": "juno",
               "e": "neutral",
-              "text": "You told him I built the stock system. And the rota. And the cocktail list."
+              "text": "You told him I built the stock system, the rota and the cocktail list."
             },
             {
               "who": "you",
@@ -660,7 +660,7 @@
             {
               "who": "juno",
               "e": "shy",
-              "text": "I'm so mad I could kiss you. Play. Now. Before I do something stupid."
+              "text": "I'm so mad I could kiss you. Rack the puck before I do something stupid."
             }
           ],
           "after": [
@@ -672,7 +672,7 @@
             {
               "who": "juno",
               "e": "happy",
-              "text": "Come on. Office. We're celebrating you being a decent human being. It's very rare."
+              "text": "Office, come on. We're celebrating you being a decent human being, which in this business is rare."
             }
           ],
           "scene": {
@@ -829,9 +829,9 @@
             "The Static has better tables.",
             "Whatever, flyer boy."
           ],
-          "crack1": "Those were my lucky shades. I own nine. Keep dreaming.",
+          "crack1": "Those were my lucky shades, I've got nine pairs, so keep dreaming.",
           "crack2": "I dropped my pick! Nobody saw that!",
-          "crack3": "...This never happened. Nobody across the street hears about this.",
+          "crack3": "This never happened, and nobody across the street hears about it.",
           "signature": "Here comes the slingshot!"
         },
         "warm": {
@@ -863,21 +863,21 @@
             {
               "who": "kat",
               "e": "angry",
-              "text": "'LEAGUE NIGHT AT THE AFTERGLOW. THURSDAYS.' This was taped to MY door. Thursday is MY night."
+              "text": "'League night at the Afterglow, every Thursday.' Somebody taped this to my door. Thursday's been my night since before you could drink."
             },
             {
               "who": "you",
-              "text": "Head office did the flyers. I just..."
+              "text": "Head office did the flyers, I just work here."
             },
             {
               "who": "kat",
               "e": "angry",
-              "text": "Kat Vance. I own the Static. My regulars are drinking HERE now. So I'm joining your stupid league."
+              "text": "Kat Vance, I own the Static, and my regulars are drinking here now, so guess what, I'm joining your stupid league."
             },
             {
               "who": "kat",
               "e": "teasing",
-              "text": "I win, the flyers stop. You win... you won't."
+              "text": "If I win, the flyers stop. If you win, well, you won't."
             }
           ],
           "after": [
@@ -894,7 +894,7 @@
             {
               "who": "kat",
               "e": "angry",
-              "text": "Then I'm coming back next Thursday. And the one after. Until it's tilted my way."
+              "text": "Then I'll be back next Thursday, and every Thursday after that until it tilts my way."
             }
           ],
           "scene": {
@@ -915,7 +915,7 @@
             {
               "who": "kat",
               "e": "neutral",
-              "text": "If I can beat THAT table, I can beat you."
+              "text": "If I can beat that table, you're nothing."
             },
             {
               "who": "you",
@@ -931,7 +931,7 @@
             {
               "who": "kat",
               "e": "sad",
-              "text": "...Okay. It's not the table. It's you. You're annoyingly good."
+              "text": "Fine, it's not the table, you're just annoyingly good."
             },
             {
               "who": "you",
@@ -940,7 +940,7 @@
             {
               "who": "kat",
               "e": "surprised",
-              "text": "...You'd send people to my bar? Why would you do that?"
+              "text": "You'd send people to my bar? Why?"
             },
             {
               "who": "you",
@@ -959,7 +959,7 @@
           "before": [
             {
               "who": "narrator",
-              "text": "Monday. The Static is packed for its first league night. Kat looks terrified."
+              "text": "The Static's first league night is a Monday, and the place is packed. Kat looks terrified."
             },
             {
               "who": "kat",
@@ -969,19 +969,19 @@
             {
               "who": "kat",
               "e": "teasing",
-              "text": "Play me first. Make it look good. If I lose in front of them, I'll still kill you."
+              "text": "Play me first and make it look good. If I lose in front of them I'll still kill you."
             }
           ],
           "after": [
             {
               "who": "kat",
               "e": "happy",
-              "text": "They're buying drinks. They're buying SO many drinks."
+              "text": "They're buying drinks. So many drinks."
             },
             {
               "who": "kat",
               "e": "shy",
-              "text": "You did this. I hate it. I mean I love it. I mean... shut up and have a root beer. On the house."
+              "text": "You did this and I hate how much I love it. Shut up and have a root beer, it's on the house."
             }
           ],
           "scene": {
@@ -1018,7 +1018,7 @@
             {
               "who": "kat",
               "e": "teasing",
-              "text": "You can't drum. That's fine. Nobody can drum."
+              "text": "You can't drum, which is fine, nobody can."
             },
             {
               "who": "kat",
@@ -1039,7 +1039,7 @@
             {
               "who": "kat",
               "e": "neutral",
-              "text": "I found something out. The flyer on my door? You didn't tape it there. Head office did."
+              "text": "So I found out head office taped that flyer to my door. Not you."
             },
             {
               "who": "kat",
@@ -1053,19 +1053,19 @@
             {
               "who": "kat",
               "e": "shy",
-              "text": "That's the most annoying, decent thing anyone's ever done for me. Play me before I cry."
+              "text": "That's the most annoying nice thing anybody's done for me. Play me before I cry."
             }
           ],
           "after": [
             {
               "who": "kat",
               "e": "happy",
-              "text": "I tore up the flyer. Kept one piece. The bit with your chain's logo, so I can throw darts at it."
+              "text": "I tore up the flyer but kept the bit with your chain's logo on it, for darts."
             },
             {
               "who": "kat",
               "e": "shy",
-              "text": "Walk me home? It's across the street, I know. Walk slow."
+              "text": "Walk me home? I know it's across the street. Walk slow."
             }
           ],
           "scene": {
@@ -1081,12 +1081,12 @@
             {
               "who": "kat",
               "e": "shy",
-              "text": "No trash talk tonight. I keep starting sentences and they come out nice. It's horrible."
+              "text": "No trash talk tonight. Every sentence I start comes out nice and it's horrible."
             },
             {
               "who": "kat",
               "e": "teasing",
-              "text": "So here's the bet. I win, you play bass in my band forever. You win..."
+              "text": "Okay, bet. I win, you play bass in my band forever. You win, and..."
             },
             {
               "who": "you",
@@ -1102,12 +1102,12 @@
             {
               "who": "kat",
               "e": "happy",
-              "text": "Okay. You win. One dance. Mind the stage, it's older than the table."
+              "text": "Okay, you win. One dance, and mind the stage, it's older than the table."
             },
             {
               "who": "kat",
               "e": "teasing",
-              "text": "And take my Slingshot. Start slow, finish strong. Like I said. ...Like this song."
+              "text": "Take my Slingshot too. Start slow, finish strong, like this song."
             },
             {
               "who": "narrator",
@@ -1189,18 +1189,18 @@
       "barks": {
         "hostile": {
           "her_goal": [
-            "My table. My rules.",
+            "My table, my rules.",
             "Six years, little manager.",
             "Is that all the company sent?"
           ],
           "your_goal": [
             "Interesting.",
-            "Enjoy it while it lasts.",
+            "Enjoy it while it lasts, darling.",
             "Hm."
           ],
-          "crack1": "Nobody has cracked my poker face in six years. Enjoy it. Once.",
-          "crack2": "You're starting to annoy me.",
-          "crack3": "...Well played. I hate it.",
+          "crack1": "Nobody has cracked my poker face in six years. Enjoy it, because it will not happen twice.",
+          "crack2": "You are starting to annoy me.",
+          "crack3": "Well played. I do not enjoy saying that.",
           "signature": "Watch it bend."
         },
         "warm": {
@@ -1214,9 +1214,9 @@
             "Better.",
             "Mm. Do that again."
           ],
-          "crack1": "Go on. You've earned a smile.",
-          "crack2": "My hands are shaking. Your fault.",
-          "crack3": "I don't lose. I just... let you have tonight.",
+          "crack1": "Go on, then. You have earned a smile.",
+          "crack2": "You have made me nervous. I will be sending you the bill.",
+          "crack3": "I do not lose. I allowed you tonight, which is different.",
           "signature": "Can you read the curve yet?"
         }
       },
@@ -1228,24 +1228,24 @@
             {
               "who": "sable",
               "e": "angry",
-              "text": "I built this place with my own hands. Sold it to keep the lights on. And they sent you to tidy up what's left."
+              "text": "I built this place with my own hands and sold it to keep the lights on, and now they have sent you to tidy up what is left."
             },
             {
               "who": "sable",
               "e": "teasing",
-              "text": "My regulars like you now. I don't. Show me why I should."
+              "text": "My regulars like you now. I do not, so show me why I should."
             }
           ],
           "after": [
             {
               "who": "sable",
               "e": "surprised",
-              "text": "Six years. Six years nobody has seen me sweat."
+              "text": "Six years, and nobody had seen me sweat."
             },
             {
               "who": "sable",
               "e": "angry",
-              "text": "Don't get comfortable. That was a warm-up."
+              "text": "Do not get comfortable. That was a warm-up."
             }
           ],
           "scene": {
@@ -1261,7 +1261,7 @@
             {
               "who": "sable",
               "e": "neutral",
-              "text": "I closed early tonight. No audience."
+              "text": "I closed early tonight, so there is no audience."
             },
             {
               "who": "sable",
@@ -1273,12 +1273,12 @@
             {
               "who": "sable",
               "e": "shy",
-              "text": "...My hands are shaking. That hasn't happened since my first tournament."
+              "text": "My hands are shaking. That has not happened since my first tournament."
             },
             {
               "who": "sable",
               "e": "neutral",
-              "text": "Juno told me about the memo you never sent. Come up to the office. We should talk."
+              "text": "Juno told me about the memo you never sent. Come up to the office, we should talk."
             }
           ],
           "scene": {
@@ -1294,7 +1294,7 @@
             {
               "who": "sable",
               "e": "neutral",
-              "text": "I found the box. Opening night, nine years ago. Photos, the first menu, the original sign."
+              "text": "I found the box from opening night, nine years ago. The first menu is in there, with the photos and the original sign."
             },
             {
               "who": "sable",
@@ -1306,12 +1306,12 @@
             {
               "who": "sable",
               "e": "happy",
-              "text": "That's me, twenty-two, with a borrowed table and a terrible haircut."
+              "text": "That is me at twenty-two, with a borrowed table and a terrible haircut."
             },
             {
               "who": "sable",
               "e": "sad",
-              "text": "...I never wanted to sell. I want you to know that. I want someone to know that."
+              "text": "I never wanted to sell. I would like someone to know that, and I suppose it is you."
             },
             {
               "who": "you",
@@ -1331,7 +1331,7 @@
             {
               "who": "sable",
               "e": "angry",
-              "text": "Head office wants to turn the Afterglow into a sports bar. Big screens. Wings. No table."
+              "text": "Head office wants to turn the Afterglow into a sports bar with big screens, wings and no table."
             },
             {
               "who": "you",
@@ -1340,7 +1340,7 @@
             {
               "who": "sable",
               "e": "teasing",
-              "text": "Good answer. Show me you'll fight for it."
+              "text": "Good answer. Now show me you will fight for it."
             }
           ],
           "after": [
@@ -1352,7 +1352,7 @@
             {
               "who": "sable",
               "e": "teasing",
-              "text": "Roof. Now. I think better up there, and you're not saying no."
+              "text": "Come up to the roof. I think better up there, and you are not saying no."
             }
           ],
           "scene": {
@@ -1368,29 +1368,29 @@
             {
               "who": "sable",
               "e": "teasing",
-              "text": "I've decided I'm buying the Afterglow back. With your help, my spy inside head office."
+              "text": "I have decided to buy the Afterglow back, with your help. Every good plan needs a spy inside head office."
             },
             {
               "who": "sable",
               "e": "neutral",
-              "text": "But I don't partner with people I can beat. Prove it again."
+              "text": "But I do not partner with people I can beat. Prove it again."
             }
           ],
           "after": [
             {
               "who": "sable",
               "e": "happy",
-              "text": "Partners, then. Fifty-fifty. I'll even let you keep the lanyard."
+              "text": "Partners, then, fifty-fifty. You may even keep the lanyard."
             },
             {
               "who": "sable",
               "e": "neutral",
-              "text": "Head office will sell if we can prove this place makes money. One big night. The Last Call Championship."
+              "text": "Head office will sell if we can prove this place makes money, so we give them one enormous night: the Last Call Championship."
             },
             {
               "who": "sable",
               "e": "teasing",
-              "text": "Partners celebrate. Pancakes. My treat."
+              "text": "Partners celebrate. I am buying pancakes."
             }
           ],
           "scene": {
@@ -1411,7 +1411,7 @@
             {
               "who": "sable",
               "e": "shy",
-              "text": "And me. Win or lose, honestly. But don't tell the others I said that."
+              "text": "And me, win or lose, if I am honest. Do not tell the others I said that."
             }
           ],
           "after": [
@@ -1423,7 +1423,7 @@
             {
               "who": "sable",
               "e": "teasing",
-              "text": "And the Hook is yours. One more thing. Champion's privilege."
+              "text": "The Hook is yours. And there is one more thing, which is champion's privilege."
             },
             {
               "who": "narrator",
@@ -1483,22 +1483,22 @@
       {
         "who": "sable",
         "e": "happy",
-        "text": "Every ticket's gone. The Static's sold out too. Kat's running a screen over there."
+        "text": "Every ticket's gone, and the Static's sold out too. Kat's got a screen up over there."
       },
       {
         "who": "juno",
         "e": "teasing",
-        "text": "There's a line round the block. I made a mocktail called The Lanyard. It's mostly regret and grapefruit."
+        "text": "There's a line round the block, so I made a mocktail called The Lanyard. Grapefruit and regret, mostly."
       },
       {
         "who": "mila",
         "e": "happy",
-        "text": "Couriers on the roof, couriers on the bar. Dex brought a drum."
+        "text": "There are couriers on the roof and couriers on the bar, and Dex brought a drum!"
       },
       {
         "who": "kat",
         "e": "teasing",
-        "text": "League rules: the champion has to beat all four of us. Back to back. No breaks."
+        "text": "League rules say the champion has to beat all four of us back to back, with no breaks."
       },
       {
         "who": "you",
@@ -1507,7 +1507,7 @@
       {
         "who": "sable",
         "e": "neutral",
-        "text": "In front of everyone. Last call, partner. Make it count."
+        "text": "In front of everyone. Last call, partner."
       }
     ],
     "rounds": [
@@ -1517,7 +1517,7 @@
           {
             "who": "mila",
             "e": "teasing",
-            "text": "First up! No mercy, no breakfast bets. Just the Bullet."
+            "text": "Me first! No mercy and no breakfast bets this time, just the Bullet."
           }
         ]
       },
@@ -1527,7 +1527,7 @@
           {
             "who": "juno",
             "e": "teasing",
-            "text": "I drew this match on a napkin. You lose on it. Prove the napkin wrong."
+            "text": "I drew this match on a napkin and you lose on it. Prove the napkin wrong."
           }
         ]
       },
@@ -1537,7 +1537,7 @@
           {
             "who": "kat",
             "e": "shy",
-            "text": "Half the Static's watching on a screen. Don't make me look bad. Or do. Either way."
+            "text": "Half the Static's watching on the screen, so don't make me look bad. Or do, honestly, I'm past caring."
           }
         ]
       },
@@ -1547,7 +1547,7 @@
           {
             "who": "sable",
             "e": "neutral",
-            "text": "Six years undefeated, until you. Let's see if it was a fluke."
+            "text": "Six years undefeated until you. Let us see whether it was a fluke."
           }
         ]
       }
@@ -1555,17 +1555,17 @@
     "after": [
       {
         "who": "narrator",
-        "text": "The lounge explodes. Someone shakes up a soda. Dex's drum breaks."
+        "text": "The lounge goes up in a roar, someone shakes a soda all over the crowd, and Dex puts a stick straight through his drum."
       },
       {
         "who": "sable",
         "e": "happy",
-        "text": "We did it. Head office signed the papers ten minutes ago. The Afterglow's ours."
+        "text": "Head office signed the papers ten minutes ago. The Afterglow is ours."
       },
       {
         "who": "juno",
         "e": "happy",
-        "text": "Ours. As in, I'm a co-owner now? I want that in writing. On a napkin."
+        "text": "Ours, as in I'm a co-owner now? I want that in writing, on a napkin."
       },
       {
         "who": "mila",
@@ -1580,11 +1580,11 @@
       {
         "who": "sable",
         "e": "teasing",
-        "text": "Last call, everyone. Not you four. You five. Group photo. Now."
+        "text": "Last call, everyone. Not you lot. Group photo, right now."
       },
       {
         "who": "narrator",
-        "text": "The flash goes off. Five people, one table, and a torn SOLD banner. Best photo on the wall."
+        "text": "The flash goes off on five people, one table and a torn SOLD banner. It ends up as the best photo on the wall."
       }
     ],
     "scene": {

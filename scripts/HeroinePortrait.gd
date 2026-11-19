@@ -107,7 +107,7 @@ func _draw() -> void:
 		draw_rect(Rect2(torso.position.x - w * 0.02, torso.position.y - 4, w * 0.08, torso.size.y + 10), col)
 		draw_rect(Rect2(torso.end.x - w * 0.06, torso.position.y - 4, w * 0.08, torso.size.y + 10), col)
 	# Face hint: the expression as text.
-	var font := ThemeDB.fallback_font
+	var font := UI.BODY_FONT
 	var face := {"neutral": "-  -", "happy": "^  ^", "shy": "> <", "surprised": "o  o", "teasing": "-  ^", "sad": "T  T", "angry": "\\  /"}
 	draw_string(font, head + Vector2(-head_r * 0.7, 4), String(face.get(expression, "-  -")), HORIZONTAL_ALIGNMENT_CENTER, head_r * 1.4, int(maxf(10.0, head_r * 0.55)), Color("#3A2141"))
 	var tag := "PLACEHOLDER  ·  %s  ·  stage %d/3" % [UI.first_name(heroine_id), stage] if mode == "stage" else "PLACEHOLDER  ·  %s  ·  %s" % [UI.first_name(heroine_id), expression]

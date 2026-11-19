@@ -27,6 +27,7 @@ var composure_box: HBoxContainer
 var layer_rows: Array = []
 var her_bar: ProgressBar
 var her_sig_lbl: Label
+var sig_tip_lbl: Label
 var my_bar: ProgressBar
 var smash_btn: Button
 var hint_lbl: Label
@@ -130,7 +131,7 @@ func _build_side() -> void:
 	composure_box.add_theme_constant_override("separation", 4)
 	crow.add_child(composure_box)
 	v.add_child(crow)
-	v.add_child(UI.label("Outfit (each layer off weakens her)", 15, UI.INK_SOFT))
+	v.add_child(UI.label("Outfit", 15, UI.INK_SOFT))
 	for L in _h.get("layers", []):
 		var row := HBoxContainer.new()
 		var n := UI.label(String(L.get("name", "")), 18, UI.INK)
@@ -149,6 +150,8 @@ func _build_side() -> void:
 	v.add_child(her_bar)
 	var tip := UI.wrap_label(String(_h.get("signature_tip", "")), 14, UI.INK_SOFT)
 	tip.custom_minimum_size = Vector2(320, 0)
+	tip.visible = false
+	sig_tip_lbl = tip
 	v.add_child(tip)
 
 
@@ -225,18 +228,18 @@ func _mode_text() -> String:
 	var t := "First to %d" % rules.target
 	match String(ctx.get("mode", "story")):
 		"pickup":
-			t += " · pickup game"
+			t = "Pickup game, first to %d" % rules.target
 			if GameState.pickup_streak > 0:
-				t += " · streak %d" % GameState.pickup_streak
+				t += ", streak %d" % GameState.pickup_streak
 		"cup":
 			var c := GameState.cup(String(ctx.get("cup", "")))
-			t += " · %s round %d of %d" % [String(c.get("name", "Cup")), int(ctx.get("round", 0)) + 1, int(c.get("rounds", 3))]
+			t = "%s round %d of %d, first to %d" % [String(c.get("name", "Cup")), int(ctx.get("round", 0)) + 1, int(c.get("rounds", 3)), rules.target]
 		"replay":
-			t += " · replay of match %d" % (match_index + 1)
+			t = "Replay of match %d, first to %d" % [match_index + 1, rules.target]
 		"finale":
-			t += " · CHAMPIONSHIP round %d of %d" % [int(ctx.get("round", 0)) + 1, GameState.finale().get("rounds", []).size()]
+			t = "Championship round %d of %d, first to %d" % [int(ctx.get("round", 0)) + 1, GameState.finale().get("rounds", []).size(), rules.target]
 		_:
-			t += " · match %d of %d" % [match_index + 1, GameState.match_count(heroine_id)]
+			t = "Match %d of %d, first to %d" % [match_index + 1, GameState.match_count(heroine_id), rules.target]
 	var pu: Array = ctx.get("powerups", [])
 	if not pu.is_empty():
 		var names := []
@@ -401,9 +404,11 @@ func _process(_d: float) -> void:
 	my_bar.value = me.heat
 	her_bar.value = her.heat
 	smash_btn.disabled = me.heat < PuckSim.HEAT_MAX and not me.armed
+	# Her counter tip only shows when her signature is close.
+	sig_tip_lbl.visible = her.heat >= PuckSim.HEAT_MAX * 0.6 or her.armed
 	smash_btn.text = "ARMED!" if me.armed else _shot_name().to_upper()
 	if countdown > 0.0:
-		hint_lbl.text = "Get ready... %d" % int(ceil(countdown - 0.2))
+		hint_lbl.text = "Get ready: %d" % int(ceil(countdown - 0.2))
 	elif me.armed:
 		hint_lbl.text = ("Smash armed: your next hit flies at top speed." if rules.sim.paddle(0).power_kind == "smash" else "%s armed: your next touch fires it at her goal." % _shot_name()) + " Score with it to take a whole layer."
 	elif me.heat >= PuckSim.HEAT_MAX:
@@ -411,7 +416,8 @@ func _process(_d: float) -> void:
 	elif her.armed:
 		hint_lbl.text = "%s armed her %s. %s" % [UI.first_name(heroine_id), String(_h.get("signature_name", "")), String(_h.get("signature_tip", ""))]
 	else:
-		hint_lbl.text = "Hits, saves and goals build Heat. Bank shots off the wall build it fastest."
+		# New players get the Heat explainer; after that the bar speaks for itself.
+		hint_lbl.text = "Hits, saves and goals build Heat. Bank shots build it fastest." if GameState.level <= 2 else ""
 	# Hide the system cursor over the table: your paddle is the cursor.
 	var over := Rect2(TABLE_POS, Vector2(PuckSim.W, PuckSim.H) * TABLE_SCALE).has_point(get_local_mouse_position())
 	var want := Input.MOUSE_MODE_HIDDEN if over and not paused and ending < 0.0 else Input.MOUSE_MODE_VISIBLE
@@ -425,8 +431,11 @@ func _on_event(e: Dictionary) -> void:
 	match String(e.kind):
 		"hit":
 			SFX.play("hit", clampf(0.7 + float(e.speed) / 2000.0, 0.7, 1.6))
+			table.burst(rules.sim.puck_pos, UI.CYAN if e.side == 0 else UI.hcolor(heroine_id), 6 + int(float(e.speed) / 300.0), float(e.speed))
+			table.kick(clampf(float(e.speed) / 2500.0, 0.0, 1.0) * 4.0)
 		"wall":
 			SFX.play("wall")
+			table.burst(rules.sim.puck_pos, Color(1, 1, 1, 0.8), 4, float(e.speed) * 0.5)
 		"armed":
 			if e.side == 1:
 				_banner("%s readies %s!" % [her_name, sig.to_upper()], UI.hcolor(heroine_id))
@@ -436,6 +445,8 @@ func _on_event(e: Dictionary) -> void:
 				_banner("%s ARMED" % _shot_name().to_upper(), UI.GOLD)
 		"power_shot":
 			SFX.play("smash")
+			table.kick(9.0)
+			table.burst(rules.sim.puck_pos, UI.GOLD, 18, 1600.0)
 		"power_saved":
 			if e.side == 0:
 				_banner("Blocked her %s! +Heat" % sig, UI.CYAN)
@@ -446,6 +457,7 @@ func _on_event(e: Dictionary) -> void:
 		"flustered":
 			_banner("Her %s went in. Your Heat drained." % sig, UI.BAD)
 		"goal":
+			table.goal_fx(e.scorer == 0, bool(e.power))
 			if e.scorer == 0:
 				SFX.play("goal")
 				_bark("your_goal")
@@ -469,6 +481,7 @@ func _on_event(e: Dictionary) -> void:
 			portrait.set_stage(stage)
 			_bark("strip%d" % stage)
 			portrait.flash = 0.6
+			table.kick(12.0)
 			rules.sim.paused = maxf(rules.sim.paused, 2.2)
 			SFX.play("strip")
 			_refresh_side()
@@ -532,6 +545,32 @@ class _TableView extends Control:
 	var screen: MatchScreen
 	var trail: Array = []
 	var t := 0.0
+	## [pos, vel, life, max_life, color] in table pixels.
+	var sparks: Array = []
+	var shake := 0.0
+	var flash := 0.0
+	var flash_col := Color.WHITE
+	var base_pos := Vector2.ZERO
+
+	func burst(table_pos: Vector2, col: Color, n: int, speed: float) -> void:
+		var s := MatchScreen.TABLE_SCALE
+		for i in mini(n, 30):
+			var ang := randf() * TAU
+			var v := Vector2.from_angle(ang) * randf_range(0.25, 1.0) * clampf(speed * 0.18, 60.0, 420.0)
+			var life := randf_range(0.18, 0.42)
+			sparks.append([table_pos * s, v, life, life, col])
+
+	func kick(amount: float) -> void:
+		shake = maxf(shake, amount)
+
+	func goal_fx(mine: bool, power: bool) -> void:
+		var s := MatchScreen.TABLE_SCALE
+		var her_col := UI.hcolor(screen.heroine_id)
+		flash = 0.55 if power else 0.35
+		flash_col = UI.GOLD if (mine and power) else (UI.CYAN if mine else her_col)
+		kick(16.0 if power else 10.0)
+		var gx := PuckSim.W if mine else 0.0
+		burst(Vector2(gx, PuckSim.H / 2.0), flash_col, 30, 2200.0)
 
 	func _ready() -> void:
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -542,6 +581,16 @@ class _TableView extends Control:
 		trail.append([sim.puck_pos, sim.powered])
 		if trail.size() > 12:
 			trail.pop_front()
+		for sp in sparks:
+			sp[0] += sp[1] * d
+			sp[1] *= 0.9
+			sp[2] -= d
+		sparks = sparks.filter(func(sp): return sp[2] > 0.0)
+		flash = maxf(0.0, flash - d * 1.6)
+		if base_pos == Vector2.ZERO:
+			base_pos = position
+		shake = maxf(0.0, shake - d * 40.0)
+		position = base_pos + Vector2(randf_range(-1, 1), randf_range(-1, 1)) * shake
 		queue_redraw()
 
 	func _draw() -> void:
@@ -576,6 +625,11 @@ class _TableView extends Control:
 			elif trail[i][1] == 1:
 				c = Color(her_col, 0.5 * a)
 			draw_circle(tp, PuckSim.PUCK_R * s * (0.5 + 0.5 * a), c)
+		# Sparks.
+		for sp in sparks:
+			var k: float = sp[2] / sp[3]
+			var c: Color = sp[4]
+			draw_line(sp[0], sp[0] - sp[1] * 0.035, Color(c, k), 2.0)
 		# Paddles.
 		for side in 2:
 			var p: PuckSim.Paddle = sim.paddle(side)
@@ -602,8 +656,10 @@ class _TableView extends Control:
 		else:
 			draw_circle(pk, pr, pcol)
 			draw_circle(pk, pr * 0.6, pcol.darkened(0.25))
+		if flash > 0.0:
+			draw_rect(Rect2(0, 0, W, H), Color(flash_col, flash * 0.45))
 		if screen.countdown > 0.0:
 			var n := int(ceil(screen.countdown - 0.2))
-			var font := ThemeDB.fallback_font
+			var font := UI.DISPLAY_FONT
 			var txt := str(n) if n > 0 else "GO"
 			draw_string(font, Vector2(0, H / 2 + 40), txt, HORIZONTAL_ALIGNMENT_CENTER, W, 120, Color(UI.GOLD, 0.9))

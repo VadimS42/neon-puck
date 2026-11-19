@@ -67,7 +67,7 @@ func _cup_card(row: HBoxContainer, c: Dictionary, busy: bool) -> Button:
 	v.add_theme_constant_override("separation", 8)
 	p.add_child(v)
 	v.add_child(UI.label(String(c["name"]) + ("  ★ won" if won else ""), 30, col))
-	v.add_child(UI.label("%d rounds · first to %d" % [int(c["rounds"]), int(c["target"])], 18, UI.INK))
+	v.add_child(UI.label("%d rounds, first to %d" % [int(c["rounds"]), int(c["target"])], 18, UI.INK))
 	v.add_child(UI.label("Opponents get sharper each round", 15, UI.INK_SOFT))
 	v.add_child(UI.label("Needs level %d and %d story wins" % [int(c["level"]), int(c["requires_wins"])], 16, UI.INK_SOFT))
 	v.add_child(UI.label("Entry: %d tips" % int(c["entry"]), 18, UI.GOLD))
@@ -81,7 +81,7 @@ func _cup_card(row: HBoxContainer, c: Dictionary, busy: bool) -> Button:
 	sp.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	v.add_child(sp)
 	var block := GameState.cup_block(cid)
-	var b := UI.button(("Enter again" if won else "Enter") + " · %d tips" % int(c["entry"]) if block == "" else block, _enter.bind(cid), 20, col)
+	var b := UI.button(("Enter again" if won else "Enter") + " for %d tips" % int(c["entry"]) if block == "" else block, _enter.bind(cid), 20, col)
 	b.disabled = busy or block != ""
 	v.add_child(b)
 	return b
