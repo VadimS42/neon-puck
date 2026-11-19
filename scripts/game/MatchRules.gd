@@ -30,6 +30,12 @@ var smash_goals := 0
 var bank_goals := 0
 var saves := 0
 var her_signature_goals := 0
+## How this match was started: {"mode": "story"|"replay"|"pickup"|"cup",
+## "powerups": [ids], "cup", "round", "boost", "target"}.
+var ctx: Dictionary = {}
+## Cup rounds make her sharper: + this fraction of speed, faster reactions.
+var boost := 0.0
+var _comeback_ready := false
 
 
 ## The GameState autoload, looked up at run time so the headless test can
@@ -37,22 +43,60 @@ var her_signature_goals := 0
 var gs: Node
 
 
-func setup(id: String, mi: int) -> void:
+func setup(id: String, mi: int, context: Dictionary = {}) -> void:
+	ctx = context
 	gs = (Engine.get_main_loop() as SceneTree).root.get_node("GameState")
 	heroine_id = id
 	match_index = mi
 	var h: Dictionary = gs.heroine(id)
 	var m: Dictionary = h.get("matches", [])[mi]
-	target = int(m.get("target", 7))
+	target = int(ctx.get("target", m.get("target", 7)))
+	boost = float(ctx.get("boost", 0.0))
 	layer_count = h.get("layers", []).size()
 	composure_per_layer = int(h.get("composure", 2))
 	composure = composure_per_layer
 	brain.side = 1
 	brain.setup(hash(id) + mi * 7919)
 	gs.apply_player(sim.paddle(0))
-	sim.paddle(0).heat_mult = float(gs.diff().get("heat", 1.0))
 	sim.paddle(1).heat_mult = 0.6
-	gs.apply_opponent(id, mi, 0, brain, sim.paddle(1))
+	_apply_powerups(ctx.get("powerups", []))
+	apply_her(0)
+
+
+func has_powerup(pid: String) -> bool:
+	return ctx.get("powerups", []).has(pid)
+
+
+func _apply_powerups(ids: Array) -> void:
+	var me: PuckSim.Paddle = sim.paddle(0)
+	for pid in ids:
+		match String(pid):
+			"energy":
+				me.heat = PuckSim.HEAT_MAX
+			"grip":
+				me.radius *= 1.2
+			"spotlight":
+				composure_per_layer = maxi(1, composure_per_layer - 1)
+				composure = composure_per_layer
+			"hype":
+				me.heat_mult *= 1.4
+			"wink":
+				sim.paddle(1).heat_mult *= 0.5
+			"sugar":
+				me.max_speed *= 1.15
+				me.power_mult *= 1.1
+			"comeback":
+				_comeback_ready = true
+
+
+## Her paddle and brain with `layers` layers off, plus any cup boost.
+func apply_her(layers: int) -> void:
+	gs.apply_opponent(heroine_id, match_index, layers, brain, sim.paddle(1))
+	if boost > 0.0:
+		var her: PuckSim.Paddle = sim.paddle(1)
+		her.max_speed *= 1.0 + boost
+		her.max_accel *= 1.0 + boost
+		brain.reaction = maxf(0.04, brain.reaction - boost * 0.15)
 
 
 func step(dt: float) -> void:
@@ -88,6 +132,10 @@ func _on_sim_event(e: Dictionary) -> void:
 					events.append({"kind": "flustered"})
 				if layers_lost < layer_count:
 					composure = mini(composure_per_layer, composure + 1)
+				if _comeback_ready and sim.paddle(1).score == target - 1:
+					_comeback_ready = false
+					sim.paddle(0).heat = PuckSim.HEAT_MAX
+					events.append({"kind": "second_wind"})
 			if sim.paddle(0).score >= target or sim.paddle(1).score >= target:
 				over = true
 				player_won = sim.paddle(0).score >= target
@@ -101,7 +149,7 @@ func _hit_composure(dmg: int) -> void:
 	if composure <= 0:
 		layers_lost += 1
 		composure = composure_per_layer
-		gs.apply_opponent(heroine_id, match_index, layers_lost, brain, sim.paddle(1))
+		apply_her(layers_lost)
 		gs.see_stage(heroine_id, layers_lost)
 		events.append({"kind": "strip", "stage": layers_lost})
 

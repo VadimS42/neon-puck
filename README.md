@@ -1,4 +1,4 @@
-# Neon Puck (working title): prototype v0.1
+# Neon Puck (working title): prototype v0.2
 
 An 18+ arcade air hockey game in Godot 4.3, built the same way as Charm
 Combo: one `Main.tscn`, every screen built in code, data in JSON, art found
@@ -6,10 +6,12 @@ by path with placeholders until it exists.
 
 **The hook:** strip air hockey. A bar chain bought the Afterglow, a neon
 arcade lounge, and sent you as its new night manager. The regulars hate
-you (you towed Mila's bike, took Juno's job, and you're the face of the
-company Sable sold her lounge to). They play the Last Call League: one
-table, first to N, and every layer an opponent loses makes her weaker.
-Beat each of them four times to win her over.
+you (you towed Mila's bike, took Juno's job, your league night stole Kat's
+crowd at the bar across the street, and you're the face of the company
+Sable sold her lounge to). They play the Last Call League: one table,
+first to N, and every layer an opponent loses makes her weaker. Beat each
+of them six times to win her over, then win the Last Call Championship
+to buy the Afterglow back.
 
 ## Run it
 
@@ -34,17 +36,34 @@ power smash when your Heat is full. Esc pauses.
   the rest of the match easier, so the reward and the strategy are the same
   thing.
 - **Signature shots.** Each heroine has one (Mila: Bullet, Juno: Ricochet,
-  Sable: Hook). It's announced when she arms it, it's always the same shot,
+  Kat: Slingshot, Sable: Hook). It's announced when she arms it, it's always the same shot,
   and her card tells you how to stop it. Block it for Heat; let it in and
   your Heat drains.
-- **Hostile-to-love story.** Each heroine has 4 matches: Hates you → Rival
-  → Grudging respect → Falling for you → Yours, shown on her roster card.
+- **Hostile-to-love story.** Four heroines, 6 matches each: Hates you →
+  Rival → Grudging respect → Friendly → Crushing on you → Falling for you
+  → Yours, shown on her roster card. Kat unlocks after 4 story wins and
+  Sable after you win over two of the others. Winning over all four opens
+  the Last Call Championship: all four back to back, then the epilogue.
   A prologue sets it up, dialogue plays before and after every match, and
   she taunts or reacts in a speech bubble during play (hostile lines in
   her first two matches, flirty ones after).
-- **Progression without grind.** Win a heroine over completely and she
-  teaches you her signature shot; pick it as your power shot on the roster.
-- **Short matches.** First to 5, 6, 6, then 7 across her four matches.
+- **Learn their shots.** Win a heroine over completely and she teaches you
+  her signature shot; pick it as your power shot on the roster.
+- **Light grind, never in front of a scene.** Matches pay XP and tips.
+  Levels gate only the *next story match*; every scene unlocks the moment
+  you win its match. Story wins earn most of the XP you need, and the last
+  few gates ask for a pickup game or a cup.
+- **Pro Shop.** Four gear slots (paddle, glove, sneakers, lucky charm), up
+  to 5 tiers each, adding speed, size, hit power, Heat gain and smash speed.
+- **Power-ups.** Seven one-match boosts (full Heat start, bigger paddle,
+  she strips faster, Heat fills faster, her signature charges slower,
+  speed and power, a Heat refill at her match point). 1 to 3 slots by level,
+  picked on the loadout screen before each match.
+- **Pickup games.** First to 5 against anyone you've unlocked, with a win
+  streak bonus.
+- **Cups.** Bronze, Silver and Gold: pay the entry, win 3 or 4 rounds in a
+  row as opponents sharpen, take the prize and a cup scene.
+- **Short matches.** First to 5, 5, 6, 6, 7, 7 across her six matches.
 - **All-ages mode** in Settings for a separate SFW build (uses `*_sfw.png`
   art when present).
 
@@ -55,14 +74,16 @@ power smash when your Heat is full. Esc pauses.
 | Luck-based matches, "slot machine" shots | Deterministic physics; no hidden rolls on your shots |
 | AI returns everything | She sees the puck late (`reaction`), has a capped paddle speed and acceleration, and gets weaker per layer |
 | 30-minute matches | First to 5-7 |
-| Grind gates scenes | No levels or currency. Each win plays her next story beat and unlocks a scene |
+| Grind gates scenes | Levels gate only the next story match, never a scene; each win unlocks its scene at once |
+| Finished too fast / not enough to do | About 2.5 to 3 hours of story alone (28 story matches), plus a shop, power-ups, cups and pickup games |
 | Story hidden in the gallery | Dialogue plays before and after every match, in the main flow |
-| Too few scenes, too short | 3 strip stages per match plus a scene per win: 12 scenes and 12 stages across 3 heroines (12 matches), easy to add more in JSON |
+| Too few scenes, too short | 3 strip stages per match plus a scene per win: 28 scenes (24 story, 3 cups, 1 finale) and 16 strip stages across 4 heroines, easy to add more in JSON |
 | Unappealing protagonist | Faceless player; the camera stays on the heroines |
 | Non-consensual framing | They hate you, but everyone signed the league rules; the hostility is comedic and consensual |
 | Liked: girls who dislike you at first | Every heroine starts hostile with her own grudge and is won over across 4 matches |
 | Liked: each girl plays differently | Speed, banks and curves styles, each with a signature shot and a counter-tip |
 | Liked: depth to learn | Learn each girl's signature shot when you win her over |
+| Liked: shop, gear, tournaments | Pro Shop with 4 gear slots and 5 tiers, power-ups, three cups |
 | Liked: comedy | Rewritten dialogue plus in-match taunts and reactions |
 | Liked: separate all-ages build | All-ages mode switch |
 | Difficulty | Story / Normal / Hard any time, plus a Story-difficulty rematch button after a loss and an unlock-all gallery |
@@ -71,15 +92,17 @@ power smash when your Heat is full. Esc pauses.
 
 | Path | What |
 | --- | --- |
-| `data/heroines.json` | Heroines, stats, outfit layers and their effects, signature shots, match targets, all dialogue and scene briefs. Edit freely. |
+| `data/heroines.json` | Heroines, stats, outfit layers and their effects, signature shots, match targets and levels, all dialogue, scene briefs and the finale. Edit freely. |
+| `data/progression.json` | XP curve, rewards, gear, power-ups, cups. Edit freely. |
 | `scripts/game/PuckSim.gd` | The table as plain math (no nodes): puck, paddles, walls, goals, Heat, power shots |
 | `scripts/game/AIBrain.gd` | Her paddle: defend, attack, banks, signature arming |
 | `scripts/game/MatchRules.gd` | Score, Composure, stripping and stat drops |
-| `scripts/screens/*.gd` | Age gate, menu, how to play, roster, dialogue, match, results, scene viewer, gallery, settings |
+| `scripts/screens/*.gd` | Age gate, menu, how to play, roster, loadout, Pro Shop, cups, dialogue, match, results, scene viewer, gallery, settings |
 | `scripts/ArtAssets.gd` | Every art path the game looks for |
 | `scripts/HeroinePortrait.gd` | Her art, or the placeholder figure |
-| `docs/ART_LIST.md` | Everything to commission, with paths, sizes and briefs |
+| `docs/ART_LIST.md` | Everything to commission, with paths, sizes and briefs (regenerate with `python3 tools/gen_art_list.py`) |
 | `tools/sim_test.gd` | Headless balance check (bot vs every heroine at every difficulty) |
+| `tools/playthrough_test.gd` | Headless playthrough: a bot plays the whole game and it prints the time |
 
 ## Balance check
 
@@ -87,7 +110,15 @@ power smash when your Heat is full. Esc pauses.
 godot --headless --path . -s tools/sim_test.gd -- games=12 bot=weak
 ```
 
-`bot=weak|normal|strong` sets how good the stand-in player is. It's a bot,
+`bot=weak|normal|strong` sets how good the stand-in player is.
+
+```
+godot --headless --path . -s tools/playthrough_test.gd -- bot=normal side=0
+```
+
+plays the whole story (`side=0`: story only, ignoring level gates; `side=1`:
+respects gates, buys gear, plays cups and pickup games) and prints the time
+with 4.5 s per dialogue line and 25 s per scene. It's a bot,
 not a person, so treat it as a sanity check; real playtests should set the
 final numbers. Tuning knobs: her stats and layer values in
 `heroines.json`, the difficulty table at the top of it, `GOAL_W`,
@@ -96,7 +127,7 @@ final numbers. Tuning knobs: her stats and layer values in
 ## Debug launch options
 
 After `--` on the command line: `screen=menu|roster|vn|match|result|scene|gallery|settings|howto`,
-`id=mila|juno|sable`, `m=0..2` (match), `stage=0..3`, `autoplay=1` (a bot
+`screen=shop|cups|prematch` too, `id=mila|juno|kat|sable`, `m=0..5` (match), `all=1 lv=12` (unlock everything, no save), `stage=0..3`, `autoplay=1` (a bot
 plays you), `speed=4` (fast-forward), `shot=out.png delay=2` (screenshot
 and quit).
 

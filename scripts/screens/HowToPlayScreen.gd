@@ -14,14 +14,15 @@ func _ready() -> void:
 	var m := MarginContainer.new()
 	UI.fill(m)
 	for k in ["left", "right", "top", "bottom"]:
-		m.add_theme_constant_override("margin_" + k, 60)
+		m.add_theme_constant_override("margin_" + k, 28 if k in ["top", "bottom"] else 50)
 	add_child(m)
 	var v := VBoxContainer.new()
-	v.add_theme_constant_override("separation", 8)
+	v.add_theme_constant_override("separation", 6)
 	m.add_child(v)
-	v.add_child(UI.label("How to play", 40, UI.PINK))
+	v.add_child(UI.label("How to play", 34, UI.PINK))
 	var rows := [
-		["Story", "The regulars hate you: you're the chain's new manager. Beat each one four times to win her over. Every win changes what she thinks of you and unlocks a scene; win her over completely and she teaches you her signature shot."],
+		["Story", "The regulars hate you: you're the chain's new manager. Beat each one six times to win her over. Every win changes what she thinks of you and unlocks a scene; win her over completely and she teaches you her signature shot. Win over all four for the championship."],
+		["Level up", "Every match pays XP and tips, win or lose. Later story matches need a level: pickup games and cups get you there. Spend tips in the Pro Shop on gear (for good) and power-ups (one match each)."],
 		["Move", "Your paddle follows the mouse (or your finger). Keys / left stick work too. You can't cross the centre line."],
 		["Score", "First to the match target wins. Shots are pure physics: where and how hard you hit is where the puck goes. Nothing is rolled."],
 		["Heat", "Hits, saves and goals fill your Heat meter. When it's full, click, press Space / A, or tap SMASH to arm a power smash: your next hit flies at top speed."],
@@ -34,10 +35,10 @@ func _ready() -> void:
 		var h := HBoxContainer.new()
 		h.add_theme_constant_override("separation", 18)
 		p.add_child(h)
-		var t := UI.label(r[0], 24, UI.CYAN)
-		t.custom_minimum_size = Vector2(150, 0)
+		var t := UI.label(r[0], 20, UI.CYAN)
+		t.custom_minimum_size = Vector2(130, 0)
 		h.add_child(t)
-		var d := UI.wrap_label(r[1], 19)
+		var d := UI.wrap_label(r[1], 16)
 		d.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		h.add_child(d)
 		v.add_child(p)

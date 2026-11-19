@@ -108,3 +108,29 @@ static func hcolor(id: String) -> Color:
 
 static func first_name(id: String) -> String:
 	return String(GameState.heroine(id).get("name", id)).split(" ")[0]
+
+
+## Your level, XP to the next level and tips, for the top of hub screens.
+static func status_bar(pos: Vector2) -> Control:
+	var p := panel(PANEL, 12, GOLD)
+	p.position = pos
+	var h := HBoxContainer.new()
+	h.add_theme_constant_override("separation", 12)
+	p.add_child(h)
+	h.add_child(label("Lv %d" % GameState.level, 22, GOLD))
+	var bar := ProgressBar.new()
+	bar.custom_minimum_size = Vector2(150, 14)
+	bar.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	bar.show_percentage = false
+	var maxed := GameState.level >= GameState.max_level()
+	bar.max_value = GameState.xp_to_next()
+	bar.value = bar.max_value if maxed else GameState.xp
+	bar.add_theme_stylebox_override("background", box(BG, 6, LINE, 1))
+	var f := box(CYAN, 6)
+	f.content_margin_top = 0
+	f.content_margin_bottom = 0
+	bar.add_theme_stylebox_override("fill", f)
+	h.add_child(bar)
+	h.add_child(label("MAX" if maxed else "%d / %d XP" % [GameState.xp, GameState.xp_to_next()], 15, INK_SOFT))
+	h.add_child(label("%d tips" % GameState.tips, 22, GOLD))
+	return p

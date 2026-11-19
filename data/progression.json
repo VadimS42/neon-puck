@@ -53,19 +53,19 @@
   "pickup": { "target": 5, "level_offset": 0 },
   "tournaments": [
     {
-      "id": "bronze", "name": "Bronze Cup", "level": 3, "entry": 100, "requires_wins": 1,
+      "id": "bronze", "name": "Bronze Cup", "level": 3, "entry": 100, "requires_wins": 2,
       "rounds": 3, "target": 5, "round_boost": [0.0, 0.05, 0.10],
       "round_reward": { "xp": 80, "tips": 80 }, "prize": { "xp": 300, "tips": 500 },
       "scene": { "id": "cup_bronze", "title": "Bronze Cup Night", "brief": "The three regulars, mid-celebration in their league jerseys and not much else, crowd around you and the bronze trophy at the bar." }
     },
     {
-      "id": "silver", "name": "Silver Cup", "level": 7, "entry": 300, "requires_wins": 4,
+      "id": "silver", "name": "Silver Cup", "level": 7, "entry": 300, "requires_wins": 7,
       "rounds": 3, "target": 6, "round_boost": [0.05, 0.10, 0.15],
       "round_reward": { "xp": 140, "tips": 160 }, "prize": { "xp": 600, "tips": 1200 },
       "scene": { "id": "cup_silver", "title": "Silver Cup Afterparty", "brief": "Afterparty in the lounge: the heroines in lingerie and party hats, a pile of silver confetti, everyone a little tipsy." }
     },
     {
-      "id": "gold", "name": "Gold Cup", "level": 11, "entry": 600, "requires_wins": 8,
+      "id": "gold", "name": "Gold Cup", "level": 11, "entry": 600, "requires_wins": 14,
       "rounds": 4, "target": 7, "round_boost": [0.10, 0.15, 0.20, 0.25],
       "round_reward": { "xp": 220, "tips": 280 }, "prize": { "xp": 1000, "tips": 2500 },
       "scene": { "id": "cup_gold", "title": "Gold Cup Champions", "brief": "Group romance scene on the championship table after the Gold Cup. Adult scene: write to your content plan." }

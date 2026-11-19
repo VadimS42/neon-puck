@@ -28,6 +28,9 @@ const HEAT_MAX := 100.0
 const SUBSTEPS := 4
 ## Pause after a goal before the puck is live again.
 const GOAL_PAUSE := 1.3
+## Slingshot signature: launch speed and how fast it picks up (px/s^2).
+const SLING_START := 420.0
+const SLING_ACCEL := 1900.0
 
 
 class Paddle:
@@ -51,6 +54,10 @@ class Paddle:
 	var hit_cool := 0.0
 	## Multiplies every meter gain (difficulty setting for your side).
 	var heat_mult := 1.0
+	## Gear: multiplies the puck speed your normal hits produce.
+	var power_mult := 1.0
+	## Gear: multiplies the speed (and cap) of your power shot.
+	var smash_mult := 1.0
 
 
 var puck_pos := Vector2(W * 0.5, H * 0.5)
@@ -62,6 +69,8 @@ var powered := -1
 var power_kind := ""
 var hook_curv := 0.0
 var hook_time := 0.0
+## Puck speed cap; a geared power shot may lift it until the next hit.
+var puck_cap := PUCK_MAX
 var bounces_since_hit := 0
 var paused := 0.0
 var time := 0.0
@@ -102,6 +111,7 @@ func place_puck(serve_side: int) -> void:
 	powered = -1
 	power_kind = ""
 	hook_time = 0.0
+	puck_cap = PUCK_MAX
 	last_hitter = -1
 	bounces_since_hit = 0
 	rally_hits = 0
@@ -178,13 +188,19 @@ func _move_puck(h: float) -> bool:
 	if powered >= 0 and power_kind == "hook" and hook_time > 0.0:
 		hook_time -= h
 		puck_vel = puck_vel.rotated(hook_curv * puck_vel.length() * h)
-	puck_vel *= maxf(0.0, 1.0 - FRICTION * h)
+	if powered >= 0 and power_kind == "slingshot":
+		# Leaves slow and keeps accelerating: meet it early or not at all.
+		var sp := puck_vel.length()
+		if sp > 1.0:
+			puck_vel = puck_vel / sp * minf(sp + SLING_ACCEL * h, puck_cap)
+	else:
+		puck_vel *= maxf(0.0, 1.0 - FRICTION * h)
 	puck_pos += puck_vel * h
 	_collide_walls()
 	for p: Paddle in paddles:
 		_collide_paddle(p)
-	if puck_vel.length() > PUCK_MAX:
-		puck_vel = puck_vel.normalized() * PUCK_MAX
+	if puck_vel.length() > puck_cap:
+		puck_vel = puck_vel.normalized() * puck_cap
 	if puck_pos.x < -PUCK_R:
 		_goal(1)
 		return true
@@ -249,6 +265,8 @@ func _collide_paddle(p: Paddle) -> void:
 	var vn := rel.dot(n)
 	if vn < 0.0:
 		puck_vel = puck_vel - (1.0 + PADDLE_E) * vn * n
+		if p.power_mult != 1.0 and p.hit_cool <= 0.0:
+			puck_vel *= p.power_mult
 	if p.hit_cool > 0.0:
 		return
 	p.hit_cool = 0.1
@@ -290,6 +308,7 @@ func _on_hit(p: Paddle, before: Vector2) -> void:
 	powered = -1
 	power_kind = ""
 	hook_time = 0.0
+	puck_cap = PUCK_MAX
 	# A save: stopping a fast puck in your own third.
 	var toward_own := (before.x < -800.0 and puck_pos.x < W * 0.33) if p.side == 0 else (before.x > 800.0 and puck_pos.x > W * 0.67)
 	last_hitter = p.side
@@ -316,17 +335,21 @@ func _launch_power(p: Paddle) -> void:
 	powered = p.side
 	power_kind = p.power_kind
 	var speed := puck_vel.length()
+	var k := p.smash_mult
+	puck_cap = PUCK_MAX * maxf(1.0, k)
 	match p.power_kind:
 		"smash":
 			# Yours: the direction is whatever your hit made it. Only faster.
 			var dir := puck_vel.normalized() if speed > 1.0 else Vector2(1, 0)
 			if p.side == 1 and dir.x > 0.0:
 				dir.x = -dir.x
-			puck_vel = dir * clampf(maxf(speed * 1.6, 1650.0), 0.0, PUCK_MAX)
+			puck_vel = dir * clampf(maxf(speed * 1.6, 1650.0) * k, 0.0, puck_cap)
 		"bullet":
-			puck_vel = (p.power_aim - puck_pos).normalized() * 1650.0
+			puck_vel = (p.power_aim - puck_pos).normalized() * 1650.0 * k
 		"ricochet":
-			puck_vel = (p.power_aim - puck_pos).normalized() * 1450.0
+			puck_vel = (p.power_aim - puck_pos).normalized() * 1450.0 * k
+		"slingshot":
+			puck_vel = (p.power_aim - puck_pos).normalized() * SLING_START * k
 		"hook":
 			# Leaves at an angle off the goal line and bends back into the
 			# mouth on a constant-curvature arc.

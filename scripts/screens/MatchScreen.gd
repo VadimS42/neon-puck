@@ -44,15 +44,19 @@ var use_keys := false
 var _h: Dictionary
 
 
-func _init(m, id: String, mi: int) -> void:
+var ctx: Dictionary = {}
+
+
+func _init(m, id: String, mi: int, context: Dictionary = {}) -> void:
 	main = m
+	ctx = context
 	heroine_id = id
 	match_index = mi
 
 
 func _ready() -> void:
 	_h = GameState.heroine(heroine_id)
-	rules.setup(heroine_id, match_index)
+	rules.setup(heroine_id, match_index, ctx)
 	add_child(UI.background())
 	_build_top()
 	table = _TableView.new()
@@ -77,7 +81,7 @@ func _ready() -> void:
 
 func _apply_debug_stage() -> void:
 	rules.layers_lost = debug_stage
-	GameState.apply_opponent(heroine_id, match_index, debug_stage, rules.brain, rules.sim.paddle(1))
+	rules.apply_her(debug_stage)
 	portrait.set_stage(debug_stage)
 	rules.sim.paddle(0).heat = 100.0
 	countdown = 0.0
@@ -95,7 +99,7 @@ func _build_top() -> void:
 	var sp := Control.new()
 	sp.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bar.add_child(sp)
-	target_lbl = UI.label("First to %d · match %d of %d" % [rules.target, match_index + 1, GameState.match_count(heroine_id)], 20, UI.INK_SOFT)
+	target_lbl = UI.label(_mode_text(), 20, UI.INK_SOFT)
 	target_lbl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	bar.add_child(target_lbl)
 	var pause_btn := UI.button("Pause", _toggle_pause, 18, UI.LINE)
@@ -213,6 +217,38 @@ func _bar(col: Color) -> ProgressBar:
 	return b
 
 
+func _mode_text() -> String:
+	var t := "First to %d" % rules.target
+	match String(ctx.get("mode", "story")):
+		"pickup":
+			t += " · pickup game"
+			if GameState.pickup_streak > 0:
+				t += " · streak %d" % GameState.pickup_streak
+		"cup":
+			var c := GameState.cup(String(ctx.get("cup", "")))
+			t += " · %s round %d of %d" % [String(c.get("name", "Cup")), int(ctx.get("round", 0)) + 1, int(c.get("rounds", 3))]
+		"replay":
+			t += " · replay of match %d" % (match_index + 1)
+		"finale":
+			t += " · CHAMPIONSHIP round %d of %d" % [int(ctx.get("round", 0)) + 1, GameState.finale().get("rounds", []).size()]
+		_:
+			t += " · match %d of %d" % [match_index + 1, GameState.match_count(heroine_id)]
+	var pu: Array = ctx.get("powerups", [])
+	if not pu.is_empty():
+		var names := []
+		for pid in pu:
+			names.append(String(GameState.powerup(pid).get("name", pid)))
+		t += "\n" + ", ".join(names)
+	return t
+
+
+func _restart() -> void:
+	# A restart keeps the match type but not the power-ups (they were spent).
+	var c := ctx.duplicate()
+	c["powerups"] = []
+	main.play_match(heroine_id, match_index, c)
+
+
 func _build_pause() -> void:
 	pause_layer = ColorRect.new()
 	(pause_layer as ColorRect).color = Color(0, 0, 0, 0.6)
@@ -230,8 +266,8 @@ func _build_pause() -> void:
 	p.add_child(v)
 	v.add_child(UI.label("Paused", 34, UI.PINK, HORIZONTAL_ALIGNMENT_CENTER))
 	v.add_child(UI.button("Resume", _toggle_pause))
-	v.add_child(UI.button("Restart match", func(): main.play_match(heroine_id, match_index), 22, UI.CYAN))
-	v.add_child(UI.button("Forfeit to roster", main.show_roster, 22, UI.LINE))
+	v.add_child(UI.button("Restart match", _restart, 22, UI.CYAN))
+	v.add_child(UI.button("Forfeit to roster", func(): main.forfeit(ctx), 22, UI.LINE))
 
 
 func _toggle_pause() -> void:
@@ -329,7 +365,7 @@ func _physics_process(delta: float) -> void:
 		ending -= delta
 		if ending < 0.0:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			main.match_finished(heroine_id, match_index, rules.player_won, rules)
+			main.match_finished(heroine_id, match_index, rules.player_won, rules, ctx)
 
 
 func _process(_d: float) -> void:
@@ -385,6 +421,8 @@ func _on_event(e: Dictionary) -> void:
 				_banner("Blocked her %s! +Heat" % sig, UI.CYAN)
 		"save":
 			pass
+		"second_wind":
+			_banner("SECOND WIND! Heat full.", UI.GOLD)
 		"flustered":
 			_banner("Her %s went in. Your Heat drained." % sig, UI.BAD)
 		"goal":
