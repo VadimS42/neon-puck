@@ -1,0 +1,47 @@
+{
+  "_readme": "Free-to-play settings for the Google Play build. Edit freely. Lives: a match costs one life when it starts and gives it back if you win, so only losses and quits cost you. Lives refill on a real-time clock. Gems are the premium currency: earned slowly by playing, bought with real money. Nothing in the game is random for money: no loot boxes, every price is shown up front. Ads: rewarded ads are always optional and say what you get; interstitials only between matches, never before a story memory, and never for players who bought Remove Ads or any gem pack. product ids must match the in-app products you create in Play Console.",
+  "start_gems": 25,
+  "lives": {
+    "max": 5,
+    "refill_minutes": 20,
+    "refill_gems": 30,
+    "ad_lives_per_day": 5,
+    "unlimited_minutes": 120,
+    "unlimited_gems": 60,
+    "free_modes": ["replay"]
+  },
+  "first_win_gems": 5,
+  "story_complete_gems": 30,
+  "cup_win_gems": [10, 20, 40],
+  "daily": [
+    { "tips": 100 },
+    { "powerup": "energy", "count": 1 },
+    { "tips": 200 },
+    { "gems": 5 },
+    { "powerup": "grip", "count": 2 },
+    { "tips": 400 },
+    { "gems": 20 }
+  ],
+  "ads": {
+    "interstitial_every": 3,
+    "interstitial_after_matches": 4,
+    "interstitial_min_seconds": 180,
+    "rewarded_per_day": 15,
+    "double_tips": true,
+    "free_powerup_per_day": 1
+  },
+  "gem_shop": [
+    { "id": "tips_s", "name": "Tip jar", "gems": 20, "tips": 500 },
+    { "id": "tips_m", "name": "Tip bucket", "gems": 75, "tips": 2200 },
+    { "id": "tips_l", "name": "Tip barrel", "gems": 180, "tips": 6000 }
+  ],
+  "products": [
+    { "id": "gems_80",    "type": "consumable",     "name": "Pocket of Gems", "gems": 80,   "price": "$0.99" },
+    { "id": "gems_450",   "type": "consumable",     "name": "Bag of Gems",    "gems": 450,  "price": "$4.99", "tag": "+12%" },
+    { "id": "gems_1000",  "type": "consumable",     "name": "Box of Gems",    "gems": 1000, "price": "$9.99", "tag": "Popular" },
+    { "id": "gems_2200",  "type": "consumable",     "name": "Crate of Gems",  "gems": 2200, "price": "$19.99", "tag": "Best value" },
+    { "id": "starter_pack", "type": "one_time",     "name": "Starter Pack",   "gems": 200, "tips": 1500, "powerups": { "energy": 3, "grip": 3 }, "gear": "paddle_2", "price": "$1.99", "desc": "200 gems, 1,500 tips, the Felt-rim paddle and 6 power-ups. Once per player." },
+    { "id": "remove_ads", "type": "non_consumable", "name": "Remove Ads",     "price": "$2.99", "desc": "No more ads between matches. Optional reward ads stay available." },
+    { "id": "lounge_pass", "type": "non_consumable", "name": "VIP Lounge Pass", "price": "$7.99", "desc": "8 max lives, lives refill twice as fast, +20% tips from every match, and no ads between matches." }
+  ]
+}

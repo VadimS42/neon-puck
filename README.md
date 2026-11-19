@@ -13,6 +13,10 @@ first to N, and every layer an opponent loses makes her weaker. Beat each
 of them six times to win her over, then win the Last Call Championship
 to buy the Afterglow back.
 
+**PG-13 Google Play version:** a separate free-to-play project lives in
+`play/` (own app id, save and data; see `play/README.md`). Godot skips that
+folder when you open this project, and the Android export excludes it.
+
 ## Run it
 
 Open this folder in Godot 4.3 and press F5. Window is 1280x800 and scales.

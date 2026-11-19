@@ -1,0 +1,138 @@
+## ResultScreen.gd: after any match. Shows the score, what you earned (XP,
+## tips, level-ups and what they opened) and the buttons Main hands it:
+## continue to her story beat, rematch, next cup round, and so on.
+class_name ResultScreen
+extends Control
+
+var main
+var heroine_id := ""
+var match_index := 0
+var rules: MatchRules
+var ctx: Dictionary
+var reward: Dictionary
+## [[text, Callable, accent Color], ...]; the first one gets focus.
+var buttons: Array
+
+
+func _init(m, id: String, mi: int, r: MatchRules, context: Dictionary, rew: Dictionary, btns: Array) -> void:
+	main = m
+	heroine_id = id
+	match_index = mi
+	rules = r
+	ctx = context
+	reward = rew
+	buttons = btns
+
+
+func _ready() -> void:
+	var won := rules.player_won
+	var mode := String(ctx.get("mode", "story"))
+	var h := GameState.heroine(heroine_id)
+	add_child(UI.background())
+	var por := HeroinePortrait.new(heroine_id, rules.layers_lost, "stage")
+	por.position = Vector2(820, 60)
+	por.size = Vector2(420, 660)
+	add_child(por)
+	add_child(UI.pin_top_right(UI.status_bar(Vector2.ZERO), 20, 14))
+	var v := VBoxContainer.new()
+	v.position = Vector2(70, 40)
+	v.custom_minimum_size = Vector2(700, 0)
+	v.add_theme_constant_override("separation", 10)
+	add_child(v)
+	var head := HBoxContainer.new()
+	head.add_theme_constant_override("separation", 24)
+	head.add_child(UI.label("You win!" if won else "%s wins" % UI.first_name(heroine_id), 50, UI.GOLD if won else UI.BAD))
+	var sc := UI.label("%d : %d" % [rules.sim.paddle(0).score, rules.sim.paddle(1).score], 40, UI.INK)
+	sc.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	head.add_child(sc)
+	v.add_child(head)
+	var stats := "Cracks: %d / %d    Smash goals: %d    Bank goals: %d    Saves: %d    Her %s goals: %d" % [rules.layers_lost, rules.layer_count, rules.smash_goals, rules.bank_goals, rules.saves, String(h.get("signature_name", "")), rules.her_signature_goals]
+	v.add_child(UI.wrap_label(stats, 17, UI.INK_SOFT))
+	_reward_panel(v)
+	if won and mode == "story":
+		var scene: Dictionary = h["matches"][match_index].get("scene", {})
+		v.add_child(UI.label("Memory unlocked: " + String(scene.get("title", "")), 22, UI.PINK))
+		v.add_child(UI.label("%s now: %s" % [UI.first_name(heroine_id), GameState.attitude(heroine_id)], 20, UI.hcolor(heroine_id)))
+		if GameState.story_done(heroine_id) and match_index == GameState.match_count(heroine_id) - 1:
+			v.add_child(UI.label("You learned her %s! Pick it on the roster." % String(h.get("signature_name", "")), 19, UI.GOLD))
+		else:
+			var nl := GameState.match_level(heroine_id, match_index + 1)
+			if nl > GameState.level:
+				v.add_child(UI.label("Her next match needs level %d. Pickup games and cups get you there." % nl, 17, UI.INK_SOFT))
+	elif mode == "finale":
+		var f := GameState.finale()
+		var rr := int(ctx.get("round", 0))
+		if not won:
+			v.add_child(UI.label("The rounds you've already won stay won. Go again.", 18, UI.INK_SOFT))
+		elif rr >= f["rounds"].size() - 1:
+			v.add_child(UI.label("LAST CALL CHAMPION!", 30, UI.PINK))
+		else:
+			v.add_child(UI.label("Round %d of %d cleared. Next up: %s." % [rr + 1, f["rounds"].size(), UI.first_name(String(f["rounds"][rr + 1]["id"]))], 20, UI.CYAN))
+	elif mode == "cup":
+		var c := GameState.cup(String(ctx.get("cup", "")))
+		if not won:
+			v.add_child(UI.label("Knocked out of the %s. Your round rewards are yours to keep." % String(c.get("name", "")), 18, UI.INK_SOFT))
+		elif int(ctx.get("round", 0)) >= int(c.get("rounds", 3)) - 1:
+			v.add_child(UI.label("%s champion! Memory unlocked: %s" % [String(c.get("name", "")), String(c.get("scene", {}).get("title", ""))], 22, UI.PINK))
+		else:
+			var opp: Array = GameState.cup_run.get("opponents", [])
+			var nr := int(GameState.cup_run.get("round", 0))
+			var nxt := UI.first_name(String(opp[nr])) if nr < opp.size() else "the final"
+			v.add_child(UI.label("Round %d cleared. Next up: %s." % [int(ctx.get("round", 0)) + 1, nxt], 20, UI.CYAN))
+	if not won:
+		v.add_child(UI.wrap_label("Tip: " + String(h.get("signature_tip", "")), 17, UI.CYAN))
+		v.add_child(UI.wrap_label("Every crack in her cool makes her slower or smaller. Gear from the Pro Shop and power-ups help too." + ("" if won or not bool(ctx.get("life_spent", false)) else " This match cost a life."), 16, UI.INK_SOFT))
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	v.add_child(row)
+	var first: Button
+	for b in buttons:
+		var btn := UI.button(String(b[0]), b[1], 22 if first == null else 18, b[2] if b.size() > 2 else UI.PINK)
+		row.add_child(btn)
+		if first == null:
+			first = btn
+	if first:
+		first.call_deferred("grab_focus")
+
+
+func _reward_panel(v: VBoxContainer) -> void:
+	if reward.is_empty():
+		return
+	var p := UI.panel(UI.PANEL, 14, UI.GOLD)
+	v.add_child(p)
+	var g := GridContainer.new()
+	g.columns = 3
+	g.add_theme_constant_override("h_separation", 30)
+	g.add_theme_constant_override("v_separation", 2)
+	p.add_child(g)
+	for l in reward.get("lines", []):
+		g.add_child(UI.label(String(l[0]), 17, UI.INK_SOFT))
+		g.add_child(UI.label("+%d XP" % int(l[1]), 17, UI.CYAN))
+		g.add_child(UI.label("+%d tips" % int(l[2]), 17, UI.GOLD))
+	for gl in reward.get("gem_lines", []):
+		g.add_child(UI.label(String(gl[0]), 17, UI.INK_SOFT))
+		g.add_child(UI.label("", 17))
+		g.add_child(UI.label("+%d gems" % int(gl[1]), 17, UI.CYAN))
+	g.add_child(UI.label("Total", 20, UI.INK))
+	g.add_child(UI.label("+%d XP" % int(reward.get("xp", 0)), 20, UI.CYAN))
+	g.add_child(UI.label("+%d tips" % int(reward.get("tips", 0)), 20, UI.GOLD))
+	if int(reward.get("tips", 0)) > 0 and bool(GameState.f2p.get("ads", {}).get("double_tips", true)) and GameState.rewarded_left() > 0:
+		var dbl := UI.button("Watch an ad: double your tips (+%d)" % int(reward["tips"]), func(): pass, 17, UI.GOLD, "ad")
+		dbl.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		dbl.pressed.connect(func():
+			dbl.disabled = true
+			Ads.show_rewarded("other", func(ok: bool):
+				if ok:
+					GameState.tips += int(reward["tips"])
+					GameState.save()
+					dbl.text = "Tips doubled!"
+				else:
+					dbl.disabled = false))
+		v.add_child(dbl)
+	if int(reward.get("level_to", 1)) > int(reward.get("level_from", 1)):
+		v.add_child(UI.label("LEVEL UP! You're level %d." % int(reward["level_to"]), 26, UI.GOLD))
+		var un: Array = reward.get("unlocks", [])
+		if not un.is_empty():
+			var t := UI.wrap_label("New: " + ", ".join(un), 17, UI.GOOD)
+			t.custom_minimum_size = Vector2(700, 0)
+			v.add_child(t)

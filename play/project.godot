@@ -1,0 +1,49 @@
+; Engine configuration file.
+
+config_version=5
+
+[application]
+
+config/quit_on_go_back=false
+
+config/name="Neon Puck Rivals"
+config/description="A free-to-play arcade air hockey game (PG-13, Google Play build). Win over four rivals at a neon lounge: every power smash that scores cracks her cool, and every crack makes her weaker."
+config/version="0.1.0"
+run/main_scene="res://scenes/Main.tscn"
+config/icon="res://icon.png"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/use_custom_user_dir=true
+config/custom_user_dir_name="NeonPuckRivals"
+boot_splash/bg_color=Color(0.06, 0.04, 0.1, 1)
+boot_splash/show_image=false
+
+[autoload]
+
+GameState="*res://autoload/GameState.gd"
+SFX="*res://autoload/SFX.gd"
+Music="*res://autoload/Music.gd"
+Store="*res://autoload/Store.gd"
+Ads="*res://autoload/Ads.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+window/handheld/orientation=4
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=true
+
+[physics]
+
+common/physics_ticks_per_second=120
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

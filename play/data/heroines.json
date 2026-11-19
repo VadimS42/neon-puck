@@ -1,0 +1,1596 @@
+{
+  "_readme": "All heroines, their play styles, cool-meter cracks and story. Edit freely: the game reads this file at start. Stats: speed = paddle top speed (px/s), size = paddle radius (px), reaction = seconds she sees the puck late (higher is easier), aim = how far her aim wanders (px), bank = 0..1 how often she banks shots, aggression = 0..1 how far forward she plays. layers = her cracks: each time her Cool runs out she cracks a little more (expression and pose, never clothing), and that crack's stat drops. Layer effects: speed/size multiply, reaction adds. outfits = cosmetic costumes (no stat effect): unlock 'default', 'story' (finish her story) or 'gems' (bought in the Wardrobe). attitude = what she thinks of you after N wins (0..6). Each match has a 'level': you need that level to play it (story wins earn most of it; pickup games and cups the rest). unlock_wins = story wins needed to meet her; unlock_done = heroines you must win over first. barks = lines she says during a match: 'hostile' for her first two matches, 'warm' after. finale = the championship gauntlet after all four are won over. Every character is an adult. PG-13 build: no nudity, romance stops at a kiss.",
+  "player": {
+    "speed": 2600,
+    "size": 38
+  },
+  "difficulty": {
+    "story": {
+      "label": "Story",
+      "speed": 0.7,
+      "reaction": 0.09,
+      "aim": 1.3,
+      "heat": 1.6
+    },
+    "normal": {
+      "label": "Normal",
+      "speed": 1.0,
+      "reaction": 0.0,
+      "aim": 1.0,
+      "heat": 1.0
+    },
+    "hard": {
+      "label": "Hard",
+      "speed": 1.12,
+      "reaction": -0.03,
+      "aim": 0.8,
+      "heat": 0.85
+    }
+  },
+  "attitude": [
+    "Hates you",
+    "Rival",
+    "Grudging respect",
+    "Friendly",
+    "Crushing on you",
+    "Falling for you",
+    "Together"
+  ],
+  "prologue": [
+    {
+      "who": "narrator",
+      "text": "The Afterglow: a neon arcade lounge that stays open past three. Last month a bar chain bought it. Tonight they sent their new night manager."
+    },
+    {
+      "who": "narrator",
+      "text": "That's you. Your first memo from head office says to shut down the regulars' after-hours game."
+    },
+    {
+      "who": "mila",
+      "e": "angry",
+      "text": "So YOU'RE the suit. You towed my bike this morning, by the way."
+    },
+    {
+      "who": "you",
+      "text": "It was in the fire lane."
+    },
+    {
+      "who": "juno",
+      "e": "angry",
+      "text": "And you got the manager job I've been doing for free for two years. Congratulations. Everyone hates you."
+    },
+    {
+      "who": "mila",
+      "e": "teasing",
+      "text": "Here's the deal. The Last Call League has rules, and everyone on the whiteboard signed them. First to five on the table. Score a power smash and the other player loses their cool. There's a meter. It's very scientific."
+    },
+    {
+      "who": "juno",
+      "e": "neutral",
+      "text": "Beat us at our own game and maybe the league lets you stay. Lose, and you write head office a letter saying you quit."
+    },
+    {
+      "who": "you",
+      "text": "...Where do I sign?"
+    },
+    {
+      "who": "narrator",
+      "text": "Win them over one match at a time. Each win changes what they think of you and unlocks a memory for the album. Across the street, the owner of the Static has heard about league night. And Sable, who founded the Afterglow, is watching."
+    }
+  ],
+  "order": [
+    "mila",
+    "juno",
+    "kat",
+    "sable"
+  ],
+  "heroines": {
+    "mila": {
+      "name": "Mila Reyes",
+      "age": 24,
+      "tagline": "Bike courier. Plays fast, talks faster. You towed her bike.",
+      "grudge": "You towed her bike on your first morning.",
+      "style": "Speed",
+      "color": "#FF4F8B",
+      "signature": "bullet",
+      "signature_name": "Bullet",
+      "signature_tip": "A dead-straight rocket at the middle of your goal. Park your paddle in the centre of the mouth when you see the warning.",
+      "perk_text": "Win Mila over to learn her Bullet: your smash flies straight at the middle of her goal.",
+      "stats": {
+        "speed": 2500,
+        "size": 37,
+        "reaction": 0.13,
+        "aim": 40,
+        "bank": 0.1,
+        "aggression": 0.75
+      },
+      "layers": [
+        {
+          "name": "Smirk gone",
+          "stat": "speed",
+          "value": 0.82,
+          "effect": "-18% paddle speed"
+        },
+        {
+          "name": "Hair tie snaps",
+          "stat": "reaction",
+          "value": 0.05,
+          "effect": "Slower reactions"
+        },
+        {
+          "name": "Full meltdown",
+          "stat": "size",
+          "value": 0.82,
+          "effect": "-18% paddle size"
+        }
+      ],
+      "barks": {
+        "hostile": {
+          "her_goal": [
+            "Ha! Go back to your spreadsheet.",
+            "That's for my bike.",
+            "Too slow, suit."
+          ],
+          "your_goal": [
+            "That was a fluke.",
+            "Ugh. Lucky.",
+            "Don't smile at me."
+          ],
+          "crack1": "You did NOT just... fine. FINE. I'm still faster.",
+          "crack2": "Stop grinning and play, suit!",
+          "crack3": "This is not happening. This is NOT happening.",
+          "signature": "Eat this, suit!"
+        },
+        "warm": {
+          "her_goal": [
+            "Gotcha! Don't pout.",
+            "Keep up, cutie.",
+            "That one's for breakfast."
+          ],
+          "your_goal": [
+            "Okay, that was good.",
+            "Show-off.",
+            "Do that again. No, wait, don't."
+          ],
+          "crack1": "Heh. You've been waiting for that one, huh?",
+          "crack2": "Eyes on the puck. ...Or don't. Your call.",
+          "crack3": "Okay, you win this round. Mostly.",
+          "signature": "Here comes the fast one!"
+        }
+      },
+      "matches": [
+        {
+          "level": 1,
+          "target": 5,
+          "before": [
+            {
+              "who": "mila",
+              "e": "angry",
+              "text": "Twenty-eight bucks to get my bike out of the impound. I'm taking it out of your dignity."
+            },
+            {
+              "who": "you",
+              "text": "I'll pay you back if you win."
+            },
+            {
+              "who": "mila",
+              "e": "teasing",
+              "text": "Oh, I'm winning. And then you're writing that letter."
+            }
+          ],
+          "after": [
+            {
+              "who": "mila",
+              "e": "surprised",
+              "text": "No. No way. Best of three!"
+            },
+            {
+              "who": "you",
+              "text": "League rules say one match a night."
+            },
+            {
+              "who": "mila",
+              "e": "angry",
+              "text": "Then I'll be back tomorrow. Don't you dare tow anything."
+            }
+          ],
+          "scene": {
+            "id": "mila_1",
+            "title": "Sore Loser",
+            "brief": "Mila sits on the edge of the table, hair a mess, arms crossed, glaring at you and refusing to admit she's blushing."
+          }
+        },
+        {
+          "level": 2,
+          "target": 5,
+          "before": [
+            {
+              "who": "mila",
+              "e": "angry",
+              "text": "I watched replays of myself all day. I lean left when I panic. Not tonight."
+            },
+            {
+              "who": "mila",
+              "e": "teasing",
+              "text": "Also I taped my lucky shoelace to my wrist. Strategy."
+            },
+            {
+              "who": "you",
+              "text": "That's... actually smart."
+            },
+            {
+              "who": "mila",
+              "e": "shy",
+              "text": "Don't compliment me. It's weird."
+            }
+          ],
+          "after": [
+            {
+              "who": "mila",
+              "e": "sad",
+              "text": "I leaned left. I leaned SO left."
+            },
+            {
+              "who": "mila",
+              "e": "shy",
+              "text": "...You're not totally awful. For a suit. Walk me to my bike? I'm not scared of the dark. I just want a witness."
+            }
+          ],
+          "scene": {
+            "id": "mila_2",
+            "title": "Borrowed Jacket",
+            "brief": "Outside under the neon sign, Mila wears your oversized work jacket over her racer gear, leaning on her bike, still pretending to be annoyed."
+          }
+        },
+        {
+          "level": 3,
+          "target": 6,
+          "before": [
+            {
+              "who": "mila",
+              "e": "teasing",
+              "text": "I brought backup. Every courier in the city is watching tonight."
+            },
+            {
+              "who": "narrator",
+              "text": "Six couriers in rain gear crowd the bar, chanting her name and booing yours."
+            },
+            {
+              "who": "you",
+              "text": "Is that a sign with my face crossed out?"
+            },
+            {
+              "who": "mila",
+              "e": "shy",
+              "text": "Dex made it. He's very proud. Don't embarrass me in front of my people."
+            }
+          ],
+          "after": [
+            {
+              "who": "narrator",
+              "text": "The couriers go quiet. Then Dex starts a slow clap, and the whole crew joins in."
+            },
+            {
+              "who": "mila",
+              "e": "angry",
+              "text": "Traitors. All of them. They're asking if you're single."
+            },
+            {
+              "who": "mila",
+              "e": "shy",
+              "text": "...I told them you're terrible. Hands off."
+            }
+          ],
+          "scene": {
+            "id": "mila_3",
+            "title": "Courier Crowd",
+            "brief": "Mila in her racer gear stands on the table rail, pointing at you in mock outrage while her courier friends cheer offscreen. She's fighting a grin."
+          }
+        },
+        {
+          "level": 4,
+          "target": 6,
+          "before": [
+            {
+              "who": "narrator",
+              "text": "It's pouring. Mila walks in soaked, wheeling her bike. The back tyre is flat."
+            },
+            {
+              "who": "mila",
+              "e": "angry",
+              "text": "Don't. Say. Anything."
+            },
+            {
+              "who": "you",
+              "text": "I have a patch kit in the office."
+            },
+            {
+              "who": "mila",
+              "e": "surprised",
+              "text": "...Why do you have a patch kit?"
+            },
+            {
+              "who": "you",
+              "text": "I bought one after the towing thing. In case."
+            },
+            {
+              "who": "mila",
+              "e": "shy",
+              "text": "That's either really sweet or really creepy. Play me while I decide."
+            }
+          ],
+          "after": [
+            {
+              "who": "mila",
+              "e": "surprised",
+              "text": "You patched it while I was drying off, didn't you? It's fixed."
+            },
+            {
+              "who": "mila",
+              "e": "shy",
+              "text": "Okay. Sweet. I decided sweet."
+            },
+            {
+              "who": "mila",
+              "e": "teasing",
+              "text": "Stay till the rain stops? I'm not riding home in this. And I'm keeping this hoodie."
+            }
+          ],
+          "scene": {
+            "id": "mila_4",
+            "title": "Rain Check",
+            "brief": "Mila sits on the bar in an oversized Afterglow hoodie with a towel round her shoulders, hair dripping, watching you patch her bike tyre on the floor."
+          }
+        },
+        {
+          "level": 6,
+          "target": 7,
+          "before": [
+            {
+              "who": "mila",
+              "e": "teasing",
+              "text": "Dex keeps asking when you're coming to courier trivia night. I keep telling him never."
+            },
+            {
+              "who": "mila",
+              "e": "shy",
+              "text": "...Because I want you to myself. Forget I said that. Rack the puck."
+            }
+          ],
+          "after": [
+            {
+              "who": "mila",
+              "e": "happy",
+              "text": "Okay, I give up pretending I'm still mad at you. It's exhausting."
+            },
+            {
+              "who": "mila",
+              "e": "teasing",
+              "text": "Buy me fries. Big ones. We're... whatever we are now."
+            }
+          ],
+          "scene": {
+            "id": "mila_5",
+            "title": "Fries at 4 AM",
+            "brief": "Mila in her racer gear and your jacket, sharing fries with you on the lounge's back steps at dawn, leaning on your shoulder."
+          }
+        },
+        {
+          "level": 7,
+          "target": 7,
+          "before": [
+            {
+              "who": "mila",
+              "e": "neutral",
+              "text": "No jokes tonight. If I win, you buy breakfast for a week."
+            },
+            {
+              "who": "you",
+              "text": "And if I win?"
+            },
+            {
+              "who": "mila",
+              "e": "shy",
+              "text": "Then I stop pretending I keep coming back for the hockey."
+            }
+          ],
+          "after": [
+            {
+              "who": "mila",
+              "e": "happy",
+              "text": "Fine. You win. I like you. There, I said it."
+            },
+            {
+              "who": "mila",
+              "e": "teasing",
+              "text": "Here, have my Bullet. I'll teach you the wrist thing tomorrow. Tonight you're walking me home. The long way."
+            },
+            {
+              "who": "narrator",
+              "text": "Halfway down the empty street, she stops, rolls her eyes at herself, and kisses you."
+            }
+          ],
+          "scene": {
+            "id": "mila_6",
+            "title": "The Long Way Home",
+            "brief": "You and Mila walk her bike down an empty neon street at dawn, her hand in yours. She has just kissed you and is pretending it didn't happen, grinning."
+          }
+        }
+      ],
+      "outfits": [
+        {
+          "id": "default",
+          "name": "Racer gear",
+          "unlock": "default"
+        },
+        {
+          "id": "date",
+          "name": "Date night",
+          "unlock": "story"
+        },
+        {
+          "id": "league",
+          "name": "League jersey",
+          "unlock": "gems",
+          "gems": 120
+        },
+        {
+          "id": "neon",
+          "name": "Neon Nights",
+          "unlock": "gems",
+          "gems": 250
+        }
+      ]
+    },
+    "juno": {
+      "name": "Juno Hart",
+      "age": 27,
+      "tagline": "Bartender. Never hits the puck straight. You took her job.",
+      "grudge": "You got the manager job she'd been doing for free.",
+      "style": "Banks",
+      "color": "#4FE3B0",
+      "signature": "ricochet",
+      "signature_name": "Ricochet",
+      "signature_tip": "A wall shot that loses no speed on the bounce. Watch which wall she aims at and meet it on the rebound.",
+      "perk_text": "Win Juno over to learn her Ricochet: your smash banks off the far wall without losing speed.",
+      "stats": {
+        "speed": 2150,
+        "size": 40,
+        "reaction": 0.15,
+        "aim": 55,
+        "bank": 0.6,
+        "aggression": 0.4
+      },
+      "layers": [
+        {
+          "name": "Eyebrow twitch",
+          "stat": "reaction",
+          "value": 0.05,
+          "effect": "Slower reactions"
+        },
+        {
+          "name": "Pen snapped",
+          "stat": "size",
+          "value": 0.82,
+          "effect": "-18% paddle size"
+        },
+        {
+          "name": "Lost her cool",
+          "stat": "speed",
+          "value": 0.82,
+          "effect": "-18% paddle speed"
+        }
+      ],
+      "barks": {
+        "hostile": {
+          "her_goal": [
+            "Geometry. Look it up.",
+            "Corporate can't do angles.",
+            "Write that in your report."
+          ],
+          "your_goal": [
+            "Hm. Noted.",
+            "Don't get used to it.",
+            "A broken clock."
+          ],
+          "crack1": "That was a twitch. Not a crack. A twitch.",
+          "crack2": "If you say one word, I'm salting your sodas forever.",
+          "crack3": "...Congratulations. You're the worst person I know.",
+          "signature": "Off the wall, manager."
+        },
+        "warm": {
+          "her_goal": [
+            "Angles, darling.",
+            "Watch the wall, not me.",
+            "That's one for the napkin."
+          ],
+          "your_goal": [
+            "Ooh. Nice line.",
+            "You've been studying.",
+            "Okay, I'm impressed."
+          ],
+          "crack1": "Mm. That one I let you have.",
+          "crack2": "You're blushing more than I am. Focus.",
+          "crack3": "Well. Now we're even on blushing.",
+          "signature": "Count the bounces."
+        }
+      },
+      "matches": [
+        {
+          "level": 1,
+          "target": 5,
+          "before": [
+            {
+              "who": "juno",
+              "e": "angry",
+              "text": "Two years I ran this place. Inventory, payroll, the broken claw machine. Then they send a stranger with a lanyard."
+            },
+            {
+              "who": "you",
+              "text": "I didn't ask for the job."
+            },
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "Then losing it shouldn't hurt. Straight shots are for people who can't do geometry."
+            }
+          ],
+          "after": [
+            {
+              "who": "juno",
+              "e": "surprised",
+              "text": "You read the wall. Nobody reads the wall."
+            },
+            {
+              "who": "juno",
+              "e": "angry",
+              "text": "This changes nothing. You're still a lanyard."
+            }
+          ],
+          "scene": {
+            "id": "juno_1",
+            "title": "Behind the Bar",
+            "brief": "Juno, behind the bar in her vest and bow tie, slams a soda down in front of you, furious, and refuses to admit she lost."
+          }
+        },
+        {
+          "level": 2,
+          "target": 5,
+          "before": [
+            {
+              "who": "juno",
+              "e": "neutral",
+              "text": "I've drawn every angle on this table on a napkin. Forty-one napkins."
+            },
+            {
+              "who": "you",
+              "text": "Is that why we're out of napkins?"
+            },
+            {
+              "who": "juno",
+              "e": "angry",
+              "text": "Don't. Be. Charming."
+            }
+          ],
+          "after": [
+            {
+              "who": "juno",
+              "e": "shy",
+              "text": "Forty-two napkins, and none of them had you on it."
+            },
+            {
+              "who": "juno",
+              "e": "neutral",
+              "text": "...I read your memo. You never sent the order to shut us down. Why?"
+            },
+            {
+              "who": "you",
+              "text": "Because this place is the only thing that chain bought that's worth anything."
+            }
+          ],
+          "scene": {
+            "id": "juno_2",
+            "title": "The Memo",
+            "brief": "Juno, sleeves rolled up, sits on the office desk reading your unsent memo by lamplight, looking up at you differently for the first time."
+          }
+        },
+        {
+          "level": 3,
+          "target": 6,
+          "before": [
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "Inventory night. You count bottles, I count your mistakes."
+            },
+            {
+              "who": "you",
+              "text": "Why is there a case of maraschino cherries marked 'emergency'?"
+            },
+            {
+              "who": "juno",
+              "e": "neutral",
+              "text": "Because some nights are emergencies. Rack 'em. Loser counts the limes."
+            }
+          ],
+          "after": [
+            {
+              "who": "juno",
+              "e": "surprised",
+              "text": "...You kept my schedule. The one I made. You didn't change a single shift."
+            },
+            {
+              "who": "you",
+              "text": "It was a good schedule."
+            },
+            {
+              "who": "juno",
+              "e": "shy",
+              "text": "Nobody's ever said that to me. I'm going to need a minute. And the emergency cherries."
+            }
+          ],
+          "scene": {
+            "id": "juno_3",
+            "title": "Stockroom",
+            "brief": "Juno in her shirt and vest, sleeves rolled up, sits on a stack of soda crates in the stockroom with a clipboard and a pen between her teeth, eating cherries from the jar."
+          }
+        },
+        {
+          "level": 5,
+          "target": 6,
+          "before": [
+            {
+              "who": "narrator",
+              "text": "Head office sent an auditor today. Juno watched you walk him around the lounge."
+            },
+            {
+              "who": "juno",
+              "e": "neutral",
+              "text": "You told him I built the stock system. And the rota. And the cocktail list."
+            },
+            {
+              "who": "you",
+              "text": "You did."
+            },
+            {
+              "who": "juno",
+              "e": "angry",
+              "text": "You could have taken the credit. That's what lanyards do."
+            },
+            {
+              "who": "juno",
+              "e": "shy",
+              "text": "I'm so mad I could kiss you. Play. Now. Before I do something stupid."
+            }
+          ],
+          "after": [
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "I stole the fancy sparkling cider from the auditor's welcome basket."
+            },
+            {
+              "who": "juno",
+              "e": "happy",
+              "text": "Come on. Office. We're celebrating you being a decent human being. It's very rare."
+            }
+          ],
+          "scene": {
+            "id": "juno_4",
+            "title": "Credit Where Due",
+            "brief": "Juno in her work clothes and your blazer lounges on the office couch, popping a bottle of sparkling cider, laughing as the cork hits the ceiling."
+          }
+        },
+        {
+          "level": 6,
+          "target": 7,
+          "before": [
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "Proposal. You keep the title, I keep running the place, and we both lie to head office."
+            },
+            {
+              "who": "you",
+              "text": "Deal. Winner picks who does payroll."
+            }
+          ],
+          "after": [
+            {
+              "who": "juno",
+              "e": "happy",
+              "text": "Fine, I'll do payroll. You'd mess it up anyway."
+            },
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "Stay after close. I'll make you the milkshake that isn't on the menu."
+            }
+          ],
+          "scene": {
+            "id": "juno_5",
+            "title": "Off the Menu",
+            "brief": "Juno sits on the bar in her bartender vest and your tie, sliding you a glowing neon milkshake with two straws and a small smile."
+          }
+        },
+        {
+          "level": 7,
+          "target": 7,
+          "before": [
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "Last napkin. It just says: don't fall for the new guy."
+            },
+            {
+              "who": "juno",
+              "e": "shy",
+              "text": "So I'd better win, huh?"
+            }
+          ],
+          "after": [
+            {
+              "who": "juno",
+              "e": "happy",
+              "text": "I'm keeping that napkin. Framing it, actually."
+            },
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "Here's my Ricochet. The trick is to aim at the wall like you mean it. Like this."
+            },
+            {
+              "who": "narrator",
+              "text": "She leans across the bar and kisses you. Behind her, the framed napkin catches the neon."
+            }
+          ],
+          "scene": {
+            "id": "juno_6",
+            "title": "Perfect Angle",
+            "brief": "Juno leans across the bar to kiss you, eyes closed, smiling into it. The framed napkin reading 'don't fall for the new guy' hangs on the wall behind her."
+          }
+        }
+      ],
+      "outfits": [
+        {
+          "id": "default",
+          "name": "Bartender",
+          "unlock": "default"
+        },
+        {
+          "id": "date",
+          "name": "Sunday best",
+          "unlock": "story"
+        },
+        {
+          "id": "league",
+          "name": "League jersey",
+          "unlock": "gems",
+          "gems": 120
+        },
+        {
+          "id": "neon",
+          "name": "Neon Nights",
+          "unlock": "gems",
+          "gems": 250
+        }
+      ]
+    },
+    "kat": {
+      "name": "Kat Vance",
+      "age": 28,
+      "tagline": "Owns the Static, the dive bar across the street. Your league night stole her crowd.",
+      "grudge": "Your chain's league night flyers stole her Thursday crowd, and one ended up taped to her door.",
+      "style": "Tricks",
+      "color": "#FF9F43",
+      "signature": "slingshot",
+      "signature_name": "Slingshot",
+      "signature_tip": "Leaves slow and keeps speeding up. Step up and meet it before the centre line, while it's still slow.",
+      "perk_text": "Win Kat over to learn her Slingshot: your power shot leaves slow and speeds up all the way to her goal.",
+      "unlock": "Win 4 story matches",
+      "unlock_wins": 4,
+      "stats": {
+        "speed": 2300,
+        "size": 39,
+        "reaction": 0.13,
+        "aim": 50,
+        "bank": 0.35,
+        "aggression": 0.6
+      },
+      "layers": [
+        {
+          "name": "Shades off",
+          "stat": "speed",
+          "value": 0.84,
+          "effect": "-16% paddle speed"
+        },
+        {
+          "name": "Pick dropped",
+          "stat": "reaction",
+          "value": 0.05,
+          "effect": "Slower reactions"
+        },
+        {
+          "name": "Rage mode",
+          "stat": "size",
+          "value": 0.84,
+          "effect": "-16% paddle size"
+        }
+      ],
+      "barks": {
+        "hostile": {
+          "her_goal": [
+            "Slow start, big finish. Like me.",
+            "That's for my Thursdays.",
+            "Tape THAT to a door."
+          ],
+          "your_goal": [
+            "Beginner's luck.",
+            "The Static has better tables.",
+            "Whatever, flyer boy."
+          ],
+          "crack1": "Those were my lucky shades. I own nine. Keep dreaming.",
+          "crack2": "I dropped my pick! Nobody saw that!",
+          "crack3": "...This never happened. Nobody across the street hears about this.",
+          "signature": "Here comes the slingshot!"
+        },
+        "warm": {
+          "her_goal": [
+            "Too slow, flyer boy.",
+            "Gotcha. Buy me a soda.",
+            "That one had extra spin, just for you."
+          ],
+          "your_goal": [
+            "Okay, that was smooth.",
+            "Show-off. Do it again.",
+            "Fine, fine, you're good."
+          ],
+          "crack1": "Keep my shades warm for me, champ.",
+          "crack2": "Like the band? I'll play you the record. Later.",
+          "crack3": "Stop smiling at me like that. I'm trying to lose with dignity.",
+          "signature": "Wait for it... wait for it..."
+        }
+      },
+      "matches": [
+        {
+          "level": 4,
+          "target": 5,
+          "before": [
+            {
+              "who": "narrator",
+              "text": "A woman in a leather jacket slams the door open and slaps a crumpled flyer on the bar."
+            },
+            {
+              "who": "kat",
+              "e": "angry",
+              "text": "'LEAGUE NIGHT AT THE AFTERGLOW. THURSDAYS.' This was taped to MY door. Thursday is MY night."
+            },
+            {
+              "who": "you",
+              "text": "Head office did the flyers. I just..."
+            },
+            {
+              "who": "kat",
+              "e": "angry",
+              "text": "Kat Vance. I own the Static. My regulars are drinking HERE now. So I'm joining your stupid league."
+            },
+            {
+              "who": "kat",
+              "e": "teasing",
+              "text": "I win, the flyers stop. You win... you won't."
+            }
+          ],
+          "after": [
+            {
+              "who": "kat",
+              "e": "surprised",
+              "text": "That table's tilted. That's the only explanation."
+            },
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "It's not tilted. I level it every Monday."
+            },
+            {
+              "who": "kat",
+              "e": "angry",
+              "text": "Then I'm coming back next Thursday. And the one after. Until it's tilted my way."
+            }
+          ],
+          "scene": {
+            "id": "kat_1",
+            "title": "Wrong Bar",
+            "brief": "Kat stands at the table in her band tee and jeans, leather jacket slung over one shoulder, jabbing a finger at you, furious and flushed."
+          }
+        },
+        {
+          "level": 5,
+          "target": 5,
+          "before": [
+            {
+              "who": "kat",
+              "e": "teasing",
+              "text": "I've been practising on the Static's table. It's older than you and it has a dead spot in the corner."
+            },
+            {
+              "who": "kat",
+              "e": "neutral",
+              "text": "If I can beat THAT table, I can beat you."
+            },
+            {
+              "who": "you",
+              "text": "Why not just get a new table?"
+            },
+            {
+              "who": "kat",
+              "e": "angry",
+              "text": "With what money? Somebody stole my Thursdays."
+            }
+          ],
+          "after": [
+            {
+              "who": "kat",
+              "e": "sad",
+              "text": "...Okay. It's not the table. It's you. You're annoyingly good."
+            },
+            {
+              "who": "you",
+              "text": "What if the Static hosted league night on Mondays? We're closed Mondays."
+            },
+            {
+              "who": "kat",
+              "e": "surprised",
+              "text": "...You'd send people to my bar? Why would you do that?"
+            },
+            {
+              "who": "you",
+              "text": "Because the league's better with two bars."
+            }
+          ],
+          "scene": {
+            "id": "kat_2",
+            "title": "Dead Spot",
+            "brief": "Kat in her band tee and ripped jeans sits on the bar of the empty Static across the street, its old table behind her, arms folded, studying you suspiciously."
+          }
+        },
+        {
+          "level": 6,
+          "target": 6,
+          "before": [
+            {
+              "who": "narrator",
+              "text": "Monday. The Static is packed for its first league night. Kat looks terrified."
+            },
+            {
+              "who": "kat",
+              "e": "surprised",
+              "text": "There are forty people in my bar. I haven't had forty people in my bar since the Super Bowl."
+            },
+            {
+              "who": "kat",
+              "e": "teasing",
+              "text": "Play me first. Make it look good. If I lose in front of them, I'll still kill you."
+            }
+          ],
+          "after": [
+            {
+              "who": "kat",
+              "e": "happy",
+              "text": "They're buying drinks. They're buying SO many drinks."
+            },
+            {
+              "who": "kat",
+              "e": "shy",
+              "text": "You did this. I hate it. I mean I love it. I mean... shut up and have a root beer. On the house."
+            }
+          ],
+          "scene": {
+            "id": "kat_3",
+            "title": "Monday Night",
+            "brief": "Kat behind the bar of the packed Static in her band tee and jeans, pulling two pints at once and laughing, the crowd a neon blur behind her."
+          }
+        },
+        {
+          "level": 8,
+          "target": 6,
+          "before": [
+            {
+              "who": "kat",
+              "e": "happy",
+              "text": "I got my band back together for the Static's Monday nights. We play after league."
+            },
+            {
+              "who": "kat",
+              "e": "teasing",
+              "text": "Our drummer quit. So, unrelated question: can you keep a beat?"
+            },
+            {
+              "who": "you",
+              "text": "Is that a job offer?"
+            },
+            {
+              "who": "kat",
+              "e": "shy",
+              "text": "It's a dare. Beat me first."
+            }
+          ],
+          "after": [
+            {
+              "who": "kat",
+              "e": "teasing",
+              "text": "You can't drum. That's fine. Nobody can drum."
+            },
+            {
+              "who": "kat",
+              "e": "shy",
+              "text": "Stay for soundcheck anyway. I want someone to watch who isn't Juno judging my bass."
+            }
+          ],
+          "scene": {
+            "id": "kat_4",
+            "title": "Soundcheck",
+            "brief": "Kat on the Static's tiny stage in her band tee and jeans, bass guitar slung low, grinning at you over the mic stand under red stage lights."
+          }
+        },
+        {
+          "level": 9,
+          "target": 7,
+          "before": [
+            {
+              "who": "kat",
+              "e": "neutral",
+              "text": "I found something out. The flyer on my door? You didn't tape it there. Head office did."
+            },
+            {
+              "who": "kat",
+              "e": "sad",
+              "text": "You took the blame for two months and never said a word."
+            },
+            {
+              "who": "you",
+              "text": "You needed someone to be mad at."
+            },
+            {
+              "who": "kat",
+              "e": "shy",
+              "text": "That's the most annoying, decent thing anyone's ever done for me. Play me before I cry."
+            }
+          ],
+          "after": [
+            {
+              "who": "kat",
+              "e": "happy",
+              "text": "I tore up the flyer. Kept one piece. The bit with your chain's logo, so I can throw darts at it."
+            },
+            {
+              "who": "kat",
+              "e": "shy",
+              "text": "Walk me home? It's across the street, I know. Walk slow."
+            }
+          ],
+          "scene": {
+            "id": "kat_5",
+            "title": "Across the Street",
+            "brief": "Kat in her band tee and your work jacket stands in the middle of the empty street between the two bars at 4 AM, both neon signs glowing behind her, reaching for your hand."
+          }
+        },
+        {
+          "level": 10,
+          "target": 7,
+          "before": [
+            {
+              "who": "kat",
+              "e": "shy",
+              "text": "No trash talk tonight. I keep starting sentences and they come out nice. It's horrible."
+            },
+            {
+              "who": "kat",
+              "e": "teasing",
+              "text": "So here's the bet. I win, you play bass in my band forever. You win..."
+            },
+            {
+              "who": "you",
+              "text": "I win?"
+            },
+            {
+              "who": "kat",
+              "e": "shy",
+              "text": "You win, you get a dance. One slow song, on the Static's stage, after close. Don't make it weird."
+            }
+          ],
+          "after": [
+            {
+              "who": "kat",
+              "e": "happy",
+              "text": "Okay. You win. One dance. Mind the stage, it's older than the table."
+            },
+            {
+              "who": "kat",
+              "e": "teasing",
+              "text": "And take my Slingshot. Start slow, finish strong. Like I said. ...Like this song."
+            },
+            {
+              "who": "narrator",
+              "text": "The song ends. Neither of you moves. Then she kisses you, and the amp hums along."
+            }
+          ],
+          "scene": {
+            "id": "kat_6",
+            "title": "Last Song",
+            "brief": "Kat and you slow-dancing alone on the Static's stage after close, her forehead against yours, her bass leaning on the amp, red stage lights turned low."
+          }
+        }
+      ],
+      "outfits": [
+        {
+          "id": "default",
+          "name": "Rocker",
+          "unlock": "default"
+        },
+        {
+          "id": "date",
+          "name": "Gig night",
+          "unlock": "story"
+        },
+        {
+          "id": "league",
+          "name": "League jersey",
+          "unlock": "gems",
+          "gems": 120
+        },
+        {
+          "id": "neon",
+          "name": "Neon Nights",
+          "unlock": "gems",
+          "gems": 250
+        }
+      ]
+    },
+    "sable": {
+      "name": "Sable Marchetti",
+      "age": 31,
+      "tagline": "Founded the Afterglow, sold it to your chain. Undefeated for six years.",
+      "grudge": "You're the face of the company that bought her lounge.",
+      "style": "Curves",
+      "color": "#B98CFF",
+      "signature": "hook",
+      "signature_name": "Hook",
+      "signature_tip": "Leaves wide and curls back into your goal. Don't chase where it starts; cover where it bends to.",
+      "perk_text": "Win Sable over to learn her Hook: your smash curls into the goal from a wide angle.",
+      "unlock": "Win over two of the others (all 6 of their matches)",
+      "stats": {
+        "speed": 2350,
+        "size": 42,
+        "reaction": 0.115,
+        "aim": 45,
+        "bank": 0.3,
+        "aggression": 0.55
+      },
+      "layers": [
+        {
+          "name": "Poker face cracks",
+          "stat": "size",
+          "value": 0.84,
+          "effect": "-16% paddle size"
+        },
+        {
+          "name": "Hair falls loose",
+          "stat": "speed",
+          "value": 0.84,
+          "effect": "-16% paddle speed"
+        },
+        {
+          "name": "Flustered",
+          "stat": "reaction",
+          "value": 0.045,
+          "effect": "Slower reactions"
+        }
+      ],
+      "barks": {
+        "hostile": {
+          "her_goal": [
+            "My table. My rules.",
+            "Six years, little manager.",
+            "Is that all the company sent?"
+          ],
+          "your_goal": [
+            "Interesting.",
+            "Enjoy it while it lasts.",
+            "Hm."
+          ],
+          "crack1": "Nobody has cracked my poker face in six years. Enjoy it. Once.",
+          "crack2": "You're starting to annoy me.",
+          "crack3": "...Well played. I hate it.",
+          "signature": "Watch it bend."
+        },
+        "warm": {
+          "her_goal": [
+            "Still mine, darling.",
+            "Again. Properly this time.",
+            "You flinched."
+          ],
+          "your_goal": [
+            "There he is.",
+            "Better.",
+            "Mm. Do that again."
+          ],
+          "crack1": "Go on. You've earned a smile.",
+          "crack2": "My hands are shaking. Your fault.",
+          "crack3": "I don't lose. I just... let you have tonight.",
+          "signature": "Can you read the curve yet?"
+        }
+      },
+      "matches": [
+        {
+          "level": 7,
+          "target": 5,
+          "before": [
+            {
+              "who": "sable",
+              "e": "angry",
+              "text": "I built this place with my own hands. Sold it to keep the lights on. And they sent you to tidy up what's left."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "My regulars like you now. I don't. Show me why I should."
+            }
+          ],
+          "after": [
+            {
+              "who": "sable",
+              "e": "surprised",
+              "text": "Six years. Six years nobody has seen me sweat."
+            },
+            {
+              "who": "sable",
+              "e": "angry",
+              "text": "Don't get comfortable. That was a warm-up."
+            }
+          ],
+          "scene": {
+            "id": "sable_1",
+            "title": "First Sweat",
+            "brief": "Sable leans back on the table, blazer over one shoulder and a strand of hair out of place, eyes narrowed, studying you like a problem she plans to destroy."
+          }
+        },
+        {
+          "level": 8,
+          "target": 5,
+          "before": [
+            {
+              "who": "sable",
+              "e": "neutral",
+              "text": "I closed early tonight. No audience."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "Whatever happens on this table stays between us. I sent the regulars home."
+            }
+          ],
+          "after": [
+            {
+              "who": "sable",
+              "e": "shy",
+              "text": "...My hands are shaking. That hasn't happened since my first tournament."
+            },
+            {
+              "who": "sable",
+              "e": "neutral",
+              "text": "Juno told me about the memo you never sent. Come up to the office. We should talk."
+            }
+          ],
+          "scene": {
+            "id": "sable_2",
+            "title": "The Office",
+            "brief": "Sable in her old office in her velvet blazer, lit pink by the neon sign through the window, pouring two cups of tea."
+          }
+        },
+        {
+          "level": 9,
+          "target": 6,
+          "before": [
+            {
+              "who": "sable",
+              "e": "neutral",
+              "text": "I found the box. Opening night, nine years ago. Photos, the first menu, the original sign."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "Win, and I'll show you. Lose, and it goes back in the closet with my feelings."
+            }
+          ],
+          "after": [
+            {
+              "who": "sable",
+              "e": "happy",
+              "text": "That's me, twenty-two, with a borrowed table and a terrible haircut."
+            },
+            {
+              "who": "sable",
+              "e": "sad",
+              "text": "...I never wanted to sell. I want you to know that. I want someone to know that."
+            },
+            {
+              "who": "you",
+              "text": "Then let's get it back."
+            }
+          ],
+          "scene": {
+            "id": "sable_3",
+            "title": "Opening Night",
+            "brief": "Sable, blazer off and sleeves rolled up, sits on her office floor surrounded by old photos of the Afterglow's opening night, laughing at one of them, eyes a little wet."
+          }
+        },
+        {
+          "level": 10,
+          "target": 6,
+          "before": [
+            {
+              "who": "sable",
+              "e": "angry",
+              "text": "Head office wants to turn the Afterglow into a sports bar. Big screens. Wings. No table."
+            },
+            {
+              "who": "you",
+              "text": "Over my dead lanyard."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "Good answer. Show me you'll fight for it."
+            }
+          ],
+          "after": [
+            {
+              "who": "sable",
+              "e": "happy",
+              "text": "You fight dirty. I like that in a co-conspirator."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "Roof. Now. I think better up there, and you're not saying no."
+            }
+          ],
+          "scene": {
+            "id": "sable_4",
+            "title": "Rooftop",
+            "brief": "Sable wrapped in your coat sits on the roof ledge beside the buzzing neon sign, city lights behind her, twirling a lollipop like a cigar."
+          }
+        },
+        {
+          "level": 11,
+          "target": 7,
+          "before": [
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "I've decided I'm buying the Afterglow back. With your help, my spy inside head office."
+            },
+            {
+              "who": "sable",
+              "e": "neutral",
+              "text": "But I don't partner with people I can beat. Prove it again."
+            }
+          ],
+          "after": [
+            {
+              "who": "sable",
+              "e": "happy",
+              "text": "Partners, then. Fifty-fifty. I'll even let you keep the lanyard."
+            },
+            {
+              "who": "sable",
+              "e": "neutral",
+              "text": "Head office will sell if we can prove this place makes money. One big night. The Last Call Championship."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "Partners celebrate. Pancakes. My treat."
+            }
+          ],
+          "scene": {
+            "id": "sable_5",
+            "title": "Partners",
+            "brief": "Sable in her velvet blazer sits on the edge of her desk signing a napkin contract, pulling you closer by your tie with a sly smile."
+          }
+        },
+        {
+          "level": 12,
+          "target": 7,
+          "before": [
+            {
+              "who": "sable",
+              "e": "neutral",
+              "text": "For the title. Winner's name goes at the top of the wall."
+            },
+            {
+              "who": "sable",
+              "e": "shy",
+              "text": "And me. Win or lose, honestly. But don't tell the others I said that."
+            }
+          ],
+          "after": [
+            {
+              "who": "sable",
+              "e": "happy",
+              "text": "New champion. Your name goes on the wall tomorrow."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "And the Hook is yours. One more thing. Champion's privilege."
+            },
+            {
+              "who": "narrator",
+              "text": "She pulls you in by the lanyard and kisses you under the neon sign."
+            }
+          ],
+          "scene": {
+            "id": "sable_6",
+            "title": "Champion's Privilege",
+            "brief": "Sable kisses you under the Afterglow's neon sign beside the championship table, her blazer around your shoulders, your name freshly painted at the top of the wall behind her."
+          }
+        }
+      ],
+      "unlock_done": 2,
+      "outfits": [
+        {
+          "id": "default",
+          "name": "Velvet",
+          "unlock": "default"
+        },
+        {
+          "id": "date",
+          "name": "Gala",
+          "unlock": "story"
+        },
+        {
+          "id": "league",
+          "name": "League jersey",
+          "unlock": "gems",
+          "gems": 120
+        },
+        {
+          "id": "neon",
+          "name": "Neon Nights",
+          "unlock": "gems",
+          "gems": 250
+        }
+      ]
+    }
+  },
+  "finale": {
+    "title": "Last Call Championship",
+    "level": 12,
+    "unlock": "Win over all four",
+    "target": 6,
+    "boost": [
+      0.0,
+      0.04,
+      0.08,
+      0.12
+    ],
+    "before": [
+      {
+        "who": "narrator",
+        "text": "Championship night. Head office agreed: if the Afterglow sells out tonight, Sable can buy it back."
+      },
+      {
+        "who": "sable",
+        "e": "happy",
+        "text": "Every ticket's gone. The Static's sold out too. Kat's running a screen over there."
+      },
+      {
+        "who": "juno",
+        "e": "teasing",
+        "text": "There's a line round the block. I made a mocktail called The Lanyard. It's mostly regret and grapefruit."
+      },
+      {
+        "who": "mila",
+        "e": "happy",
+        "text": "Couriers on the roof, couriers on the bar. Dex brought a drum."
+      },
+      {
+        "who": "kat",
+        "e": "teasing",
+        "text": "League rules: the champion has to beat all four of us. Back to back. No breaks."
+      },
+      {
+        "who": "you",
+        "text": "In front of everyone?"
+      },
+      {
+        "who": "sable",
+        "e": "neutral",
+        "text": "In front of everyone. Last call, partner. Make it count."
+      }
+    ],
+    "rounds": [
+      {
+        "id": "mila",
+        "before": [
+          {
+            "who": "mila",
+            "e": "teasing",
+            "text": "First up! No mercy, no breakfast bets. Just the Bullet."
+          }
+        ]
+      },
+      {
+        "id": "juno",
+        "before": [
+          {
+            "who": "juno",
+            "e": "teasing",
+            "text": "I drew this match on a napkin. You lose on it. Prove the napkin wrong."
+          }
+        ]
+      },
+      {
+        "id": "kat",
+        "before": [
+          {
+            "who": "kat",
+            "e": "shy",
+            "text": "Half the Static's watching on a screen. Don't make me look bad. Or do. Either way."
+          }
+        ]
+      },
+      {
+        "id": "sable",
+        "before": [
+          {
+            "who": "sable",
+            "e": "neutral",
+            "text": "Six years undefeated, until you. Let's see if it was a fluke."
+          }
+        ]
+      }
+    ],
+    "after": [
+      {
+        "who": "narrator",
+        "text": "The lounge explodes. Someone shakes up a soda. Dex's drum breaks."
+      },
+      {
+        "who": "sable",
+        "e": "happy",
+        "text": "We did it. Head office signed the papers ten minutes ago. The Afterglow's ours."
+      },
+      {
+        "who": "juno",
+        "e": "happy",
+        "text": "Ours. As in, I'm a co-owner now? I want that in writing. On a napkin."
+      },
+      {
+        "who": "mila",
+        "e": "teasing",
+        "text": "Does this mean I get free fries forever?"
+      },
+      {
+        "who": "kat",
+        "e": "happy",
+        "text": "The Static's officially the Afterglow's sister bar. We're making T-shirts."
+      },
+      {
+        "who": "sable",
+        "e": "teasing",
+        "text": "Last call, everyone. Not you four. You five. Group photo. Now."
+      },
+      {
+        "who": "narrator",
+        "text": "The flash goes off. Five people, one table, and a torn SOLD banner. Best photo on the wall."
+      }
+    ],
+    "scene": {
+      "id": "finale",
+      "title": "Afterglow",
+      "brief": "Dawn after the championship: you and all four heroines crowd around the championship table under the neon sign for a group photo. Mila on the rail, Juno holding a napkin, Kat with her bass, Sable holding the deed, the 'SOLD' banner torn in half on the floor."
+    }
+  }
+}

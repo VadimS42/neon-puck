@@ -1,0 +1,19 @@
+NEON PUCK RIVALS (working title)
+
+Game design, writing, programming: (your name / studio)
+Character and scene art: (artists, once commissioned)
+
+MUSIC
+Lounge theme: "Sexy Scene Instrumentals Vol. 4" by Sascha Ende (ende.app), licensed under CC BY 4.0
+Match theme: "Binary Underwater Village" by Alex McCulloch (Pro Sensory), CC0
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+
+ICONS
+Tips, hearts, gem, life, ad and power-up icons: drawn for Neon Puck (tools/make_icons.py, tools/make_f2p_icons.py)
+Menu icons: Game Icons by Kenney (www.kenney.nl), CC0
+
+ENGINE
+Made with Godot Engine (godotengine.org), MIT license.
+Copyright (c) 2014-present Godot Engine contributors. Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Edit this file (data/credits.txt) to fill in names. It is shown on the Credits screen.
