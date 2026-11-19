@@ -32,7 +32,7 @@ func _ready() -> void:
 	var t := UI.label("Loadout", 38, UI.PINK)
 	t.position = Vector2(40, 18)
 	add_child(t)
-	var vs := UI.label("vs %s · %s" % [String(h.get("name", heroine_id)), _mode_text()], 20, col)
+	var vs := UI.label("vs %s, %s" % [String(h.get("name", heroine_id)), _mode_text()], 20, col)
 	vs.position = Vector2(44, 662)
 	add_child(vs)
 	var tip := UI.wrap_label(String(h.get("signature_tip", "")), 15, UI.INK_SOFT)

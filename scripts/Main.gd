@@ -255,7 +255,7 @@ func open_scene(id: String, scene: Dictionary) -> void:
 
 
 func open_stage(id: String, stage: int) -> void:
-	_show(SceneViewer.new(self, id, {"stage": stage, "title": "%s · stage %d" % [UI.first_name(id), stage]}, show_gallery))
+	_show(SceneViewer.new(self, id, {"stage": stage, "title": "%s, stage %d" % [UI.first_name(id), stage]}, show_gallery))
 
 
 func _debug_open(o: Dictionary) -> void:

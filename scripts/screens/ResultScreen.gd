@@ -110,12 +110,63 @@ func _reward_panel(v: VBoxContainer) -> void:
 		g.add_child(UI.label("+%d XP" % int(l[1]), 17, UI.CYAN))
 		g.add_child(UI.label("+%d tips" % int(l[2]), 17, UI.GOLD))
 	g.add_child(UI.label("Total", 20, UI.INK))
-	g.add_child(UI.label("+%d XP" % int(reward.get("xp", 0)), 20, UI.CYAN))
-	g.add_child(UI.label("+%d tips" % int(reward.get("tips", 0)), 20, UI.GOLD))
+	g.add_child(_count_up(UI.label("+0 XP", 20, UI.CYAN), int(reward.get("xp", 0)), "+%d XP"))
+	g.add_child(_count_up(UI.label("+0 tips", 20, UI.GOLD), int(reward.get("tips", 0)), "+%d tips"))
 	if int(reward.get("level_to", 1)) > int(reward.get("level_from", 1)):
-		v.add_child(UI.label("LEVEL UP! You're level %d." % int(reward["level_to"]), 26, UI.GOLD))
+		v.add_child(UI.label("Level %d" % int(reward["level_to"]), 30, UI.GOLD))
 		var un: Array = reward.get("unlocks", [])
 		if not un.is_empty():
-			var t := UI.wrap_label("New: " + ", ".join(un), 17, UI.GOOD)
-			t.custom_minimum_size = Vector2(700, 0)
-			v.add_child(t)
+			v.add_child(_unlock_cards(un))
+
+
+## Ticks a reward label up from zero so the payout feels earned.
+func _count_up(l: Label, to: int, fmt: String) -> Label:
+	var tw := l.create_tween()
+	tw.tween_interval(0.25)
+	tw.tween_method(func(x: float): l.text = fmt % int(x), 0.0, float(to), 0.7).set_ease(Tween.EASE_OUT)
+	return l
+
+
+## Each unlock as its own small card, popping in one after another.
+func _unlock_cards(un: Array) -> Control:
+	var flow := HFlowContainer.new()
+	flow.custom_minimum_size = Vector2(700, 0)
+	flow.add_theme_constant_override("h_separation", 8)
+	flow.add_theme_constant_override("v_separation", 8)
+	var i := 0
+	for u in un:
+		var s := String(u)
+		var kind := "New"
+		var nm := s
+		if s.contains(": "):
+			kind = s.get_slice(": ", 0)
+			nm = s.get_slice(": ", 1)
+		elif s.contains(" match "):
+			kind = "Match"
+		elif s.ends_with("Cup"):
+			kind = "Cup"
+		elif s.contains("slot"):
+			kind = "Upgrade"
+		var col := UI.GOOD
+		match kind:
+			"Gear": col = UI.GOLD
+			"Power-up": col = UI.CYAN
+			"Match": col = UI.PINK
+		var card := UI.panel(UI.PANEL_2, 10, col)
+		var cv := VBoxContainer.new()
+		cv.add_theme_constant_override("separation", 0)
+		card.add_child(cv)
+		cv.add_child(UI.label(kind.to_upper(), 12, col))
+		cv.add_child(UI.label(nm, 17, UI.INK))
+		card.modulate.a = 0.0
+		card.scale = Vector2(0.8, 0.8)
+		flow.add_child(card)
+		var tw := card.create_tween()
+		tw.tween_interval(0.9 + 0.12 * i)
+		tw.tween_callback(func():
+			card.pivot_offset = card.size / 2
+			SFX.play("click"))
+		tw.parallel().tween_property(card, "modulate:a", 1.0, 0.15)
+		tw.parallel().tween_property(card, "scale", Vector2.ONE, 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		i += 1
+	return flow
