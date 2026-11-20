@@ -19,7 +19,7 @@ const BAD := Color("#FF6363")
 const LINE := Color("#4A3A75")
 
 
-const DISPLAY_FONT := preload("res://art/fonts/Bungee-Regular.ttf")
+const DISPLAY_FONT := preload("res://art/fonts/MorkDungeon.ttf")
 const BODY_FONT := preload("res://art/fonts/Barlow-SemiBold.ttf")
 ## Labels this size or bigger use the display face (titles, scores, banners).
 const DISPLAY_MIN := 30

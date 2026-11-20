@@ -21,6 +21,7 @@ var idx := -1
 var portrait: HeroinePortrait
 var name_lbl: Label
 var text_lbl: Label
+var parchment := false
 var choice_box: VBoxContainer
 var auto_btn: Button
 var log_layer: Control
@@ -47,7 +48,21 @@ func _ready() -> void:
 	portrait.size = Vector2(500, 560)
 	add_child(portrait)
 	var box := UI.panel(Color(UI.PANEL, 0.95), 18, UI.hcolor(heroine_id) if heroine_id != "" else UI.PINK)
-	box.position = Vector2(80, 560)
+	var frame := ArtAssets.ui("dialogue_box")
+	if frame:
+		var st := StyleBoxTexture.new()
+		st.texture = frame
+		st.texture_margin_top = 70
+		st.texture_margin_left = 24
+		st.texture_margin_right = 24
+		st.texture_margin_bottom = 24
+		st.content_margin_left = 40
+		st.content_margin_right = 40
+		st.content_margin_top = 60
+		st.content_margin_bottom = 20
+		box.add_theme_stylebox_override("panel", st)
+		parchment = true
+	box.position = Vector2(80, 540)
 	box.size = Vector2(1120, 200)
 	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(box)
@@ -123,6 +138,10 @@ func _next() -> void:
 		name_lbl.add_theme_color_override("font_color", UI.hcolor(who))
 		portrait.visible = true
 		portrait.modulate = Color.WHITE
+	if parchment:
+		text_lbl.add_theme_color_override("font_color", Color("3b2410") if who != "narrator" else Color("6b4a26"))
+		name_lbl.add_theme_constant_override("outline_size", 6)
+		name_lbl.add_theme_color_override("font_outline_color", Color("3b2410"))
 		if portrait.heroine_id != who:
 			portrait.heroine_id = who
 		portrait.set_expression(String(L.get("e", "neutral")))
