@@ -64,6 +64,25 @@ yet; each step needs you (your Play Console account, your keys, your money).
 5. Use Google's test ad unit ids until the app is approved. Never tap your
    own live ads.
 
+## 4b. Play Games Services, cloud save, reminders
+
+1. In Play Console, set up Play Games Services for the app, turn on
+   **Saved Games**, and create the achievements from `data/extras.json`;
+   paste each achievement's id into its `play_id`.
+2. Add a Play Games plugin for Godot 4 (for example
+   godot-play-game-services) to the Gradle build. `autoload/CloudSave.gd`
+   and `Extras._push_platform` look for its singleton and call
+   `saveGame` / `loadGame` / `unlockAchievement`; check those names and
+   the signal names (`userAuthenticated`, `gameLoaded`) against the
+   version you install.
+3. Add a local-notification plugin and check the calls in
+   `autoload/Notify.gd`. Android 13+ needs the POST_NOTIFICATIONS
+   permission; ask for it after the first win, not at launch.
+4. Create the season pass product `season_pass_s1` (non-consumable) next to
+   the other products. Each new season needs a new product id.
+5. Data safety form: cloud save stores game progress in the player's
+   Google account (no other personal data).
+
 ## 5. Store listing and art
 
 - Text: `docs/STORE_LISTING.md`.

@@ -140,15 +140,23 @@ better. Dialogue keeps her default outfit unless you add `vn_*.png` to the folde
 | Mila | `art/heroines/mila/date/` | Date night | Finish her story | Oversized denim jacket over a pink skater dress with leggings, white sneakers, hair down with a star clip. |
 | Mila | `art/heroines/mila/league/` | League jersey | 120 gems | Last Call League jersey in her colour with her name and number on the back, track pants, sneakers, sweatband. |
 | Mila | `art/heroines/mila/neon/` | Neon Nights | 250 gems | Neon party look in her colour: glowing piping, holographic jacket, LED-trim sneakers, glow bracelets. |
+| Mila | `art/heroines/mila/rush_hour/` | Rush Hour Racer | Win the Rush Hour weekly event | Orange-and-black courier racing suit with reflective stripes, fingerless gloves, a stopwatch on a lanyard. |
+| Mila | `art/heroines/mila/pass_s1/` | Neon Nights Courier | Season 1: Neon Nights premium track | Purple light-up rain jacket over a crop hoodie and cargo pants, glowing bike-light clips on her bag strap. |
 | Juno | `art/heroines/juno/date/` | Sunday best | Finish her story | Soft mint cardigan over a floral blouse, high-waisted trousers, round glasses. |
 | Juno | `art/heroines/juno/league/` | League jersey | 120 gems | Last Call League jersey in her colour with her name and number on the back, track pants, sneakers, sweatband. |
 | Juno | `art/heroines/juno/neon/` | Neon Nights | 250 gems | Neon party look in her colour: glowing piping, holographic jacket, LED-trim sneakers, glow bracelets. |
+| Juno | `art/heroines/juno/bank_holiday/` | Bank Holiday Bartender | Win the Bank Holiday weekly event | Mint waistcoat and bow tie over a white shirt, sleeves rolled, a protractor tucked in her breast pocket. |
+| Juno | `art/heroines/juno/pass_s1/` | Neon Nights Mixologist | Season 1: Neon Nights premium track | Sleek black jumpsuit with cyan neon piping, hair up with a glowing cocktail-stick pin. |
 | Kat | `art/heroines/kat/date/` | Gig night | Finish her story | Red plaid flannel over a band tee, black jeans, bass strap over one shoulder, silver rings. |
 | Kat | `art/heroines/kat/league/` | League jersey | 120 gems | Last Call League jersey in her colour with her name and number on the back, track pants, sneakers, sweatband. |
 | Kat | `art/heroines/kat/neon/` | Neon Nights | 250 gems | Neon party look in her colour: glowing piping, holographic jacket, LED-trim sneakers, glow bracelets. |
+| Kat | `art/heroines/kat/static_night/` | Static Night Stagewear | Win the Static Night weekly event | Red leather jacket with a lightning-bolt patch, ripped black tee, studded belt, red stage lights on her. |
+| Kat | `art/heroines/kat/pass_s1/` | Neon Nights Headliner | Season 1: Neon Nights premium track | Holographic bomber jacket, mesh-sleeve band tee, platform boots, glow-stick bracelets. |
 | Sable | `art/heroines/sable/date/` | Gala | Finish her story | Floor-length deep purple gown with long sleeves, hair up, pearl earrings. |
 | Sable | `art/heroines/sable/league/` | League jersey | 120 gems | Last Call League jersey in her colour with her name and number on the back, track pants, sneakers, sweatband. |
 | Sable | `art/heroines/sable/neon/` | Neon Nights | 250 gems | Neon party look in her colour: glowing piping, holographic jacket, LED-trim sneakers, glow bracelets. |
+| Sable | `art/heroines/sable/grand_opening/` | Grand Opening Gown | Win the Grand Opening weekly event | Gold sequinned evening dress with long sleeves and a high neck, hair in a sleek wave, the original Afterglow sign pin. |
+| Sable | `art/heroines/sable/pass_s1/` | Neon Nights Proprietor | Season 1: Neon Nights premium track | Tailored violet suit with a neon-thread lapel, silk shirt buttoned to the collar, gold cufflinks. |
 
 ## Cup and championship memories
 
@@ -158,6 +166,17 @@ better. Dialogue keeps her default outfit unless you add `vn_*.png` to the folde
 | `art/scenes/cup_silver.png` | Silver Cup Afterparty | Afterparty in the lounge: the heroines in party hats under a falling pile of silver confetti, everyone laughing, Juno spraying a can of whipped cream. |
 | `art/scenes/cup_gold.png` | Gold Cup Champions | The four heroines hoist you onto the championship table with the gold cup, streamers everywhere, Kat's band playing in the corner. |
 | `art/scenes/finale.png` | Afterglow | Dawn after the championship: you and all four heroines crowd around the championship table under the neon sign for a group photo. Mila on the rail, Juno holding a napkin, Kat with her bass, Sable holding the deed, the 'SOLD' banner torn in half on the floor. |
+
+## Crossover memories
+
+Two heroines in one image, unlocked from After Hours once you're far enough with both.
+
+| File | Title | Who | Brief |
+| --- | --- | --- | --- |
+| `art/scenes/x_mila_juno.png` | Fries and Napkins | Mila and Juno | Mila and Juno sit on either side of you on the bar in league jerseys, one holding out a fry and the other a napkin diagram, glaring at each other over your head. |
+| `art/scenes/x_juno_kat.png` | Sister Bars | Juno and Kat | Juno and Kat sit back to back on the Static's bumper table sharing one cocktail with two straws while you hold the spirit level, both trying not to laugh. |
+| `art/scenes/x_kat_sable.png` | For Ray | Kat and Sable | Sable in her blazer and Kat in her band tee lean side by side on the Static's old table under a framed photo of Uncle Ray, toasting with two glasses, both pretending they aren't teary. |
+| `art/scenes/x_mila_sable.png` | Speed Lesson | Mila and Sable | Sable stands behind Mila at the table guiding her wrist on the paddle, Mila still in her helmet and grinning at you over her shoulder. |
 
 ## Table and backgrounds
 
@@ -205,8 +224,9 @@ All transparent PNGs. Until they exist the game uses the flat icons drawn by `to
 | Dialogue expressions | 4 to 28 |
 | Story memories | 24 |
 | Cup and championship memories | 4 |
-| Outfits (3 per heroine, 1 to 4 images each) | 12 to 48 |
+| Crossover memories | 4 |
+| Outfits (20 extra in all, 1 to 4 images each) | 20 to 80 |
 | Table, puck, paddles | 7 |
 | Backgrounds and logo | 3 |
-| Store and F2P UI | 10 |
+| Store and F2P UI | 11 |
 | Play listing | 5 to 11 |

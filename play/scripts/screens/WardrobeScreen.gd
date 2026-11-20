@@ -57,12 +57,17 @@ func _refresh() -> void:
 	add_child(status)
 	if body:
 		body.queue_free()
-	body = HBoxContainer.new()
+	# Scrolls sideways once event and season outfits push past four.
+	body = ScrollContainer.new()
 	body.position = Vector2(40, 140)
-	body.add_theme_constant_override("separation", 14)
+	body.size = Vector2(1200, 590)
+	body.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	add_child(body)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 14)
+	body.add_child(row)
 	for o in GameState.outfits_of(sel):
-		body.add_child(_card(o))
+		row.add_child(_card(o))
 
 
 func _card(o: Dictionary) -> Control:
@@ -92,6 +97,10 @@ func _card(o: Dictionary) -> Control:
 		match String(o.get("unlock", "")):
 			"story":
 				v.add_child(UI.wrap_label("Win %s over (all 6 story matches) to unlock." % UI.first_name(sel), 15, UI.INK_SOFT))
+			"event":
+				v.add_child(UI.wrap_label("Prize for winning the %s event (it comes back around)." % String(o.get("event", "weekly")), 15, UI.INK_SOFT))
+			"pass":
+				v.add_child(UI.wrap_label("Season pass reward: %s." % String(o.get("season", "premium track")), 15, UI.INK_SOFT))
 			"gems":
 				var cost := int(o.get("gems", 0))
 				var b := UI.button("%d" % cost, func():

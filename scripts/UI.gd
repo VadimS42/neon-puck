@@ -133,6 +133,15 @@ static func icon_rect(name: String, px: int = 32) -> TextureRect:
 	return r
 
 
+static func pin_top_right(c: Control, right: float, top: float) -> Control:
+	c.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	c.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	c.offset_right = -right
+	c.offset_top = top
+	c.offset_left = -right
+	return c
+
+
 static func hcolor(id: String) -> Color:
 	return Color(String(GameState.heroine(id).get("color", "#FF4F8B")))
 
@@ -173,3 +182,60 @@ static func status_bar(pos: Vector2) -> Control:
 		h.add_child(ci)
 	h.add_child(label("%d tips" % GameState.tips, 22, GOLD))
 	return p
+
+
+static func popup(parent: Node, title: String, body: String, buttons: Array, accent: Color = PINK) -> Control:
+	var o := ColorRect.new()
+	o.color = Color(0, 0, 0, 0.7)
+	o.set_anchors_preset(Control.PRESET_FULL_RECT)
+	o.mouse_filter = Control.MOUSE_FILTER_STOP
+	parent.add_child(o)
+	var c := CenterContainer.new()
+	c.set_anchors_preset(Control.PRESET_FULL_RECT)
+	o.add_child(c)
+	var p := panel(PANEL, 20, accent)
+	p.custom_minimum_size = Vector2(620, 0)
+	c.add_child(p)
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 14)
+	p.add_child(v)
+	v.add_child(label(title, 34, accent))
+	if body != "":
+		var b := wrap_label(body, 19)
+		b.custom_minimum_size = Vector2(580, 0)
+		v.add_child(b)
+	var first: Button
+	for bt in buttons:
+		var cb: Callable = bt[1]
+		var btn := button(String(bt[0]), func():
+			o.queue_free()
+			cb.call(), 20, bt[2] if bt.size() > 2 else accent, String(bt[3]) if bt.size() > 3 else "")
+		btn.disabled = bt.size() > 4 and bool(bt[4])
+		v.add_child(btn)
+		if first == null and not btn.disabled:
+			first = btn
+	if first:
+		first.call_deferred("grab_focus")
+	return o
+
+
+## A small card that slides in at the top right and fades (achievements).
+static func toast(parent: Node, title: String, body: String, accent: Color = GOLD) -> void:
+	var p := panel(PANEL_2, 12, accent)
+	p.custom_minimum_size = Vector2(380, 0)
+	p.position = Vector2(880, -120)
+	p.z_index = 100
+	p.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 2)
+	p.add_child(v)
+	v.add_child(label(title, 16, accent))
+	var b := wrap_label(body, 18)
+	b.custom_minimum_size = Vector2(350, 0)
+	v.add_child(b)
+	parent.add_child(p)
+	var tw := p.create_tween()
+	tw.tween_property(p, "position:y", 20.0, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_interval(3.2)
+	tw.tween_property(p, "modulate:a", 0.0, 0.4)
+	tw.tween_callback(p.queue_free)

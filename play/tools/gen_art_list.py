@@ -8,6 +8,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 d = json.load(open(os.path.join(ROOT, "data/heroines.json")))
 prog = json.load(open(os.path.join(ROOT, "data/progression.json")))
+extras = json.load(open(os.path.join(ROOT, "data/extras.json")))
 f2p = json.load(open(os.path.join(ROOT, "data/monetization.json")))
 order = d["order"]
 H = d["heroines"]
@@ -47,7 +48,12 @@ SHARED_OUTFITS = {
 }
 
 def outfit_brief(hid, oid):
-    return OUTFIT_BRIEFS.get((hid, oid)) or SHARED_OUTFITS.get(oid, "")
+    if (hid, oid) in OUTFIT_BRIEFS or oid in SHARED_OUTFITS:
+        return OUTFIT_BRIEFS.get((hid, oid)) or SHARED_OUTFITS.get(oid, "")
+    for of in H[hid]["outfits"]:
+        if of["id"] == oid:
+            return of.get("brief", "")
+    return ""
 
 o = []
 w = o.append
@@ -110,7 +116,7 @@ w("| Heroine | Folder | Outfit | How players get it | Brief |")
 w("| --- | --- | --- | --- | --- |")
 for i in order:
     for of in H[i]["outfits"][1:]:
-        how = {"story": "Finish her story", "gems": "%d gems" % of.get("gems", 0)}.get(of["unlock"], of["unlock"])
+        how = {"story": "Finish her story", "gems": "%d gems" % of.get("gems", 0), "event": "Win the %s weekly event" % of.get("event", ""), "pass": "%s premium track" % of.get("season", "Season pass")}.get(of["unlock"], of["unlock"])
         w("| %s | `art/heroines/%s/%s/` | %s | %s | %s |" % (H[i]["name"].split(" ")[0], i, of["id"], of["name"], how, outfit_brief(i, of["id"])))
 w("")
 
@@ -122,6 +128,33 @@ for c in prog.get("tournaments", []):
     w("| `art/scenes/%s.png` | %s | %s |" % (s["id"], s["title"], s["brief"]))
 fs = d["finale"]["scene"]
 w("| `art/scenes/%s.png` | %s | %s |\n" % (fs["id"], fs["title"], fs["brief"]))
+
+w("## Crossover memories\n")
+w("Two heroines in one image, unlocked from After Hours once you're far enough with both.\n")
+w("| File | Title | Who | Brief |")
+w("| --- | --- | --- | --- |")
+for c in extras.get("crossovers", []):
+    sc = c["scene"]
+    w("| `art/scenes/%s.png` | %s | %s and %s | %s |" % (sc["id"], sc["title"], H[c["a"]]["name"].split(" ")[0], H[c["b"]]["name"].split(" ")[0], sc["brief"]))
+w("")
+alts = [(i, m["alt_scene"]) for i in order for m in H[i]["matches"] if m.get("alt_scene")]
+if alts:
+    w("## Alternate memories (earned with dialogue choices)\n")
+    w("| File | Title | How | Brief |")
+    w("| --- | --- | --- | --- |")
+    for i, a in alts:
+        w("| `art/scenes/%s.png` | %s | %s | %s |" % (a["id"], a["title"], a.get("hint", ""), a["brief"]))
+    w("")
+eps = extras.get("epilogues", {})
+if eps:
+    w("## Date nights (after the championship)\n")
+    w("| File | Title | Brief |")
+    w("| --- | --- | --- |")
+    for i in order:
+        if i in eps:
+            sc = eps[i]["scene"]
+            w("| `art/scenes/%s.png` | %s | %s |" % (sc["id"], sc["title"], sc["brief"]))
+    w("")
 
 w("## Table and backgrounds\n")
 w("| File | Size | Brief |")
@@ -164,7 +197,9 @@ w("| Crack stages (default outfit) | %d |" % (n * 4))
 w("| Dialogue expressions | %d to %d |" % (n, n * 7))
 w("| Story memories | %d |" % sum(len(H[i]["matches"]) for i in order))
 w("| Cup and championship memories | %d |" % (len(prog.get("tournaments", [])) + 1))
-w("| Outfits (3 per heroine, 1 to 4 images each) | %d to %d |" % (n * 3, n * 3 * 4))
+w("| Crossover memories | %d |" % len(extras.get("crossovers", [])))
+no = sum(len(H[i]["outfits"]) - 1 for i in order)
+w("| Outfits (%d extra in all, 1 to 4 images each) | %d to %d |" % (no, no, no * 4))
 w("| Table, puck, paddles | %d |" % (n + 3))
 w("| Backgrounds and logo | 3 |")
 w("| Store and F2P UI | %d |" % (3 + len(f2p["products"])))

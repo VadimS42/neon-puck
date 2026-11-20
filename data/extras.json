@@ -1,0 +1,806 @@
+{
+  "_readme": "Extras: achievements, crossover scenes, rival barks (what she says about the others at the start of a match), finale lines for whoever you won over first, and per-game features. Achievement 'stat' is a counter from Extras.gd STAT_KEYS or one of won_over, finale, scenes, trophies, level, ladder_best, won (with id_of), alt_scenes; 'n' is the target. steam_id / play_id map to the platform achievement ids (set play_id from Play Console). Crossovers open when you have 'need' story wins with both heroines.",
+  "achievements": [
+    {
+      "id": "first_win",
+      "name": "Opening Night",
+      "desc": "Win your first match.",
+      "stat": "wins",
+      "n": 1,
+      "steam_id": "FIRST_WIN",
+      "play_id": ""
+    },
+    {
+      "id": "story_10",
+      "name": "Regular",
+      "desc": "Win 10 story matches.",
+      "stat": "story_wins",
+      "n": 10,
+      "steam_id": "STORY_10",
+      "play_id": ""
+    },
+    {
+      "id": "story_all",
+      "name": "Last Call Legend",
+      "desc": "Win all 24 story matches.",
+      "stat": "story_wins",
+      "n": 24,
+      "steam_id": "STORY_ALL",
+      "play_id": ""
+    },
+    {
+      "id": "won_mila",
+      "name": "Courier's Choice",
+      "desc": "Win Mila over.",
+      "stat": "won",
+      "n": 1,
+      "steam_id": "WON_MILA",
+      "play_id": "",
+      "id_of": "mila"
+    },
+    {
+      "id": "won_juno",
+      "name": "Off the Menu",
+      "desc": "Win Juno over.",
+      "stat": "won",
+      "n": 1,
+      "steam_id": "WON_JUNO",
+      "play_id": "",
+      "id_of": "juno"
+    },
+    {
+      "id": "won_kat",
+      "name": "Across the Street",
+      "desc": "Win Kat over.",
+      "stat": "won",
+      "n": 1,
+      "steam_id": "WON_KAT",
+      "play_id": "",
+      "id_of": "kat"
+    },
+    {
+      "id": "won_sable",
+      "name": "Champion's Privilege",
+      "desc": "Win Sable over.",
+      "stat": "won",
+      "n": 1,
+      "steam_id": "WON_SABLE",
+      "play_id": "",
+      "id_of": "sable"
+    },
+    {
+      "id": "champion",
+      "name": "Last Call Champion",
+      "desc": "Win the Last Call Championship.",
+      "stat": "finale",
+      "n": 1,
+      "steam_id": "CHAMPION",
+      "play_id": ""
+    },
+    {
+      "id": "bank_25",
+      "name": "Geometry Teacher",
+      "desc": "Score 25 bank-shot goals.",
+      "stat": "bank_goals",
+      "n": 25,
+      "steam_id": "BANK_25",
+      "play_id": ""
+    },
+    {
+      "id": "smash_25",
+      "name": "Heavy Hitter",
+      "desc": "Score 25 power-shot goals.",
+      "stat": "smash_goals",
+      "n": 25,
+      "steam_id": "SMASH_25",
+      "play_id": ""
+    },
+    {
+      "id": "blocks_10",
+      "name": "Wall of Neon",
+      "desc": "Block 10 of their signature shots.",
+      "stat": "blocks",
+      "n": 10,
+      "steam_id": "BLOCKS_10",
+      "play_id": ""
+    },
+    {
+      "id": "shutout",
+      "name": "Clean Sheet",
+      "desc": "Win a match without letting a goal in.",
+      "stat": "shutouts",
+      "n": 1,
+      "steam_id": "SHUTOUT",
+      "play_id": ""
+    },
+    {
+      "id": "comeback",
+      "name": "Never Out",
+      "desc": "Win a match after trailing by 3.",
+      "stat": "comebacks",
+      "n": 1,
+      "steam_id": "COMEBACK",
+      "play_id": ""
+    },
+    {
+      "id": "special_10",
+      "name": "House Rules",
+      "desc": "Win 10 special-rules matches.",
+      "stat": "special_wins",
+      "n": 10,
+      "steam_id": "SPECIAL_10",
+      "play_id": ""
+    },
+    {
+      "id": "rush_3",
+      "name": "Beat the Clock",
+      "desc": "Win 3 Rush Clock matches.",
+      "stat": "rush_wins",
+      "n": 3,
+      "steam_id": "RUSH_3",
+      "play_id": ""
+    },
+    {
+      "id": "trainer_4",
+      "name": "Student of the Game",
+      "desc": "Pass 4 shot trainer drills.",
+      "stat": "trainer_passes",
+      "n": 4,
+      "steam_id": "TRAINER_4",
+      "play_id": ""
+    },
+    {
+      "id": "cups_3",
+      "name": "Trophy Shelf",
+      "desc": "Win all three cups.",
+      "stat": "trophies",
+      "n": 3,
+      "steam_id": "CUPS_3",
+      "play_id": ""
+    },
+    {
+      "id": "crossovers_4",
+      "name": "Small World",
+      "desc": "See all four crossovers.",
+      "stat": "crossovers",
+      "n": 4,
+      "steam_id": "CROSSOVERS_4",
+      "play_id": ""
+    },
+    {
+      "id": "level_max",
+      "name": "Top of the League",
+      "desc": "Reach the top level.",
+      "stat": "level",
+      "n": 15,
+      "steam_id": "LEVEL_MAX",
+      "play_id": ""
+    },
+    {
+      "id": "matches_100",
+      "name": "Night Owl",
+      "desc": "Play 100 matches.",
+      "stat": "matches",
+      "n": 100,
+      "steam_id": "MATCHES_100",
+      "play_id": ""
+    },
+    {
+      "id": "choices_24",
+      "name": "Smooth Talker",
+      "desc": "Make a choice in all 24 story matches.",
+      "stat": "choices",
+      "n": 24,
+      "steam_id": "CHOICES_24",
+      "play_id": ""
+    },
+    {
+      "id": "alt_1",
+      "name": "Your Way",
+      "desc": "Unlock an alternate scene with your choices.",
+      "stat": "alt_scenes",
+      "n": 1,
+      "steam_id": "ALT_1",
+      "play_id": ""
+    },
+    {
+      "id": "alt_4",
+      "name": "Every Angle",
+      "desc": "Unlock all four alternate scenes.",
+      "stat": "alt_scenes",
+      "n": 4,
+      "steam_id": "ALT_4",
+      "play_id": "",
+      "hidden": true
+    },
+    {
+      "id": "ladder_5",
+      "name": "Climber",
+      "desc": "Reach rung 5 of the Endless Ladder.",
+      "stat": "ladder_best",
+      "n": 5,
+      "steam_id": "LADDER_5",
+      "play_id": ""
+    },
+    {
+      "id": "ladder_10",
+      "name": "Top Rung",
+      "desc": "Reach rung 10 of the Endless Ladder.",
+      "stat": "ladder_best",
+      "n": 10,
+      "steam_id": "LADDER_10",
+      "play_id": "",
+      "hidden": true
+    },
+    {
+      "id": "dates_4",
+      "name": "Date Night",
+      "desc": "Go on all four date nights.",
+      "stat": "epilogues",
+      "n": 4,
+      "steam_id": "DATES_4",
+      "play_id": ""
+    },
+    {
+      "id": "scenes_40",
+      "name": "Collector",
+      "desc": "Unlock 40 scenes.",
+      "stat": "scenes",
+      "n": 40,
+      "steam_id": "SCENES_40",
+      "play_id": ""
+    }
+  ],
+  "crossovers": [
+    {
+      "id": "mila_juno",
+      "a": "mila",
+      "b": "juno",
+      "need": 3,
+      "title": "Fries vs Napkins",
+      "teaser": "Mila and Juno have both been asking about you. Tonight they're asking each other.",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "Near closing time you find Mila and Juno at the bar, deep in an argument, with a basket of fries and a pile of napkins between them."
+        },
+        {
+          "who": "mila",
+          "e": "teasing",
+          "text": "Okay, settle this. Juno says you're a bank-shot person. I say you're a straight-shot person."
+        },
+        {
+          "who": "juno",
+          "e": "neutral",
+          "text": "I have diagrams."
+        },
+        {
+          "who": "mila",
+          "e": "angry",
+          "text": "She has diagrams. She always has diagrams!"
+        },
+        {
+          "who": "you",
+          "text": "Why does it matter?"
+        },
+        {
+          "who": "juno",
+          "e": "teasing",
+          "text": "Because whoever's right picks what you do on your next night off."
+        },
+        {
+          "who": "mila",
+          "e": "shy",
+          "text": "We made a bet about you. It sounded better before you walked in."
+        },
+        {
+          "who": "you",
+          "text": "So I'm the puck."
+        },
+        {
+          "who": "juno",
+          "e": "happy",
+          "text": "Finally, he gets it. One game each. Winner keeps you for the evening."
+        },
+        {
+          "who": "narrator",
+          "text": "It ends in a tie. They split the last of the fries and refuse to tell you who won."
+        },
+        {
+          "who": "mila",
+          "e": "teasing",
+          "text": "Same time next week. Bring your own napkins."
+        }
+      ],
+      "scene": {
+        "id": "x_mila_juno",
+        "title": "Fries and Napkins",
+        "brief": "Mila and Juno sit on either side of you on the bar in their underwear and league jerseys, feeding you fries and napkin diagrams at the same time and glaring at each other over your head."
+      }
+    },
+    {
+      "id": "juno_kat",
+      "a": "juno",
+      "b": "kat",
+      "need": 3,
+      "title": "Two Bars, One Table",
+      "teaser": "Juno levels the Afterglow's table every Monday. Kat swears hers is better. Somebody has to judge.",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "Monday at the Static. Juno has brought a spirit level, and Kat has brought a grudge."
+        },
+        {
+          "who": "kat",
+          "e": "angry",
+          "text": "My table is not tilted. It has character."
+        },
+        {
+          "who": "juno",
+          "e": "teasing",
+          "text": "It leans three degrees to the left. I measured it twice."
+        },
+        {
+          "who": "kat",
+          "e": "angry",
+          "text": "You brought a level to my bar?"
+        },
+        {
+          "who": "juno",
+          "e": "neutral",
+          "text": "I bring a level everywhere. It's called standards."
+        },
+        {
+          "who": "you",
+          "text": "Maybe you two should just play each other."
+        },
+        {
+          "who": "kat",
+          "e": "teasing",
+          "text": "Fine. Loser buys the winner's drinks for a month."
+        },
+        {
+          "who": "juno",
+          "e": "teasing",
+          "text": "And the loser admits the other one runs the better bar."
+        },
+        {
+          "who": "narrator",
+          "text": "Kat wins on her bumpers. Juno wins the rematch across the street. Nobody admits anything."
+        },
+        {
+          "who": "juno",
+          "e": "shy",
+          "text": "Your table's fun. Don't tell anyone I said that."
+        },
+        {
+          "who": "kat",
+          "e": "happy",
+          "text": "Your cocktails are criminal. Same time next Monday?"
+        }
+      ],
+      "scene": {
+        "id": "x_juno_kat",
+        "title": "Sister Bars",
+        "brief": "Juno and Kat, down to tank tops and underwear, sit back to back on the Static's bumper table sharing one cocktail with two straws while you hold the spirit level."
+      }
+    },
+    {
+      "id": "kat_sable",
+      "a": "kat",
+      "b": "sable",
+      "need": 2,
+      "title": "Old Guard",
+      "teaser": "Sable and Kat go back further than you knew.",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "You find Sable at the Static's bar. You've never once seen her set foot in there."
+        },
+        {
+          "who": "sable",
+          "e": "neutral",
+          "text": "Kat's uncle taught me to play on that table in 1998. The bumpers were already there."
+        },
+        {
+          "who": "kat",
+          "e": "surprised",
+          "text": "You knew Uncle Ray?"
+        },
+        {
+          "who": "sable",
+          "e": "happy",
+          "text": "He beat me forty times in a row. Then he made me promise to beat everyone else."
+        },
+        {
+          "who": "kat",
+          "e": "shy",
+          "text": "He used to say a girl from across the street would run this whole block one day."
+        },
+        {
+          "who": "sable",
+          "e": "sad",
+          "text": "And then I sold it. He would be furious."
+        },
+        {
+          "who": "you",
+          "text": "So give him a reason to be proud."
+        },
+        {
+          "who": "kat",
+          "e": "teasing",
+          "text": "One game, for Ray. Old rules."
+        },
+        {
+          "who": "narrator",
+          "text": "They play with the bumpers, the old way, and for once neither of them says a word of trash talk."
+        },
+        {
+          "who": "sable",
+          "e": "shy",
+          "text": "You play like him. It is very irritating."
+        }
+      ],
+      "scene": {
+        "id": "x_kat_sable",
+        "title": "For Ray",
+        "brief": "Sable in stockings and an open blazer and Kat in her band tee lean side by side on the Static's old table under a framed photo of Uncle Ray, toasting with two shot glasses, both pretending they aren't teary."
+      }
+    },
+    {
+      "id": "mila_sable",
+      "a": "mila",
+      "b": "sable",
+      "need": 3,
+      "title": "Speed Lesson",
+      "teaser": "Mila wants a lesson from the undefeated. Sable wants to see if the courier can keep up.",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "Sable is holding court at the table when Mila skids in, still wearing her helmet."
+        },
+        {
+          "who": "mila",
+          "e": "teasing",
+          "text": "Okay, Ms Undefeated. I want a lesson. A real one."
+        },
+        {
+          "who": "sable",
+          "e": "neutral",
+          "text": "You are fast. Fast is not the same thing as good."
+        },
+        {
+          "who": "mila",
+          "e": "angry",
+          "text": "Rude. Accurate, but rude."
+        },
+        {
+          "who": "sable",
+          "e": "teasing",
+          "text": "Lesson one: stop hitting everything as hard as you can."
+        },
+        {
+          "who": "mila",
+          "e": "surprised",
+          "text": "That's my whole personality!"
+        },
+        {
+          "who": "you",
+          "text": "She's not wrong, Mila."
+        },
+        {
+          "who": "mila",
+          "e": "angry",
+          "text": "Whose side are you on?"
+        },
+        {
+          "who": "sable",
+          "e": "happy",
+          "text": "Mine, obviously. Again. Slower this time."
+        },
+        {
+          "who": "narrator",
+          "text": "An hour later Mila bends a curve shot past Sable, and the two of them shriek like teenagers."
+        },
+        {
+          "who": "sable",
+          "e": "shy",
+          "text": "She learns quickly. Like someone else I know."
+        }
+      ],
+      "scene": {
+        "id": "x_mila_sable",
+        "title": "Speed Lesson",
+        "brief": "Sable stands behind Mila at the table guiding her wrist on the paddle, both in their underwear after a long lesson, Mila grinning at you over her shoulder."
+      }
+    }
+  ],
+  "rival_barks": {
+    "mila": {
+      "juno": "Juno says you're good with angles. I'm better with speed.",
+      "kat": "Kat says you can't drum. I heard it from the street.",
+      "sable": "Sable taught you that curve, didn't she? Cheater."
+    },
+    "juno": {
+      "mila": "Mila says your name a lot on her breaks. A lot.",
+      "kat": "Kat thinks you play bass now. Let's see those hands.",
+      "sable": "Sable's been watching you play. She never watches anyone."
+    },
+    "kat": {
+      "mila": "Mila's courier crew keeps showing up at my bar asking for you.",
+      "juno": "Juno told me you read her schedule out loud. Nerd.",
+      "sable": "If Sable likes you, I have to beat you twice as hard."
+    },
+    "sable": {
+      "mila": "The courier talks about you constantly. It is exhausting.",
+      "juno": "Juno vouched for you. Juno does not vouch for people.",
+      "kat": "Kat Vance's uncle would have liked you. Do not let it go to your head."
+    }
+  },
+  "finale_by_first": {
+    "mila": [
+      {
+        "who": "mila",
+        "e": "teasing",
+        "text": "For the record, I was first. First to hate you, first to like you. Put that on the wall."
+      },
+      {
+        "who": "juno",
+        "e": "teasing",
+        "text": "She was also first to throw a fry at him. Put that on the wall too."
+      }
+    ],
+    "juno": [
+      {
+        "who": "juno",
+        "e": "teasing",
+        "text": "For the record, I called it. Napkin forty-three: he wins the whole thing. It's laminated."
+      },
+      {
+        "who": "mila",
+        "e": "angry",
+        "text": "You laminate your napkins?"
+      }
+    ],
+    "kat": [
+      {
+        "who": "kat",
+        "e": "happy",
+        "text": "For the record, the Static backed you first. We're printing your face on T-shirts. Not crossed out this time."
+      },
+      {
+        "who": "sable",
+        "e": "teasing",
+        "text": "I will take a medium."
+      }
+    ],
+    "sable": [
+      {
+        "who": "sable",
+        "e": "teasing",
+        "text": "For the record, I saw this coming first. I simply chose not to say so."
+      },
+      {
+        "who": "kat",
+        "e": "teasing",
+        "text": "She absolutely did not."
+      }
+    ]
+  },
+  "ladder": {
+    "_readme": "Endless Ladder (opens after the championship): a random rival and 0-2 random special rules per rung; she gets boost_step sharper every rung up to boost_max.",
+    "target": 5,
+    "boost_step": 0.035,
+    "boost_max": 0.45
+  },
+  "epilogues": {
+    "mila": {
+      "title": "Midnight Ride",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "A week after the championship, Mila texts you an address and a time: 2 AM, the old bridge."
+        },
+        {
+          "who": "mila",
+          "e": "happy",
+          "text": "You came. I wasn't sure you would. Hop on, I'm doubling you."
+        },
+        {
+          "who": "you",
+          "text": "On the bike?"
+        },
+        {
+          "who": "mila",
+          "e": "teasing",
+          "text": "Courier rules. You hold on, I don't crash. Probably."
+        },
+        {
+          "who": "narrator",
+          "text": "She rides the empty city like she owns it, and for one night, she does."
+        },
+        {
+          "if": "mila_5=tease",
+          "who": "mila",
+          "e": "teasing",
+          "text": "'Took you long enough,' you said. I've been thinking of comebacks for a week."
+        },
+        {
+          "if": "mila_5=sweet",
+          "who": "mila",
+          "e": "shy",
+          "text": "I kept the impound receipt. It's in my wallet. Don't laugh."
+        },
+        {
+          "if": "mila_5=flirt",
+          "who": "mila",
+          "e": "teasing",
+          "text": "'Say it slower,' you said. I've been practising saying it fast."
+        },
+        {
+          "who": "mila",
+          "e": "shy",
+          "text": "So, same time tomorrow? It's a date. It's actually a date this time."
+        }
+      ],
+      "scene": {
+        "id": "date_mila",
+        "title": "Midnight Ride",
+        "brief": "Mila sits on the bridge railing at 2 AM in your jacket and not much else, her bike propped beside her and the city lights behind, reaching for your hand. Adult scene: write to your content plan."
+      }
+    },
+    "juno": {
+      "title": "Reserved",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "Juno closes the bar early and puts a reserved sign on one table. Yours."
+        },
+        {
+          "who": "juno",
+          "e": "teasing",
+          "text": "Head office sent a congratulations card. I'm using it as a coaster."
+        },
+        {
+          "who": "juno",
+          "e": "shy",
+          "text": "I made a menu. One page. Every drink is named after a night we played."
+        },
+        {
+          "who": "you",
+          "text": "What's this one? 'Cold War'?"
+        },
+        {
+          "who": "juno",
+          "e": "teasing",
+          "text": "Bitter, then sweet. Like me."
+        },
+        {
+          "if": "juno_5=tease",
+          "who": "juno",
+          "e": "teasing",
+          "text": "The napkin with the insults is framed right next to the other one, by the way."
+        },
+        {
+          "if": "juno_5=sweet",
+          "who": "juno",
+          "e": "shy",
+          "text": "I hung the napkin behind the bar. Three regulars asked about it. I told them everything."
+        },
+        {
+          "if": "juno_5=flirt",
+          "who": "juno",
+          "e": "teasing",
+          "text": "'Fell for the new guy anyway.' I underlined it twice."
+        },
+        {
+          "who": "juno",
+          "e": "shy",
+          "text": "Last napkin. It says: ask him to stay. So. Stay."
+        }
+      ],
+      "scene": {
+        "id": "date_juno",
+        "title": "Reserved",
+        "brief": "Juno in a black slip dress perches on the reserved table with her one-page menu and a lit candle, the framed napkin glowing behind the bar. Adult scene: write to your content plan."
+      }
+    },
+    "kat": {
+      "title": "Forty Feet",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "The Static's first sold-out show. Kat's band is headlining, and your name is on the guest list as 'bassist (bad)'."
+        },
+        {
+          "who": "kat",
+          "e": "happy",
+          "text": "You came! Front row. If you heckle, you're coming on stage."
+        },
+        {
+          "who": "narrator",
+          "text": "The set is loud, fast and much better than she'll ever admit."
+        },
+        {
+          "if": "kat_5=tease",
+          "who": "kat",
+          "e": "teasing",
+          "text": "The stairs are still a deathtrap, by the way. I didn't fix them. On purpose."
+        },
+        {
+          "if": "kat_5=sweet",
+          "who": "kat",
+          "e": "shy",
+          "text": "I never thanked you properly for the flyer. So this whole show is the thank-you."
+        },
+        {
+          "if": "kat_5=flirt",
+          "who": "kat",
+          "e": "teasing",
+          "text": "Slowly, you said. I've been taking everything slowly since. It's killing me."
+        },
+        {
+          "who": "kat",
+          "e": "shy",
+          "text": "This last one's new. I wrote it about a guy who took the blame for a flyer. It's called 'Forty Feet'."
+        }
+      ],
+      "scene": {
+        "id": "date_kat",
+        "title": "Forty Feet",
+        "brief": "After the show Kat, in a sweaty cropped band tee, kicks her bass aside on the Static's stage and pulls you close as the house lights come up. Adult scene: write to your content plan."
+      }
+    },
+    "sable": {
+      "title": "The Wall",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "Sable meets you at the Afterglow at noon, while it's closed, with a ladder and a pot of gold paint."
+        },
+        {
+          "who": "sable",
+          "e": "neutral",
+          "text": "Your name goes on the wall today. I insist on painting it myself."
+        },
+        {
+          "who": "sable",
+          "e": "teasing",
+          "text": "I am leaving room underneath. Mine goes back up next year."
+        },
+        {
+          "who": "you",
+          "text": "Is that a challenge?"
+        },
+        {
+          "if": "sable_5=tease",
+          "who": "sable",
+          "e": "teasing",
+          "text": "The list of champion's privileges is now on page three. Alphabetical."
+        },
+        {
+          "if": "sable_5=sweet",
+          "who": "sable",
+          "e": "shy",
+          "text": "Next to mine, I said. I measured the gap. Twice."
+        },
+        {
+          "if": "sable_5=flirt",
+          "who": "sable",
+          "e": "teasing",
+          "text": "You said take it. I took it. I would like to keep taking it."
+        },
+        {
+          "who": "sable",
+          "e": "happy",
+          "text": "It is an invitation. Every year, for as long as you like."
+        }
+      ],
+      "scene": {
+        "id": "date_sable",
+        "title": "The Wall",
+        "brief": "Sable on a ladder in your dress shirt and her stockings, paintbrush in hand, your name freshly painted in gold at the top of the champions' wall. Adult scene: write to your content plan."
+      }
+    }
+  }
+}

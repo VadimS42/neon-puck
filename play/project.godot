@@ -22,6 +22,9 @@ boot_splash/show_image=false
 GameState="*res://autoload/GameState.gd"
 SFX="*res://autoload/SFX.gd"
 Music="*res://autoload/Music.gd"
+Extras="*res://autoload/Extras.gd"
+CloudSave="*res://autoload/CloudSave.gd"
+Notify="*res://autoload/Notify.gd"
 Store="*res://autoload/Store.gd"
 Ads="*res://autoload/Ads.gd"
 

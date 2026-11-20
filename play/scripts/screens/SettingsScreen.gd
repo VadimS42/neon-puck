@@ -58,13 +58,37 @@ func _ready() -> void:
 		GameState.ad_consent = "unknown"
 		Ads.request_consent(), 18, UI.CYAN))
 	row2.add_child(UI.button("Credits", main.show_credits, 18, UI.CYAN))
+	var row3 := HBoxContainer.new()
+	row3.add_theme_constant_override("separation", 10)
+	v.add_child(row3)
+	row3.add_child(UI.button("Save to cloud", func():
+		CloudSave.upload()
+		UI.popup(self, "Cloud save", "Saved%s." % (" (test backend: stored on this device)" if CloudSave.is_test() else " to your Google account"), [["OK", func(): pass]]), 18, UI.CYAN))
+	row3.add_child(UI.button("Load from cloud", func():
+		UI.popup(self, "Load from cloud?", "This replaces the progress on this device with your cloud save.", [
+			["Load it", func(): CloudSave.download(), UI.GOLD],
+			["Cancel", func(): pass, UI.LINE]]), 18, UI.CYAN))
+	var nb := UI.button("Reminders: on" if Extras.notify_on else "Reminders: off", func(): pass, 18, UI.CYAN)
+	nb.pressed.connect(func():
+		Extras.notify_on = not Extras.notify_on
+		Extras.save()
+		nb.text = "Reminders: on" if Extras.notify_on else "Reminders: off")
+	row3.add_child(nb)
+	if not CloudSave.loaded.is_connected(_on_cloud):
+		CloudSave.loaded.connect(_on_cloud)
 	v.add_child(UI.button("Reset story progress (purchases and gems are kept)", func():
 		GameState.reset_progress()
+		Extras.reset_story()
 		main.show_settings(back), 18, UI.BAD))
 	var bk := UI.button("Back", back, 22, UI.LINE)
 	v.add_child(bk)
 	_refresh()
 	diff_btns[GameState.difficulty].call_deferred("grab_focus")
+
+
+func _on_cloud(ok: bool, msg: String) -> void:
+	if is_inside_tree():
+		UI.popup(self, "Cloud save", msg, [["OK", func(): main.show_settings(back)]])
 
 
 func _set_diff(k: String) -> void:

@@ -367,7 +367,14 @@
         "id": "cup_bronze",
         "title": "Bronze Cup Night",
         "brief": "The three regulars, mid-celebration in their league jerseys, crowd around you and the bronze trophy at the bar, Mila on your shoulders."
-      }
+      },
+      "round_mods": [
+        [],
+        [],
+        [
+          "big_goals"
+        ]
+      ]
     },
     {
       "id": "silver",
@@ -394,7 +401,16 @@
         "id": "cup_silver",
         "title": "Silver Cup Afterparty",
         "brief": "Afterparty in the lounge: the heroines in party hats under a falling pile of silver confetti, everyone laughing, Juno spraying a can of whipped cream."
-      }
+      },
+      "round_mods": [
+        [],
+        [
+          "bumpers"
+        ],
+        [
+          "turbo"
+        ]
+      ]
     },
     {
       "id": "gold",
@@ -422,7 +438,20 @@
         "id": "cup_gold",
         "title": "Gold Cup Champions",
         "brief": "The four heroines hoist you onto the championship table with the gold cup, streamers everywhere, Kat's band playing in the corner."
-      }
+      },
+      "round_mods": [
+        [],
+        [
+          "mini_goals"
+        ],
+        [
+          "bumpers",
+          "turbo"
+        ],
+        [
+          "rush"
+        ]
+      ]
     }
   ]
 }

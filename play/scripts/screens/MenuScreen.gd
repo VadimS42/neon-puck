@@ -58,8 +58,38 @@ func _ready() -> void:
 	var ver := UI.label("v%s, placeholder art, difficulty: %s%s" % [ProjectSettings.get_setting("application/config/version"), String(GameState.diff().get("label", "Normal")), ", test store and ads" if Store.is_test() or Ads.is_test() else ""], 16, UI.INK_SOFT)
 	ver.position = Vector2(600, 768)
 	add_child(ver)
-	if GameState.daily_available() and not GameState.no_save:
+	# Live features: daily missions, this week's event, the season pass.
+	var live := HBoxContainer.new()
+	live.position = Vector2(600, 640)
+	live.add_theme_constant_override("separation", 10)
+	add_child(live)
+	if Extras.missions_enabled():
+		var n := Extras.missions_to_claim()
+		live.add_child(UI.button("Missions" + (" (%d)" % n if n > 0 else ""), func(): main.show_missions(), 20, UI.GOLD if n > 0 else UI.CYAN, "star"))
+	if not Extras.current_event().is_empty():
+		live.add_child(UI.button("Event: " + String(Extras.current_event().get("name", "")), func(): main.show_event(main.show_menu), 20, UI.PINK, "trophy"))
+	if Extras.season_enabled():
+		var u := Extras.season_unclaimed()
+		live.add_child(UI.button("Pass" + (" (%d)" % u if u > 0 else ""), func(): main.show_season(main.show_menu), 20, UI.GOLD, "gem"))
+	if not CloudSave.pending.is_empty() and not GameState.no_save:
+		_cloud_offer.call_deferred()
+	elif GameState.daily_available() and not GameState.no_save:
 		_daily.call_deferred()
+
+
+## The cloud has a save that's further along than this phone's.
+func _cloud_offer() -> void:
+	var blob := CloudSave.pending
+	var when := Time.get_datetime_string_from_unix_time(int(blob.get("time", 0)), true)
+	UI.popup(self, "Cloud save found", "Your Google account has progress from %s that's further along than this device. Load it?" % when, [
+		["Load cloud save", func():
+			CloudSave.apply(blob)
+			main.show_menu(), UI.GOLD],
+		["Keep this device's", func():
+			CloudSave.pending = {}
+			CloudSave.upload()
+			main.show_menu(), UI.LINE],
+	], UI.CYAN)
 
 
 func _daily() -> void:

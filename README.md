@@ -88,6 +88,48 @@ power smash when your Heat is full. Esc pauses.
 - **All-ages mode** in Settings for a separate SFW build (uses `*_sfw.png`
   art when present).
 
+## Story shapes, extras and post-game
+
+- **Four different arcs.** Mila's is a bet ladder that ends in two races
+  against a phone timer (Turbo Air, Rush Clock). Juno's is a betrayal and a
+  making-up: a misread printout turns her cold, she sabotages your paddle
+  (Handicap), and the truth comes out mid-audit. Kat's is a bar war played
+  home and away: her nights move to the Static's bumper table, a widened
+  crowd-pleaser table and a blacked-out stage, and her last night is a
+  double header, one game in each bar. Sable's is a power struggle: she sets
+  the terms of every match and makes you pick your poison, until the last
+  night, when she sets none.
+- **Special-rule matches.** Nine table rules in `scripts/game/MatchMods.gd`:
+  Wide Goals, Mini Goals, Trick Table (bumpers), Turbo Air, Bank Night
+  (your banks count double), Rush Clock (two minutes, then golden goal),
+  Blackout, Handicap and By the Book (no Heat). Story matches, cup rounds
+  and the Endless Ladder use them; the match screen lists them.
+- **One choice per story match.** Tease, be sweet, or flirt: she answers,
+  the next match opens with a line that remembers it, and three of the
+  right answer earn her alternate scene (Mila: sweet, Juno: tease, Kat:
+  flirt, Sable: tease). Her date night also changes with your last answer.
+- **They know each other.** Four crossover scenes open when you're far
+  enough with two heroines (offered on the roster once, then in After
+  Hours). Heroines mention each other in dialogue and needle you about the
+  others at the start of a match. The finale adds lines for whoever you won
+  over first.
+- **Memories.** Dialogue has a Log and Auto mode, and the gallery replays
+  any conversation from a match you've won, plus crossovers and dates.
+- **After Hours** (roster): shot trainer (block her signature 6 of 10, or
+  score 6 of 10 with your own power shot), crossovers, achievements, the
+  Endless Ladder and date nights.
+- **Achievements.** 27, from first win to the top of the ladder
+  (`data/extras.json`), with a toast when one unlocks. Each has a
+  `steam_id`; `autoload/Extras.gd` calls GodotSteam's `setAchievement` when
+  the Steam singleton is present (untested without the SDK: create the
+  achievements in Steamworks with the same ids).
+- **Post-game.** After the championship: one date night per heroine and
+  the Endless Ladder (random rival, 0 to 2 random special rules, sharper
+  every rung, one loss ends the climb, best rung saved).
+
+All of this lives in `autoload/Extras.gd` (saved to `user://extras.json`)
+and `data/extras.json`; the same Extras script runs in the Rivals build.
+
 ## What it fixes from the Tennis Angels research
 
 | Complaint | Here |
@@ -115,15 +157,19 @@ power smash when your Heat is full. Esc pauses.
 | --- | --- |
 | `data/heroines.json` | Heroines, stats, outfit layers and their effects, signature shots, match targets and levels, all dialogue, scene briefs and the finale. Edit freely. |
 | `data/progression.json` | XP curve, rewards, gear, power-ups, cups. Edit freely. |
+| `data/extras.json` | Achievements, crossovers, rival barks, finale lines by who you won first, Endless Ladder, date nights. Edit freely. |
+| `autoload/Extras.gd` | Choices and conditions, achievements, crossovers, ladder, dates (shared with the Rivals build) |
+| `scripts/game/MatchMods.gd` | The nine special table rules |
 | `scripts/game/PuckSim.gd` | The table as plain math (no nodes): puck, paddles, walls, goals, Heat, power shots |
 | `scripts/game/AIBrain.gd` | Her paddle: defend, attack, banks, signature arming |
 | `scripts/game/MatchRules.gd` | Score, Composure, stripping and stat drops |
-| `scripts/screens/*.gd` | Age gate, menu, how to play, roster, loadout, Pro Shop, cups, dialogue, match, results, scene viewer, gallery, settings |
+| `scripts/screens/*.gd` | Age gate, menu, how to play, roster, loadout, Pro Shop, cups, dialogue, match, results, scene viewer, gallery, settings, After Hours, achievements |
 | `scripts/ArtAssets.gd` | Every art path the game looks for |
 | `scripts/HeroinePortrait.gd` | Her art, or the placeholder figure |
 | `docs/ART_LIST.md` | Everything to commission, with paths, sizes and briefs (regenerate with `python3 tools/gen_art_list.py`) |
 | `tools/sim_test.gd` | Headless balance check (bot vs every heroine at every difficulty) |
 | `tools/playthrough_test.gd` | Headless playthrough: a bot plays the whole game and it prints the time |
+| `tools/features_test.gd` | Headless checks for special rules, the trainer, choices, crossovers, ladder and achievements |
 
 ## Balance check
 
@@ -148,7 +194,7 @@ final numbers. Tuning knobs: her stats and layer values in
 ## Debug launch options
 
 After `--` on the command line: `screen=menu|roster|vn|match|result|scene|gallery|settings|howto`,
-`screen=shop|cups|prematch` too, `id=mila|juno|kat|sable`, `m=0..5` (match), `all=1 lv=12` (unlock everything, no save), `stage=0..3`, `autoplay=1` (a bot
+`screen=shop|cups|prematch|extras|achievements|choice` too, `mods=bumpers,rush` and `drill=block|shoot` with `screen=match`, `id=mila|juno|kat|sable`, `m=0..5` (match), `all=1 lv=12` (unlock everything, no save), `stage=0..3`, `autoplay=1` (a bot
 plays you), `speed=4` (fast-forward), `shot=out.png delay=2` (screenshot
 and quit).
 
@@ -172,5 +218,6 @@ Replace any track by dropping a file with the same name into `audio/music/`.
 ## Not in yet
 
 Real SFX, original music, a Live2D or frame-animated scene pipeline (Charm Combo's
-`FrameAnimation.gd` / `LiveSprite.gd` could be reused), translations,
-Steam achievements, and an all-ages build switch.
+`FrameAnimation.gd` / `LiveSprite.gd` could be reused), translations, a
+tested Steam build (the achievement hook is written but untested), and an
+all-ages build switch.

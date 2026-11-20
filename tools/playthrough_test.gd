@@ -81,13 +81,21 @@ func _next_story(ignore_levels: bool) -> Array:
 func _story(id: String, mi: int) -> void:
 	var m: Dictionary = gs.heroine(id)["matches"][mi]
 	t_read += m.get("before", []).size() * READ_LINE
-	while true:
-		var r := _play(id, mi, {"mode": "story"})
-		if r.player_won:
-			gs.record_win(id, mi)
-			t_read += m.get("after", []).size() * READ_LINE + READ_SCENE
-			log_lines.append("  t=%3.0f min  Lv %2d  won %s match %d" % [_now() / 60.0, gs.level, id, mi + 1])
-			return
+	# Special rules as the game plays them: the match's own, the first of
+	# Sable's terms, and every leg of a double header.
+	var mods: Array = m.get("mods", []).duplicate()
+	for L in m.get("before", []):
+		if L.has("choice") and not L["choice"].is_empty():
+			mods.append_array(L["choice"][0].get("mods", []))
+	var legs: Array = [mods]
+	for lg in m.get("legs", []):
+		legs.append(lg.get("mods", []))
+	for leg_mods in legs:
+		while not _play(id, mi, {"mode": "story", "mods": leg_mods}).player_won:
+			pass
+	gs.record_win(id, mi)
+	t_read += m.get("after", []).size() * READ_LINE + READ_SCENE
+	log_lines.append("  t=%3.0f min  Lv %2d  won %s match %d" % [_now() / 60.0, gs.level, id, mi + 1])
 
 
 func _finale() -> void:

@@ -33,7 +33,7 @@ func _ready() -> void:
 			var ok := GameState.stage_unlocked(id, st)
 			var stage := st
 			var b := UI.button(("Crack %d" % st) if ok else "Locked", func(): main.open_stage(id, stage), 16, UI.hcolor(id) if ok else UI.LINE)
-			b.custom_minimum_size = Vector2(88, 90)
+			b.custom_minimum_size = Vector2(76, 90)
 			b.disabled = not ok
 			row.add_child(b)
 			if first == null and ok:
@@ -42,10 +42,30 @@ func _ready() -> void:
 			var sc: Dictionary = m.get("scene", {})
 			var ok2 := GameState.scene_unlocked(String(sc.get("id", "")))
 			var b2 := UI.button(String(sc.get("title", "")) if ok2 else "Locked", func(): main.open_scene(id, sc), 16, UI.PINK if ok2 else UI.LINE)
-			b2.custom_minimum_size = Vector2(124, 90)
+			b2.custom_minimum_size = Vector2(104, 90)
 			b2.clip_text = true
 			b2.disabled = not ok2
 			row.add_child(b2)
+			var alt: Dictionary = m.get("alt_scene", {})
+			if not alt.is_empty():
+				var ok4 := GameState.scene_unlocked(String(alt.get("id", "")))
+				var b4 := UI.button(String(alt.get("title", "")) if ok4 else "Secret", func(): main.open_scene(id, alt), 16, UI.GOLD if ok4 else UI.LINE)
+				b4.custom_minimum_size = Vector2(104, 90)
+				b4.clip_text = true
+				b4.disabled = not ok4
+				b4.tooltip_text = "" if ok4 else String(alt.get("hint", "An alternate scene your choices can earn."))
+				row.add_child(b4)
+		# Memories: replay any conversation from a match you've won.
+		var trow := HBoxContainer.new()
+		trow.add_theme_constant_override("separation", 6)
+		trow.add_child(UI.label("Talks", 15, UI.INK_SOFT))
+		for mi in h.get("matches", []).size():
+			var okt: bool = GameState.wins(id) > mi or GameState.unlock_all
+			var mm: int = mi
+			var bt := UI.button("%d" % (mi + 1), func(): main.replay_talk(id, mm), 14, UI.hcolor(id) if okt else UI.LINE)
+			bt.disabled = not okt
+			trow.add_child(bt)
+		v.add_child(trow)
 	v.add_child(UI.label("Cup nights and the championship", 24, UI.GOLD))
 	var crow := HBoxContainer.new()
 	crow.add_theme_constant_override("separation", 10)
@@ -64,6 +84,29 @@ func _ready() -> void:
 		bf.custom_minimum_size = Vector2(220, 90)
 		bf.disabled = not okf
 		crow.add_child(bf)
+	var xs := Extras.crossovers()
+	var eps := Extras.epilogues()
+	if not xs.is_empty() or not eps.is_empty():
+		v.add_child(UI.label("Crossovers and dates", 24, UI.PINK))
+		var xrow := HFlowContainer.new()
+		xrow.custom_minimum_size = Vector2(1180, 0)
+		xrow.add_theme_constant_override("h_separation", 10)
+		xrow.add_theme_constant_override("v_separation", 10)
+		v.add_child(xrow)
+		for c in xs:
+			var cc: Dictionary = c
+			var okx := Extras.seen.has("crossover_" + String(c["id"])) or GameState.unlock_all
+			var bx := UI.button(String(c.get("title", "")) if okx else "Locked", func(): main.play_crossover(cc, main.show_gallery), 16, UI.PINK if okx else UI.LINE)
+			bx.custom_minimum_size = Vector2(220, 70)
+			bx.disabled = not okx
+			xrow.add_child(bx)
+		for eid in eps:
+			var hid: String = eid
+			var oke := Extras.seen.has("epilogue_" + hid) or GameState.unlock_all
+			var be := UI.button(String(eps[eid].get("title", "")) if oke else "Locked", func(): main.play_epilogue(hid, main.show_gallery), 16, UI.hcolor(hid) if oke else UI.LINE)
+			be.custom_minimum_size = Vector2(220, 70)
+			be.disabled = not oke
+			xrow.add_child(be)
 	var back := UI.button("Back", main.show_menu, 20, UI.LINE)
 	back.position = Vector2(40, 735)
 	add_child(back)

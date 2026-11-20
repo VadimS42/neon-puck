@@ -7,6 +7,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 d = json.load(open(os.path.join(ROOT, "data/heroines.json")))
 prog = json.load(open(os.path.join(ROOT, "data/progression.json")))
+extras = json.load(open(os.path.join(ROOT, "data/extras.json")))
 order = d["order"]
 H = d["heroines"]
 n = len(order)
@@ -16,6 +17,10 @@ cups = prog.get("tournaments", [])
 fin = d.get("finale", {})
 n_scenes = sum(len(H[i]["matches"]) for i in order)
 extra = len(cups) + (1 if fin else 0)
+xovers = extras.get("crossovers", [])
+alts = [(i, m["alt_scene"]) for i in order for m in H[i]["matches"] if m.get("alt_scene")]
+eps = extras.get("epilogues", {})
+n_more = len(xovers) + len(alts) + len(eps)
 
 o = []
 w = o.append
@@ -36,7 +41,8 @@ w("3. **Table, puck and paddles** (%d images). Cheap, and they lift the whole lo
 w("4. **Dialogue expressions** (up to %d). Start with `vn_neutral` per heroine;" % (n * 7))
 w("   every missing expression falls back to it.")
 w("5. **Cup and championship scenes** (%d CGs). Rewards for side content and the ending." % extra)
-w("6. **Backgrounds and logo** (3 images).\n")
+w("6. **Crossover, alternate and date scenes** (%d CGs). After Hours and choice rewards; placeholders show the brief until they exist." % n_more)
+w("7. **Backgrounds and logo** (3 images).\n")
 w("Minimum set for a good-looking demo: items 1, 3, the first two scenes per")
 w("heroine, and `vn_neutral` for each heroine (%d files).\n" % (n * 4 + n + 3 + n * 2 + n))
 w("## Per heroine\n")
@@ -73,6 +79,28 @@ if fin:
     sc = fin["scene"]
     w("| `art/scenes/%s.png` | %s | %s |" % (sc["id"], sc["title"], sc["brief"]))
 w("")
+w("## Crossover scenes\n")
+w("Two heroines in one image, unlocked once you're far enough with both (After Hours).\n")
+w("| File | Title | Who | Brief |")
+w("| --- | --- | --- | --- |")
+for c in xovers:
+    sc = c["scene"]
+    w("| `art/scenes/%s.png` | %s | %s and %s | %s |" % (sc["id"], sc["title"], H[c["a"]]["name"].split(" ")[0], H[c["b"]]["name"].split(" ")[0], sc["brief"]))
+w("")
+w("## Alternate scenes (earned with dialogue choices)\n")
+w("| File | Title | How | Brief |")
+w("| --- | --- | --- | --- |")
+for i, a in alts:
+    w("| `art/scenes/%s.png` | %s | %s | %s |" % (a["id"], a["title"], a.get("hint", ""), a["brief"]))
+w("")
+w("## Date nights (after the championship)\n")
+w("| File | Title | Brief |")
+w("| --- | --- | --- |")
+for i in order:
+    if i in eps:
+        sc = eps[i]["scene"]
+        w("| `art/scenes/%s.png` | %s | %s |" % (sc["id"], sc["title"], sc["brief"]))
+w("")
 w("## Shared\n")
 w("| File | Size | Notes |")
 w("| --- | --- | --- |")
@@ -103,10 +131,11 @@ w("| --- | --- |")
 w("| Strip stages | %d |" % (n * 4))
 w("| Story scenes | %d |" % n_scenes)
 w("| Cup and championship scenes | %d |" % extra)
+w("| Crossover, alternate and date scenes | %d |" % n_more)
 w("| Dialogue expressions | %d to %d |" % (n, n * 7))
 w("| Paddles, puck, table | %d |" % (n + 3))
 w("| Backgrounds and logo | 3 |")
-lo = n * 4 + n_scenes + extra + n + n + 3 + 3
+lo = n * 4 + n_scenes + extra + n_more + n + n + 3 + 3
 hi = lo - n + n * 7
 w("| **Total** | **%d to %d** |" % (lo, hi))
 open(os.path.join(ROOT, "docs/ART_LIST.md"), "w").write("\n".join(o) + "\n")

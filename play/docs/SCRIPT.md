@@ -56,10 +56,13 @@ Memory unlocked: **Borrowed Jacket**. Outside under the neon sign, Mila wears yo
 
 ### Match 3 (level 3, first to 6)
 
+Special rules: turbo
+
 Before:
 
 - **Mila** (teasing): I brought backup. Every courier in the city is watching tonight.
 - *Narrator*: Six couriers in rain gear crowd the bar, chanting her name and booing yours.
+- **Mila** (teasing): Dex turned the table's air all the way up. Couriers' rules: the puck never stops, and neither do we.
 - **You**: Is that a sign with my face crossed out?
 - **Mila** (shy): Dex made it, he's really proud of it, so don't embarrass me in front of my people.
 
@@ -81,6 +84,7 @@ Before:
 - **Mila** (surprised): Why do you have a patch kit?
 - **You**: I bought one after the towing thing, just in case.
 - **Mila** (shy): That's either really sweet or really creepy. Play me while I decide.
+- **Mila** (teasing): Also Juno keeps asking me what you're like after close. I said loud and bad at darts. She didn't believe me. *(only if wins:juno>=3)*
 
 After a win:
 
@@ -92,8 +96,13 @@ Memory unlocked: **Rain Check**. Mila sits on the bar in an oversized Afterglow 
 
 ### Match 5 (level 6, first to 7)
 
+Special rules: rush
+
 Before:
 
+- **Mila** (teasing): Race rules tonight. Two minutes on Dex's phone timer, and whoever's ahead when it beeps wins. Couriers settle everything with a clock.
+- **You**: And if it's a tie?
+- **Mila** (happy): Next goal wins. Sudden death. My favourite kind.
 - **Mila** (teasing): Dex keeps asking when you're coming to courier trivia night. I keep telling him never.
 - **Mila** (shy): Mostly because I want you to myself. Forget I said that, rack the puck.
 
@@ -106,8 +115,11 @@ Memory unlocked: **Fries at 4 AM**. Mila in her racer gear and your jacket, shar
 
 ### Match 6 (level 7, first to 7)
 
+Special rules: rush, turbo
+
 Before:
 
+- **Mila** (neutral): Last race. Full air, two minutes on the clock, everything on the line.
 - **Mila** (neutral): No jokes tonight. If I win, you buy breakfast for a week.
 - **You**: And if I win?
 - **Mila** (shy): Then I stop pretending I keep coming back for the hockey.
@@ -167,11 +179,14 @@ Memory unlocked: **Behind the Bar**. Juno, behind the bar in her vest and bow ti
 
 ### Match 2 (level 2, first to 5)
 
+Special rules: bank_double
+
 Before:
 
 - **Juno** (neutral): I've drawn every angle on this table on a napkin. Forty-one napkins.
 - **You**: Is that why we're out of napkins?
 - **Juno** (angry): Don't be charming. It doesn't suit you.
+- **Juno** (teasing): House rules tonight: bank shots count double. Straight shots are a waste of a perfectly good wall.
 
 After a win:
 
@@ -182,6 +197,8 @@ After a win:
 Memory unlocked: **The Memo**. Juno, sleeves rolled up, sits on the office desk reading your unsent memo by lamplight, looking up at you differently for the first time.
 
 ### Match 3 (level 3, first to 6)
+
+After this win she's: Cold war
 
 Before:
 
@@ -194,21 +211,32 @@ After a win:
 - **Juno** (surprised): You kept my schedule. Not one shift moved.
 - **You**: It was a good schedule.
 - **Juno** (shy): Nobody has ever said that to me. I need a minute, and the emergency cherries.
+- *Narrator*: On her way out, Juno stops at the office printer. There's a page in the tray from head office: a plan to 'replace legacy bar staff', with your name in the approval box.
+- **Juno** (angry): You smiled at me all night with this sitting in the printer?
+- **You**: Juno, wait, read the...
+- **Juno** (angry): Save it, lanyard.
 
 Memory unlocked: **Stockroom**. Juno in her shirt and vest, sleeves rolled up, sits on a stack of soda crates in the stockroom with a clipboard and a pen between her teeth, eating cherries from the jar.
 
 ### Match 4 (level 5, first to 6)
 
+Special rules: handicap
+
 Before:
 
-- *Narrator*: Head office sent an auditor today. Juno watched you walk him around the lounge.
-- **Juno** (neutral): You told him I built the stock system, the rota and the cocktail list.
-- **You**: You did.
-- **Juno** (angry): You could have taken the credit. That's what lanyards do.
-- **Juno** (shy): I'm so mad I could kiss you. Rack the puck before I do something stupid.
+- **Juno** (angry): Rematch. I loosened the felt on your paddle, so tonight you're playing with about four fifths of one. Call it severance.
+- **You**: That's sabotage.
+- **Juno** (teasing): That's geometry. Smaller paddle, worse angles. Rack the puck.
 
 After a win:
 
+- *Narrator*: Halfway through, an auditor from head office walks in. You show him round the lounge with Juno's wobbly paddle still in your hand.
+- **Juno** (neutral): You told him I built the stock system, the rota and the cocktail list.
+- **You**: You did.
+- **Juno** (angry): You could have taken the credit. That's what lanyards do.
+- **You**: And that printout was the plan I refused to sign. You stopped at page one. Page two is where I wrote 'over my dead body' in the margin.
+- **Juno** (shy): I sabotaged a paddle over a page I didn't finish reading.
+- **Juno** (shy): I'm so mad I could kiss you. So I might.
 - **Juno** (teasing): I stole the fancy sparkling cider from the auditor's welcome basket.
 - **Juno** (happy): Office, come on. We're celebrating you being a decent human being, which in this business is rare.
 
@@ -220,6 +248,7 @@ Before:
 
 - **Juno** (teasing): Proposal. You keep the title, I keep running the place, and we both lie to head office.
 - **You**: Deal. Winner picks who does payroll.
+- **Juno** (teasing): Mila's been ordering fries here every night and staring at the office door. Subtle, that one. *(only if wins:mila>=4)*
 
 After a win:
 
@@ -230,8 +259,11 @@ Memory unlocked: **Off the Menu**. Juno sits on the bar in her bartender vest an
 
 ### Match 6 (level 7, first to 7)
 
+Special rules: bank_double
+
 Before:
 
+- **Juno** (neutral): Bank night, one last time. Every wall counts double, like it always should have.
 - **Juno** (teasing): Last napkin. It just says: don't fall for the new guy.
 - **Juno** (shy): So I'd better win, huh?
 
@@ -293,12 +325,16 @@ Memory unlocked: **Wrong Bar**. Kat stands at the table in her band tee and jean
 
 ### Match 2 (level 5, first to 5)
 
+Special rules: bumpers
+
 Before:
 
 - **Kat** (teasing): I've been practising on the Static's table. It's older than you and it has a dead spot in the corner.
 - **Kat** (neutral): If I can beat that table, you're nothing.
 - **You**: Why not just get a new table?
 - **Kat** (angry): With what money? Somebody stole my Thursdays.
+- *Narrator*: She drags you across the street to play on the Static's table, which has two steel bumpers bolted to the centre line.
+- **Kat** (teasing): My uncle put those in in 1994 and nobody's been able to get them off since. Home table advantage.
 
 After a win:
 
@@ -311,10 +347,13 @@ Memory unlocked: **Dead Spot**. Kat in her band tee and ripped jeans sits on the
 
 ### Match 3 (level 6, first to 6)
 
+Special rules: big_goals
+
 Before:
 
 - *Narrator*: The Static's first league night is a Monday, and the place is packed. Kat looks terrified.
 - **Kat** (surprised): There are forty people in my bar. I haven't had forty people in my bar since the Super Bowl.
+- **Kat** (neutral): I widened the goals for tonight. Crowds like scoring. Don't argue, it's my bar.
 - **Kat** (teasing): Play me first and make it look good. If I lose in front of them I'll still kill you.
 
 After a win:
@@ -326,12 +365,16 @@ Memory unlocked: **Monday Night**. Kat behind the bar of the packed Static in he
 
 ### Match 4 (level 8, first to 6)
 
+Special rules: blackout
+
 Before:
 
+- **Kat** (happy): Sable came to my Monday night. Sat at the bar, ordered a gin, told me my bass was flat. Best night of my life. *(only if wins:sable>=2)*
 - **Kat** (happy): I got my band back together for the Static's Monday nights. We play after league.
 - **Kat** (teasing): Our drummer quit. So, unrelated question: can you keep a beat?
 - **You**: Is that a job offer?
 - **Kat** (shy): It's a dare. Beat me first.
+- **Kat** (teasing): We're playing on the stage table during soundcheck. House lights stay off, so all you get is the stage lights. Good luck.
 
 After a win:
 
@@ -360,6 +403,7 @@ Memory unlocked: **Across the Street**. Kat in her band tee and your work jacket
 
 Before:
 
+- **Kat** (neutral): Two games tonight, one in each bar. Win both, or it doesn't count.
 - **Kat** (shy): No trash talk tonight. Every sentence I start comes out nice and it's horrible.
 - **Kat** (teasing): Okay, bet. I win, you play bass in my band forever. You win, and...
 - **You**: I win?
@@ -370,6 +414,11 @@ After a win:
 - **Kat** (happy): Okay, you win. One dance, and mind the stage, it's older than the table.
 - **Kat** (teasing): Take my Slingshot too. Start slow, finish strong, like this song.
 - *Narrator*: The song ends. Neither of you moves. Then she kisses you, and the amp hums along.
+
+Game 2 (rules: bumpers):
+
+- *Narrator*: One game down. Kat grabs your hand and walks you across the street to the Static for the second.
+- **Kat** (teasing): Best of two bars. Mine has the bumpers, so this is where the real match is.
 
 Memory unlocked: **Last Song**. Kat and you slow-dancing alone on the Static's stage after close, her forehead against yours, her bass leaning on the amp, red stage lights turned low.
 
@@ -423,6 +472,12 @@ Before:
 
 - **Sable** (neutral): I closed early tonight, so there is no audience.
 - **Sable** (teasing): Whatever happens on this table stays between us. I sent the regulars home.
+- **Sable** (teasing): I set the terms tonight. Pick your poison.
+- *Choice:*
+  - "Mini goals" (rules: mini_goals)
+    - **Sable** (neutral): Precision, then. Good, you will need it.
+  - "By the Book: no power shots" (rules: no_heat)
+    - **Sable** (neutral): No smashes, no tricks. Just you and the angles.
 
 After a win:
 
@@ -437,6 +492,12 @@ Before:
 
 - **Sable** (neutral): I found the box from opening night, nine years ago. The first menu is in there, with the photos and the original sign.
 - **Sable** (teasing): Win, and I'll show you. Lose, and it goes back in the closet with my feelings.
+- **Sable** (teasing): New terms. Choose quickly, I do not like to wait.
+- *Choice:*
+  - "Rush Clock" (rules: rush)
+    - **Sable** (neutral): Two minutes. I have won entire tournaments in less.
+  - "Play with a smaller paddle" (rules: handicap)
+    - **Sable** (neutral): Bold. Or foolish. We will find out which.
 
 After a win:
 
@@ -450,9 +511,16 @@ Memory unlocked: **Opening Night**. Sable, blazer off and sleeves rolled up, sit
 
 Before:
 
+- **Sable** (teasing): Kat Vance tells me you play bass now. Badly. She sounded proud. *(only if wins:kat>=4)*
 - **Sable** (angry): Head office wants to turn the Afterglow into a sports bar with big screens, wings and no table.
 - **You**: Over my dead lanyard.
 - **Sable** (teasing): Good answer. Now show me you will fight for it.
+- **Sable** (teasing): Tonight's terms are about trust. Pick one.
+- *Choice:*
+  - "Blackout" (rules: blackout)
+    - **Sable** (neutral): In the dark, then. You will have to feel where the puck is.
+  - "Turbo Air" (rules: turbo)
+    - **Sable** (neutral): Fast, then. Try to keep up.
 
 After a win:
 
@@ -467,6 +535,12 @@ Before:
 
 - **Sable** (teasing): I have decided to buy the Afterglow back, with your help. Every good plan needs a spy inside head office.
 - **Sable** (neutral): But I do not partner with people I can beat. Prove it again.
+- **Sable** (teasing): Partners negotiate. You choose my handicap for once.
+- *Choice:*
+  - "Bank Night for you" (rules: bank_double)
+    - **Sable** (neutral): Your banks count double. Generous of me, I know.
+  - "Wide goals for both of us" (rules: big_goals)
+    - **Sable** (neutral): Big goals, big scores, big risks. I approve.
 
 After a win:
 
@@ -480,6 +554,7 @@ Memory unlocked: **Partners**. Sable in her velvet blazer sits on the edge of he
 
 Before:
 
+- **Sable** (neutral): No terms tonight. No handicaps, no tricks. Just the two of us and the table, the way it started.
 - **Sable** (neutral): For the title. Winner's name goes at the top of the wall.
 - **Sable** (shy): And me, win or lose, if I am honest. Do not tell the others I said that.
 
@@ -562,4 +637,4 @@ Memory unlocked: **Afterglow**. Dawn after the championship: you and all four he
 - **Gold Cup Champions** (Gold Cup): The four heroines hoist you onto the championship table with the gold cup, streamers everywhere, Kat's band playing in the corner.
 
 ---
-246 lines in total.
+286 lines in total.

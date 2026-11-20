@@ -93,7 +93,7 @@ func _draw() -> void:
 	# Outfit: one colour per outfit, always fully dressed.
 	var oid := outfit if outfit != "" else GameState.current_outfit(heroine_id)
 	var tints := {"default": col, "date": col.lerp(Color("#FFFFFF"), 0.35), "league": Color("#3FD7FF"), "neon": col.lerp(Color("#FFC94F"), 0.5)}
-	var oc: Color = tints.get(oid, col)
+	var oc: Color = tints.get(oid, Color(String(GameState.outfit_def(heroine_id, oid).get("tint", col.to_html()))))
 	draw_rect(Rect2(torso.position.x - 2, torso.position.y, torso.size.x + 4, torso.size.y + 6), oc.lightened(0.15))
 	draw_rect(Rect2(hips.position.x - 4, hips.position.y - 4, hips.size.x + 8, h * 0.30), oc.lerp(Color.BLACK, 0.3))
 	draw_rect(Rect2(torso.position.x - w * 0.08, torso.position.y - 4, w * 0.075, h * 0.30), oc)
