@@ -61,6 +61,7 @@ func _ready() -> void:
 	v.add_child(mus)
 	v.add_child(UI.button("Reset story progress", func():
 		GameState.reset_progress()
+		Extras.reset_story()
 		main.show_settings(back), 18, UI.BAD))
 	var bk := UI.button("Back", back, 22, UI.LINE)
 	v.add_child(bk)

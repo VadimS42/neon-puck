@@ -68,7 +68,16 @@ func _cup_card(row: HBoxContainer, c: Dictionary, busy: bool) -> Button:
 	p.add_child(v)
 	v.add_child(UI.label(String(c["name"]) + ("  ★ won" if won else ""), 30, col))
 	v.add_child(UI.label("%d rounds, first to %d" % [int(c["rounds"]), int(c["target"])], 18, UI.INK))
+	var special := []
+	var rms: Array = c.get("round_mods", [])
+	for i in rms.size():
+		if not rms[i].is_empty():
+			special.append("R%d %s" % [i + 1, MatchMods.names(rms[i])])
 	v.add_child(UI.label("Opponents get sharper each round", 15, UI.INK_SOFT))
+	if not special.is_empty():
+		var sl := UI.wrap_label("Special rounds: " + "; ".join(special), 15, UI.GOLD)
+		sl.custom_minimum_size = Vector2(350, 0)
+		v.add_child(sl)
 	v.add_child(UI.label("Needs level %d and %d story wins" % [int(c["level"]), int(c["requires_wins"])], 16, UI.INK_SOFT))
 	v.add_child(UI.label("Entry: %d tips" % int(c["entry"]), 18, UI.GOLD))
 	var rr: Dictionary = c.get("round_reward", {})

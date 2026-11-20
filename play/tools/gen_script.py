@@ -21,10 +21,18 @@ def who(l):
     return "**%s**%s" % (H[w]["name"].split(" ")[0], (" (%s)" % l["e"]) if l.get("e") else "")
 
 
-def lines(ls, out):
+def lines(ls, out, ind=""):
     for l in ls:
+        if "choice" in l:
+            out.append(ind + "- *Choice:*")
+            for c in l["choice"]:
+                extra = (" (rules: %s)" % ", ".join(c["mods"])) if c.get("mods") else ""
+                out.append(ind + "  - \"%s\"%s" % (c["text"], extra))
+                lines(c.get("reply", []), out, ind + "    ")
+            continue
         count[0] += 1
-        out.append("- %s: %s" % (who(l), l["text"]))
+        cond = (" *(only if %s)*" % l["if"]) if l.get("if") else ""
+        out.append(ind + "- %s: %s%s" % (who(l), l["text"], cond))
 
 
 o = []
@@ -45,10 +53,17 @@ for hid in d["order"]:
     for n, m in enumerate(h["matches"]):
         s = m["scene"]
         w("### Match %d (level %d, first to %d)\n" % (n + 1, m["level"], m["target"]))
+        if m.get("mods"):
+            w("Special rules: %s\n" % ", ".join(m["mods"]))
+        if m.get("attitude"):
+            w("After this win she's: %s\n" % m["attitude"])
         w("Before:\n")
         lines(m["before"], o)
         w("\nAfter a win:\n")
         lines(m["after"], o)
+        for k, leg in enumerate(m.get("legs", [])):
+            w("\nGame %d (rules: %s):\n" % (k + 2, ", ".join(leg.get("mods", [])) or "none"))
+            lines(leg.get("before", []), o)
         w("\nMemory unlocked: **%s**. %s\n" % (s["title"], s["brief"]))
     w("### In-match lines\n")
     w("Hostile for her first two matches, warm after.\n")

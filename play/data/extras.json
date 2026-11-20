@@ -1,0 +1,1071 @@
+{
+  "_readme": "Extras: achievements, crossover scenes, rival barks (what she says about the others at the start of a match), finale lines for whoever you won over first, and per-game features. Achievement 'stat' is a counter from Extras.gd STAT_KEYS or one of won_over, finale, scenes, trophies, level, ladder_best, won (with id_of), alt_scenes; 'n' is the target. steam_id / play_id map to the platform achievement ids (set play_id from Play Console). Crossovers open when you have 'need' story wins with both heroines.",
+  "achievements": [
+    {
+      "id": "first_win",
+      "name": "Opening Night",
+      "desc": "Win your first match.",
+      "stat": "wins",
+      "n": 1,
+      "steam_id": "FIRST_WIN",
+      "play_id": ""
+    },
+    {
+      "id": "story_10",
+      "name": "Regular",
+      "desc": "Win 10 story matches.",
+      "stat": "story_wins",
+      "n": 10,
+      "steam_id": "STORY_10",
+      "play_id": ""
+    },
+    {
+      "id": "story_all",
+      "name": "Last Call Legend",
+      "desc": "Win all 24 story matches.",
+      "stat": "story_wins",
+      "n": 24,
+      "steam_id": "STORY_ALL",
+      "play_id": ""
+    },
+    {
+      "id": "won_mila",
+      "name": "Courier's Choice",
+      "desc": "Win Mila over.",
+      "stat": "won",
+      "n": 1,
+      "steam_id": "WON_MILA",
+      "play_id": "",
+      "id_of": "mila"
+    },
+    {
+      "id": "won_juno",
+      "name": "Off the Menu",
+      "desc": "Win Juno over.",
+      "stat": "won",
+      "n": 1,
+      "steam_id": "WON_JUNO",
+      "play_id": "",
+      "id_of": "juno"
+    },
+    {
+      "id": "won_kat",
+      "name": "Across the Street",
+      "desc": "Win Kat over.",
+      "stat": "won",
+      "n": 1,
+      "steam_id": "WON_KAT",
+      "play_id": "",
+      "id_of": "kat"
+    },
+    {
+      "id": "won_sable",
+      "name": "Champion's Privilege",
+      "desc": "Win Sable over.",
+      "stat": "won",
+      "n": 1,
+      "steam_id": "WON_SABLE",
+      "play_id": "",
+      "id_of": "sable"
+    },
+    {
+      "id": "champion",
+      "name": "Last Call Champion",
+      "desc": "Win the Last Call Championship.",
+      "stat": "finale",
+      "n": 1,
+      "steam_id": "CHAMPION",
+      "play_id": ""
+    },
+    {
+      "id": "bank_25",
+      "name": "Geometry Teacher",
+      "desc": "Score 25 bank-shot goals.",
+      "stat": "bank_goals",
+      "n": 25,
+      "steam_id": "BANK_25",
+      "play_id": ""
+    },
+    {
+      "id": "smash_25",
+      "name": "Heavy Hitter",
+      "desc": "Score 25 power-shot goals.",
+      "stat": "smash_goals",
+      "n": 25,
+      "steam_id": "SMASH_25",
+      "play_id": ""
+    },
+    {
+      "id": "blocks_10",
+      "name": "Wall of Neon",
+      "desc": "Block 10 of their signature shots.",
+      "stat": "blocks",
+      "n": 10,
+      "steam_id": "BLOCKS_10",
+      "play_id": ""
+    },
+    {
+      "id": "shutout",
+      "name": "Clean Sheet",
+      "desc": "Win a match without letting a goal in.",
+      "stat": "shutouts",
+      "n": 1,
+      "steam_id": "SHUTOUT",
+      "play_id": ""
+    },
+    {
+      "id": "comeback",
+      "name": "Never Out",
+      "desc": "Win a match after trailing by 3.",
+      "stat": "comebacks",
+      "n": 1,
+      "steam_id": "COMEBACK",
+      "play_id": ""
+    },
+    {
+      "id": "special_10",
+      "name": "House Rules",
+      "desc": "Win 10 special-rules matches.",
+      "stat": "special_wins",
+      "n": 10,
+      "steam_id": "SPECIAL_10",
+      "play_id": ""
+    },
+    {
+      "id": "rush_3",
+      "name": "Beat the Clock",
+      "desc": "Win 3 Rush Clock matches.",
+      "stat": "rush_wins",
+      "n": 3,
+      "steam_id": "RUSH_3",
+      "play_id": ""
+    },
+    {
+      "id": "trainer_4",
+      "name": "Student of the Game",
+      "desc": "Pass 4 shot trainer drills.",
+      "stat": "trainer_passes",
+      "n": 4,
+      "steam_id": "TRAINER_4",
+      "play_id": ""
+    },
+    {
+      "id": "cups_3",
+      "name": "Trophy Shelf",
+      "desc": "Win all three cups.",
+      "stat": "trophies",
+      "n": 3,
+      "steam_id": "CUPS_3",
+      "play_id": ""
+    },
+    {
+      "id": "crossovers_4",
+      "name": "Small World",
+      "desc": "See all four crossovers.",
+      "stat": "crossovers",
+      "n": 4,
+      "steam_id": "CROSSOVERS_4",
+      "play_id": ""
+    },
+    {
+      "id": "level_max",
+      "name": "Top of the League",
+      "desc": "Reach the top level.",
+      "stat": "level",
+      "n": 15,
+      "steam_id": "LEVEL_MAX",
+      "play_id": ""
+    },
+    {
+      "id": "matches_100",
+      "name": "Night Owl",
+      "desc": "Play 100 matches.",
+      "stat": "matches",
+      "n": 100,
+      "steam_id": "MATCHES_100",
+      "play_id": ""
+    },
+    {
+      "id": "missions_10",
+      "name": "Busy Night",
+      "desc": "Finish 10 daily missions.",
+      "stat": "missions",
+      "n": 10,
+      "steam_id": "MISSIONS_10",
+      "play_id": ""
+    },
+    {
+      "id": "missions_50",
+      "name": "Shift Lead",
+      "desc": "Finish 50 daily missions.",
+      "stat": "missions",
+      "n": 50,
+      "steam_id": "MISSIONS_50",
+      "play_id": ""
+    },
+    {
+      "id": "event_1",
+      "name": "Event Night",
+      "desc": "Win a weekly event cup.",
+      "stat": "events",
+      "n": 1,
+      "steam_id": "EVENT_1",
+      "play_id": ""
+    },
+    {
+      "id": "event_4",
+      "name": "Every Week",
+      "desc": "Win 4 weekly event cups.",
+      "stat": "events",
+      "n": 4,
+      "steam_id": "EVENT_4",
+      "play_id": ""
+    },
+    {
+      "id": "memories_30",
+      "name": "Full Album",
+      "desc": "Unlock 30 memories.",
+      "stat": "scenes",
+      "n": 30,
+      "steam_id": "MEMORIES_30",
+      "play_id": ""
+    }
+  ],
+  "crossovers": [
+    {
+      "id": "mila_juno",
+      "a": "mila",
+      "b": "juno",
+      "need": 3,
+      "title": "Fries vs Napkins",
+      "teaser": "Mila and Juno have both been asking about you. Tonight they're asking each other.",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "Near closing time you find Mila and Juno at the bar, deep in an argument, with a basket of fries and a pile of napkins between them."
+        },
+        {
+          "who": "mila",
+          "e": "teasing",
+          "text": "Okay, settle this. Juno says you're a bank-shot person. I say you're a straight-shot person."
+        },
+        {
+          "who": "juno",
+          "e": "neutral",
+          "text": "I have diagrams."
+        },
+        {
+          "who": "mila",
+          "e": "angry",
+          "text": "She has diagrams. She always has diagrams!"
+        },
+        {
+          "who": "you",
+          "text": "Why does it matter?"
+        },
+        {
+          "who": "juno",
+          "e": "teasing",
+          "text": "Because whoever's right picks what you do on your next night off."
+        },
+        {
+          "who": "mila",
+          "e": "shy",
+          "text": "We made a bet about you. It sounded better before you walked in."
+        },
+        {
+          "who": "you",
+          "text": "So I'm the puck."
+        },
+        {
+          "who": "juno",
+          "e": "happy",
+          "text": "Finally, he gets it. One game each. Winner keeps you for the evening."
+        },
+        {
+          "who": "narrator",
+          "text": "It ends in a tie. They split the last of the fries and refuse to tell you who won."
+        },
+        {
+          "who": "mila",
+          "e": "teasing",
+          "text": "Same time next week. Bring your own napkins."
+        }
+      ],
+      "scene": {
+        "id": "x_mila_juno",
+        "title": "Fries and Napkins",
+        "brief": "Mila and Juno sit on either side of you on the bar in league jerseys, one holding out a fry and the other a napkin diagram, glaring at each other over your head."
+      }
+    },
+    {
+      "id": "juno_kat",
+      "a": "juno",
+      "b": "kat",
+      "need": 3,
+      "title": "Two Bars, One Table",
+      "teaser": "Juno levels the Afterglow's table every Monday. Kat swears hers is better. Somebody has to judge.",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "Monday at the Static. Juno has brought a spirit level, and Kat has brought a grudge."
+        },
+        {
+          "who": "kat",
+          "e": "angry",
+          "text": "My table is not tilted. It has character."
+        },
+        {
+          "who": "juno",
+          "e": "teasing",
+          "text": "It leans three degrees to the left. I measured it twice."
+        },
+        {
+          "who": "kat",
+          "e": "angry",
+          "text": "You brought a level to my bar?"
+        },
+        {
+          "who": "juno",
+          "e": "neutral",
+          "text": "I bring a level everywhere. It's called standards."
+        },
+        {
+          "who": "you",
+          "text": "Maybe you two should just play each other."
+        },
+        {
+          "who": "kat",
+          "e": "teasing",
+          "text": "Fine. Loser buys the winner's drinks for a month."
+        },
+        {
+          "who": "juno",
+          "e": "teasing",
+          "text": "And the loser admits the other one runs the better bar."
+        },
+        {
+          "who": "narrator",
+          "text": "Kat wins on her bumpers. Juno wins the rematch across the street. Nobody admits anything."
+        },
+        {
+          "who": "juno",
+          "e": "shy",
+          "text": "Your table's fun. Don't tell anyone I said that."
+        },
+        {
+          "who": "kat",
+          "e": "happy",
+          "text": "Your cocktails are criminal. Same time next Monday?"
+        }
+      ],
+      "scene": {
+        "id": "x_juno_kat",
+        "title": "Sister Bars",
+        "brief": "Juno and Kat sit back to back on the Static's bumper table sharing one cocktail with two straws while you hold the spirit level, both trying not to laugh."
+      }
+    },
+    {
+      "id": "kat_sable",
+      "a": "kat",
+      "b": "sable",
+      "need": 2,
+      "title": "Old Guard",
+      "teaser": "Sable and Kat go back further than you knew.",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "You find Sable at the Static's bar. You've never once seen her set foot in there."
+        },
+        {
+          "who": "sable",
+          "e": "neutral",
+          "text": "Kat's uncle taught me to play on that table in 1998. The bumpers were already there."
+        },
+        {
+          "who": "kat",
+          "e": "surprised",
+          "text": "You knew Uncle Ray?"
+        },
+        {
+          "who": "sable",
+          "e": "happy",
+          "text": "He beat me forty times in a row. Then he made me promise to beat everyone else."
+        },
+        {
+          "who": "kat",
+          "e": "shy",
+          "text": "He used to say a girl from across the street would run this whole block one day."
+        },
+        {
+          "who": "sable",
+          "e": "sad",
+          "text": "And then I sold it. He would be furious."
+        },
+        {
+          "who": "you",
+          "text": "So give him a reason to be proud."
+        },
+        {
+          "who": "kat",
+          "e": "teasing",
+          "text": "One game, for Ray. Old rules."
+        },
+        {
+          "who": "narrator",
+          "text": "They play with the bumpers, the old way, and for once neither of them says a word of trash talk."
+        },
+        {
+          "who": "sable",
+          "e": "shy",
+          "text": "You play like him. It is very irritating."
+        }
+      ],
+      "scene": {
+        "id": "x_kat_sable",
+        "title": "For Ray",
+        "brief": "Sable in her blazer and Kat in her band tee lean side by side on the Static's old table under a framed photo of Uncle Ray, toasting with two glasses, both pretending they aren't teary."
+      }
+    },
+    {
+      "id": "mila_sable",
+      "a": "mila",
+      "b": "sable",
+      "need": 3,
+      "title": "Speed Lesson",
+      "teaser": "Mila wants a lesson from the undefeated. Sable wants to see if the courier can keep up.",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "Sable is holding court at the table when Mila skids in, still wearing her helmet."
+        },
+        {
+          "who": "mila",
+          "e": "teasing",
+          "text": "Okay, Ms Undefeated. I want a lesson. A real one."
+        },
+        {
+          "who": "sable",
+          "e": "neutral",
+          "text": "You are fast. Fast is not the same thing as good."
+        },
+        {
+          "who": "mila",
+          "e": "angry",
+          "text": "Rude. Accurate, but rude."
+        },
+        {
+          "who": "sable",
+          "e": "teasing",
+          "text": "Lesson one: stop hitting everything as hard as you can."
+        },
+        {
+          "who": "mila",
+          "e": "surprised",
+          "text": "That's my whole personality!"
+        },
+        {
+          "who": "you",
+          "text": "She's not wrong, Mila."
+        },
+        {
+          "who": "mila",
+          "e": "angry",
+          "text": "Whose side are you on?"
+        },
+        {
+          "who": "sable",
+          "e": "happy",
+          "text": "Mine, obviously. Again. Slower this time."
+        },
+        {
+          "who": "narrator",
+          "text": "An hour later Mila bends a curve shot past Sable, and the two of them shriek like teenagers."
+        },
+        {
+          "who": "sable",
+          "e": "shy",
+          "text": "She learns quickly. Like someone else I know."
+        }
+      ],
+      "scene": {
+        "id": "x_mila_sable",
+        "title": "Speed Lesson",
+        "brief": "Sable stands behind Mila at the table guiding her wrist on the paddle, Mila still in her helmet and grinning at you over her shoulder."
+      }
+    }
+  ],
+  "rival_barks": {
+    "mila": {
+      "juno": "Juno says you're good with angles. I'm better with speed.",
+      "kat": "Kat says you can't drum. I heard it from the street.",
+      "sable": "Sable taught you that curve, didn't she? Cheater."
+    },
+    "juno": {
+      "mila": "Mila says your name a lot on her breaks. A lot.",
+      "kat": "Kat thinks you play bass now. Let's see those hands.",
+      "sable": "Sable's been watching you play. She never watches anyone."
+    },
+    "kat": {
+      "mila": "Mila's courier crew keeps showing up at my bar asking for you.",
+      "juno": "Juno told me you read her schedule out loud. Nerd.",
+      "sable": "If Sable likes you, I have to beat you twice as hard."
+    },
+    "sable": {
+      "mila": "The courier talks about you constantly. It is exhausting.",
+      "juno": "Juno vouched for you. Juno does not vouch for people.",
+      "kat": "Kat Vance's uncle would have liked you. Do not let it go to your head."
+    }
+  },
+  "finale_by_first": {
+    "mila": [
+      {
+        "who": "mila",
+        "e": "teasing",
+        "text": "For the record, I was first. First to hate you, first to like you. Put that on the wall."
+      },
+      {
+        "who": "juno",
+        "e": "teasing",
+        "text": "She was also first to throw a fry at him. Put that on the wall too."
+      }
+    ],
+    "juno": [
+      {
+        "who": "juno",
+        "e": "teasing",
+        "text": "For the record, I called it. Napkin forty-three: he wins the whole thing. It's laminated."
+      },
+      {
+        "who": "mila",
+        "e": "angry",
+        "text": "You laminate your napkins?"
+      }
+    ],
+    "kat": [
+      {
+        "who": "kat",
+        "e": "happy",
+        "text": "For the record, the Static backed you first. We're printing your face on T-shirts. Not crossed out this time."
+      },
+      {
+        "who": "sable",
+        "e": "teasing",
+        "text": "I will take a medium."
+      }
+    ],
+    "sable": [
+      {
+        "who": "sable",
+        "e": "teasing",
+        "text": "For the record, I saw this coming first. I simply chose not to say so."
+      },
+      {
+        "who": "kat",
+        "e": "teasing",
+        "text": "She absolutely did not."
+      }
+    ]
+  },
+  "missions": {
+    "_readme": "Daily missions: per_day are rolled from the pool each day (same set for every player, from the date). 'stat' counts from the moment the day's set is rolled. Rewards use the same bundle format as daily rewards.",
+    "per_day": 3,
+    "bonus": {
+      "gems": 10
+    },
+    "pool": [
+      {
+        "id": "win_2",
+        "text": "Win 2 matches",
+        "stat": "wins",
+        "n": 2,
+        "reward": {
+          "tips": 150
+        }
+      },
+      {
+        "id": "win_4",
+        "text": "Win 4 matches",
+        "stat": "wins",
+        "n": 4,
+        "reward": {
+          "gems": 5
+        }
+      },
+      {
+        "id": "bank_3",
+        "text": "Score 3 bank-shot goals",
+        "stat": "bank_goals",
+        "n": 3,
+        "reward": {
+          "tips": 120
+        }
+      },
+      {
+        "id": "smash_3",
+        "text": "Score 3 smash goals",
+        "stat": "smash_goals",
+        "n": 3,
+        "reward": {
+          "tips": 150
+        }
+      },
+      {
+        "id": "saves_8",
+        "text": "Make 8 saves",
+        "stat": "saves",
+        "n": 8,
+        "reward": {
+          "tips": 120
+        }
+      },
+      {
+        "id": "block_2",
+        "text": "Block 2 signature shots",
+        "stat": "blocks",
+        "n": 2,
+        "reward": {
+          "gems": 3
+        }
+      },
+      {
+        "id": "crack_6",
+        "text": "Crack their cool 6 times",
+        "stat": "strips",
+        "n": 6,
+        "reward": {
+          "tips": 150
+        }
+      },
+      {
+        "id": "shutout_1",
+        "text": "Win without letting a goal in",
+        "stat": "shutouts",
+        "n": 1,
+        "reward": {
+          "gems": 5
+        }
+      },
+      {
+        "id": "play_5",
+        "text": "Play 5 matches",
+        "stat": "matches",
+        "n": 5,
+        "reward": {
+          "powerup": "grip",
+          "count": 1
+        }
+      },
+      {
+        "id": "special_1",
+        "text": "Win a special-rules match",
+        "stat": "special_wins",
+        "n": 1,
+        "reward": {
+          "gems": 3
+        }
+      },
+      {
+        "id": "story_1",
+        "text": "Win a story match",
+        "stat": "story_wins",
+        "n": 1,
+        "reward": {
+          "tips": 200
+        }
+      },
+      {
+        "id": "trainer_1",
+        "text": "Pass a shot trainer drill",
+        "stat": "trainer_passes",
+        "n": 1,
+        "reward": {
+          "powerup": "energy",
+          "count": 1
+        }
+      }
+    ]
+  },
+  "comeback": {
+    "_readme": "Comeback help: after after_losses losses in a row on the same story match, the result screen offers a rematch where she plays slower (speed x), sees the puck later (+reaction), aims wider (aim x), has 1 less Cool per crack, and you get the listed power-ups free.",
+    "after_losses": 3,
+    "speed": 0.9,
+    "reaction": 0.02,
+    "aim": 1.25,
+    "powerups": [
+      "grip"
+    ]
+  },
+  "events": [
+    {
+      "id": "rush_hour",
+      "name": "Rush Hour",
+      "blurb": "Couriers' rules: the clock is running and the air is on full.",
+      "mods": [
+        "rush",
+        "turbo"
+      ],
+      "rounds": 3,
+      "target": 5,
+      "stage": 3,
+      "boost": [
+        0.0,
+        0.05,
+        0.1
+      ],
+      "reward": {
+        "gems": 30
+      },
+      "outfit": "mila:rush_hour"
+    },
+    {
+      "id": "bank_holiday",
+      "name": "Bank Holiday",
+      "blurb": "Juno's house rules: banks count double and the goals are tiny.",
+      "mods": [
+        "bank_double",
+        "mini_goals"
+      ],
+      "rounds": 3,
+      "target": 5,
+      "stage": 3,
+      "boost": [
+        0.0,
+        0.05,
+        0.1
+      ],
+      "reward": {
+        "gems": 30
+      },
+      "outfit": "juno:bank_holiday"
+    },
+    {
+      "id": "static_night",
+      "name": "Static Night",
+      "blurb": "Lights out at the Static. Bumpers on the table, stage lights only.",
+      "mods": [
+        "bumpers",
+        "blackout"
+      ],
+      "rounds": 3,
+      "target": 5,
+      "stage": 3,
+      "boost": [
+        0.0,
+        0.05,
+        0.1
+      ],
+      "reward": {
+        "gems": 30
+      },
+      "outfit": "kat:static_night"
+    },
+    {
+      "id": "grand_opening",
+      "name": "Grand Opening",
+      "blurb": "Sable's anniversary rules: wide goals, no power shots, pure hockey.",
+      "mods": [
+        "big_goals",
+        "no_heat"
+      ],
+      "rounds": 3,
+      "target": 5,
+      "stage": 3,
+      "boost": [
+        0.0,
+        0.05,
+        0.1
+      ],
+      "reward": {
+        "gems": 30
+      },
+      "outfit": "sable:grand_opening"
+    }
+  ],
+  "season": {
+    "_readme": "Season pass. Season XP from every match (xp_win / xp_loss) and every mission (xp_mission). 'product' is the non-consumable that unlocks the premium track (one product per season, see monetization.json). Change 'id' to start a new season (progress resets). Premium is cosmetics and currency only.",
+    "id": "s1",
+    "name": "Season 1: Neon Nights",
+    "ends": "when Season 2 starts",
+    "product": "season_pass_s1",
+    "xp_per_tier": 100,
+    "xp_win": 40,
+    "xp_loss": 15,
+    "xp_mission": 50,
+    "tiers": [
+      {
+        "free": {
+          "tips": 110
+        },
+        "premium": {
+          "powerups": {
+            "spotlight": 1,
+            "sugar": 1
+          }
+        }
+      },
+      {
+        "free": {
+          "tips": 120
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "powerup": "grip",
+          "count": 1
+        },
+        "premium": {
+          "tips": 400
+        }
+      },
+      {
+        "free": {
+          "tips": 140
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "gems": 5
+        },
+        "premium": {
+          "powerups": {
+            "spotlight": 1,
+            "sugar": 1
+          }
+        }
+      },
+      {
+        "free": {
+          "powerup": "hype",
+          "count": 1
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "tips": 170
+        },
+        "premium": {
+          "tips": 400
+        }
+      },
+      {
+        "free": {
+          "tips": 180
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "powerup": "energy",
+          "count": 1
+        },
+        "premium": {
+          "powerups": {
+            "spotlight": 1,
+            "sugar": 1
+          }
+        }
+      },
+      {
+        "free": {
+          "gems": 5
+        },
+        "premium": {
+          "outfit": "mila:pass_s1",
+          "gems": 20
+        }
+      },
+      {
+        "free": {
+          "tips": 210
+        },
+        "premium": {
+          "tips": 400
+        }
+      },
+      {
+        "free": {
+          "powerup": "grip",
+          "count": 1
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "tips": 230
+        },
+        "premium": {
+          "powerups": {
+            "spotlight": 1,
+            "sugar": 1
+          }
+        }
+      },
+      {
+        "free": {
+          "tips": 240
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "gems": 5
+        },
+        "premium": {
+          "tips": 400
+        }
+      },
+      {
+        "free": {
+          "tips": 260
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "tips": 270
+        },
+        "premium": {
+          "powerups": {
+            "spotlight": 1,
+            "sugar": 1
+          }
+        }
+      },
+      {
+        "free": {
+          "powerup": "energy",
+          "count": 1
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "tips": 290
+        },
+        "premium": {
+          "tips": 400
+        }
+      },
+      {
+        "free": {
+          "gems": 5
+        },
+        "premium": {
+          "outfit": "juno:pass_s1",
+          "gems": 20
+        }
+      },
+      {
+        "free": {
+          "powerup": "grip",
+          "count": 1
+        },
+        "premium": {
+          "powerups": {
+            "spotlight": 1,
+            "sugar": 1
+          }
+        }
+      },
+      {
+        "free": {
+          "tips": 320
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "tips": 330
+        },
+        "premium": {
+          "tips": 400
+        }
+      },
+      {
+        "free": {
+          "powerup": "hype",
+          "count": 1
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "gems": 5
+        },
+        "premium": {
+          "outfit": "kat:pass_s1",
+          "gems": 20
+        }
+      },
+      {
+        "free": {
+          "tips": 360
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "powerup": "energy",
+          "count": 1
+        },
+        "premium": {
+          "tips": 400
+        }
+      },
+      {
+        "free": {
+          "tips": 380
+        },
+        "premium": {
+          "gems": 15
+        }
+      },
+      {
+        "free": {
+          "tips": 390
+        },
+        "premium": {
+          "powerups": {
+            "spotlight": 1,
+            "sugar": 1
+          }
+        }
+      },
+      {
+        "free": {
+          "gems": 5
+        },
+        "premium": {
+          "outfit": "sable:pass_s1",
+          "gems": 20
+        }
+      }
+    ]
+  }
+}

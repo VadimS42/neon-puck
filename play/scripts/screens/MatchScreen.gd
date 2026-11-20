@@ -213,6 +213,10 @@ func _build_bottom() -> void:
 	row.add_child(smash_btn)
 	hint_lbl = UI.wrap_label("", 16, UI.INK_SOFT)
 	v.add_child(hint_lbl)
+	if not rules.mods.is_empty():
+		var ml := UI.wrap_label("Special rules: " + MatchMods.describe(rules.mods).replace("\n", "  "), 15, UI.GOLD)
+		ml.custom_minimum_size = Vector2(820, 0)
+		v.add_child(ml)
 
 
 func _bar(col: Color) -> ProgressBar:
@@ -242,6 +246,12 @@ func _mode_text() -> String:
 			t = "Replay of match %d, first to %d" % [match_index + 1, rules.target]
 		"finale":
 			t = "Championship round %d of %d, first to %d" % [int(ctx.get("round", 0)) + 1, GameState.finale().get("rounds", []).size(), rules.target]
+		"trainer":
+			t = "Shot trainer: %s" % ("block her %s" % String(_h.get("signature_name", "")) if rules.drill == "block" else "score with your %s" % _shot_name())
+		"ladder":
+			t = "Endless Ladder, rung %d, first to %d" % [int(ctx.get("round", 0)) + 1, rules.target]
+		"event":
+			t = "%s, round %d, first to %d" % [String(ctx.get("event_name", "Event cup")), int(ctx.get("round", 0)) + 1, rules.target]
 		_:
 			t = "Match %d of %d, first to %d" % [match_index + 1, GameState.match_count(heroine_id), rules.target]
 	var pu: Array = ctx.get("powerups", [])
@@ -403,6 +413,10 @@ func _process(_d: float) -> void:
 	var a: int = rules.sim.paddle(0).score
 	var b: int = rules.sim.paddle(1).score
 	score_lbl.text = "YOU  %d : %d  %s" % [a, b, UI.first_name(heroine_id).to_upper()]
+	if rules.drill != "":
+		score_lbl.text = "%s %d   SHOT %d / %d" % ["BLOCKED" if rules.drill == "block" else "SCORED", rules.drill_hits, mini(rules.drill_shots, rules.drill_total), rules.drill_total]
+	elif rules.clock >= 0.0:
+		score_lbl.text += "   " + ("GOLDEN GOAL" if rules.golden_goal else "%d:%02d" % [int(ceil(rules.clock)) / 60, int(ceil(rules.clock)) % 60])
 	var me: PuckSim.Paddle = rules.sim.paddle(0)
 	var her: PuckSim.Paddle = rules.sim.paddle(1)
 	my_bar.value = me.heat
@@ -413,6 +427,12 @@ func _process(_d: float) -> void:
 	smash_btn.text = "ARMED!" if me.armed else _shot_name().to_upper()
 	if countdown > 0.0:
 		hint_lbl.text = "Get ready: %d" % int(ceil(countdown - 0.2))
+	elif rules.drill == "block":
+		hint_lbl.text = "She fires her %s every time she gets the puck. %s Stop 6 of 10 to pass." % [String(_h.get("signature_name", "")), String(_h.get("signature_tip", ""))]
+	elif rules.drill == "shoot" and not me.armed:
+		hint_lbl.text = "Your shot is always ready: arm it, then hit. Score 6 of 10 to pass."
+	elif rules.mods.has("no_heat"):
+		hint_lbl.text = "By the Book: no Heat, no power shots. Banks and angles only."
 	elif me.armed:
 		hint_lbl.text = ("Smash armed: your next hit flies at top speed." if rules.sim.paddle(0).power_kind == "smash" else "%s armed: your next touch fires it at her goal." % _shot_name()) + " Score with it to crack her cool at once."
 	elif me.heat >= PuckSim.HEAT_MAX:
@@ -458,6 +478,10 @@ func _on_event(e: Dictionary) -> void:
 			pass
 		"second_wind":
 			_banner("SECOND WIND! Heat full.", UI.GOLD)
+		"bonus_points":
+			_banner("BANK NIGHT: +%d" % int(e.n), UI.CYAN)
+		"golden_goal":
+			_banner("TIME! Next goal wins.", UI.GOLD, 2.2)
 		"flustered":
 			_banner("Her %s went in. Your Heat drained." % sig, UI.BAD)
 		"goal":
@@ -504,7 +528,7 @@ func _on_event(e: Dictionary) -> void:
 
 
 func _can_revive() -> bool:
-	if String(ctx.get("mode", "story")) == "replay" or autoplay:
+	if String(ctx.get("mode", "story")) in ["replay", "trainer"] or autoplay:
 		return false
 	var cfg := GameState.revive_cfg()
 	var ad_ok := ad_revives < int(cfg.get("ad_revives", 1)) and GameState.rewarded_left() > 0
@@ -564,7 +588,9 @@ func _refresh_side() -> void:
 	for c in composure_box.get_children():
 		c.queue_free()
 	var col := UI.hcolor(heroine_id)
-	if rules.layers_lost >= rules.layer_count:
+	if rules.drill != "":
+		composure_box.add_child(UI.label("practice, no stakes", 16, UI.INK_SOFT))
+	elif rules.layers_lost >= rules.layer_count:
 		composure_box.add_child(UI.label("none left", 16, UI.INK_SOFT))
 	else:
 		for i in rules.composure_per_layer:
@@ -669,11 +695,29 @@ class _TableView extends Control:
 			draw_arc(Vector2(0, H / 2), 120 * s, -PI / 2, PI / 2, 32, Color(UI.CYAN, 0.35), 2)
 			draw_arc(Vector2(W, H / 2), 120 * s, PI / 2, PI * 1.5, 32, Color(her_col, 0.35), 2)
 			draw_rect(Rect2(0, 0, W, H), UI.CYAN.lerp(her_col, 0.5), false, 4)
-		var gw := PuckSim.GOAL_W * s
+		var gw := sim.goal_w * s
+		for bp in sim.bumpers:
+			var bc: Vector2 = bp[0] * s
+			var br: float = float(bp[1]) * s
+			draw_circle(bc, br + 4, Color(UI.GOLD, 0.25))
+			draw_circle(bc, br, Color("#2A1F45"))
+			draw_arc(bc, br, 0, TAU, 32, UI.GOLD, 3)
 		draw_rect(Rect2(-8, H / 2 - gw / 2, 10, gw), UI.CYAN)
 		draw_rect(Rect2(W - 2, H / 2 - gw / 2, 10, gw), her_col)
+		# Blackout: the puck only shows near the rails and the paddles.
+		var dark := screen.rules.mods.has("blackout")
+		var vis := 1.0
+		if dark:
+			var pp := sim.puck_pos
+			var near := minf(minf(pp.y, PuckSim.H - pp.y), minf(pp.x, PuckSim.W - pp.x))
+			for side in 2:
+				near = minf(near, pp.distance_to(sim.paddle(side).pos) - sim.paddle(side).radius)
+			vis = clampf(1.0 - (near - 60.0) / 90.0, 0.06, 1.0)
+			draw_rect(Rect2(0, 0, W, H), Color(0, 0, 0, 0.55))
 		# Puck trail.
 		for i in trail.size():
+			if dark:
+				break
 			var tp: Vector2 = trail[i][0] * s
 			var a := float(i) / trail.size()
 			var c := Color(1, 1, 1, 0.12 * a)
@@ -708,11 +752,12 @@ class _TableView extends Control:
 		var pr := PuckSim.PUCK_R * s
 		var puck_tex := ArtAssets.table("puck")
 		var pcol := UI.GOLD if sim.powered == 0 else (her_col if sim.powered == 1 else Color("#F4F4F8"))
+		pcol.a = vis
 		if puck_tex:
-			draw_texture_rect(puck_tex, Rect2(pk - Vector2(pr, pr), Vector2(pr, pr) * 2), false, pcol if sim.powered >= 0 else Color.WHITE)
+			draw_texture_rect(puck_tex, Rect2(pk - Vector2(pr, pr), Vector2(pr, pr) * 2), false, pcol if sim.powered >= 0 else Color(1, 1, 1, vis))
 		else:
 			draw_circle(pk, pr, pcol)
-			draw_circle(pk, pr * 0.6, pcol.darkened(0.25))
+			draw_circle(pk, pr * 0.6, Color(pcol.darkened(0.25), vis))
 		if flash > 0.0:
 			draw_rect(Rect2(0, 0, W, H), Color(flash_col, flash * 0.45))
 		if screen.countdown > 0.0:

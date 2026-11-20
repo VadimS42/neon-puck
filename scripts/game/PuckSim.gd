@@ -71,6 +71,12 @@ var hook_curv := 0.0
 var hook_time := 0.0
 ## Puck speed cap; a geared power shot may lift it until the next hit.
 var puck_cap := PUCK_MAX
+## Table rules a special match can change (MatchMods): goal mouth width,
+## puck top speed, friction, and static round bumpers [[pos, radius], ...].
+var goal_w := GOAL_W
+var puck_max := PUCK_MAX
+var friction := FRICTION
+var bumpers: Array = []
 var bounces_since_hit := 0
 var paused := 0.0
 var time := 0.0
@@ -111,7 +117,7 @@ func place_puck(serve_side: int) -> void:
 	powered = -1
 	power_kind = ""
 	hook_time = 0.0
-	puck_cap = PUCK_MAX
+	puck_cap = puck_max
 	last_hitter = -1
 	bounces_since_hit = 0
 	rally_hits = 0
@@ -194,7 +200,7 @@ func _move_puck(h: float) -> bool:
 		if sp > 1.0:
 			puck_vel = puck_vel / sp * minf(sp + SLING_ACCEL * h, puck_cap)
 	else:
-		puck_vel *= maxf(0.0, 1.0 - FRICTION * h)
+		puck_vel *= maxf(0.0, 1.0 - friction * h)
 	puck_pos += puck_vel * h
 	_collide_walls()
 	for p: Paddle in paddles:
@@ -211,7 +217,7 @@ func _move_puck(h: float) -> bool:
 
 
 func _in_mouth(y: float) -> bool:
-	return absf(y - H * 0.5) < GOAL_W * 0.5
+	return absf(y - H * 0.5) < goal_w * 0.5
 
 
 func _collide_walls() -> void:
@@ -235,12 +241,16 @@ func _collide_walls() -> void:
 			puck_vel.x = -absf(puck_vel.x) * e
 			bounced = true
 	# Goal posts: points at the mouth's edges.
-	for post: Vector2 in [Vector2(0, H * 0.5 - GOAL_W * 0.5), Vector2(0, H * 0.5 + GOAL_W * 0.5), Vector2(W, H * 0.5 - GOAL_W * 0.5), Vector2(W, H * 0.5 + GOAL_W * 0.5)]:
+	var posts: Array = [[Vector2(0, H * 0.5 - goal_w * 0.5), 0.0], [Vector2(0, H * 0.5 + goal_w * 0.5), 0.0], [Vector2(W, H * 0.5 - goal_w * 0.5), 0.0], [Vector2(W, H * 0.5 + goal_w * 0.5), 0.0]]
+	posts.append_array(bumpers)
+	for pb: Array in posts:
+		var post: Vector2 = pb[0]
+		var rad: float = PUCK_R + float(pb[1])
 		var d: Vector2 = puck_pos - post
 		var dist := d.length()
-		if dist < PUCK_R and dist > 0.001:
+		if dist < rad and dist > 0.001:
 			var n := d / dist
-			puck_pos = post + n * PUCK_R
+			puck_pos = post + n * rad
 			var vn := puck_vel.dot(n)
 			if vn < 0.0:
 				puck_vel -= (1.0 + e) * vn * n
@@ -308,7 +318,7 @@ func _on_hit(p: Paddle, before: Vector2) -> void:
 	powered = -1
 	power_kind = ""
 	hook_time = 0.0
-	puck_cap = PUCK_MAX
+	puck_cap = puck_max
 	# A save: stopping a fast puck in your own third.
 	var toward_own := (before.x < -800.0 and puck_pos.x < W * 0.33) if p.side == 0 else (before.x > 800.0 and puck_pos.x > W * 0.67)
 	last_hitter = p.side
@@ -336,7 +346,7 @@ func _launch_power(p: Paddle) -> void:
 	power_kind = p.power_kind
 	var speed := puck_vel.length()
 	var k := p.smash_mult
-	puck_cap = PUCK_MAX * maxf(1.0, k)
+	puck_cap = puck_max * maxf(1.0, k)
 	match p.power_kind:
 		"smash":
 			# Yours: the direction is whatever your hit made it. Only faster.

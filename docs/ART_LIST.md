@@ -20,7 +20,8 @@ paddles and the puck.
 4. **Dialogue expressions** (up to 28). Start with `vn_neutral` per heroine;
    every missing expression falls back to it.
 5. **Cup and championship scenes** (4 CGs). Rewards for side content and the ending.
-6. **Backgrounds and logo** (3 images).
+6. **Crossover, alternate and date scenes** (12 CGs). After Hours and choice rewards; placeholders show the brief until they exist.
+7. **Backgrounds and logo** (3 images).
 
 Minimum set for a good-looking demo: items 1, 3, the first two scenes per
 heroine, and `vn_neutral` for each heroine (35 files).
@@ -109,6 +110,35 @@ Scenes (her mood goes from hostile to in love across them):
 | `art/scenes/cup_gold.png` | Gold Cup Champions | Group romance scene on the championship table after the Gold Cup. Adult scene: write to your content plan. |
 | `art/scenes/finale.png` | Afterglow | Dawn after the championship. You and all four heroines on the championship table under the neon sign, the 'SOLD' banner torn in half on the floor. Adult group scene: write to your content plan. |
 
+## Crossover scenes
+
+Two heroines in one image, unlocked once you're far enough with both (After Hours).
+
+| File | Title | Who | Brief |
+| --- | --- | --- | --- |
+| `art/scenes/x_mila_juno.png` | Fries and Napkins | Mila and Juno | Mila and Juno sit on either side of you on the bar in their underwear and league jerseys, feeding you fries and napkin diagrams at the same time and glaring at each other over your head. |
+| `art/scenes/x_juno_kat.png` | Sister Bars | Juno and Kat | Juno and Kat, down to tank tops and underwear, sit back to back on the Static's bumper table sharing one cocktail with two straws while you hold the spirit level. |
+| `art/scenes/x_kat_sable.png` | For Ray | Kat and Sable | Sable in stockings and an open blazer and Kat in her band tee lean side by side on the Static's old table under a framed photo of Uncle Ray, toasting with two shot glasses, both pretending they aren't teary. |
+| `art/scenes/x_mila_sable.png` | Speed Lesson | Mila and Sable | Sable stands behind Mila at the table guiding her wrist on the paddle, both in their underwear after a long lesson, Mila grinning at you over her shoulder. |
+
+## Alternate scenes (earned with dialogue choices)
+
+| File | Title | How | Brief |
+| --- | --- | --- | --- |
+| `art/scenes/mila_alt.png` | Sunrise Ride | Be sweet to Mila. | Dawn on the empty boulevard: Mila in your work jacket over her sports bra and bike shorts rides no-hands circles around you, laughing, as the Afterglow sign switches off behind her. |
+| `art/scenes/juno_alt.png` | Napkin Math | Tease Juno. | Juno in her slip and reading glasses sits on the bar, scribbling shot angles on a napkin pressed flat against your chest, smirking like she's already won. |
+| `art/scenes/kat_alt.png` | Encore | Flirt with Kat. | After close at the Static, Kat in a cropped tee and your work jacket stands on the little stage with her bass, pulling you up by your tie under red stage lights. |
+| `art/scenes/sable_alt.png` | Hostile Takeover | Tease Sable. | Sable in a tailored vest and open blazer sits in your office chair with her heels up on your desk, pointing a fountain pen at you like a weapon. |
+
+## Date nights (after the championship)
+
+| File | Title | Brief |
+| --- | --- | --- |
+| `art/scenes/date_mila.png` | Midnight Ride | Mila sits on the bridge railing at 2 AM in your jacket and not much else, her bike propped beside her and the city lights behind, reaching for your hand. Adult scene: write to your content plan. |
+| `art/scenes/date_juno.png` | Reserved | Juno in a black slip dress perches on the reserved table with her one-page menu and a lit candle, the framed napkin glowing behind the bar. Adult scene: write to your content plan. |
+| `art/scenes/date_kat.png` | Forty Feet | After the show Kat, in a sweaty cropped band tee, kicks her bass aside on the Static's stage and pulls you close as the house lights come up. Adult scene: write to your content plan. |
+| `art/scenes/date_sable.png` | The Wall | Sable on a ladder in your dress shirt and her stockings, paintbrush in hand, your name freshly painted in gold at the top of the champions' wall. Adult scene: write to your content plan. |
+
 ## Shared
 
 | File | Size | Notes |
@@ -146,7 +176,8 @@ click, win, lose. Missing files play a synthesized blip.
 | Strip stages | 16 |
 | Story scenes | 24 |
 | Cup and championship scenes | 4 |
+| Crossover, alternate and date scenes | 12 |
 | Dialogue expressions | 4 to 28 |
 | Paddles, puck, table | 7 |
 | Backgrounds and logo | 3 |
-| **Total** | **58 to 82** |
+| **Total** | **70 to 94** |

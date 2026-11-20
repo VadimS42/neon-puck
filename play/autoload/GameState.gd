@@ -142,7 +142,12 @@ func attitude(id: String) -> String:
 	var a: Array = data.get("attitude", [])
 	if a.is_empty():
 		return ""
-	return String(a[clampi(wins(id), 0, a.size() - 1)])
+	# A match can override the label after you win it (Juno's "Cold war").
+	var w := wins(id)
+	var ms: Array = heroine(id).get("matches", [])
+	if w > 0 and w <= ms.size() and ms[w - 1].has("attitude"):
+		return String(ms[w - 1]["attitude"])
+	return String(a[clampi(w, 0, a.size() - 1)])
 
 
 ## Power shots you can pick: your own smash plus every signature you've
@@ -742,7 +747,9 @@ func match_costs_life(ctx: Dictionary) -> bool:
 	var mode := String(ctx.get("mode", "story"))
 	if mode in lives_cfg().get("free_modes", ["replay"]):
 		return false
-	if mode == "cup" and int(ctx.get("round", 0)) > 0:
+	if mode == "trainer":
+		return false
+	if mode in ["cup", "event"] and int(ctx.get("round", 0)) > 0:
 		return false
 	return true
 

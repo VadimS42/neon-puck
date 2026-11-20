@@ -9,7 +9,8 @@
     "unlimited_minutes": 120,
     "unlimited_gems": 60,
     "free_modes": [
-      "replay"
+      "replay",
+      "trainer"
     ]
   },
   "first_win_gems": 5,
@@ -131,6 +132,13 @@
       "name": "VIP Lounge Pass",
       "price": "$7.99",
       "desc": "8 max lives, lives refill twice as fast, +20% tips from every match, and no ads between matches."
+    },
+    {
+      "id": "season_pass_s1",
+      "type": "non_consumable",
+      "name": "Season 1 Pass",
+      "price": "$4.99",
+      "desc": "Unlocks the premium track of Season 1: Neon Nights: four outfits and 260 gems as you play. Cosmetics and currency only."
     }
   ],
   "difficulty_curve": {

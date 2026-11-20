@@ -71,7 +71,7 @@ func think(sim: PuckSim, dt: float) -> void:
 	if _replan <= 0.0:
 		_replan = replan_every
 		_aim_y = H * 0.5 + rng.randf_range(-aim_spread, aim_spread)
-		_aim_y = clampf(_aim_y, H * 0.5 - PuckSim.GOAL_W * 0.4, H * 0.5 + PuckSim.GOAL_W * 0.4)
+		_aim_y = clampf(_aim_y, H * 0.5 - sim.goal_w * 0.4, H * 0.5 + sim.goal_w * 0.4)
 		_bank = 0
 		if rng.randf() < bank_pref:
 			_bank = 1 if rng.randf() < 0.5 else -1

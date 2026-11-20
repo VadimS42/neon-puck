@@ -49,6 +49,39 @@ All numbers are in `data/monetization.json`.
   3 minutes, never before a story memory, and never for anyone who has paid
   for anything. No banners.
 
+## Live features
+
+All in `data/extras.json` and `autoload/Extras.gd` (shared with the 18+ game).
+
+- **Daily missions**: three a day from a pool of 12 (same set for every
+  player, rolled from the date), small tips/gem/power-up rewards, a 10-gem
+  bonus for finishing all three, and season XP. Menu button with a badge.
+- **Weekly event cup**: a new one every Monday (Rush Hour, Bank Holiday,
+  Static Night, Grand Opening), three rounds under fixed special rules.
+  The first round costs a life like a cup; winning it once a week pays 30
+  gems and an event outfit. Replays pay normal tips and XP.
+- **Season pass**: 30 tiers, season XP from every match (40 a win, 15 a
+  loss) and mission (50). Free track: tips, power-ups, a few gems. Premium
+  track (`season_pass_s1`, $4.99, non-consumable): four outfits and gems.
+  Cosmetics and currency only; nothing that changes a match is paid-only.
+  Change `season.id` and add a new product id for each season.
+- **Comeback help**: after 3 losses in a row on the same story match, the
+  result screen offers a rematch where she plays slower, sees the puck
+  later, has 1 less Cool per crack, and you get a free Grip Tape. This is
+  free and costs no revive income on the first two tries.
+- **Cloud save** (`autoload/CloudSave.gd`): uploads the save after matches
+  (at most every 90 s) and when the app goes to the background; at launch,
+  a cloud copy that's further along than the phone's is offered on the
+  menu. Settings has Save to cloud / Load from cloud.
+- **Reminders** (`autoload/Notify.gd`): "lives full" when the last life
+  refills, and "daily reward ready" next morning at 10:00. Scheduled only
+  when the app goes to the background, cleared when it returns, and off in
+  Settings with one tap.
+- Shared with the 18+ game: special-rule matches, the four arc shapes,
+  crossovers, rival lines, finale lines by who you won first, the shot
+  trainer (free, no life), the dialogue Log/Auto and album replays, and 25
+  achievements (`play_id` fields take the Play Games ids).
+
 ## Difficulty curve and revives
 
 Later matches get much sharper on top of the chosen difficulty
@@ -76,6 +109,10 @@ rates for a bot with best gear, with and without 3 power-ups and a revive.
 | Google Play Billing | Code written in `autoload/Store.gd` against the Godot Google Play Billing plugin. It switches on automatically when the plugin is in the Android build. **Not tested on a device yet.** Without the plugin every purchase succeeds for free and says TEST. |
 | AdMob ads | **Stubbed.** `autoload/Ads.gd` shows a full-screen "TEST AD" card with a countdown in place of a real ad. Three small functions (`_real_rewarded`, `_real_interstitial`, `_real_init`) are where the AdMob plugin calls go. |
 | Ad consent (GDPR / UMP) | Stubbed in `Ads.request_consent`. Needs the UMP form from the AdMob plugin before release in the EU/UK. |
+| Cloud save | Code written in `autoload/CloudSave.gd` against a Play Games Services plugin for Godot 4 (saved games). Switches on when the plugin's singleton is present. **Not tested on a device.** Without it, saves go to `user://cloud_test.json` so the flow can be tried on desktop. |
+| Reminders | Code written in `autoload/Notify.gd` for a local-notification plugin. **Not tested on a device.** Without it, the schedule is printed. |
+| Play Games achievements | `Extras._push_platform` calls `unlockAchievement` with each achievement's `play_id` (empty until you create them in Play Console). **Not tested.** |
+| Missions, events, season pass, comeback help | Real and tested (`tools/features_test.gd`). |
 
 `README_PLAY.md` has the steps to swap the stubs for the real SDKs and
 publish.
@@ -84,13 +121,14 @@ publish.
 
 ```
 godot --headless --path . -s tools/f2p_test.gd          # free-to-play rules
+godot --headless --path . -s tools/features_test.gd     # missions, events, pass, special rules, trainer...
 godot --headless --path . -s tools/playthrough_test.gd -- bot=normal side=1
 godot --headless --path . -s tools/sim_test.gd -- games=12 bot=weak
 python3 tools/gen_art_list.py                           # docs/ART_LIST.md
 python3 tools/gen_script.py                             # docs/SCRIPT.md
 ```
 
-Debug screens: `-- screen=menu|roster|store|wardrobe|shop|prematch|result|match|gallery|settings|howto|nolives|daily all=1`.
+Debug screens: `-- screen=menu|roster|store|wardrobe|shop|prematch|result|match|gallery|settings|howto|nolives|daily|extras|achievements|missions|season|event|choice all=1`.
 
 ## Files that differ from the 18+ project
 
@@ -107,6 +145,9 @@ Debug screens: `-- screen=menu|roster|store|wardrobe|shop|prematch|result|match|
 | `scripts/Main.gd`, `UI.gd`, other screens | Lives checks, ad hooks, popups, Store/Wardrobe buttons, new wording |
 | `export_presets.cfg` | "Android test APK" and "Google Play AAB" presets, `com.neonpuck.rivals` |
 | `tools/f2p_test.gd`, `gen_script.py`, `make_f2p_icons.py` | New tools |
+| `autoload/CloudSave.gd`, `autoload/Notify.gd` | Cloud save and reminders (new) |
+| `scripts/screens/MissionsScreen.gd`, `EventScreen.gd`, `SeasonScreen.gd` | Live-feature screens (new) |
+| `data/extras.json` | PG-13 crossovers, missions, events, season pass, comeback help |
 
 Bug fixes to the shared game code (physics, AI, matches) need making in both
 projects; they're plain copies today.

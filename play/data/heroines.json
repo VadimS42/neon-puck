@@ -245,6 +245,9 @@
         {
           "level": 3,
           "target": 6,
+          "mods": [
+            "turbo"
+          ],
           "before": [
             {
               "who": "mila",
@@ -254,6 +257,11 @@
             {
               "who": "narrator",
               "text": "Six couriers in rain gear crowd the bar, chanting her name and booing yours."
+            },
+            {
+              "who": "mila",
+              "e": "teasing",
+              "text": "Dex turned the table's air all the way up. Couriers' rules: the puck never stops, and neither do we."
             },
             {
               "who": "you",
@@ -317,6 +325,12 @@
               "who": "mila",
               "e": "shy",
               "text": "That's either really sweet or really creepy. Play me while I decide."
+            },
+            {
+              "if": "wins:juno>=3",
+              "who": "mila",
+              "e": "teasing",
+              "text": "Also Juno keeps asking me what you're like after close. I said loud and bad at darts. She didn't believe me."
             }
           ],
           "after": [
@@ -345,7 +359,24 @@
         {
           "level": 6,
           "target": 7,
+          "mods": [
+            "rush"
+          ],
           "before": [
+            {
+              "who": "mila",
+              "e": "teasing",
+              "text": "Race rules tonight. Two minutes on Dex's phone timer, and whoever's ahead when it beeps wins. Couriers settle everything with a clock."
+            },
+            {
+              "who": "you",
+              "text": "And if it's a tie?"
+            },
+            {
+              "who": "mila",
+              "e": "happy",
+              "text": "Next goal wins. Sudden death. My favourite kind."
+            },
             {
               "who": "mila",
               "e": "teasing",
@@ -378,7 +409,16 @@
         {
           "level": 7,
           "target": 7,
+          "mods": [
+            "rush",
+            "turbo"
+          ],
           "before": [
+            {
+              "who": "mila",
+              "e": "neutral",
+              "text": "Last race. Full air, two minutes on the clock, everything on the line."
+            },
             {
               "who": "mila",
               "e": "neutral",
@@ -439,6 +479,22 @@
           "name": "Neon Nights",
           "unlock": "gems",
           "gems": 250
+        },
+        {
+          "id": "rush_hour",
+          "name": "Rush Hour Racer",
+          "unlock": "event",
+          "event": "Rush Hour",
+          "tint": "#FF7A3F",
+          "brief": "Orange-and-black courier racing suit with reflective stripes, fingerless gloves, a stopwatch on a lanyard."
+        },
+        {
+          "id": "pass_s1",
+          "name": "Neon Nights Courier",
+          "unlock": "pass",
+          "season": "Season 1: Neon Nights",
+          "tint": "#B04FFF",
+          "brief": "Purple light-up rain jacket over a crop hoodie and cargo pants, glowing bike-light clips on her bag strap."
         }
       ]
     },
@@ -556,6 +612,9 @@
         {
           "level": 2,
           "target": 5,
+          "mods": [
+            "bank_double"
+          ],
           "before": [
             {
               "who": "juno",
@@ -570,6 +629,11 @@
               "who": "juno",
               "e": "angry",
               "text": "Don't be charming. It doesn't suit you."
+            },
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "House rules tonight: bank shots count double. Straight shots are a waste of a perfectly good wall."
             }
           ],
           "after": [
@@ -627,21 +691,59 @@
               "who": "juno",
               "e": "shy",
               "text": "Nobody has ever said that to me. I need a minute, and the emergency cherries."
+            },
+            {
+              "who": "narrator",
+              "text": "On her way out, Juno stops at the office printer. There's a page in the tray from head office: a plan to 'replace legacy bar staff', with your name in the approval box."
+            },
+            {
+              "who": "juno",
+              "e": "angry",
+              "text": "You smiled at me all night with this sitting in the printer?"
+            },
+            {
+              "who": "you",
+              "text": "Juno, wait, read the..."
+            },
+            {
+              "who": "juno",
+              "e": "angry",
+              "text": "Save it, lanyard."
             }
           ],
           "scene": {
             "id": "juno_3",
             "title": "Stockroom",
             "brief": "Juno in her shirt and vest, sleeves rolled up, sits on a stack of soda crates in the stockroom with a clipboard and a pen between her teeth, eating cherries from the jar."
-          }
+          },
+          "attitude": "Cold war"
         },
         {
           "level": 5,
           "target": 6,
+          "mods": [
+            "handicap"
+          ],
           "before": [
             {
+              "who": "juno",
+              "e": "angry",
+              "text": "Rematch. I loosened the felt on your paddle, so tonight you're playing with about four fifths of one. Call it severance."
+            },
+            {
+              "who": "you",
+              "text": "That's sabotage."
+            },
+            {
+              "who": "juno",
+              "e": "teasing",
+              "text": "That's geometry. Smaller paddle, worse angles. Rack the puck."
+            }
+          ],
+          "after": [
+            {
               "who": "narrator",
-              "text": "Head office sent an auditor today. Juno watched you walk him around the lounge."
+              "text": "Halfway through, an auditor from head office walks in. You show him round the lounge with Juno's wobbly paddle still in your hand."
             },
             {
               "who": "juno",
@@ -658,12 +760,19 @@
               "text": "You could have taken the credit. That's what lanyards do."
             },
             {
+              "who": "you",
+              "text": "And that printout was the plan I refused to sign. You stopped at page one. Page two is where I wrote 'over my dead body' in the margin."
+            },
+            {
               "who": "juno",
               "e": "shy",
-              "text": "I'm so mad I could kiss you. Rack the puck before I do something stupid."
-            }
-          ],
-          "after": [
+              "text": "I sabotaged a paddle over a page I didn't finish reading."
+            },
+            {
+              "who": "juno",
+              "e": "shy",
+              "text": "I'm so mad I could kiss you. So I might."
+            },
             {
               "who": "juno",
               "e": "teasing",
@@ -693,6 +802,12 @@
             {
               "who": "you",
               "text": "Deal. Winner picks who does payroll."
+            },
+            {
+              "if": "wins:mila>=4",
+              "who": "juno",
+              "e": "teasing",
+              "text": "Mila's been ordering fries here every night and staring at the office door. Subtle, that one."
             }
           ],
           "after": [
@@ -716,7 +831,15 @@
         {
           "level": 7,
           "target": 7,
+          "mods": [
+            "bank_double"
+          ],
           "before": [
+            {
+              "who": "juno",
+              "e": "neutral",
+              "text": "Bank night, one last time. Every wall counts double, like it always should have."
+            },
             {
               "who": "juno",
               "e": "teasing",
@@ -773,6 +896,22 @@
           "name": "Neon Nights",
           "unlock": "gems",
           "gems": 250
+        },
+        {
+          "id": "bank_holiday",
+          "name": "Bank Holiday Bartender",
+          "unlock": "event",
+          "event": "Bank Holiday",
+          "tint": "#4FFFB0",
+          "brief": "Mint waistcoat and bow tie over a white shirt, sleeves rolled, a protractor tucked in her breast pocket."
+        },
+        {
+          "id": "pass_s1",
+          "name": "Neon Nights Mixologist",
+          "unlock": "pass",
+          "season": "Season 1: Neon Nights",
+          "tint": "#3FD7FF",
+          "brief": "Sleek black jumpsuit with cyan neon piping, hair up with a glowing cocktail-stick pin."
         }
       ]
     },
@@ -906,6 +1045,9 @@
         {
           "level": 5,
           "target": 5,
+          "mods": [
+            "bumpers"
+          ],
           "before": [
             {
               "who": "kat",
@@ -925,6 +1067,15 @@
               "who": "kat",
               "e": "angry",
               "text": "With what money? Somebody stole my Thursdays."
+            },
+            {
+              "who": "narrator",
+              "text": "She drags you across the street to play on the Static's table, which has two steel bumpers bolted to the centre line."
+            },
+            {
+              "who": "kat",
+              "e": "teasing",
+              "text": "My uncle put those in in 1994 and nobody's been able to get them off since. Home table advantage."
             }
           ],
           "after": [
@@ -956,6 +1107,9 @@
         {
           "level": 6,
           "target": 6,
+          "mods": [
+            "big_goals"
+          ],
           "before": [
             {
               "who": "narrator",
@@ -965,6 +1119,11 @@
               "who": "kat",
               "e": "surprised",
               "text": "There are forty people in my bar. I haven't had forty people in my bar since the Super Bowl."
+            },
+            {
+              "who": "kat",
+              "e": "neutral",
+              "text": "I widened the goals for tonight. Crowds like scoring. Don't argue, it's my bar."
             },
             {
               "who": "kat",
@@ -993,7 +1152,16 @@
         {
           "level": 8,
           "target": 6,
+          "mods": [
+            "blackout"
+          ],
           "before": [
+            {
+              "if": "wins:sable>=2",
+              "who": "kat",
+              "e": "happy",
+              "text": "Sable came to my Monday night. Sat at the bar, ordered a gin, told me my bass was flat. Best night of my life."
+            },
             {
               "who": "kat",
               "e": "happy",
@@ -1012,6 +1180,11 @@
               "who": "kat",
               "e": "shy",
               "text": "It's a dare. Beat me first."
+            },
+            {
+              "who": "kat",
+              "e": "teasing",
+              "text": "We're playing on the stage table during soundcheck. House lights stay off, so all you get is the stage lights. Good luck."
             }
           ],
           "after": [
@@ -1080,6 +1253,11 @@
           "before": [
             {
               "who": "kat",
+              "e": "neutral",
+              "text": "Two games tonight, one in each bar. Win both, or it doesn't count."
+            },
+            {
+              "who": "kat",
               "e": "shy",
               "text": "No trash talk tonight. Every sentence I start comes out nice and it's horrible."
             },
@@ -1118,7 +1296,25 @@
             "id": "kat_6",
             "title": "Last Song",
             "brief": "Kat and you slow-dancing alone on the Static's stage after close, her forehead against yours, her bass leaning on the amp, red stage lights turned low."
-          }
+          },
+          "legs": [
+            {
+              "mods": [
+                "bumpers"
+              ],
+              "before": [
+                {
+                  "who": "narrator",
+                  "text": "One game down. Kat grabs your hand and walks you across the street to the Static for the second."
+                },
+                {
+                  "who": "kat",
+                  "e": "teasing",
+                  "text": "Best of two bars. Mine has the bumpers, so this is where the real match is."
+                }
+              ]
+            }
+          ]
         }
       ],
       "outfits": [
@@ -1143,6 +1339,22 @@
           "name": "Neon Nights",
           "unlock": "gems",
           "gems": 250
+        },
+        {
+          "id": "static_night",
+          "name": "Static Night Stagewear",
+          "unlock": "event",
+          "event": "Static Night",
+          "tint": "#FF3F3F",
+          "brief": "Red leather jacket with a lightning-bolt patch, ripped black tee, studded belt, red stage lights on her."
+        },
+        {
+          "id": "pass_s1",
+          "name": "Neon Nights Headliner",
+          "unlock": "pass",
+          "season": "Season 1: Neon Nights",
+          "tint": "#FF4FD8",
+          "brief": "Holographic bomber jacket, mesh-sleeve band tee, platform boots, glow-stick bracelets."
         }
       ]
     },
@@ -1267,6 +1479,44 @@
               "who": "sable",
               "e": "teasing",
               "text": "Whatever happens on this table stays between us. I sent the regulars home."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "I set the terms tonight. Pick your poison."
+            },
+            {
+              "key": "terms_sable_1",
+              "choice": [
+                {
+                  "text": "Mini goals",
+                  "tag": "terms",
+                  "mods": [
+                    "mini_goals"
+                  ],
+                  "reply": [
+                    {
+                      "who": "sable",
+                      "e": "neutral",
+                      "text": "Precision, then. Good, you will need it."
+                    }
+                  ]
+                },
+                {
+                  "text": "By the Book: no power shots",
+                  "tag": "terms",
+                  "mods": [
+                    "no_heat"
+                  ],
+                  "reply": [
+                    {
+                      "who": "sable",
+                      "e": "neutral",
+                      "text": "No smashes, no tricks. Just you and the angles."
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "after": [
@@ -1300,6 +1550,44 @@
               "who": "sable",
               "e": "teasing",
               "text": "Win, and I'll show you. Lose, and it goes back in the closet with my feelings."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "New terms. Choose quickly, I do not like to wait."
+            },
+            {
+              "key": "terms_sable_2",
+              "choice": [
+                {
+                  "text": "Rush Clock",
+                  "tag": "terms",
+                  "mods": [
+                    "rush"
+                  ],
+                  "reply": [
+                    {
+                      "who": "sable",
+                      "e": "neutral",
+                      "text": "Two minutes. I have won entire tournaments in less."
+                    }
+                  ]
+                },
+                {
+                  "text": "Play with a smaller paddle",
+                  "tag": "terms",
+                  "mods": [
+                    "handicap"
+                  ],
+                  "reply": [
+                    {
+                      "who": "sable",
+                      "e": "neutral",
+                      "text": "Bold. Or foolish. We will find out which."
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "after": [
@@ -1329,6 +1617,12 @@
           "target": 6,
           "before": [
             {
+              "if": "wins:kat>=4",
+              "who": "sable",
+              "e": "teasing",
+              "text": "Kat Vance tells me you play bass now. Badly. She sounded proud."
+            },
+            {
               "who": "sable",
               "e": "angry",
               "text": "Head office wants to turn the Afterglow into a sports bar with big screens, wings and no table."
@@ -1341,6 +1635,44 @@
               "who": "sable",
               "e": "teasing",
               "text": "Good answer. Now show me you will fight for it."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "Tonight's terms are about trust. Pick one."
+            },
+            {
+              "key": "terms_sable_3",
+              "choice": [
+                {
+                  "text": "Blackout",
+                  "tag": "terms",
+                  "mods": [
+                    "blackout"
+                  ],
+                  "reply": [
+                    {
+                      "who": "sable",
+                      "e": "neutral",
+                      "text": "In the dark, then. You will have to feel where the puck is."
+                    }
+                  ]
+                },
+                {
+                  "text": "Turbo Air",
+                  "tag": "terms",
+                  "mods": [
+                    "turbo"
+                  ],
+                  "reply": [
+                    {
+                      "who": "sable",
+                      "e": "neutral",
+                      "text": "Fast, then. Try to keep up."
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "after": [
@@ -1374,6 +1706,44 @@
               "who": "sable",
               "e": "neutral",
               "text": "But I do not partner with people I can beat. Prove it again."
+            },
+            {
+              "who": "sable",
+              "e": "teasing",
+              "text": "Partners negotiate. You choose my handicap for once."
+            },
+            {
+              "key": "terms_sable_4",
+              "choice": [
+                {
+                  "text": "Bank Night for you",
+                  "tag": "terms",
+                  "mods": [
+                    "bank_double"
+                  ],
+                  "reply": [
+                    {
+                      "who": "sable",
+                      "e": "neutral",
+                      "text": "Your banks count double. Generous of me, I know."
+                    }
+                  ]
+                },
+                {
+                  "text": "Wide goals for both of us",
+                  "tag": "terms",
+                  "mods": [
+                    "big_goals"
+                  ],
+                  "reply": [
+                    {
+                      "who": "sable",
+                      "e": "neutral",
+                      "text": "Big goals, big scores, big risks. I approve."
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "after": [
@@ -1403,6 +1773,11 @@
           "level": 12,
           "target": 7,
           "before": [
+            {
+              "who": "sable",
+              "e": "neutral",
+              "text": "No terms tonight. No handicaps, no tricks. Just the two of us and the table, the way it started."
+            },
             {
               "who": "sable",
               "e": "neutral",
@@ -1460,6 +1835,22 @@
           "name": "Neon Nights",
           "unlock": "gems",
           "gems": 250
+        },
+        {
+          "id": "grand_opening",
+          "name": "Grand Opening Gown",
+          "unlock": "event",
+          "event": "Grand Opening",
+          "tint": "#FFD84F",
+          "brief": "Gold sequinned evening dress with long sleeves and a high neck, hair in a sleek wave, the original Afterglow sign pin."
+        },
+        {
+          "id": "pass_s1",
+          "name": "Neon Nights Proprietor",
+          "unlock": "pass",
+          "season": "Season 1: Neon Nights",
+          "tint": "#8F4FFF",
+          "brief": "Tailored violet suit with a neon-thread lapel, silk shirt buttoned to the collar, gold cufflinks."
         }
       ]
     }

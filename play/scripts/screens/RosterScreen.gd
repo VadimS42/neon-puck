@@ -42,6 +42,7 @@ func _ready() -> void:
 		var fb := UI.button(ftext, main.start_finale, 18, UI.PINK, "trophy")
 		fb.disabled = GameState.level < fl and not GameState.unlock_all
 		hub.add_child(fb)
+	hub.add_child(UI.button("After Hours", main.show_extras, 18, UI.CYAN, "star"))
 	var row := HBoxContainer.new()
 	row.position = Vector2(40, 112)
 	row.add_theme_constant_override("separation", 16)
@@ -57,6 +58,25 @@ func _ready() -> void:
 	add_child(back)
 	if first:
 		first.call_deferred("grab_focus")
+	_offer_crossover.call_deferred()
+
+
+## A crossover just became available: offer it once.
+func _offer_crossover() -> void:
+	if GameState.no_save:
+		return
+	for c in Extras.crossovers_waiting():
+		var key := "offer_" + String(c["id"])
+		if Extras.seen.has(key):
+			continue
+		Extras.seen[key] = true
+		Extras.save()
+		var cc: Dictionary = c
+		UI.popup(self, "Crossover: " + String(c.get("title", "")), String(c.get("teaser", "")), [
+			["Watch it now", func(): main.play_crossover(cc), UI.PINK],
+			["Later (After Hours)", func(): pass, UI.LINE],
+		])
+		return
 
 
 func _card(row: HBoxContainer, id: String) -> Button:

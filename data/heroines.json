@@ -75,7 +75,33 @@
           "after": [
             {"who": "mila", "e": "surprised", "text": "No. No way. Best of three!"},
             {"who": "you", "text": "League rules say one match a night."},
-            {"who": "mila", "e": "angry", "text": "Then I'll be back tomorrow. Don't you dare tow anything."}
+            {"who": "mila", "e": "angry", "text": "Then I'll be back tomorrow. Don't you dare tow anything."},
+            {
+              "key": "mila_0",
+              "choice": [
+                {
+                  "text": "Bring cash next time. The impound's twenty-eight.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "mila", "e": "angry", "text": "You are the worst person I've ever met. See you tomorrow."}
+                  ]
+                },
+                {
+                  "text": "Here's your twenty-eight bucks. Keep the bike out of the fire lane.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "mila", "e": "surprised", "text": "You're paying me back even though you won? That's so annoying."}
+                  ]
+                },
+                {
+                  "text": "Same time tomorrow? It's a date.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "mila", "e": "shy", "text": "It is NOT a date. It's a rematch. Wear something easier to beat."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "mila_1",
@@ -87,6 +113,9 @@
           "level": 2,
           "target": 5,
           "before": [
+            {"if": "mila_0=tease", "who": "mila", "e": "angry", "text": "I brought exact change for the impound this time. Out of spite."},
+            {"if": "mila_0=sweet", "who": "mila", "e": "shy", "text": "I spent your twenty-eight bucks on new brake pads. Thanks. Don't make it weird."},
+            {"if": "mila_0=flirt", "who": "mila", "e": "teasing", "text": "For the record, this is not a date."},
             {"who": "mila", "e": "angry", "text": "I watched my own replays all day and it turns out I lean left when I panic, so tonight I'm leaning right, or straight, or whatever, just not left."},
             {"who": "mila", "e": "teasing", "text": "Also I wore an extra layer. Strategy."},
             {"who": "you", "text": "Huh, that's actually smart."},
@@ -94,7 +123,33 @@
           ],
           "after": [
             {"who": "mila", "e": "sad", "text": "I leaned left. I leaned so far left."},
-            {"who": "mila", "e": "shy", "text": "You're not totally awful, for a suit. Walk me to my bike? I'm not exactly dressed for the street."}
+            {"who": "mila", "e": "shy", "text": "You're not totally awful, for a suit. Walk me to my bike? I'm not exactly dressed for the street."},
+            {
+              "key": "mila_1",
+              "choice": [
+                {
+                  "text": "Want me to call you a tow truck?",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "mila", "e": "angry", "text": "Touch my bike and die. ...Okay, that was a little funny."}
+                  ]
+                },
+                {
+                  "text": "Take my jacket. It's cold out.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "mila", "e": "shy", "text": "It smells like printer toner and something nice. Shut up."}
+                  ]
+                },
+                {
+                  "text": "I'd walk you anywhere dressed like that.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "mila", "e": "teasing", "text": "Eyes up, suit. ...Okay, eyes wherever."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "mila_2",
@@ -105,16 +160,47 @@
         {
           "level": 3,
           "target": 6,
+          "mods": ["turbo"],
           "before": [
+            {"if": "mila_1=tease", "who": "mila", "e": "teasing", "text": "I parked three blocks away so you can't tow it. I'm a genius."},
+            {"if": "mila_1=sweet", "who": "mila", "e": "shy", "text": "I still have your jacket. I'm keeping it. It's a courier thing."},
+            {"if": "mila_1=flirt", "who": "mila", "e": "teasing", "text": "I told Dex you checked me out. He made a second sign."},
             {"who": "mila", "e": "teasing", "text": "I brought backup. Every courier in the city is watching tonight."},
             {"who": "narrator", "text": "Six couriers in rain gear crowd the bar, chanting her name and booing yours."},
+            {"who": "mila", "e": "teasing", "text": "Dex turned the table's air all the way up. Couriers' rules: the puck never stops, and neither do we."},
             {"who": "you", "text": "Is that a sign with my face crossed out?"},
             {"who": "mila", "e": "shy", "text": "Dex made it, he's really proud of it, so don't embarrass me in front of my people."}
           ],
           "after": [
             {"who": "narrator", "text": "The couriers go quiet. Then Dex starts a slow clap, and the whole crew joins in."},
             {"who": "mila", "e": "angry", "text": "Traitors, every one of them. Now they're asking if you're single."},
-            {"who": "mila", "e": "shy", "text": "I told them you're terrible. Hands off."}
+            {"who": "mila", "e": "shy", "text": "I told them you're terrible. Hands off."},
+            {
+              "key": "mila_2",
+              "choice": [
+                {
+                  "text": "Tell them I'm taken. By the bar chain.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "mila", "e": "angry", "text": "Ugh. Fine. I'll tell them you're married to a spreadsheet."}
+                  ]
+                },
+                {
+                  "text": "Tell Dex the sign was great.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "mila", "e": "happy", "text": "He's going to frame that. You've made a friend for life. Gross."}
+                  ]
+                },
+                {
+                  "text": "Tell them I'm single. Tell them first.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "mila", "e": "shy", "text": "You can tell them yourself. Or not. Whatever. Don't."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "mila_3",
@@ -126,17 +212,47 @@
           "level": 4,
           "target": 6,
           "before": [
+            {"if": "mila_2=tease", "who": "mila", "e": "teasing", "text": "The couriers say hi to your spreadsheet."},
+            {"if": "mila_2=sweet", "who": "mila", "e": "happy", "text": "Dex framed your compliment. It's in the depot next to the first aid kit."},
+            {"if": "mila_2=flirt", "who": "mila", "e": "shy", "text": "I didn't tell anyone you're single. Just so you know. Nobody."},
             {"who": "narrator", "text": "Mila comes in out of the pouring rain, soaked through, wheeling her bike on a flat back tyre."},
             {"who": "mila", "e": "angry", "text": "Not one word about the hair."},
             {"who": "you", "text": "I have a patch kit in the office."},
             {"who": "mila", "e": "surprised", "text": "Why do you have a patch kit?"},
             {"who": "you", "text": "I bought one after the towing thing, just in case."},
-            {"who": "mila", "e": "shy", "text": "That's either really sweet or really creepy. Play me while I decide."}
+            {"who": "mila", "e": "shy", "text": "That's either really sweet or really creepy. Play me while I decide."},
+            {"if": "wins:juno>=3", "who": "mila", "e": "teasing", "text": "Also Juno keeps asking me what you're like after close. I said loud and bad at darts. She didn't believe me."}
           ],
           "after": [
             {"who": "mila", "e": "surprised", "text": "You patched it while I was changing, didn't you? It's fixed."},
             {"who": "mila", "e": "shy", "text": "Okay, sweet, I'm going with sweet."},
-            {"who": "mila", "e": "teasing", "text": "Stay till the rain stops? I'm not riding home like this, and the towel only covers so much."}
+            {"who": "mila", "e": "teasing", "text": "Stay till the rain stops? I'm not riding home like this, and the towel only covers so much."},
+            {
+              "key": "mila_3",
+              "choice": [
+                {
+                  "text": "Only if you admit the hair looks great wet.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "mila", "e": "teasing", "text": "It looks GREAT wet and you know it."}
+                  ]
+                },
+                {
+                  "text": "I'll make tea. Stay as long as you like.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "mila", "e": "shy", "text": "Tea. Okay. You're sweet, it's disgusting. Two sugars."}
+                  ]
+                },
+                {
+                  "text": "The towel's doing a terrible job. I'm not complaining.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "mila", "e": "teasing", "text": "Come closer and say that."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "mila_4",
@@ -147,31 +263,103 @@
         {
           "level": 6,
           "target": 7,
+          "mods": ["rush"],
           "before": [
+            {"if": "mila_3=tease", "who": "mila", "e": "angry", "text": "My hair's dry, before you start."},
+            {"if": "mila_3=sweet", "who": "mila", "e": "shy", "text": "I bought the same box of your terrible office tea. Don't read into it."},
+            {"if": "mila_3=flirt", "who": "mila", "e": "teasing", "text": "I've been thinking about the towel thing. A lot. Rack the puck."},
+            {"who": "mila", "e": "teasing", "text": "Race rules tonight. Two minutes on Dex's phone timer, and whoever's ahead when it beeps wins. Couriers settle everything with a clock."},
+            {"who": "you", "text": "And if it's a tie?"},
+            {"who": "mila", "e": "happy", "text": "Next goal wins. Sudden death. My favourite kind."},
             {"who": "mila", "e": "teasing", "text": "Dex keeps asking when you're coming to courier trivia night. I keep telling him never."},
             {"who": "mila", "e": "shy", "text": "Mostly because I want you to myself. Forget I said that, rack the puck."}
           ],
           "after": [
             {"who": "mila", "e": "happy", "text": "Okay, I give up pretending I'm still mad at you. It's exhausting."},
-            {"who": "mila", "e": "teasing", "text": "Buy me fries, the big ones, since we're apparently whatever this is now."}
+            {"who": "mila", "e": "teasing", "text": "Buy me fries, the big ones, since we're apparently whatever this is now."},
+            {
+              "key": "mila_4",
+              "choice": [
+                {
+                  "text": "Small fries. You lost the right to large.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "mila", "e": "surprised", "text": "I WON. Wait, no, I didn't. Okay, medium."}
+                  ]
+                },
+                {
+                  "text": "Large fries, extra sauce, and a ride home.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "mila", "e": "happy", "text": "You're doing it again, the sweet thing. Never stop."}
+                  ]
+                },
+                {
+                  "text": "Fries, then breakfast, then whatever this is.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "mila", "e": "shy", "text": "Whatever this is sounds really good."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "mila_5",
             "title": "Fries at 4 AM",
             "brief": "Mila in her sports bra and your jacket, sharing fries with you on the lounge's back steps at dawn, leaning on your shoulder."
+          },
+          "alt_scene": {
+            "id": "mila_alt",
+            "title": "Sunrise Ride",
+            "tag": "sweet",
+            "min": 3,
+            "hint": "Be sweet to Mila.",
+            "brief": "Dawn on the empty boulevard: Mila in your work jacket over her sports bra and bike shorts rides no-hands circles around you, laughing, as the Afterglow sign switches off behind her."
           }
         },
         {
           "level": 7,
           "target": 7,
+          "mods": ["rush", "turbo"],
           "before": [
+            {"if": "mila_4=tease", "who": "mila", "e": "teasing", "text": "Medium fries. You owe me a large, by the way. With interest."},
+            {"if": "mila_4=sweet", "who": "mila", "e": "shy", "text": "You drove me home and didn't even try anything. I was almost offended."},
+            {"if": "mila_4=flirt", "who": "mila", "e": "teasing", "text": "So. Whatever this is. Tonight we find out."},
+            {"who": "mila", "e": "neutral", "text": "Last race. Full air, two minutes on the clock, everything on the line."},
             {"who": "mila", "e": "neutral", "text": "No jokes tonight. If I win, you buy breakfast for a week."},
             {"who": "you", "text": "And if I win?"},
             {"who": "mila", "e": "shy", "text": "Then I stop pretending I keep coming back for the hockey."}
           ],
           "after": [
             {"who": "mila", "e": "happy", "text": "Fine, you win, I like you, there, I said it, can we eat now?"},
-            {"who": "mila", "e": "teasing", "text": "Here, have my Bullet. I'll teach you the wrist thing later, because the blinds are down and you owe me a different kind of rematch."}
+            {"who": "mila", "e": "teasing", "text": "Here, have my Bullet. I'll teach you the wrist thing later, because the blinds are down and you owe me a different kind of rematch."},
+            {
+              "key": "mila_5",
+              "choice": [
+                {
+                  "text": "Took you long enough.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "mila", "e": "teasing", "text": "Shut up and kiss me."}
+                  ]
+                },
+                {
+                  "text": "I like you too. Since the impound receipt.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "mila", "e": "shy", "text": "That's the dumbest, best thing anyone's ever said to me."}
+                  ]
+                },
+                {
+                  "text": "Say it again. Slower.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "mila", "e": "teasing", "text": "I. Like. You. Now lock the door."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "mila_6",
@@ -227,7 +415,33 @@
           ],
           "after": [
             {"who": "juno", "e": "surprised", "text": "You read the wall. Nobody reads the wall."},
-            {"who": "juno", "e": "angry", "text": "This changes nothing. You're still a lanyard."}
+            {"who": "juno", "e": "angry", "text": "This changes nothing. You're still a lanyard."},
+            {
+              "key": "juno_0",
+              "choice": [
+                {
+                  "text": "Nice lanyard insult. Got any others?",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "juno", "e": "teasing", "text": "Forty-one. I wrote them down."}
+                  ]
+                },
+                {
+                  "text": "You run this place better than I ever will.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "juno", "e": "shy", "text": "Don't. I'm busy hating you."}
+                  ]
+                },
+                {
+                  "text": "Teach me the wall thing sometime?",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "juno", "e": "teasing", "text": "Sure. Private lessons cost extra. Your dignity."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "juno_1",
@@ -238,15 +452,46 @@
         {
           "level": 2,
           "target": 5,
+          "mods": ["bank_double"],
           "before": [
+            {"if": "juno_0=tease", "who": "juno", "e": "teasing", "text": "Lanyard insult number two: clipboard with legs."},
+            {"if": "juno_0=sweet", "who": "juno", "e": "shy", "text": "I've been thinking about what you said. I hate that I've been thinking about it."},
+            {"if": "juno_0=flirt", "who": "juno", "e": "teasing", "text": "Lesson one: the wall is your friend. I am not. Rack 'em."},
             {"who": "juno", "e": "neutral", "text": "I've drawn every angle on this table on a napkin. Forty-one napkins."},
             {"who": "you", "text": "Is that why we're out of napkins?"},
-            {"who": "juno", "e": "angry", "text": "Don't be charming. It doesn't suit you."}
+            {"who": "juno", "e": "angry", "text": "Don't be charming. It doesn't suit you."},
+            {"who": "juno", "e": "teasing", "text": "House rules tonight: bank shots count double. Straight shots are a waste of a perfectly good wall."}
           ],
           "after": [
             {"who": "juno", "e": "shy", "text": "Forty-two napkins, and none of them had you on it."},
             {"who": "juno", "e": "neutral", "text": "I read your memo. You never sent the order to shut us down. Why not?"},
-            {"who": "you", "text": "Because this place is the only thing that chain bought that's worth anything."}
+            {"who": "you", "text": "Because this place is the only thing that chain bought that's worth anything."},
+            {
+              "key": "juno_1",
+              "choice": [
+                {
+                  "text": "Also, I needed your napkins for my list of comebacks.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "juno", "e": "surprised", "text": "Steal my napkins, steal my heart. Wait, no. Forget I said that."}
+                  ]
+                },
+                {
+                  "text": "This place is yours. I just have the badge.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "juno", "e": "shy", "text": "Stop being nice. I can't think straight when you're nice."}
+                  ]
+                },
+                {
+                  "text": "Maybe I wanted an excuse to keep seeing you.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "juno", "e": "teasing", "text": "That's a terrible excuse. Keep using it."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "juno_2",
@@ -258,6 +503,9 @@
           "level": 3,
           "target": 6,
           "before": [
+            {"if": "juno_1=tease", "who": "juno", "e": "teasing", "text": "I counted the napkins again. You owe me three."},
+            {"if": "juno_1=sweet", "who": "juno", "e": "shy", "text": "I put your name on the staff rota. As a joke. Mostly."},
+            {"if": "juno_1=flirt", "who": "juno", "e": "teasing", "text": "Still using that excuse? Good."},
             {"who": "juno", "e": "teasing", "text": "Inventory night. You count bottles, I count your mistakes."},
             {"who": "you", "text": "Why is there a case of maraschino cherries marked 'emergency'?"},
             {"who": "juno", "e": "neutral", "text": "Because some nights are emergencies. Rack 'em, loser counts the limes."}
@@ -265,25 +513,91 @@
           "after": [
             {"who": "juno", "e": "surprised", "text": "You kept my schedule. Not one shift moved."},
             {"who": "you", "text": "It was a good schedule."},
-            {"who": "juno", "e": "shy", "text": "Nobody has ever said that to me. I need a minute, and the emergency cherries."}
+            {"who": "juno", "e": "shy", "text": "Nobody has ever said that to me. I need a minute, and the emergency cherries."},
+            {
+              "key": "juno_2",
+              "choice": [
+                {
+                  "text": "Save me a cherry. I count those too.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "juno", "e": "teasing", "text": "You get one. Emergency rations."}
+                  ]
+                },
+                {
+                  "text": "It's your schedule. It always was.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "juno", "e": "shy", "text": "If you keep saying things like that I'm going to cry on the limes."}
+                  ]
+                },
+                {
+                  "text": "I'd keep your schedule forever.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "juno", "e": "shy", "text": "Careful. I might hold you to that."}
+                  ]
+                }
+              ]
+            },
+            {"who": "narrator", "text": "On her way out, Juno stops at the office printer. There's a page in the tray from head office: a plan to 'replace legacy bar staff', with your name in the approval box."},
+            {"who": "juno", "e": "angry", "text": "You smiled at me all night with this sitting in the printer?"},
+            {"who": "you", "text": "Juno, wait, read the..."},
+            {"who": "juno", "e": "angry", "text": "Save it, lanyard."}
           ],
           "scene": {
             "id": "juno_3",
             "title": "Stockroom",
             "brief": "Juno in her silk shirt, half buttoned with the sleeves rolled up, sits on a stack of beer crates in the stockroom with a clipboard and a pen between her teeth, eating cherries from the jar."
-          }
+          },
+          "attitude": "Cold war"
         },
         {
           "level": 5,
           "target": 6,
+          "mods": ["handicap"],
           "before": [
-            {"who": "narrator", "text": "Head office sent an auditor today. Juno watched you walk him around the lounge."},
+            {"who": "juno", "e": "angry", "text": "Rematch. I loosened the felt on your paddle, so tonight you're playing with about four fifths of one. Call it severance."},
+            {"who": "you", "text": "That's sabotage."},
+            {"who": "juno", "e": "teasing", "text": "That's geometry. Smaller paddle, worse angles. Rack the puck."},
+            {"if": "juno_2=tease", "who": "juno", "e": "angry", "text": "And no, you don't get a cherry."},
+            {"if": "juno_2=sweet", "who": "juno", "e": "angry", "text": "'It's your schedule,' you said. And then I found that page."},
+            {"if": "juno_2=flirt", "who": "juno", "e": "angry", "text": "'Forever,' you said. Funny word."}
+          ],
+          "after": [
+            {"who": "narrator", "text": "Halfway through, an auditor from head office walks in. You show him round the lounge with Juno's wobbly paddle still in your hand."},
             {"who": "juno", "e": "neutral", "text": "You told him I built the stock system, the rota and the cocktail list."},
             {"who": "you", "text": "You did."},
             {"who": "juno", "e": "angry", "text": "You could have taken the credit. That's what lanyards do."},
-            {"who": "juno", "e": "shy", "text": "I'm so mad I could kiss you. Rack the puck before I do something stupid."}
-          ],
-          "after": [
+            {"who": "you", "text": "And that printout was the plan I refused to sign. You stopped at page one. Page two is where I wrote 'over my dead body' in the margin."},
+            {"who": "juno", "e": "shy", "text": "I sabotaged a paddle over a page I didn't finish reading."},
+            {"who": "juno", "e": "shy", "text": "I'm so mad I could kiss you. So I might."},
+            {
+              "key": "juno_3",
+              "choice": [
+                {
+                  "text": "You owe me a paddle.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "juno", "e": "teasing", "text": "I'll buy you ten. I'll name them all after you."}
+                  ]
+                },
+                {
+                  "text": "You should have read page two. But I get it.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "juno", "e": "shy", "text": "You get it. Of course you get it. Ugh. Come here."}
+                  ]
+                },
+                {
+                  "text": "So kiss me.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "juno", "e": "shy", "text": "Office. Now. Bring the champagne."}
+                  ]
+                }
+              ]
+            },
             {"who": "juno", "e": "teasing", "text": "I stole the good champagne from the auditor's welcome basket."},
             {"who": "juno", "e": "happy", "text": "Office, come on. We're celebrating you being a decent human being, which in this business is rare."}
           ],
@@ -297,29 +611,98 @@
           "level": 6,
           "target": 7,
           "before": [
+            {"if": "juno_3=tease", "who": "juno", "e": "teasing", "text": "Paddle number one is called Lanyard. It lives in the office."},
+            {"if": "juno_3=sweet", "who": "juno", "e": "shy", "text": "I read everything to the last page now. Even menus."},
+            {"if": "juno_3=flirt", "who": "juno", "e": "teasing", "text": "About the office the other night. I'm not sorry."},
             {"who": "juno", "e": "teasing", "text": "Proposal. You keep the title, I keep running the place, and we both lie to head office."},
-            {"who": "you", "text": "Deal. Winner picks who does payroll."}
+            {"who": "you", "text": "Deal. Winner picks who does payroll."},
+            {"if": "wins:mila>=4", "who": "juno", "e": "teasing", "text": "Mila's been ordering fries here every night and staring at the office door. Subtle, that one."}
           ],
           "after": [
             {"who": "juno", "e": "happy", "text": "Fine, I'll do payroll. You'd mess it up anyway."},
-            {"who": "juno", "e": "teasing", "text": "Stay for a nightcap. I'll make the one that isn't on the menu."}
+            {"who": "juno", "e": "teasing", "text": "Stay for a nightcap. I'll make the one that isn't on the menu."},
+            {
+              "key": "juno_4",
+              "choice": [
+                {
+                  "text": "Is it strong enough to make me forget payroll?",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "juno", "e": "teasing", "text": "It's strong enough to make you forget your name."}
+                  ]
+                },
+                {
+                  "text": "Make two. One for the best manager this place ever had.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "juno", "e": "shy", "text": "That's you now. Shut up. Drink."}
+                  ]
+                },
+                {
+                  "text": "Only if you drink it with me.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "juno", "e": "teasing", "text": "That was always the plan."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "juno_5",
             "title": "Off the Menu",
             "brief": "Juno sits on the bar in her underwear and your tie, sliding you a glowing cocktail with a small smile."
+          },
+          "alt_scene": {
+            "id": "juno_alt",
+            "title": "Napkin Math",
+            "tag": "tease",
+            "min": 3,
+            "hint": "Tease Juno.",
+            "brief": "Juno in her slip and reading glasses sits on the bar, scribbling shot angles on a napkin pressed flat against your chest, smirking like she's already won."
           }
         },
         {
           "level": 7,
           "target": 7,
+          "mods": ["bank_double"],
           "before": [
+            {"if": "juno_4=tease", "who": "juno", "e": "teasing", "text": "I'm still doing payroll. You're still bad at it."},
+            {"if": "juno_4=sweet", "who": "juno", "e": "shy", "text": "You called me the best manager this place ever had. I wrote it on a napkin."},
+            {"if": "juno_4=flirt", "who": "juno", "e": "teasing", "text": "Same cocktail tonight? I'm making two."},
+            {"who": "juno", "e": "neutral", "text": "Bank night, one last time. Every wall counts double, like it always should have."},
             {"who": "juno", "e": "teasing", "text": "Last napkin. It just says: don't fall for the new guy."},
             {"who": "juno", "e": "shy", "text": "So I'd better win, huh?"}
           ],
           "after": [
             {"who": "juno", "e": "happy", "text": "I'm keeping that napkin. Framing it, actually."},
-            {"who": "juno", "e": "teasing", "text": "Here's my Ricochet. The trick is to aim at the wall like you mean it. Now lock the door, manager."}
+            {"who": "juno", "e": "teasing", "text": "Here's my Ricochet. The trick is to aim at the wall like you mean it. Now lock the door, manager."},
+            {
+              "key": "juno_5",
+              "choice": [
+                {
+                  "text": "Frame it next to the forty-one insults.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "juno", "e": "teasing", "text": "Right in the middle of them."}
+                  ]
+                },
+                {
+                  "text": "Hang it behind the bar where everyone can see.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "juno", "e": "shy", "text": "Everyone. Okay. Yeah. I'd like that."}
+                  ]
+                },
+                {
+                  "text": "Write a new one: fell for the new guy anyway.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "juno", "e": "teasing", "text": "Already did. Lock the door."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "juno_6",
@@ -380,7 +763,33 @@
           "after": [
             {"who": "kat", "e": "surprised", "text": "That table's tilted. That's the only explanation."},
             {"who": "juno", "e": "teasing", "text": "It's not tilted. I level it every Monday."},
-            {"who": "kat", "e": "angry", "text": "Then I'll be back next Thursday, and every Thursday after that until it tilts my way."}
+            {"who": "kat", "e": "angry", "text": "Then I'll be back next Thursday, and every Thursday after that until it tilts my way."},
+            {
+              "key": "kat_0",
+              "choice": [
+                {
+                  "text": "Juno levels it every Monday. I watched her.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "kat", "e": "angry", "text": "Then Juno's in on it."}
+                  ]
+                },
+                {
+                  "text": "Sorry about the flyer. Really.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "kat", "e": "neutral", "text": "Sorry doesn't pay my rent. ...But thanks."}
+                  ]
+                },
+                {
+                  "text": "Come back Thursday. I'll save you a seat.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "I don't need a seat. I need a rematch."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "kat_1",
@@ -391,17 +800,49 @@
         {
           "level": 5,
           "target": 5,
+          "mods": ["bumpers"],
           "before": [
+            {"if": "kat_0=tease", "who": "kat", "e": "neutral", "text": "I checked. Juno is not in on it. She is terrifying, though."},
+            {"if": "kat_0=sweet", "who": "kat", "e": "shy", "text": "You apologised. Nobody from your chain ever apologises. It's thrown me off."},
+            {"if": "kat_0=flirt", "who": "kat", "e": "angry", "text": "Nobody saved me a seat. I checked."},
             {"who": "kat", "e": "teasing", "text": "I've been practising on the Static's table. It's older than you and it has a dead spot in the corner."},
             {"who": "kat", "e": "neutral", "text": "If I can beat that table, you're nothing."},
             {"who": "you", "text": "Why not just get a new table?"},
-            {"who": "kat", "e": "angry", "text": "With what money? Somebody stole my Thursdays."}
+            {"who": "kat", "e": "angry", "text": "With what money? Somebody stole my Thursdays."},
+            {"who": "narrator", "text": "She drags you across the street to play on the Static's table, which has two steel bumpers bolted to the centre line."},
+            {"who": "kat", "e": "teasing", "text": "My uncle put those in in 1994 and nobody's been able to get them off since. Home table advantage."}
           ],
           "after": [
             {"who": "kat", "e": "sad", "text": "Fine, it's not the table, you're just annoyingly good."},
             {"who": "you", "text": "What if the Static hosted league night on Mondays? We're closed Mondays."},
             {"who": "kat", "e": "surprised", "text": "You'd send people to my bar? Why?"},
-            {"who": "you", "text": "Because the league's better with two bars."}
+            {"who": "you", "text": "Because the league's better with two bars."},
+            {
+              "key": "kat_1",
+              "choice": [
+                {
+                  "text": "Also, your table is a crime.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "kat", "e": "angry", "text": "My table is a legend."}
+                  ]
+                },
+                {
+                  "text": "The Static deserves a crowd.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "kat", "e": "shy", "text": "Yeah. It does. Okay. Mondays."}
+                  ]
+                },
+                {
+                  "text": "And I'd get to see you every Monday.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "You're doing that thing. Stop. Keep going."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "kat_2",
@@ -412,14 +853,45 @@
         {
           "level": 6,
           "target": 6,
+          "mods": ["big_goals"],
           "before": [
+            {"if": "kat_1=tease", "who": "kat", "e": "teasing", "text": "My legendary table would like an apology."},
+            {"if": "kat_1=sweet", "who": "kat", "e": "happy", "text": "I printed new flyers. Real ones, with my bar on them."},
+            {"if": "kat_1=flirt", "who": "kat", "e": "teasing", "text": "It's Monday. You're here. I noticed."},
             {"who": "narrator", "text": "The Static's first league night is a Monday, and the place is packed. Kat looks terrified."},
             {"who": "kat", "e": "surprised", "text": "There are forty people in my bar. I haven't had forty people in my bar since the Super Bowl."},
+            {"who": "kat", "e": "neutral", "text": "I widened the goals for tonight. Crowds like scoring. Don't argue, it's my bar."},
             {"who": "kat", "e": "teasing", "text": "Play me first and make it look good. If I lose in front of them I'll still kill you."}
           ],
           "after": [
             {"who": "kat", "e": "happy", "text": "They're buying drinks. So many drinks."},
-            {"who": "kat", "e": "shy", "text": "You did this and I hate how much I love it. Shut up and have a beer."}
+            {"who": "kat", "e": "shy", "text": "You did this and I hate how much I love it. Shut up and have a beer."},
+            {
+              "key": "kat_2",
+              "choice": [
+                {
+                  "text": "You owe me a percentage.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "Of what? Okay, fine, free beer for life."}
+                  ]
+                },
+                {
+                  "text": "This is all you. I just sent the flyer.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "kat", "e": "shy", "text": "Stop deflecting. I'm hugging you."}
+                  ]
+                },
+                {
+                  "text": "Have a beer with me after close.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "After close, then. Don't be late."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "kat_3",
@@ -430,15 +902,47 @@
         {
           "level": 8,
           "target": 6,
+          "mods": ["blackout"],
           "before": [
+            {"if": "kat_2=tease", "who": "kat", "e": "teasing", "text": "Free beer for life starts tonight. One per night. Don't push it."},
+            {"if": "kat_2=sweet", "who": "kat", "e": "shy", "text": "I still owe you a hug. Two hugs. I'm counting."},
+            {"if": "kat_2=flirt", "who": "kat", "e": "shy", "text": "After close last time was nice. Nicer than nice."},
+            {"if": "wins:sable>=2", "who": "kat", "e": "happy", "text": "Sable came to my Monday night. Sat at the bar, ordered a gin, told me my bass was flat. Best night of my life."},
             {"who": "kat", "e": "happy", "text": "I got my band back together for the Static's Monday nights. We play after league."},
             {"who": "kat", "e": "teasing", "text": "Our drummer quit. So, unrelated question: can you keep a beat?"},
             {"who": "you", "text": "Is that a job offer?"},
-            {"who": "kat", "e": "shy", "text": "It's a dare. Beat me first."}
+            {"who": "kat", "e": "shy", "text": "It's a dare. Beat me first."},
+            {"who": "kat", "e": "teasing", "text": "We're playing on the stage table during soundcheck. House lights stay off, so all you get is the stage lights. Good luck."}
           ],
           "after": [
             {"who": "kat", "e": "teasing", "text": "You can't drum, which is fine, nobody can."},
-            {"who": "kat", "e": "shy", "text": "Stay for soundcheck anyway. I want someone to watch who isn't Juno judging my bass."}
+            {"who": "kat", "e": "shy", "text": "Stay for soundcheck anyway. I want someone to watch who isn't Juno judging my bass."},
+            {
+              "key": "kat_3",
+              "choice": [
+                {
+                  "text": "I was a natural on drums.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "You were a disaster on drums. Stay anyway."}
+                  ]
+                },
+                {
+                  "text": "You sounded amazing.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "kat", "e": "shy", "text": "You're just saying that. Say it again."}
+                  ]
+                },
+                {
+                  "text": "I'd watch you play all night.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "Careful. I play long sets."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "kat_4",
@@ -450,6 +954,9 @@
           "level": 9,
           "target": 7,
           "before": [
+            {"if": "kat_3=tease", "who": "kat", "e": "teasing", "text": "Our drummer heard about your audition. He came back. Out of fear."},
+            {"if": "kat_3=sweet", "who": "kat", "e": "shy", "text": "I played better knowing you were listening. That's a stupid thing to say."},
+            {"if": "kat_3=flirt", "who": "kat", "e": "teasing", "text": "Long set tonight. Hope you're ready."},
             {"who": "kat", "e": "neutral", "text": "So I found out head office taped that flyer to my door. Not you."},
             {"who": "kat", "e": "sad", "text": "You took the blame for two months and never said a word."},
             {"who": "you", "text": "You needed someone to be mad at."},
@@ -457,18 +964,56 @@
           ],
           "after": [
             {"who": "kat", "e": "happy", "text": "I tore up the flyer but kept the bit with your chain's logo on it, for darts."},
-            {"who": "kat", "e": "shy", "text": "Walk me home? I know it's across the street. Walk slow."}
+            {"who": "kat", "e": "shy", "text": "Walk me home? I know it's across the street. Walk slow."},
+            {
+              "key": "kat_4",
+              "choice": [
+                {
+                  "text": "It's forty feet, Kat.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "Then walk really, really slow."}
+                  ]
+                },
+                {
+                  "text": "I'd walk you across town.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "kat", "e": "shy", "text": "Across the street is plenty. For now."}
+                  ]
+                },
+                {
+                  "text": "I'll walk you home, and up the stairs.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "Upstairs comes later. Keep walking."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "kat_5",
             "title": "Across the Street",
             "brief": "Kat in her band tee and your work jacket stands in the middle of the empty street between the two bars at 4 AM, both neon signs glowing behind her, reaching for your hand."
+          },
+          "alt_scene": {
+            "id": "kat_alt",
+            "title": "Encore",
+            "tag": "flirt",
+            "min": 3,
+            "hint": "Flirt with Kat.",
+            "brief": "After close at the Static, Kat in a cropped tee and your work jacket stands on the little stage with her bass, pulling you up by your tie under red stage lights."
           }
         },
         {
           "level": 10,
           "target": 7,
           "before": [
+            {"if": "kat_4=tease", "who": "kat", "e": "teasing", "text": "Forty feet took us twenty minutes. New record."},
+            {"if": "kat_4=sweet", "who": "kat", "e": "shy", "text": "For now, I said. It's later now."},
+            {"if": "kat_4=flirt", "who": "kat", "e": "teasing", "text": "You remembered the stairs. Good."},
+            {"who": "kat", "e": "neutral", "text": "Two games tonight, one in each bar. Win both, or it doesn't count."},
             {"who": "kat", "e": "shy", "text": "No trash talk tonight. Every sentence I start comes out nice and it's horrible."},
             {"who": "kat", "e": "teasing", "text": "Okay, bet. I win, you play bass in my band forever. You win, and..."},
             {"who": "you", "text": "I win?"},
@@ -476,13 +1021,48 @@
           ],
           "after": [
             {"who": "kat", "e": "happy", "text": "Okay, you win. Upstairs, and mind the steps, they're older than the table."},
-            {"who": "kat", "e": "teasing", "text": "Take my Slingshot too. Start slow, finish strong, like tonight."}
+            {"who": "kat", "e": "teasing", "text": "Take my Slingshot too. Start slow, finish strong, like tonight."},
+            {
+              "key": "kat_5",
+              "choice": [
+                {
+                  "text": "Your stairs are a deathtrap.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "Then hold on to me."}
+                  ]
+                },
+                {
+                  "text": "Thank you for letting me in.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "kat", "e": "shy", "text": "Thank you for taking the blame. And everything after."}
+                  ]
+                },
+                {
+                  "text": "Show me the apartment. Slowly.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "kat", "e": "teasing", "text": "Slowly. Got it."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "kat_6",
             "title": "Upstairs at the Static",
             "brief": "Kat's romance scene in her apartment above the Static. Adult scene: write to your content plan."
-          }
+          },
+          "legs": [
+            {
+              "mods": ["bumpers"],
+              "before": [
+                {"who": "narrator", "text": "One game down. Kat grabs your hand and walks you across the street to the Static for the second."},
+                {"who": "kat", "e": "teasing", "text": "Best of two bars. Mine has the bumpers, so this is where the real match is."}
+              ]
+            }
+          ]
         }
       ]
     },
@@ -532,7 +1112,33 @@
           ],
           "after": [
             {"who": "sable", "e": "surprised", "text": "Six years, and nobody had seen what is under this blazer."},
-            {"who": "sable", "e": "angry", "text": "Do not get comfortable. That was a warm-up."}
+            {"who": "sable", "e": "angry", "text": "Do not get comfortable. That was a warm-up."},
+            {
+              "key": "sable_0",
+              "choice": [
+                {
+                  "text": "Warm-up? You were sweating.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "sable", "e": "angry", "text": "Women do not sweat. We glow. Furiously."}
+                  ]
+                },
+                {
+                  "text": "You built something special here.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "sable", "e": "sad", "text": "I know. That is what makes this so painful."}
+                  ]
+                },
+                {
+                  "text": "I'd like to see what's under the next layer.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "Earn it."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "sable_1",
@@ -544,12 +1150,63 @@
           "level": 8,
           "target": 5,
           "before": [
+            {"if": "sable_0=tease", "who": "sable", "e": "teasing", "text": "I have been glowing furiously all week."},
+            {"if": "sable_0=sweet", "who": "sable", "e": "neutral", "text": "You said I built something special. I keep hearing it."},
+            {"if": "sable_0=flirt", "who": "sable", "e": "teasing", "text": "You wanted to earn it. So earn it."},
             {"who": "sable", "e": "neutral", "text": "I closed early tonight, so there is no audience."},
-            {"who": "sable", "e": "teasing", "text": "Whatever happens on this table stays between us and the security camera I just unplugged."}
+            {"who": "sable", "e": "teasing", "text": "Whatever happens on this table stays between us and the security camera I just unplugged."},
+            {"who": "sable", "e": "teasing", "text": "I set the terms tonight. Pick your poison."},
+            {
+              "key": "terms_sable_1",
+              "choice": [
+                {
+                  "text": "Mini goals",
+                  "tag": "terms",
+                  "mods": ["mini_goals"],
+                  "reply": [
+                    {"who": "sable", "e": "neutral", "text": "Precision, then. Good, you will need it."}
+                  ]
+                },
+                {
+                  "text": "By the Book: no power shots",
+                  "tag": "terms",
+                  "mods": ["no_heat"],
+                  "reply": [
+                    {"who": "sable", "e": "neutral", "text": "No smashes, no tricks. Just you and the angles."}
+                  ]
+                }
+              ]
+            }
           ],
           "after": [
             {"who": "sable", "e": "shy", "text": "My hands are shaking. That has not happened since my first tournament."},
-            {"who": "sable", "e": "neutral", "text": "Juno told me about the memo you never sent. Come upstairs, we should talk."}
+            {"who": "sable", "e": "neutral", "text": "Juno told me about the memo you never sent. Come upstairs, we should talk."},
+            {
+              "key": "sable_1",
+              "choice": [
+                {
+                  "text": "Bringing the security camera?",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "I unplugged it. Do keep up."}
+                  ]
+                },
+                {
+                  "text": "Whatever you need to say, I'm listening.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "sable", "e": "shy", "text": "That is a rare quality in a man with a lanyard."}
+                  ]
+                },
+                {
+                  "text": "Lead the way.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "I always do."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "sable_2",
@@ -561,13 +1218,64 @@
           "level": 9,
           "target": 6,
           "before": [
+            {"if": "sable_1=tease", "who": "sable", "e": "teasing", "text": "The camera is still unplugged, in case you wondered."},
+            {"if": "sable_1=sweet", "who": "sable", "e": "shy", "text": "You listened, last time. I am not used to that."},
+            {"if": "sable_1=flirt", "who": "sable", "e": "teasing", "text": "You followed me upstairs very obediently last week."},
             {"who": "sable", "e": "neutral", "text": "I found the box from opening night, nine years ago. The first menu is in there, with the photos and the original sign."},
-            {"who": "sable", "e": "teasing", "text": "Win, and I'll show you. Lose, and it goes back in the closet with my feelings."}
+            {"who": "sable", "e": "teasing", "text": "Win, and I'll show you. Lose, and it goes back in the closet with my feelings."},
+            {"who": "sable", "e": "teasing", "text": "New terms. Choose quickly, I do not like to wait."},
+            {
+              "key": "terms_sable_2",
+              "choice": [
+                {
+                  "text": "Rush Clock",
+                  "tag": "terms",
+                  "mods": ["rush"],
+                  "reply": [
+                    {"who": "sable", "e": "neutral", "text": "Two minutes. I have won entire tournaments in less."}
+                  ]
+                },
+                {
+                  "text": "Play with a smaller paddle",
+                  "tag": "terms",
+                  "mods": ["handicap"],
+                  "reply": [
+                    {"who": "sable", "e": "neutral", "text": "Bold. Or foolish. We will find out which."}
+                  ]
+                }
+              ]
+            }
           ],
           "after": [
             {"who": "sable", "e": "happy", "text": "That is me at twenty-two, with a borrowed table and a terrible haircut."},
             {"who": "sable", "e": "sad", "text": "I never wanted to sell. I would like someone to know that, and I suppose it is you."},
-            {"who": "you", "text": "Then let's get it back."}
+            {"who": "you", "text": "Then let's get it back."},
+            {
+              "key": "sable_2",
+              "choice": [
+                {
+                  "text": "Nice haircut, by the way.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "sable", "e": "angry", "text": "I will have you killed."}
+                  ]
+                },
+                {
+                  "text": "Twenty-two-year-old you would be proud.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "sable", "e": "shy", "text": "Twenty-two-year-old me would have told you to get lost. Thirty-one-year-old me is thinking about it."}
+                  ]
+                },
+                {
+                  "text": "You were cute then. You're dangerous now.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "Correct on both counts."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "sable_3",
@@ -579,13 +1287,65 @@
           "level": 10,
           "target": 6,
           "before": [
+            {"if": "sable_2=tease", "who": "sable", "e": "angry", "text": "I burned the haircut photo. Do not ask."},
+            {"if": "sable_2=sweet", "who": "sable", "e": "shy", "text": "I framed the first menu. It is on my desk, facing your chair."},
+            {"if": "sable_2=flirt", "who": "sable", "e": "teasing", "text": "Dangerous, you said. Let us see how dangerous."},
+            {"if": "wins:kat>=4", "who": "sable", "e": "teasing", "text": "Kat Vance tells me you play bass now. Badly. She sounded proud."},
             {"who": "sable", "e": "angry", "text": "Head office wants to turn the Afterglow into a sports bar with big screens, wings and no table."},
             {"who": "you", "text": "Over my dead lanyard."},
-            {"who": "sable", "e": "teasing", "text": "Good answer. Now show me you will fight for it."}
+            {"who": "sable", "e": "teasing", "text": "Good answer. Now show me you will fight for it."},
+            {"who": "sable", "e": "teasing", "text": "Tonight's terms are about trust. Pick one."},
+            {
+              "key": "terms_sable_3",
+              "choice": [
+                {
+                  "text": "Blackout",
+                  "tag": "terms",
+                  "mods": ["blackout"],
+                  "reply": [
+                    {"who": "sable", "e": "neutral", "text": "In the dark, then. You will have to feel where the puck is."}
+                  ]
+                },
+                {
+                  "text": "Turbo Air",
+                  "tag": "terms",
+                  "mods": ["turbo"],
+                  "reply": [
+                    {"who": "sable", "e": "neutral", "text": "Fast, then. Try to keep up."}
+                  ]
+                }
+              ]
+            }
           ],
           "after": [
             {"who": "sable", "e": "happy", "text": "You fight dirty. I like that in a co-conspirator."},
-            {"who": "sable", "e": "teasing", "text": "Come up to the roof. I think better up there, and I am not putting the corset back on."}
+            {"who": "sable", "e": "teasing", "text": "Come up to the roof. I think better up there, and I am not putting the corset back on."},
+            {
+              "key": "sable_3",
+              "choice": [
+                {
+                  "text": "A candy cigarette? Very tough.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "It is grape. Show some respect."}
+                  ]
+                },
+                {
+                  "text": "I'll fight for this place with you. Whatever it takes.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "sable", "e": "neutral", "text": "Whatever it takes. I will hold you to that."}
+                  ]
+                },
+                {
+                  "text": "Lead me anywhere.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "Roof first. Then we will see."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "sable_4",
@@ -597,30 +1357,119 @@
           "level": 11,
           "target": 7,
           "before": [
+            {"if": "sable_3=tease", "who": "sable", "e": "teasing", "text": "I bought more grape candy cigarettes. Do not judge me."},
+            {"if": "sable_3=sweet", "who": "sable", "e": "neutral", "text": "Whatever it takes, you said. It is going to take a lot."},
+            {"if": "sable_3=flirt", "who": "sable", "e": "teasing", "text": "The roof was a good start."},
             {"who": "sable", "e": "teasing", "text": "I have decided to buy the Afterglow back, with your help. Every good plan needs a spy inside head office."},
-            {"who": "sable", "e": "neutral", "text": "But I do not partner with people I can beat. Prove it again."}
+            {"who": "sable", "e": "neutral", "text": "But I do not partner with people I can beat. Prove it again."},
+            {"who": "sable", "e": "teasing", "text": "Partners negotiate. You choose my handicap for once."},
+            {
+              "key": "terms_sable_4",
+              "choice": [
+                {
+                  "text": "Bank Night for you",
+                  "tag": "terms",
+                  "mods": ["bank_double"],
+                  "reply": [
+                    {"who": "sable", "e": "neutral", "text": "Your banks count double. Generous of me, I know."}
+                  ]
+                },
+                {
+                  "text": "Wide goals for both of us",
+                  "tag": "terms",
+                  "mods": ["big_goals"],
+                  "reply": [
+                    {"who": "sable", "e": "neutral", "text": "Big goals, big scores, big risks. I approve."}
+                  ]
+                }
+              ]
+            }
           ],
           "after": [
             {"who": "sable", "e": "happy", "text": "Partners, then, fifty-fifty. You may even keep the lanyard."},
             {"who": "sable", "e": "neutral", "text": "Head office will sell if we can prove this place makes money, so we give them one enormous night: the Last Call Championship."},
-            {"who": "sable", "e": "teasing", "text": "Partners celebrate. Stay a while."}
+            {"who": "sable", "e": "teasing", "text": "Partners celebrate. Stay a while."},
+            {
+              "key": "sable_4",
+              "choice": [
+                {
+                  "text": "Fifty-fifty? I want fifty-one.",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "Then you will have to beat me for it, every night, forever."}
+                  ]
+                },
+                {
+                  "text": "I'd partner with you on anything.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "sable", "e": "shy", "text": "Careful. I make long-term plans."}
+                  ]
+                },
+                {
+                  "text": "How do partners celebrate?",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "Close the door and find out."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "sable_5",
             "title": "Partners",
             "brief": "Sable in lingerie sits on the edge of her desk signing a napkin contract, pulling you in by your tie."
+          },
+          "alt_scene": {
+            "id": "sable_alt",
+            "title": "Hostile Takeover",
+            "tag": "tease",
+            "min": 3,
+            "hint": "Tease Sable.",
+            "brief": "Sable in a tailored vest and open blazer sits in your office chair with her heels up on your desk, pointing a fountain pen at you like a weapon."
           }
         },
         {
           "level": 12,
           "target": 7,
           "before": [
+            {"if": "sable_4=tease", "who": "sable", "e": "teasing", "text": "Fifty-one percent, you said. Tonight decides it."},
+            {"if": "sable_4=sweet", "who": "sable", "e": "shy", "text": "Long-term plans. I drew one up. It has you in it."},
+            {"if": "sable_4=flirt", "who": "sable", "e": "teasing", "text": "Partners. I liked how we celebrated."},
+            {"who": "sable", "e": "neutral", "text": "No terms tonight. No handicaps, no tricks. Just the two of us and the table, the way it started."},
             {"who": "sable", "e": "neutral", "text": "For the title. Winner's name goes at the top of the wall."},
             {"who": "sable", "e": "shy", "text": "And me, win or lose, if I am honest. Do not tell the others I said that."}
           ],
           "after": [
             {"who": "sable", "e": "happy", "text": "New champion. Your name goes on the wall tomorrow."},
-            {"who": "sable", "e": "teasing", "text": "The Hook is yours. Tonight, though, you are mine. Champion's privilege works both ways."}
+            {"who": "sable", "e": "teasing", "text": "The Hook is yours. Tonight, though, you are mine. Champion's privilege works both ways."},
+            {
+              "key": "sable_5",
+              "choice": [
+                {
+                  "text": "Champion's privilege. Got a list?",
+                  "tag": "tease",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "Several. Alphabetical."}
+                  ]
+                },
+                {
+                  "text": "My name goes up next to yours.",
+                  "tag": "sweet",
+                  "reply": [
+                    {"who": "sable", "e": "shy", "text": "Next to mine. Yes. That is where it belongs."}
+                  ]
+                },
+                {
+                  "text": "Then take it.",
+                  "tag": "flirt",
+                  "reply": [
+                    {"who": "sable", "e": "teasing", "text": "Oh, I intend to."}
+                  ]
+                }
+              ]
+            }
           ],
           "scene": {
             "id": "sable_6",

@@ -37,6 +37,22 @@ var ctx: Dictionary = {}
 ## Cup rounds make her sharper: + this fraction of speed, faster reactions.
 var boost := 0.0
 var _comeback_ready := false
+## Special rules for this match (MatchMods ids), from ctx "mods".
+var mods: Array = []
+## Rush Clock: seconds left (-1 = no clock). At 0 the leader wins; a tie
+## turns the next goal into the winner.
+var clock := -1.0
+var golden_goal := false
+## Shot trainer (ctx mode "trainer"): "block" (she fires her signature
+## again and again, you stop it) or "shoot" (your power shot is always
+## ready). Ten shots, then it ends. No stripping, no rewards.
+var drill := ""
+var drill_total := 10
+var drill_shots := 0
+var drill_hits := 0
+## Her signature shots you stopped, and the most goals you trailed by.
+var sig_blocks := 0
+var max_deficit := 0
 
 
 ## The GameState autoload, looked up at run time so the headless test can
@@ -55,13 +71,21 @@ func setup(id: String, mi: int, context: Dictionary = {}) -> void:
 	boost = float(ctx.get("boost", 0.0))
 	layer_count = h.get("layers", []).size()
 	composure_per_layer = int(h.get("composure", 2)) + int(gs.curve(id, mi).get("cool", 0))
+	if bool(ctx.get("assist", false)):
+		composure_per_layer = maxi(1, composure_per_layer - 1)
 	composure = composure_per_layer
 	brain.side = 1
 	brain.setup(hash(id) + mi * 7919)
 	gs.apply_player(sim.paddle(0))
 	sim.paddle(1).heat_mult = 0.6
-	_apply_powerups(ctx.get("powerups", []))
+	_apply_powerups(ctx.get("powerups", []) + ctx.get("free_powerups", []))
 	apply_her(0)
+	mods = ctx.get("mods", [])
+	MatchMods.apply(self)
+	if String(ctx.get("mode", "")) == "trainer":
+		drill = String(ctx.get("drill", "block"))
+		target = 999
+		layer_count = 0
 
 
 func has_powerup(pid: String) -> bool:
@@ -98,6 +122,15 @@ func apply_her(layers: int) -> void:
 		her.max_speed *= 1.0 + boost
 		her.max_accel *= 1.0 + boost
 		brain.reaction = maxf(0.04, brain.reaction - boost * 0.15)
+	# Comeback help (Extras.needs_help): she eases off after you've lost
+	# this match several times in a row.
+	if bool(ctx.get("assist", false)):
+		var cb: Dictionary = (Engine.get_main_loop() as SceneTree).root.get_node("Extras").comeback_cfg()
+		var her2: PuckSim.Paddle = sim.paddle(1)
+		her2.max_speed *= float(cb.get("speed", 0.9))
+		her2.max_accel *= float(cb.get("speed", 0.9))
+		brain.reaction += float(cb.get("reaction", 0.02))
+		brain.aim_spread *= float(cb.get("aim", 1.25))
 
 
 func step(dt: float) -> void:
@@ -105,15 +138,55 @@ func step(dt: float) -> void:
 		return
 	brain.think(sim, dt)
 	_aim_player_signature()
+	if drill != "":
+		_drill_tick()
 	sim.step(dt)
 	for e in sim.events:
 		_on_sim_event(e)
 	sim.events.clear()
+	if clock > 0.0 and sim.paused <= 0.0 and not over:
+		clock = maxf(0.0, clock - dt)
+		if clock <= 0.0:
+			var a: int = sim.paddle(0).score
+			var b: int = sim.paddle(1).score
+			if a != b:
+				_end(a > b)
+			else:
+				golden_goal = true
+				events.append({"kind": "golden_goal"})
+
+
+func _end(won: bool) -> void:
+	over = true
+	player_won = won
+	events.append({"kind": "match_over", "won": player_won})
+
+
+## Trainer: keeps the drill's meter full and counts the shots.
+func _drill_tick() -> void:
+	var me: PuckSim.Paddle = sim.paddle(0)
+	var her: PuckSim.Paddle = sim.paddle(1)
+	var side := 1 if drill == "block" else 0
+	var p: PuckSim.Paddle = her if side == 1 else me
+	if drill_shots < drill_total and not p.armed and sim.powered < 0 and sim.paused <= 0.0:
+		p.heat = PuckSim.HEAT_MAX
+	if side == 1:
+		me.heat = minf(me.heat, PuckSim.HEAT_MAX - 1.0)
+	else:
+		her.heat = 0.0
+	if drill_shots >= drill_total and sim.powered < 0 and not over:
+		_end(drill_hits >= int(ceil(drill_total * 0.6)))
 
 
 func _on_sim_event(e: Dictionary) -> void:
 	events.append(e)
+	if drill != "":
+		_drill_event(e)
+		return
 	match String(e.kind):
+		"power_saved":
+			if e.side == 0:
+				sig_blocks += 1
 		"save":
 			if e.side == 0:
 				saves += 1
@@ -121,6 +194,10 @@ func _on_sim_event(e: Dictionary) -> void:
 			if e.scorer == 0:
 				if e.bank:
 					bank_goals += 1
+				var extra := MatchMods.bonus_points(self, e)
+				if extra > 0:
+					sim.paddle(0).score += extra
+					events.append({"kind": "bonus_points", "n": extra})
 				var dmg := 1
 				if e.power:
 					smash_goals += 1
@@ -137,10 +214,11 @@ func _on_sim_event(e: Dictionary) -> void:
 					_comeback_ready = false
 					sim.paddle(0).heat = PuckSim.HEAT_MAX
 					events.append({"kind": "second_wind"})
+			max_deficit = maxi(max_deficit, sim.paddle(1).score - sim.paddle(0).score)
 			if sim.paddle(0).score >= target or sim.paddle(1).score >= target:
-				over = true
-				player_won = sim.paddle(0).score >= target
-				events.append({"kind": "match_over", "won": player_won})
+				_end(sim.paddle(0).score >= target)
+			elif golden_goal:
+				_end(e.scorer == 0)
 
 
 ## Revive after a loss (ad or gems): the match goes on with her pulled back
@@ -156,7 +234,24 @@ func revive(back: int, full_heat: bool) -> void:
 	her.score = maxi(0, target - maxi(1, back))
 	if full_heat:
 		sim.paddle(0).heat = PuckSim.HEAT_MAX
+	if clock == 0.0:
+		clock = 30.0
+		golden_goal = false
 	sim.paused = maxf(sim.paused, 1.0)
+
+
+func _drill_event(e: Dictionary) -> void:
+	var side := 1 if drill == "block" else 0
+	match String(e.kind):
+		"power_shot":
+			if e.side == side:
+				drill_shots += 1
+		"power_saved":
+			if drill == "block" and e.side == 0:
+				drill_hits += 1
+		"goal":
+			if drill == "shoot" and e.scorer == 0 and e.power:
+				drill_hits += 1
 
 
 func _hit_composure(dmg: int) -> void:

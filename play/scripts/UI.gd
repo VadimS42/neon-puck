@@ -247,3 +247,25 @@ static func popup(parent: Node, title: String, body: String, buttons: Array, acc
 	if first:
 		first.call_deferred("grab_focus")
 	return o
+
+
+## A small card that slides in at the top right and fades (achievements).
+static func toast(parent: Node, title: String, body: String, accent: Color = GOLD) -> void:
+	var p := panel(PANEL_2, 12, accent)
+	p.custom_minimum_size = Vector2(380, 0)
+	p.position = Vector2(880, -120)
+	p.z_index = 100
+	p.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 2)
+	p.add_child(v)
+	v.add_child(label(title, 16, accent))
+	var b := wrap_label(body, 18)
+	b.custom_minimum_size = Vector2(350, 0)
+	v.add_child(b)
+	parent.add_child(p)
+	var tw := p.create_tween()
+	tw.tween_property(p, "position:y", 20.0, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_interval(3.2)
+	tw.tween_property(p, "modulate:a", 0.0, 0.4)
+	tw.tween_callback(p.queue_free)
